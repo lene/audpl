@@ -739,12 +739,13 @@
   <menu>
     <!-- You can specify more than one menu file in here and they are all loaded,
        just don't make menu ids clash or, well, it'll be kind of pointless -->
-<!--	<menu id="Debian" /> -->
+	<file>/var/lib/openbox/debian-menu.xml</file>
+	<file>menu.xml</file>
+
     <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
-<!--    <file>/usr/share/lxde/openbox/menu.xml</file> -->
+    <file>/usr/share/lxde/openbox/menu.xml</file>
     <hideDelay>200</hideDelay>
-    <!-- if a press-release lasts longer than this setting (in milliseconds), the
-       menu is hidden again -->
+    <!-- if a press-release lasts longer than this setting (in milliseconds), the menu is hidden again -->
     <middle>no</middle>
     <!-- center submenus vertically about the parent entry -->
     <submenuShowDelay>100</submenuShowDelay>
@@ -816,8 +817,7 @@
     # asks to not be shown in pagers
 
     <skip_taskbar>no</skip_taskbar>
-    # asks to not be shown in taskbars. window cycling actions will also
-    # skip past such windows
+    # asks to not be shown in taskbars. window cycling actions will also skip past such windows
 
     <fullscreen>yes</fullscreen>
     # make the window in fullscreen mode when it appears

@@ -1,45 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
-	<menu id="root-menu" label="Openbox 3">
-		<item label="MRxvt">
-			<action name="Execute">
-				<execute>mrxvt</execute>
-			</action>
-		</item>
-		<item label="Firefox">
-			<action name="Execute">
-				<execute>firefox</execute>
-			</action>
-		</item>
-		<item label="Emacs">
-			<action name="Execute">
-				<execute>emacs</execute>
-			</action>
-		</item>
-		<item label="Audacious">
-			<action name="Execute">
-				<execute>audacious</execute>
-			</action>
-		</item>
-		<!-- This requires the presence of the 'menu' package to work -->
-		<menu id="Debian"/>
-		<separator/>
-		<menu id="client-list-menu"/>
-		<separator/>
-		<item label="ObConf">
-			<action name="Execute">
-				<execute>obconf</execute>
-			</action>
-		</item>
-		<item label="Reconfigure">
-			<action name="Reconfigure"/>
-		</item>
-		<item label="Restart">
-			<action name="Restart"/>
-		</item>
-		<separator/>
-		<item label="Exit">
-			<action name="Exit"/>
-		</item>
-	</menu>
+
+  <menu id="net-menu" label="Net">
+	<item label="Firefox">
+	  <action name="Execute">
+		<execute>firefox</execute>
+	  </action>
+	</item>
+	<item label="Thunderbird">
+	  <action name="Execute">
+		<execute>thunderbird</execute>
+	  </action>
+	</item>
+	<item label="Nicotine">
+	  <action name="Execute">
+		<execute>/home/lene/scripts/nicotine-tor</execute>
+	  </action>
+	</item>
+  </menu>
+
+  <menu id="root-menu" label="Openbox 3">
+	<item label="MRxvt">
+	  <action name="Execute">
+		<execute>mrxvt</execute>
+	  </action>
+	</item>
+	<item label="Rox">
+	  <action name="Execute">
+		<execute>rox</execute>
+	  </action>
+	</item>
+	
+	<menu id="net-menu" />
+	
+	<item label="Emacs">
+	  <action name="Execute">
+		<execute>emacs</execute>
+	  </action>
+	</item>
+	<item label="Audacious">
+	  <action name="Execute">
+		<execute>audacious</execute>
+	  </action>
+	</item>
+
+	<separator/>
+	<menu id="/Debian"/>
+	<separator/>
+
+	<menu id="client-list-menu"/>
+	<separator/>
+
+	<item label="ObConf">
+	  <action name="Execute">
+		<execute>obconf</execute>
+	  </action>
+	</item>
+	<item label="Reconfigure">
+	  <action name="Reconfigure"/>
+	</item>
+	<item label="Restart">
+	  <action name="Restart"/>
+	</item>
+	<separator/>
+	
+	<item label="Exit">
+	  <action name="Exit"/>
+	</item>
+
+  </menu>
 </openbox_menu>
