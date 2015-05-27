@@ -1,5 +1,5 @@
 active 4
-playing -1
+playing 4
 playlist 0
 position -1
 resume-state 1
@@ -19,6 +19,6 @@ resume-state 1
 resume-time 0
 playlist 4
 filename file:///home/lene/Music/1001.m3u
-position 147
+position 146
 resume-state 1
-resume-time 0
+resume-time 296645
