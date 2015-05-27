@@ -1,3 +1,6 @@
 .Sync*
-#*#
+# emacs backups
+\#*\#
 *~
+# vi backups
+.\#*
