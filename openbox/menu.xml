@@ -43,6 +43,11 @@
 		<execute>audacious</execute>
 	  </action>
 	</item>
+	<item label="FBReader">
+	  <action name="Execute">
+		<execute>fbreader</execute>
+	  </action>
+	</item>
 
 	<separator/>
 	<menu id="/Debian"/>

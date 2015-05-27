@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <openbox_config xmlns="http://openbox.org/3.4/rc">
+
   <resistance>
     <strength>10</strength>
     <screen_edge_strength>20</screen_edge_strength>
   </resistance>
+
   <focus>
     <focusNew>yes</focusNew>
     <!-- always try to focus new windows when they appear. other rules do apply -->
@@ -19,21 +21,21 @@
     <!-- when followMouse is enabled, the mouse must be inside the window for
        this many milliseconds (1000 = 1 sec) before moving focus to it -->
     <raiseOnFocus>no</raiseOnFocus>
-    <!-- when followMouse is enabled, and a window is given focus by moving the
-       mouse into it, also raise the window -->
+    <!-- when followMouse is enabled, and a window is given focus by moving the mouse into it, 
+		 also raise the window -->
   </focus>
+
   <placement>
     <policy>Smart</policy>
     <!-- 'Smart' or 'UnderMouse' -->
     <center>yes</center>
-    <!-- whether to place windows in the center of the free area found or
-       the top left corner -->
+    <!-- whether to place windows in the center of the free area found or the top left corner -->
     <monitor>Any</monitor>
     <!-- with Smart placement on a multi-monitor system, try to place new windows
-       on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
-       the active window is -->
+       on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where the active window is -->
     <primaryMonitor/>
   </placement>
+
   <theme>
     <name>Onyx</name>
     <titleLayout>NLIMC</titleLayout>
@@ -95,15 +97,12 @@
       <slant/>
     </font>
   </theme>
+
   <desktops>
-    <!-- this stuff is only used at startup, pagers allow you to change them
-       during a session
-
-       these are default values to use when other ones are not already set
-       by other applications, or saved in your session
-
-       use obconf if you want to change these without having to log out
-       and back in -->
+    <!-- this stuff is only used at startup, pagers allow you to change them during a session
+       these are default values to use when other ones are not already set by other applications, 
+	   or saved in your session
+       use obconf if you want to change these without having to log out and back in -->
     <number>9</number>
     <firstdesk>1</firstdesk>
     <names>
@@ -116,6 +115,7 @@
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
+
   <resize>
     <drawContents>yes</drawContents>
     <popupShow>Nonpixel</popupShow>
@@ -132,6 +132,7 @@
          distance from bottom edge, or 'Center' -->
     </popupFixedPosition>
   </resize>
+
   <!-- You can reserve a portion of your screen where windows will not cover when
      they are maximized, or when they are initially placed.
      Many programs reserve space automatically, but you can use this in other
@@ -142,6 +143,7 @@
     <left>0</left>
     <right>0</right>
   </margins>
+
   <dock>
     <position>TopLeft</position>
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
@@ -160,6 +162,7 @@
     <moveButton>Middle</moveButton>
     <!-- 'Left', 'Middle', 'Right' -->
   </dock>
+
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
