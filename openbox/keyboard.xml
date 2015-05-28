@@ -134,7 +134,13 @@
     <keybind key="A-Tab">
       <action name="NextWindow"><allDesktops>yes</allDesktops></action>
     </keybind>
+    <keybind key="C-XF86Forward">
+      <action name="NextWindow"><allDesktops>yes</allDesktops></action>
+    </keybind>
     <keybind key="A-S-Tab">
+      <action name="PreviousWindow"><allDesktops>yes</allDesktops></action>
+    </keybind>
+    <keybind key="C-XF86Back">
       <action name="PreviousWindow"><allDesktops>yes</allDesktops></action>
     </keybind>
     <keybind key="C-A-Tab">
