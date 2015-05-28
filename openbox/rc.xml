@@ -378,6 +378,26 @@
     </keybind>
 
     <!-- Keybinding for Volume management -->
+    <keybind key="XF86AudioStop">
+      <action name="Execute">
+        <command>audacious -u</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioPlay">
+      <action name="Execute">
+        <command>audacious -p</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioPrev">
+      <action name="Execute">
+        <command>audacious -r</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioNext">
+      <action name="Execute">
+        <command>audacious -f</command>
+      </action>
+    </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <command>amixer -q sset Master 3%+</command>
