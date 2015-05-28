@@ -1,0 +1,285 @@
+  <keyboard>
+    <chainQuitKey>C-g</chainQuitKey>
+    <!-- Keybindings for desktop switching -->
+    <keybind key="C-Left">
+      <action name="DesktopLeft">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-Right">
+      <action name="DesktopRight">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-Up">
+      <action name="DesktopUp">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-Down">
+      <action name="DesktopDown">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-C-Left">
+      <action name="SendToDesktopLeft">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-C-Right">
+      <action name="SendToDesktopRight">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-C-Up">
+      <action name="SendToDesktopUp">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-C-Down">
+      <action name="SendToDesktopDown">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="W-F1">
+      <action name="Desktop">
+        <desktop>1</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F2">
+      <action name="Desktop">
+        <desktop>2</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F3">
+      <action name="Desktop">
+        <desktop>3</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F4">
+      <action name="Desktop">
+        <desktop>4</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F5">
+      <action name="Desktop">
+        <desktop>5</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F6">
+      <action name="Desktop">
+        <desktop>6</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F7">
+      <action name="Desktop">
+        <desktop>7</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F8">
+      <action name="Desktop">
+        <desktop>8</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F9">
+      <action name="Desktop">
+        <desktop>9</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-d">
+      <action name="ToggleShowDesktop"/>
+    </keybind>
+    <keybind key="C-A-d">
+      <action name="ToggleShowDesktop"/>
+    </keybind>
+    <!-- Keybindings for windows -->
+    <keybind key="A-F4">
+      <action name="Close"/>
+    </keybind>
+    <keybind key="A-Escape">
+      <action name="Lower"/>
+      <action name="FocusToBottom"/>
+      <action name="Unfocus"/>
+    </keybind>
+    <keybind key="A-Down">
+      <action name="Lower"/>
+      <action name="FocusToBottom"/>
+      <action name="Unfocus"/>
+    </keybind>
+    <keybind key="A-Up">
+      <action name="Raise"/>
+      <action name="Focus"/>
+    </keybind>
+    <keybind key="A-space">
+      <action name="ShowMenu">
+        <menu>client-menu</menu>
+      </action>
+    </keybind>
+	<keybind key="A-S-M">
+	  <action name="ToggleMaximizeFull"/>
+	</keybind>
+	<keybind key="A-S-V"> 
+	  <action name="ToggleMaximizeVert"/>
+	</keybind>
+
+    <!-- Keybindings for window switching -->
+    <keybind key="A-Tab">
+      <action name="NextWindow"><allDesktops>yes</allDesktops></action>
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow"><allDesktops>yes</allDesktops></action>
+    </keybind>
+    <keybind key="C-A-Tab">
+      <action name="NextWindow">
+        <panels>yes</panels>
+        <desktop>yes</desktop>
+      </action>
+    </keybind>
+
+    <!-- Keybindings for running applications -->
+    <keybind key="W-e">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>PCManFM</name>
+        </startupnotify>
+        <command>pcmanfm</command>
+      </action>
+    </keybind>
+
+    <!--keybindings for LXPanel -->
+    <keybind key="W-r">
+      <action name="Execute">
+        <command>lxpanelctl run</command>
+      </action>
+    </keybind>
+    <keybind key="A-F2">
+      <action name="Execute">
+        <command>lxpanelctl run</command>
+      </action>
+    </keybind>
+    <keybind key="C-Escape">
+      <action name="Execute">
+        <command>lxpanelctl menu</command>
+      </action>
+    </keybind>
+    <keybind key="F11">
+      <action name="ToggleFullscreen"/>
+    </keybind>
+
+    <!-- Launch Task Manager with Ctrl+Alt+Del -->
+    <keybind key="A-C-Delete">
+      <action name="Execute">
+        <command>lxtask</command>
+      </action>
+    </keybind>
+
+    <!-- Fast access to Terminal -->
+    <keybind key="C-A-T">
+      <action name="Execute">
+        <command>lxterminal</command>
+      </action>
+    </keybind>
+
+    <!-- Fast access to filemanager -->
+    <keybind key="C-A-D">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>PCManFM</name>
+        </startupnotify>
+        <command>pcmanfm</command>
+      </action>
+    </keybind>
+
+    <!-- Keybinding for PrintScreen Key -->
+    <keybind key="Print">
+      <action name="Execute">
+        <execute>scrot</execute>
+      </action>
+    </keybind>
+    <keybind key="A-Print">
+      <action name="Execute">
+        <execute>scrot -s</execute>
+      </action>
+    </keybind>
+
+    <!-- Keybinding for audio management -->
+    <keybind key="XF86AudioStop">
+      <action name="Execute">
+        <command>audacious -u</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioPlay">
+      <action name="Execute">
+        <command>audacious -p</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioPrev">
+      <action name="Execute">
+        <command>audacious -r</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioNext">
+      <action name="Execute">
+        <command>audacious -f</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer -q -D pulse set Master 3%+ unmute</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer -q -D pulse set Master 3%+ unmute</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>amixer -q -D pulse set Master toggle</command>
+      </action>
+    </keybind>
+
+	<!-- other function keys -->
+    <keybind key="XF86WWW">
+      <action name="Execute">
+        <command>x-terminal-emulator</command>
+      </action>
+    </keybind>
+    <keybind key="XF86Calculator">
+      <action name="Execute">
+        <command>galculator</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MyComputer">
+      <action name="Execute">
+        <command>pcmanfm</command>
+      </action>
+    </keybind>
+    <keybind key="XF86Terminal">
+      <action name="Execute">
+        <command>x-terminal-emulator</command>
+      </action>
+    </keybind>
+
+    <keybind key="XF86ScreenSaver">
+      <action name="Execute">
+        <command>xscreensaver-command -lock</command>
+      </action>
+    </keybind>
+
+	<!-- reload openbox -->
+	<keybind key="S-A-C-R"> 
+	  <action name="Reconfigure" />
+	</keybind>
+
+  </keyboard>
