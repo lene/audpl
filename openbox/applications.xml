@@ -106,7 +106,7 @@
       <skip_taskbar>yes</skip_taskbar>
 	</application>
 
-	<application name="thunderbird" class="Thunderbird">
+	<application name="Mail" class="Thunderbird">
       <decor>yes</decor>
       <iconic>no</iconic>
       <skip_pager>no</skip_pager>
