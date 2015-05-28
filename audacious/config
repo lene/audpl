@@ -95,7 +95,7 @@ use_file_cover=FALSE
 about_win=135,6,606,439
 close_dialog_add=TRUE
 equalizer_win=304,420,299,215
-filebrowser_win=114,36,700,450
+filebrowser_win=1217,0,700,450
 filesel_path=/home/lene/Music/T/Test Dept./Gododdin [1989]
 info_win=672,48,605,421
 no_confirm_playlist_delete=TRUE
@@ -106,7 +106,7 @@ playlist_manager_h=250
 playlist_manager_w=400
 playlist_manager_x=108
 playlist_manager_y=36
-playlist_path=file:///home/lene/Music
+playlist_path=file:///home/lene/workspace/configs/audacious/playlists
 
 [audioscrobbler]
 password=5739f80c280bacd8cef4d724165515dc
