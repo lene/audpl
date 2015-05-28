@@ -1,5 +1,5 @@
 active 1
-playing 1
+playing -1
 playlist 0
 position -1
 resume-state 1
@@ -8,7 +8,7 @@ playlist 1
 filename file:///home/lene/Music/1001.m3u
 position 39
 resume-state 1
-resume-time 97435
+resume-time 214559
 playlist 2
 filename file:///home/lene/Music/lists/2014.m3u
 position -1
