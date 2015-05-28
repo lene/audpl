@@ -83,7 +83,7 @@
 		<execute>obconf</execute>
 	  </action>
 	</item>
-	<item label="Reconfigure">
+	<item label="Reconfig">
 	  <action name="Reconfigure"/>
 	</item>
 	<item label="Restart">
