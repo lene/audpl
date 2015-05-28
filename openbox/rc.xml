@@ -377,7 +377,7 @@
       </action>
     </keybind>
 
-    <!-- Keybinding for Volume management -->
+    <!-- Keybinding for audio management -->
     <keybind key="XF86AudioStop">
       <action name="Execute">
         <command>audacious -u</command>
@@ -400,19 +400,21 @@
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>amixer -q sset Master 3%+</command>
+        <command>amixer -q -D pulse set Master 3%+ unmute</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>amixer -q sset Master 3%-</command>
+        <command>amixer -q -D pulse set Master 3%+ unmute</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>amixer -q sset Master toggle</command>
+        <command>amixer -q -D pulse set Master toggle</command>
       </action>
     </keybind>
+
+	<!-- other function keys -->
     <keybind key="XF86WWW">
       <action name="Execute">
         <command>x-terminal-emulator</command>
