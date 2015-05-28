@@ -78,6 +78,7 @@
       <desktop>all</desktop>
       <iconic>no</iconic>
       <skip_pager>yes</skip_pager>
+      <skip_taskbar>yes</skip_taskbar>
 	</application>
 
 	<application name="gkrellm" class="Gkrellm">
