@@ -436,6 +436,12 @@
       </action>
     </keybind>
 
+    <keybind key="XF86ScreenSaver">
+      <action name="Execute">
+        <command>xscreensaver-command -lock</command>
+      </action>
+    </keybind>
+
 	<!-- reload openbox -->
 	<keybind key="S-A-C-R"> 
 	  <action name="Reconfigure" />
