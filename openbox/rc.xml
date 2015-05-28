@@ -308,6 +308,7 @@
         <desktop>yes</desktop>
       </action>
     </keybind>
+
     <!-- Keybindings for running applications -->
     <keybind key="W-e">
       <action name="Execute">
@@ -318,6 +319,7 @@
         <command>pcmanfm</command>
       </action>
     </keybind>
+
     <!--keybindings for LXPanel -->
     <keybind key="W-r">
       <action name="Execute">
@@ -337,18 +339,21 @@
     <keybind key="F11">
       <action name="ToggleFullscreen"/>
     </keybind>
+
     <!-- Launch Task Manager with Ctrl+Alt+Del -->
     <keybind key="A-C-Delete">
       <action name="Execute">
         <command>lxtask</command>
       </action>
     </keybind>
+
     <!-- Fast access to Terminal -->
     <keybind key="C-A-T">
       <action name="Execute">
         <command>lxterminal</command>
       </action>
     </keybind>
+
     <!-- Fast access to filemanager -->
     <keybind key="C-A-D">
       <action name="Execute">
@@ -359,6 +364,7 @@
         <command>pcmanfm</command>
       </action>
     </keybind>
+
     <!-- Keybinding for PrintScreen Key -->
     <keybind key="Print">
       <action name="Execute">
@@ -370,6 +376,7 @@
         <execute>scrot -s</execute>
       </action>
     </keybind>
+
     <!-- Keybinding for Volume management -->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
@@ -406,7 +413,14 @@
         <command>x-terminal-emulator</command>
       </action>
     </keybind>
+
+	<!-- reload openbox -->
+	<keybind key="S-A-C-R"> 
+	  <action name="Reconfigure" />
+	</keybind>
+
   </keyboard>
+
   <mouse>
     <dragThreshold>8</dragThreshold>
     <!-- number of pixels the mouse must move before a drag begins -->
