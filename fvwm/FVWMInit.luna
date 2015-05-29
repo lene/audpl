@@ -1,0 +1,73 @@
+#!/bin/bash
+
+. ${HOME}/.fvwm/FVWMInit
+
+#Module FvwmTaskBar
+
+SCREEN=$(echo $DISPLAY | cut -d '.' -f 2)
+# echo $SCREEN > ~/fvwm.log
+
+#if [ x$SCREEN = x:0 ]; then 
+
+	which btsync && btsync start
+
+	which xscreensaver && xscreensaver &
+
+	which xv && \
+		xv -root -rmode 4 -maxpect -smooth -quit "Desktop/Images/Barred Spiral Galaxy NGC 1300.jpg"
+
+	mrxvt -geometry 96x54+80+0 &
+	mrxvt -geometry 82x31-0+0 &
+	mrxvt -geometry 82x20-0-20 &
+
+	mrxvt -geometry 82x54+0+${screen_height} &
+
+	MYNANODIR=~/Texts/MyWorks/nano07
+	MYNANO="${MYNANODIR}/novel.txt"
+
+	stalonetray &
+	nm-applet &
+	dropbox start 
+	
+# open emacs [with my NaNo preloaded]
+#   ( xemacs -geometry "103x43" -fn 10x20 "${MYNANO}" || emacs -geometry "83x38" ) &
+	( emacs -geometry "103x52" -fn 10x20 || xemacs -geometry "83x47" ) &
+
+# open a window which shows the word count on my NaNo beside the xemacs window
+#   xterm -fn 10x20 -g 15x41+2628+0 -e "cd ${MYNANODIR}; while [ true ]; do wc -w novel.txt ; sleep 120; done" &
+
+	which rox-filer && rox-filer -n & # -b=pb_Default
+
+    false && \
+    which korganizer && \
+		korganizer \
+		-geometry "${screen_width}x$[${screen_height}-64]+0+$[2*${screen_height}]" \
+		$[HOME] &
+
+
+#	if [ $(which workrave 2> /dev/null) ]; then
+#		workrave &
+#	else
+#		which xwrits && \
+#			xwrits +breakclock +clock +finger=korean +iconified +mouse \
+#			+quota=2 typetime=60 breaktime=5 \
+#			after 5 flashtime=0.01 after 5 +top after 5 +lock &
+#	fi
+
+	which xteddy && xteddy &
+
+#   false && \
+	which chromium-browser && sleep 1 && chromium-browser &
+
+#   false && \
+	which thunderbird && sleep 2 && thunderbird &
+
+	which skype && sleep 3 && skype &
+
+	which pidgin && sleep 4 && pidgin &
+
+	which wuala && sleep 50 && wuala &
+
+#   false && \
+    which knotes &&	knotes &
+#fi

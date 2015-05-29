@@ -1,0 +1,62 @@
+#!/bin/bash
+
+. ${HOME}/.fvwm/FVWMInit
+
+which xscreensaver && xscreensaver &
+
+FvwmMRXVT 7x14 94 58 "+0+0"
+FvwmMRXVT 7x14 94 29 "-80+0"
+FvwmMRXVT 7x14 94 25 "-80-40"
+
+FvwmMRXVT 10x20 82 40 "+0+${screen_height}"
+
+MYNANODIR=~/Texts/MyWorks/nano07
+MYNANO="${MYNANODIR}/novel.txt"
+
+# open emacs
+( xemacs -geometry "103x41" -fn 10x20 || emacs -geometry "83x38" ) &
+
+# open a window which shows the word count on my NaNo beside the xemacs window
+# xterm -fn 10x20 -g 15x41+2628+0 -e "cd ${MYNANODIR}; while [ true ]; do wc -w novel.txt ; sleep 120; done" &
+
+# which gkrellm && gkrellm &
+
+which rox && rox -b=pb_Default
+
+false && \
+  which konqueror && \
+  konqueror -geometry "${screen_width}x$[${screen_height}-64]" ${HOME} &
+
+false && \
+  which korganizer && \
+  korganizer \
+    -geometry "${screen_width}x$[${screen_height}-64]+0+$[2*${screen_height}]" \
+    $[HOME] &
+
+which knotes && knotes &
+
+which xteddy && xteddy &
+
+#false && \
+#  rc-status | grep battery >/dev/null || \
+#  ( which eclipse-3.2 && eclipse-3.2 & )
+
+#false && \
+rc-status | grep battery >/dev/null || \
+  ( which firefox && firefox ) &
+
+# false && \
+  rc-status | grep battery >/dev/null || \
+  ( which thunderbird && sleep 10 && thunderbird & )
+
+#false && \
+# rc-status | grep battery >/dev/null || \
+#  ( which skype && sleep 30 && skype & )
+
+
+rc-status | grep battery >/dev/null || \
+  ( which kdevelop && sleep 10 && kdevelop & )
+
+xv -rmode 4 -quit -root Helge\ Preuss\ 38\ ans/Lene\ 5b.jpg
+
+which workrave && workrave &

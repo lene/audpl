@@ -1,0 +1,59 @@
+#!/bin/bash
+
+. ${HOME}/.fvwm/FVWMInit
+
+which xscreensaver && xscreensaver &
+
+# Start WTerms for 1920x1200 screen size
+if [ ${screen_width} -gt 1600 ]; then 
+  FvwmMRXVT 10x20 96 30 "+64+0"
+  FvwmMRXVT 10x20 96 30 "-80+0"
+  FvwmMRXVT 10x20 96 25 "+64+622"
+  FvwmMRXVT 10x20 96 25 "-80+622"
+else 
+  FvwmMRXVT 7x14 82 40 "+64+0"
+  FvwmMRXVT 7x14 82 40 "-64+0"
+  FvwmMRXVT 7x14 82 24 "+64+618"
+  FvwmMRXVT 7x14 82 24 "-64+618"
+fi
+
+FvwmMRXVT 10x20 96 58 "+64+${screen_height}"
+FvwmMRXVT 10x20 96 52 "-80+${screen_height}"
+
+( xemacs -geometry "100x60" -fn 10x20 || emacs -geometry "100x60" ) &
+
+firefox &
+
+thunderbird &
+
+skype &
+
+nicotine-tor &
+
+rox ${HOME} &
+
+eclipse-3.2 &
+
+false && \
+  which konqueror && \
+  konqueror -geometry "$[${screen_width}-80]x$[${screen_height}-68]+0+0" ${HOME} &
+
+false && \
+  which korganizer && \
+  korganizer \
+    -geometry "${screen_width}x$[${screen_height}-64]" &
+
+false && \
+  which knotes && \
+  knotes &
+
+which xwrits && \
+  xwrits +breakclock +clock +finger=korean +iconified +mouse +quota=2 \
+    typetime=60 breaktime=5 after 5 flashtime=0.01 after 5 +top after 5 +lock &
+
+# xteddy does not work correctly with the Composite extension
+# xdpyinfo | grep Composite || which xteddy && xteddy &
+
+which xplanet && ps ax | grep xplanet | grep -v grep || xplanet &
+
+# which audacious && ps ax | grep audacious || audacious &

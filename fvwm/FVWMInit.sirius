@@ -1,0 +1,71 @@
+#!/bin/bash
+
+. ${HOME}/.fvwm/FVWMInit
+
+SCREEN=$(echo $DISPLAY | cut -d '.' -f 2)
+if [ $SCREEN -eq 0 ]; then 
+
+	which xscreensaver && xscreensaver &
+
+	xv -root -rmode 4 -maxpect -smooth -quit "Desktop/Images/Barred Spiral Galaxy NGC 1300.jpg"
+
+	mrxvt -geometry 96x55+0+0 &
+	mrxvt -geometry 82x32-80+0 &
+	mrxvt -geometry 82x20-80-0 &
+
+	mrxvt -geometry 82x55+0+${screen_height} &
+
+	MYNANODIR=~/Texts/MyWorks/nano07
+	MYNANO="${MYNANODIR}/novel.txt"
+
+# open emacs [with my NaNo preloaded]
+# ( xemacs -geometry "103x43" -fn 10x20 "${MYNANO}" || emacs -geometry "83x38" ) &
+	( emacs -geometry "103x53" -fn 10x20 || xemacs -geometry "83x48" ) &
+
+# open a window which shows the word count on my NaNo beside the xemacs window
+# xterm -fn 10x20 -g 15x41+2628+0 -e "cd ${MYNANODIR}; while [ true ]; do wc -w novel.txt ; sleep 120; done" &
+
+	which rox && rox -b=pb_Default
+
+	false && \
+		which konqueror && \
+		konqueror -geometry "${screen_width}x$[${screen_height}-64]" ${HOME} &
+
+# false && \
+    which korganizer && \
+		korganizer \
+		-geometry "${screen_width}x$[${screen_height}-64]+0+$[2*${screen_height}]" \
+		$[HOME] &
+
+# false && \
+    which knotes && \
+		knotes &
+
+	if [ $(which workrave 2> /dev/null) ]; then
+		workrave &
+	else
+		which xwrits && \
+			xwrits +breakclock +clock +finger=korean +iconified +mouse \
+			+quota=2 typetime=60 breaktime=5 \
+			after 5 flashtime=0.01 after 5 +top after 5 +lock &
+	fi
+
+	which xteddy && xteddy &
+
+#false && \
+#  which eclipse-3.3 && eclipse-3.3 &
+#/home/helge/Desktop/eclipse/eclipse &
+# which kdevelop && kdevelop &
+
+# false && \
+    which firefox && sleep 10 && firefox &
+
+#false && \
+#  which thunderbird && sleep 10 && thunderbird &
+
+#false && \
+# rc-status | grep battery >/dev/null || \
+#  which skype && sleep 30 && skype &
+
+#    which pidgin && sleep 10 && pidgin
+fi

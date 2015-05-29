@@ -1,0 +1,565 @@
+###########
+#  ____________________________
+# (   _________________________)
+#  ) (__  _  _  _    _  
+# (   __)( \/ )( \/\/ )/\/\
+#  ) (    \  /  \    //    \
+# (___)    \/    \/\/(_/\/\_) 2.5.12
+#
+# My personal fvwm2rc file
+#
+#######################
+
+#####
+# Load keymaps
+###########
+
+Exec setxkbmap -layout gb,de,us
+
+#####
+# Set Environment variables
+###########
+
+# Paths
+SetEnv fvwm_home $[HOME]/.fvwm
+SetEnv fvwm_img $[fvwm_home]/images
+SetEnv fvwm_icon $[fvwm_home]/icons
+SetEnv fvwm_scrpt $[fvwm_home]/scripts
+SetEnv fvwm_wallpapers $[fvwm_img]/wallpaper
+# Screen size
+SetEnv screen_dimensions $[vp.width]x$[vp.height]
+SetEnv screen_width $[vp.width]
+SetEnv screen_height $[vp.height]
+# Size of the dock displaying gkrellm and the pager
+SetEnv dock_width 96
+SetEnv dock_height 753
+# Taskbar height (empiric value)
+SetEnv taskbar_height 44
+SetEnv image_viever eog
+
+#####
+# Set the image path
+###########
+ImagePath $[fvwm_icon]:$[fvwm_icon];.png:+:/usr/share/fvwm/tr-images:+:/usr/share/fvwm/tr-images;.png:+
+
+#####
+# Virtual Desktops
+###########
+DesktopSize 3x3
+DesktopName 0 Main
+#DesktopName 1 Work
+#DesktopName 2 Fun
+EdgeScroll 100 100
+EdgeResistance 500 
+Style * EdgeMoveDelay 250
+Style * EdgeMoveResistance 600
+EdgeThickness 2
+
+#####
+# Mouse and Focus Behavior
+###########
+ClickTime 350
+MoveThreshold 3
+Style * SloppyFocus, MouseFocusClickRaises
+
+# Leave space for the dock at the left and the taskbar at the bottom
+#EwmhBaseStruts left          right         top           bottom
+EwmhBaseStruts  $[dock_width] 0             0             $[taskbar_height]
+IgnoreModifiers 2 # L25
+
+#####
+# Global Styles and options
+###########
+Style * TileCascadePlacement, FPGrabFocus, FPReleaseFocus
+Style * NoPPosition, ResizeOpaque
+OpaqueMoveSize -1
+Emulate MWM
+HideGeometryWindow Never
+Style * SnapAttraction 5 SameType Screen
+Style * SnapGrid 3 3
+XorValue 55555
+Style * DecorateTransient, DontRaiseTransient
+Style * DontLowerTransient, StackTransientParent
+Style * WindowShadeSteps 10, WindowShadeScrolls
+SetAnimation  10  -.01 0 .01 .03 .08 .18 .3 .45 .6 .75 .85 .90 .94 .97 .99 1.0
+Style * MwmDecor, StickyIcon
+Style * IconBox screen w -80 0 -0 -60, IconGrid 3 3, IconFill left bottom
+Style * IconBox screen w 0 0 80 -60, IconGrid 3 3, IconFill left bottom
+Style * CaptureHonorsStartsOnPage, RecaptureHonorsStartsOnPage
+
+#####
+# Program Styles
+###########
+Style "*" Icon 48x48/x.png, MiniIcon mini/x.png
+Style "*Term" Icon 48x48/terminal.png, NoActiveIconOverride, MiniIcon mini/terminal.png
+Style "Konsole" Icon 48x48/terminal.png, NoActiveIconOverride, MiniIcon mini/terminal.png
+Style "*emacs" Icon 48x48/gnome-emacs.png, IconOverride, MiniIcon mini/emacs.png, EWMHMiniIconOverride, StartsOnPage 0 1 0
+Style "gvim" Icon 48x48/vim.png, IconOverride, MiniIcon mini/vim.png, EWMHMiniIconOverride
+Style "?ozilla*" Icon 48x48/mozilla.png, MiniIcon mini/mozilla.png, EWMHMiniIconOverride
+Style "?irefox*" Icon 48x48/firefox.png, MiniIcon mini/firefox.png, EWMHMiniIconOverride, StartsOnPage 0 1 1
+Style "?hunderbird*" Icon 48x48/mozillathunderbird-bin-icon.png, MiniIcon mini/mozillathunderbird-bin-icon.png, EWMHMiniIconOverride, StartsOnPage 0 2 1
+Style "?onqueror*" Icon  48x48/folder.png, IconOverride, MiniIcon mini/folder.png, EWMHMiniIconOverride, StartsOnPage 2 0
+Style "?imp*" Icon 48x48/gimp.png, IconOverride, MiniIcon mini/gimp.png, EWMHMiniIconOverride
+Style "XV*" Icon 48x48/xv.png, IconOverride, MiniIcon mini/xv.xpm, EWMHMiniIconOverride
+Style "*Eclipse*" Icon 48x48/eclipse.xpm, IconOverride, MiniIcon menu/eclipse.xpm, EWMHMiniIconOverride
+Style "*Kdevelop*" Icon 48x48/kdevelop.png, IconOverride, MiniIcon mini/kdevelop.png, EWMHMiniIconOverride
+Style "OpenOffice*" Icon 48x48/ooo_gulls.png, IconOverride, MiniIcon mini//ooo_gulls.png, EWMHMiniIconOverride
+Style "*KOrganizer*" Icon 48x48/korganizer.png, IconOverride, StartsOnPage 0 0 2, MiniIcon mini/korganizer.png
+Style "xmms" CirculateSkip, Sticky, StaysOnTop, Icon 48x48/xmms.png, MiniIcon menu/xmms.png
+Style "*udacious*" CirculateSkip, Sticky, NoTitle
+Style "wm*" NoTitle, Borders, BorderWidth 5, NoHandles, Sticky
+Style "DockButtons" WindowListSkip, CirculateSkip
+Style "Korgac" WindowListSkip, CirculateSkip, NoTitle
+Style "XISDNLoad" NoTitle, Sticky, StaysOnBottom, StartsLowered
+Style "audacity" Icon 48x48/audacity.png, IconOverride, MiniIcon mini/audacity.png, EWMHMiniIconOverride
+Style "quanta" Icon 48x48/quanta.png, IconOverride, MiniIcon mini/quanta.png, EWMHMiniIconOverride
+Style "XWrits" WindowListSkip, CirculateSkip, NoTitle, Sticky
+Style "knotes" WindowListSkip, CirculateSkip, NoTitle, StaysOnBottom
+Style "Skype.bin" Sticky
+Style "KDE Desktop" EWMHIgnoreWindowType, Title, !Handles, !Borders, FixedPosition, UsePPosition, !Sticky, StaysOnBottom, StartIconic
+Style "Nessus" MiniIcon mini/nessus.png
+Style "Progress Dialog - KDE" EWMHIgnoreWindowType, Title, !Handles, !Borders, !Sticky, !FPGrabFocus
+BugOpts RaiseOverUnmanaged on
+Style "kiba-dock" WindowListSkip, CirculateSkip, NoTitle, Sticky, !Handles, !Borders
+Style "kooldock" WindowListSkip, CirculateSkip, NoTitle, Sticky
+Style "gkrellm" WindowListSkip, CirculateSkip, NoTitle, Sticky, !Handles, !Borders
+Style "Qt-subapplication" WindowListSkip, CirculateSkip, NoTitle, Sticky, !Handles, !Borders
+Style "Plasma" WindowListSkip, CirculateSkip, NoTitle, Sticky, !Handles, !Borders
+#Style "*Warcraft*" StartsOnPage 2
+Style "stalonetray" PositionPlacement move-arguments -0 -$[taskbar_height]
+Style cairo-dock Unamanged
+
+#####
+# Basic Functions
+###########
+DestroyFunc FvwmDeleteOrDestroy
+AddToFunc   FvwmDeleteOrDestroy
++ H Nop
++ M Nop
++ C Delete
++ D Destroy
+
+DestroyFunc FvwmIconifyOrShade
+AddToFunc   FvwmIconifyOrShade
++ C Iconify
++ D WindowShade
+
+DestroyFunc FvwmMoveOrIconify
+AddToFunc   FvwmMoveOrIconify
++ M Move
++ D Iconify
+
+DestroyFunc FvwmWindowShade
+AddToFunc   FvwmWindowShade
++ D WindowShade $0
+
+#####
+# Program Launching Functions
+###########
+DestroyFunc FvwmXTerm
+AddToFunc   FvwmXTerm
++ I Exec exec xterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn $0 -geometry $1x$2$3
+
+DestroyFunc FvwmWTerm
+AddToFunc   FvwmWTerm
++ I Exec exec mrxvt -fn $0 -geometry $1x$2$3
+
+DestroyFunc FvwmETerm
+AddToFunc   FvwmETerm
++ I Exec exec if test `which Eterm`; then Eterm --trans --scrollbar-type next --scrollbar-floating --name 'Enlightened Terminal' --font1 7x14 --font2 8x16 --font3 10x20 --font4 12x24 Eterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls --font $0 -geometry $1x$2$3; else if test `which wterm`; then wterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn $0 -geometry $1x$2$3; else xterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn $0 -geometry $1x$2$3; fi; fi
+
+DestroyFunc FvwmXmms
+AddToFunc   FvwmXmms
++ I Exec exec xmms -geometry -0-0
+
+DestroyFunc FvwmViewManPage
+AddToFunc   FvwmViewManPage
++ I Exec exec xterm -fg Black -bg White -g 80x40 -fn 10x20 \
+ -n "Manual Page - $0" -T "Manual Page - $0" -e man "$0"
+
+#####
+# Startup Functions
+###########
+DestroyFunc StartFunction
+AddToFunc   StartFunction
++ I Module FvwmTaskBar
++ I Module FvwmButtons DockButtons
+#+ I Module FvwmWharf
+#+ I CreateDock '10' '56x56+16-132@1' '48x48/firefox.png' '64x64/firefox.png' '-20' '-30' 'FvwmFireFox' 'Nop' 'Nop' '64x64'
+#+ I CreateDock '11' '56x56+16-76@1' '48x48/xmms.png' '48x48/xmms.png' '+20' '-30' 'FvwmXmms' 'Nop' 'FvwmMixer' '64x64'
++ I MakeWMMenu
+#+ I StartPagerDelayed 8
+
+DestroyFunc InitFunction
+AddToFunc   InitFunction
++ I Exec exec $[fvwm_home]/FVWMInit.`hostname | cut -d '.' -f 1` $[screen_width] $[screen_height]
+
+DestroyFunc RestartFunction
+AddToFunc   RestartFunction
++ I Nop
++ I FvwmEvent
++ I FvwmCommandS
++ I All (Iconic) ReThumbnail
+
+#####
+# Screenshot Functions (uses ImageMagick)
+###########
+DestroyFunc FvwmWindowScreenshot
+AddToFunc   FvwmWindowScreenshot
++ I ThisWindow (!Shaded !Iconic Iconifiable) \
+  Exec import -window $[w.id] -quality 95 -silent \
+  "$[fvwm_home]/screenshot/screenshot-`date +%F[%R]`.$[w.id].png" && \
+  $[image_viewer] "$[fvwm_home]/screenshot/screenshot-`date +%F[%R]`.$[w.id].png"
+
+DestroyFunc FvwmDesktopScreenshot
+AddToFunc   FvwmDesktopScreenshot
++ I Exec sleep $0; import -window root -quality 95 -silent \
+  "$[fvwm_home]/screenshot/screenshot-`date +%F[%R]`.png" && \
+  $[image_viewer] "$[fvwm_home]/screenshot/screenshot-`date +%F[%R]`.png"
+
+DestroyFunc StartPagerDelayed
+AddToFunc StartPagerDelayed
++ I PipeRead 'sleep $0; echo "Module FvwmPager 0 2"'
+
+DestroyFunc DE
+AddToFunc DE
++ I Exec exec setxkbmap -layout de
+
+DestroyFunc GB
+AddToFunc GB
++ I Exec exec setxkbmap -layout gb
+
+DestroyFunc US
+AddToFunc US
++ I Exec exec setxkbmap -layout gb
+
+#####
+# Mouse Bindings
+###########
+Mouse 1 R A Menu FvwmWindowOpsMenu
+Mouse 2 R M FvwmExpose
+Mouse 2 R N WindowList
+Mouse 2 R C Module FvwmPager -transient *
+Mouse 3 T A Menu FvwmWindowOpsMenu
+Mouse 3 R A Menu FvwmRootMenu
+Mouse 4 R N Scroll  100 0
+Mouse 5 R N Scroll -100 0
+Mouse 4 R M GotoDesk -1
+Mouse 5 R M GotoDesk +1
+# Titlebar
+Mouse 1 1 A FvwmIconifyOrShade
+Mouse 1 2 A FvwmDeleteOrDestroy
+Mouse 1 3 A FvwmMaximize 100 100
+Mouse 2 3 A FvwmMaximize 0 100
+Mouse 3 3 A FvwmMaximize 100 0
+Mouse 1 5 A Stick toggle
+Mouse 1 7 A Menu FvwmWindowOpsMenu
+Mouse 1 W M FvwmMoveOrIconify
+Mouse 1 I A FvwmMoveOrIconify
+Mouse 4 T A FvwmWindowShade True
+Mouse 5 T A FvwmWindowShade False
+
+# ========================================================================#
+#
+# Now some keyboard shortcuts.
+#
+Key F1		A	M	Menu MenuFvwmRoot
+Key F12		R	M	Menu FvwmRootMenu
+Key F12		R	SM	Menu FvwmWindowOpsMenu
+Key Tab  	A	M	WindowList Root c c NoDeskSort, SelectOnRelease Meta_L
+Key Super_L 	A	A	FvwmWTerm 10x20 82 40
+
+# These don't work. Hmmm.
+Key G		SCM	A	Exec exec setxkbmap -layout gb
+Key D		SCM	A	Exec exec setxkbmap -layout de
+Key U		SCM	A	Exec exec setxkbmap -layout us
+
+Key R   	A	SCM	Restart
+Key S   	A	SCM	FvwmDesktopScreenshot 1
+Key M		W	M	Iconify
+Key M		W	SM	Maximize 100 100
+Key M		W	SCM	Maximize 110 110
+Key H		W	SM	Maximize 100   0
+Key H		W	SCM	Maximize 110   0
+Key V		W	SM	Maximize   0 100
+Key V		W	SCM	Maximize   0 110
+Key M		T	M	Iconify
+Key M		T	SM	Maximize 100 100
+Key M		T	SCM	Maximize 110 110
+Key H		T	SM	Maximize 100   0
+Key H		T	SCM	Maximize 110   0
+Key V		T	SM	Maximize   0 100
+Key V		T	SCM	Maximize   0 110
+
+Key 1		A	SM	GotoDesk 0 0
+Key 2		A	SM	GotoDesk 0 1
+Key 3		A	SM	GotoDesk 0 2
+Key 4		A	SM	Exec xmessage GotoDesk 0 3
+#Key 5		A	SM	Exec xmessage GotoDesk 0 4
+#Key 6		A	SM	Exec xmessage GotoDesk 0 5
+#Key 7		A	SM	Exec xmessage GotoDesk 0 6
+#Key 8		A	SM	Exec xmessage GotoDesk 0 7
+#Key 9		A	SM	Exec xmessage GotoDesk 0 8
+Key 1		A	M	GotoPage 0 0 
+Key 2		A	M	GotoPage 1 0
+Key 3		A	M	GotoPage 2 0
+Key 4		A	M	GotoPage 0 1
+Key 5		A	M	GotoPage 1 1
+Key 6		A	M	GotoPage 2 1
+Key 7		A	M	GotoPage 0 2
+Key 8		A	M	GotoPage 1 2
+Key 9		A	M	GotoPage 2 2
+
+# Arrow Keys
+# press arrow + control anywhere, and scroll by 1 page
+Key Left        A       C       Scroll -100 0
+Key Right       A       C       Scroll +100 +0
+Key Up          A       C       Scroll +0   -100
+Key Down        A       C       Scroll +0   +100
+
+DestroyFunc MoveWindowAndScrollLeft
+AddToFunc   MoveWindowAndScrollLeft
++ I Move -100 0
++ I Scroll -100 0
++ I Focus
++ I Raise
+
+DestroyFunc MoveWindowAndScrollRight
+AddToFunc   MoveWindowAndScrollRight
++ I Move +100 0
++ I Scroll +100 0
++ I Focus
++ I Raise
+
+DestroyFunc MoveWindowAndScrollUp
+AddToFunc   MoveWindowAndScrollUp
++ I Move 0 -100
++ I Scroll 0 -100
++ I Focus
++ I Raise
+
+DestroyFunc MoveWindowAndScrollDown
+AddToFunc   MoveWindowAndScrollDown
++ I Move 0 +100
++ I Scroll 0 +100
++ I Focus
++ I Raise
+
+Key Left        W       SC      MoveWindowAndScrollLeft
+Key Right       W       SC      MoveWindowAndScrollRight
+Key Up          W       SC      MoveWindowAndScrollUp
+Key Down        W       SC      MoveWindowAndScrollDown
+Key Left        T       SC      MoveWindowAndScrollLeft
+Key Right       T       SC      MoveWindowAndScrollRight
+Key Up          T       SC      MoveWindowAndScrollUp
+Key Down        T       SC      MoveWindowAndScrollDown
+
+# press arrow + meta key, and scroll by 1/10 of a page
+Key Left        A       SM       Scroll -10 +0
+Key Right       A       SM       Scroll +10 +0
+Key Up          A       SM       GotoDesk -1
+Key Up          W       M        Raise
+Key Up          T       M        Raise
+Key Down        A       SM       GotoDesk +1
+Key Down        W       M        Lower
+Key Down        T       M        Lower
+
+# press shift arrow + control anywhere, and move the pointer by 1% of a page
+#Key Left        A       SC      CursorMove -1 0
+#Key Right       A       SC      CursorMove +1 +0
+#Key Up          A       SC      CursorMove +0   -1
+#Key Down        A       SC      CursorMove +0   +1
+
+# press shift arrow + meta key, and move the pointer by 1/10 of a page
+Key Left        A       SM      CursorMove -10 +0
+Key Right       A       SM      CursorMove +10 +0
+Key Up          A       SM      CursorMove +0   -10
+Key Down        A       SM      CursorMove +0   +10
+
+#####
+# Window Colorsets
+###########
+Colorset 3 fg White, bg Black		# highlight
+Colorset 4 fg Black, bg Grey75		# normal
+Colorset 5 fg Grey50, bg Black		# border
+
+#####
+# Window Decor
+###########
+DestroyDecor MyDecor
+AddToDecor   MyDecor
++ TitleStyle LeftJustified Height 18
++ ButtonStyle 1 ActiveUp Vector 7 25x25@3 25x75@3 75x75@3 75x25@3 25x25@3 25x30@3 75x30@3 75x35@3 25x35@3 -- Flat
++ ButtonStyle 1 ActiveDown Vector 7 25x25@3 25x75@3 75x75@3 75x25@3 25x25@3 25x30@3 75x30@3 75x35@3 25x35@3 -- Sunk
++ ButtonStyle 1 Inactive Vector 7 25x25@3 25x75@3 75x75@3 75x25@3 25x25@3 25x30@3 75x30@3 75x35@3 25x35@3 -- Flat
++ ButtonStyle 2 ActiveUp Vector 4 25x25@3 75x75@3 75x25@4 25x75@3 -- Flat
++ ButtonStyle 2 ActiveDown Vector 4 25x25@3 75x75@3 75x25@4 25x75@3 -- Sunk
++ ButtonStyle 2 Inactive Vector 4 25x25@3 75x75@3 75x25@4 25x75@3 -- Flat
++ ButtonStyle 3 ActiveUp Vector 5 25x75@3 75x75@3 75x65@3 25x65@3 25x75@3 -- Flat
++ ButtonStyle 3 ActiveDown Vector 5 25x75@3 75x75@3 75x65@3 25x65@3 25x75@3 -- Sunk
++ ButtonStyle 3 Inactive Vector 5 25x75@3 75x75@3 75x65@3 25x65@3 25x75@3 -- Flat
++ ButtonStyle 5 ActiveUp Vector 4 45x45@3 55x45@3 55x55@3 45x55@3 -- Flat
++ ButtonStyle 5 ActiveDown Vector 4 45x45@3 55x45@3 55x55@3 45x55@3 -- Sunk
++ ButtonStyle 5 Inactive Vector 4 45x45@3 55x45@3 55x55@3 45x55@3 -- Flat
++ ButtonStyle 7 Active MiniIcon -- Flat
++ ButtonStyle 7 Inactive MiniIcon -- Flat
++ TitleStyle -- Flat
++ BorderStyle Simple -- Raised
+#+ BorderStyle Simple -- NoInset Flat
++ ButtonStyle All -- UseTitleStyle
+
+#####
+# Window Styles
+###########
+Style "*" UseDecor MyDecor
+Style "*" Font "xft:Helvetica:Bold:size=10:minspace=False:antialias=True"
+Style "*" BorderWidth 1, HandleWidth 3
+Style "*" MWMBorder, FirmBorder
+Style "*" Colorset 4
+Style "*" HilightColorset 3
+Style "*" BorderColorset 5
+Style "*" HilightBorderColorset 4
+
+#####
+#
+###########
+read FVWMMenu
+
+#####
+# Module Colorsets
+###########
+Colorset  9 RootTransparent buffer, NoShape, fg Grey75, bg Grey30, Tint Grey75 50
+Colorset 10 RootTransparent buffer, NoShape, fg Black, bg grey, Tint white 85
+
+#####
+# FvwmIdent
+###########
+DestroyModuleConfig FvwmIdent: *
+*RestartFvwmIdent: Colorset 9
+*FvwmIdent: Font "xft:Sans:Bold:size=12:antialias=True"
+
+#####
+# FvwmIconMan
+###########
+*FvwmIconMan: UseWinList true
+
+#####
+# FvwmTaskBar
+###########
+Style "FvwmTaskBar" NoTitle, !Handles, !Borders, Sticky, WindowListSkip, \
+  CirculateSkip, StaysOnBottom, FixedPosition, FixedSize, !Iconifiable
+
+DestroyModuleConfig FvwmTaskBar: *
+*FvwmTaskBar: Geometry +0-0
+*FvwmTaskBar: Rows 2
+*FvwmTaskBar: Font "xft:Sans:Bold:pixelsize=12:minispace=True:antialias=True"
+*FvwmTaskBar: SelFont "xft:Sans:Bold:pixelsize=12:minispace=True:antialias=True"
+*FvwmTaskBar: StatusFont "xft:Sans:Bold:pixelsize=12:minispace=True:antialias=True"
+*FvwmTaskBar: Colorset 9
+*FvwmTaskBar: IconColorset 9
+*FvwmTaskBar: FocusColorset 9
+*FvwmTaskBar: FocusBack Grey50
+*FvwmTaskBar: NoBrightFocus
+*FvwmTaskBar: TipsColorset 9
+*FvwmTaskBar: UseSkipList
+*FvwmTaskBar: UseIconNames
+*FvwmTaskBar: ShowTips
+*FvwmTaskBar: StartName FVWM
+*FvwmTaskBar: StartMenu FvwmRootMenu
+*FvwmTaskBar: Button Title Term, Icon mini/terminal.png, Action (Mouse 1) FvwmWTerm 10x20 82 40
+*FvwmTaskBar: Action Click3 Menu FvwmWindowOpsMenu
+*FvwmTaskBar: StartIcon mini/windowmaker.png
+
+#####
+# FvwmPager
+###########
+Style "FvwmPager" NoTitle, !Handles, !Borders, Sticky, WindowListSkip, \
+  CirculateSkip, StaysOnTop, FixedPosition, FixedSize, !Iconifiable
+
+DestroyModuleConfig FvwmPager: *
+*FvwmPager: Geometry 100x120 # +$[pointer.x]+$[pointer.y]
+*FvwmPager: Rows 1
+*FvwmPager: Font "xft:Sans:Bold:pixelsize=8:minspace=True:antialias=True"
+*FvwmPager: Colorset * 9
+*FvwmPager: HilightColorset * 10
+*FvwmPager: WindowColorsets 9 10
+*FvwmPager: Balloons All
+*FvwmPager: BalloonFont "xft:Sans:Bold:pixelsize=8:minspace=True:antialias=True"
+*FvwmPager: BalloonColorset * 9
+*FvwmPager: BallonYOffset +2
+*FvwmPager: Window3dBorders
+*FvwmPager: MiniIcons
+*FvwmPager: UseSkipList
+
+#####
+# FvwmEvent
+###########
+DestroyModuleConfig FvwmEvent: *
+*FvwmEvent: deiconify DeThumbnail
+
+#####
+# DockButtons
+###########
+Style "DockButtons" !Title, !Handles, Sticky, WindowListSkip, \
+        CirculateSkip, BorderWidth 0, HandleWidth 0
+Colorset 15 RootTransparent, fg rgb:00/00/00, bg average, \
+  Tint white 40, bgTint white 40, RootTransparent, \
+  Shape dock-mask.xpm
+Colorset 16 RootTransparent, fg rgb:00/00/00, bg average, \
+  Tint white 40, bgTint white 40, RootTransparent
+
+DestroyModuleConfig DockButtons: *
+*DockButtons: Geometry $[dock_width]x$[dock_height]+0+0
+*DockButtons: Colorset 9
+*DockButtons: Rows 48
+*DockButtons: Columns 1
+*DockButtons: (1x32, Frame 0, \
+  Swallow gkrellm "Exec exec gkrellm")
+*DockButtons: (1x6, Frame 0, \
+  Swallow FvwmPager "FvwmPager 0 0")
+*DockButtons: (1x6, Frame 0, \
+  Swallow workrave "Exec exec xdpyinfo  | grep display | grep -v 1 && pidof workrave || workrave")
+#*DockButtons: (1x4, Frame 0, \
+#  Swallow stalonetray "Exec exec pidof stalonetray || stalonetray --dockapp-mode simple --transparent --scrollbars horizontal")
+
+#####
+#
+###########
+DestroyModuleConfig FvwmWharf: *
+*FvwmWharfAnimate
+*FvwmWharfColorset 7
+*FvwmWharfColumns 1
+#*FvwmWharfGeometry 64x384
+#*FvwmWharf pager nil Swallow "FvwmPager" Module FvwmPager 0 0
+*FvwmWharf MoonClock nil MaxSwallow "wmMoonClock" wmMoonClock
+#*FvwmWharf Sun nil MaxSwallow "wmSun" wmSun -lat 53 -lon -10
+*FvwmWharf Browsers 48x48/gnome-globe.png Folder
+*FvwmWharf Firefox 64x64/firefox.png Exec firefox
+*FvwmWharf Mozilla 48x48/mozilla.png Exec /usr/lib/mozilla/mozilla
+*FvwmWharf ~Folders
+*FvwmWharf Office 48x48/soffice.png Folder
+*FvwmWharf OOo 48x48/ooo_gulls.png Exec /home/helge/OpenOffice1.1.1/soffice
+*FvwmWharf ~Folders
+
+
+#####
+#
+###########
+DestroyModuleConfig FvwmAnimate: *
+*FvwmAnimate: Effect Flip
+*FvwmAnimate: Delay 0
+*FvwmAnimate: Iterations 30
+#*FvwmAnimate: Twist 1
+*FvwmAnimate: Width 2
+
+ModuleTimeout 10
+
+#####
+# Hit Alt+Esc to toggle FvwmProxy, which allows you to see all windows on your
+# desktop, even if they've been obscured..really cool.
+##################
+DestroyModuleConfig FvwmProxy: *
+*FvwmProxy: ProxyMove false
+
+Key Escape  A   M   SendToModule FvwmProxy ShowToggle
+

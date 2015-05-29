@@ -1,0 +1,43 @@
+#!/usr/local/bin/bash
+
+. ${HOME}/.fvwm/FVWMInit
+
+which xscreensaver && xscreensaver &
+
+FvmwMRXVT 7x14 82 32 "+0+0"
+FvwmMRXVT 7x14 82 32 "-64+0"
+FvwmMRXVT 7x14 82 22 "+0-0"
+FvwmMRXVT 7x14 82 22 "-64-0"
+
+FvwmMRXVT 10x20 82 40 "+64+${screen_height}"
+
+# xemacs -geometry "83x29+${screen_width}+0" || \
+#   emacs -geometry "83x29+${screen_width}+0"
+( emacs -geometry "83x29" || xemacs -geometry "83x29" ) &
+
+false && \
+  which konqueror && \
+  konqueror -geometry "${screen_width}x$[${screen_height}-64]" ${HOME} &
+
+false && \
+  which korganizer && \
+  korganizer \
+    -geometry "${screen_width}x$[${screen_height}-64]+0+$[2*${screen_height}]" \
+    $[HOME] &
+
+false && \
+  which knotes && \
+  knotes &
+
+which xwrits && \
+  xwrits +breakclock +clock +finger=korean +iconified +mouse +quota=2 \
+    typetime=60 breaktime=5 after 5 flashtime=0.01 after 5 +top after 5 +lock &
+
+which xteddy && xteddy &
+
+# which firefox && sleep 30 && firefox &
+
+# which thunderbird && sleep 30 && thunderbird &
+
+# which skype && sleep 30 && skype &
+

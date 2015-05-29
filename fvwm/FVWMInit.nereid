@@ -1,0 +1,23 @@
+#!/bin/bash
+
+. ${HOME}/.fvwm/FVWMInit
+
+which xscreensaver && xscreensaver &
+
+if which stalonetray; then
+  stalonetray &
+else
+  if which trayer; then
+    trayer &
+  fi
+fi
+
+if which nm-applet; then
+  nm-applet &
+else
+  if which wicd; then
+  	wicd &
+  fi
+fi
+
+which rox && rox -b=pb_Default

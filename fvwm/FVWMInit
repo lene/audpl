@@ -1,0 +1,34 @@
+#  -*- Mode: sh -*-
+function FvwmXTerm () {
+  ( xterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn ${1} -geometry ${2}x${3}${4} ) &
+}
+
+function FvwmWTerm () {
+  ( wterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn ${1} -geometry ${2}x${3}${4} || \
+    xterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn ${1} -geometry ${2}x${3}${4} ) &
+}
+
+function FvwmMRXVT () {
+  ( mrxvt -stt -fn ${1} -geometry ${2}x${3}${4} || \
+    wterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn ${1} -geometry ${2}x${3}${4} || \
+    xterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn ${1} -geometry ${2}x${3}${4} ) &
+}
+
+function FvwmETerm () {
+  if test `which Eterm`; then 
+    Eterm --trans --scrollbar-type next --scrollbar-floating --name 'Enlightened Terminal' --font1 7x14 --font2 8x16 --font3 10x20 --font4 12x24 Eterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls --font ${1} -geometry ${2}x${3}${4}
+  else 
+    if test `which wterm`; then 
+      wterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn ${1} -geometry ${2}x${3}${4}
+    else 
+      xterm -sb -sl 1024 -bg rgb:e6/e6/e6 +ls -fn ${1} -geometry ${2}x${3}${4}
+    fi
+  fi
+}
+
+function FvwmXmms () {
+  xmms -geometry -0-0
+}
+
+screen_width=${1}
+screen_height=${2}
