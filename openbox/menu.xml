@@ -83,6 +83,11 @@
 		<execute>obconf</execute>
 	  </action>
 	</item>
+	<item label="Background">
+	  <action name="Execute">
+		<execute>nitrogen</execute>
+	  </action>
+	</item>
 	<item label="Reconfig">
 	  <action name="Reconfigure"/>
 	</item>
