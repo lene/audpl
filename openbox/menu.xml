@@ -83,7 +83,7 @@
 		<execute>obconf</execute>
 	  </action>
 	</item>
-	<item label="Background">
+	<item label="Wallpaper">
 	  <action name="Execute">
 		<execute>nitrogen</execute>
 	  </action>
