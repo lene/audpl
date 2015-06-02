@@ -60,26 +60,29 @@
 	  </item>
 	</menu>
 	
-	<item label="Audacious">
-	  <action name="Execute">
-		<execute>audacious</execute>
-	  </action>
-	</item>
-	<item label="FBReader">
-	  <action name="Execute">
-		<execute>fbreader</execute>
-	  </action>
-	</item>
+    <menu id="fun" label="Fun">
+	  <item label="Audacious">
+		<action name="Execute">
+		  <execute>audacious</execute>
+		</action>
+	  </item>
+	  <item label="FBReader">
+		<action name="Execute">
+		  <execute>fbreader</execute>
+		</action>
+	  </item>
+	</menu>
+	
+	<menu id="/Debian"/>
 
 	<separator/>
-	<menu id="/Debian"/>
-	<separator/>
-<!--
-	<menu id="client-list-menu"/>
-	<separator/>
--->
+
 
     <menu id="config" label="Config">
+
+	  <menu id="client-list-menu"/>
+	  <separator/>
+
 	  <item label="ObConf">
 		<action name="Execute">
 		  <execute>obconf</execute>
@@ -95,6 +98,11 @@
 	  </item>
 	  <item label="Restart">
 		<action name="Restart"/>
+	  </item>
+	  <item label="Pulse Audio Volume Control">
+		<action name="Execute">
+		  <execute>pavucontrol</execute>
+		</action>
 	  </item>
 	</menu>
 
