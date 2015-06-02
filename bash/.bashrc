@@ -111,3 +111,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # utilize thefuck, if installed <https://github.com/nvbn/thefuck>
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
