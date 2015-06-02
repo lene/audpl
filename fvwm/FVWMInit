@@ -32,3 +32,6 @@ function FvwmXmms () {
 
 screen_width=${1}
 screen_height=${2}
+
+which btsync && btsync start
+
