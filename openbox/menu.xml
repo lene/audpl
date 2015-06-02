@@ -89,7 +89,6 @@
 	
 	<separator/>
 
-
     <menu id="config" label="Config">
 
 	  <menu id="client-list-menu"/>
@@ -117,8 +116,6 @@
 	  </item>
 	</menu>
 
-	<separator/>
-	
 	<item label="Lock">
 	  <action name="Execute">
 		<execute>xscreensaver-command -lock</execute>
@@ -129,4 +126,5 @@
 	</item>
 
   </menu>
+  
 </openbox_menu>
