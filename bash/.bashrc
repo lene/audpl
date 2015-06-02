@@ -30,12 +30,12 @@ if [ x$TERM == "xxterm" -o x$TERM == "xxterm-color" -o x$TERM == "xrxvt" ]; then
 
   # check for mrxvt and set the tab title if found
   if [ x$COLORTERM == "xrxvt-xpm" ]; then
-    export PROMPT_COMMAND=${PROMPT_COMMAND}'; echo -ne "\033]61;`pwd`\007\033]0;`whoami`@`hostname`: `pwd | rev | cut -d / -f -2 | rev`\007"'
+    export PROMPT_COMMAND=${PROMPT_COMMAND}'; echo -ne "\033]61;`pwd`\007\033]0;`whoami`@`hostname`: `pwd`\007"'
   else
     if `which xtermset > /dev/null 2>&1`; then
-      export PROMPT_COMMAND=${PROMPT_COMMAND}'; xtermset -T "`whoami`@`hostname`: `pwd | rev | cut -d / -f -2 | rev`"'
+      export PROMPT_COMMAND=${PROMPT_COMMAND}'; xtermset -T "`whoami`@`hostname`: `pwd`"'
     else
-      export PROMPT_COMMAND=${PROMPT_COMMAND}'; echo -ne "\033]0;`whoami`@`hostname`: `pwd | rev | cut -d / -f -2 | rev`\007"'
+      export PROMPT_COMMAND=${PROMPT_COMMAND}'; echo -ne "\033]0;`whoami`@`hostname`: `pwd`\007"'
     fi
   fi
 
@@ -82,6 +82,7 @@ false &&  export HTTP_PROXY=sue:3128
 
 export FTP_PROXY=$HTTP_PROXY
 
+
 export CVS_RSH=ssh
 # select whichever CVSROOT is appropriate
 export CVSROOT=:ext:metaldog@cvs.sourceforge.net:/cvsroot/hyperspace-expl
@@ -90,6 +91,12 @@ export CVSROOT=:ext:metaldog@cvs.sourceforge.net:/cvsroot/go-3
 export LESS="-R -M -m --shift 5"
 
 test -d /usr/local/petlib/lib && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/petlib/lib
+
+export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3' # This needs to be placed before the virtualenvwrapper command
+export WORKON_HOME=~/.virtualenvs
+
+source /usr/local/bin/virtualenvwrapper.sh
+
 
 #
 # conditional actions end
@@ -105,9 +112,4 @@ if [ -d ${HOME}/.bash ]; then
 	test -r $s && . $s
     done
 fi
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# utilize thefuck, if installed <https://github.com/nvbn/thefuck>
-alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 
