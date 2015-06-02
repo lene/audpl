@@ -13,75 +13,86 @@
 		<execute>rox</execute>
 	  </action>
 	</item>
-	
-	<menu id="net-menu" label="Net">
-	  <item label="Firefox">
-		<action name="Execute">
-		  <execute>firefox</execute>
-		</action>
-	  </item>
-	  <item label="Thunderbird">
-		<action name="Execute">
-		  <execute>thunderbird</execute>
-		</action>
-	  </item>
-	  <item label="Nicotine">
-		<action name="Execute">
-		  <execute>/home/lene/scripts/nicotine-tor</execute>
-		</action>
-	  </item>
-	  <item label="Skype">
-		<action name="Execute">
-		  <execute>skype</execute>
-		</action>
-	  </item>
-	</menu>
 
-	<menu id="dev-menu" label="Dev">
-	  <item label="Emacs">
-		<action name="Execute">
-		  <execute>emacs</execute>
-		</action>
-	  </item>
-	  <item label="PyCharm">
-		<action name="Execute">
-		  <execute>pycharm.sh</execute>
-		</action>
-	  </item>
-	  <item label="PhpStorm">
-		<action name="Execute">
-		  <execute>phpstorm.sh</execute>
-		</action>
-	  </item>
-	  <item label="CLion">
-		<action name="Execute">
-		  <execute>/opt/clion/bin/clion.sh</execute>
-		</action>
-	  </item>
-	</menu>
-	
-    <menu id="fun" label="Fun">
-	  <item label="Audacious">
-		<action name="Execute">
-		  <execute>audacious</execute>
-		</action>
-	  </item>
-	  <item label="FBReader">
-		<action name="Execute">
-		  <execute>fbreader</execute>
-		</action>
-	  </item>
-	</menu>
-	
-	<menu id="/Debian"/>
+	<separator/>
 
+	<menu id="apps" label="Apps">
+
+	  <menu id="net-menu" label="Net">
+
+		<item label="Firefox">
+		  <action name="Execute">
+			<execute>firefox</execute>
+		  </action>
+		</item>
+		<item label="Thunderbird">
+		  <action name="Execute">
+			<execute>thunderbird</execute>
+		  </action>
+		</item>
+		<item label="Nicotine">
+		  <action name="Execute">
+			<execute>/home/lene/scripts/nicotine-tor</execute>
+		  </action>
+		</item>
+		<item label="Skype">
+		  <action name="Execute">
+			<execute>skype</execute>
+		  </action>
+		</item>
+
+	  </menu>
+
+	  <menu id="dev-menu" label="Dev">
+
+		<item label="Emacs">
+		  <action name="Execute">
+			<execute>emacs</execute>
+		  </action>
+		</item>
+		<item label="PyCharm">
+		  <action name="Execute">
+			<execute>pycharm.sh</execute>
+		  </action>
+		</item>
+		<item label="PhpStorm">
+		  <action name="Execute">
+			<execute>phpstorm.sh</execute>
+		  </action>
+		</item>
+		<item label="CLion">
+		  <action name="Execute">
+			<execute>/opt/clion/bin/clion.sh</execute>
+		  </action>
+		</item>
+
+	  </menu>
+	  
+      <menu id="fun" label="Fun">
+
+		<item label="Audacious">
+		  <action name="Execute">
+			<execute>audacious</execute>
+		  </action>
+		</item>
+		<item label="FBReader">
+		  <action name="Execute">
+			<execute>fbreader</execute>
+		  </action>
+		</item>
+
+	  </menu>
+	  
+	  <menu id="/Debian"/>
+
+	</menu>
+	
 	<separator/>
 
 
     <menu id="config" label="Config">
 
 	  <menu id="client-list-menu"/>
-	  <separator/>
 
 	  <item label="ObConf">
 		<action name="Execute">
