@@ -78,22 +78,26 @@
 	<menu id="client-list-menu"/>
 	<separator/>
 -->
-	<item label="ObConf">
-	  <action name="Execute">
-		<execute>obconf</execute>
-	  </action>
-	</item>
-	<item label="Wallpaper">
-	  <action name="Execute">
-		<execute>nitrogen</execute>
-	  </action>
-	</item>
-	<item label="Reconfig">
-	  <action name="Reconfigure"/>
-	</item>
-	<item label="Restart">
-	  <action name="Restart"/>
-	</item>
+
+    <menu id="config" label="Config">
+	  <item label="ObConf">
+		<action name="Execute">
+		  <execute>obconf</execute>
+		</action>
+	  </item>
+	  <item label="Wallpaper">
+		<action name="Execute">
+		  <execute>nitrogen</execute>
+		</action>
+	  </item>
+	  <item label="Reconfig">
+		<action name="Reconfigure"/>
+	  </item>
+	  <item label="Restart">
+		<action name="Restart"/>
+	  </item>
+	</menu>
+
 	<separator/>
 	
 	<item label="Lock">
