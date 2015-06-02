@@ -379,12 +379,13 @@ AddToMenu   EditorMenu "Editors" Title
 + "Vi%menu/vim.png%"	        Popup ViMenu
 + "Special Formats%menu/.png%"	Popup FormatsMenu
 CheckedMenuItem EditorMenu Kate kate "%menu/kate.png%"
+CheckedMenuItem EditorMenu "Komodo Edit" /opt/Komodo-Edit-9/bin/komodo "%menu/kate.png%"
+CheckedMenuItem EditorMenu "Komodo Editor" komodo-edit "%menu/komodo-edit.png%"
+CheckedMenuItem EditorMenu Sublime subl "%menu/sublime_text.png%"
 CheckedMenuItem EditorMenu Okular okular "%menu/okular.png%"
 CheckedMenuItem EditorMenu KEdit kedit "%menu/kedit.png%"
 CheckedMenuItem EditorMenu KWrite kwrite "%menu/kwrite.png%"
 CheckedMenuItem EditorMenu KHexEdit khexedit "%menu/khexedit.png%"
-CheckedMenuItem EditorMenu Sublime subl "%menu/sublime_text.png%"
-CheckedMenuItem EditorMenu "Komodo Editor" komodo-edit "%menu/komodo-edit.png%"
 CheckedXTermMenuItem EditorMenu Nano nano
 
 
@@ -495,6 +496,7 @@ CheckedMenuItem IDEMenu "Eclipse 3.5 CDT" ~/Desktop/eclipse+cdt-3.5/eclipse "%me
 CheckedMenuItem IDEMenu "Eclipse 3.4 CDT" ~/Desktop/eclipse+cdt-3.4/eclipse "%menu/eclipse.png%"
 CheckedMenuItem IDEMenu "Eclipse 3.4"   ~/Desktop/eclipse/eclipse "%menu/eclipse.png%"
 CheckedMenuItem IDEMenu PhpStorm        phpstorm.sh "%menu/phpstorm.png%"
+CheckedMenuItem IDEMenu "IntelliJ IDEA" /opt/intellij-idea/bin/idea.sh "%menu/intellij-idea.png%"
 CheckedMenuItem IDEMenu "IntelliJ IDEA" /opt/intellij-idea-ce/bin/idea.sh "%menu/intellij-idea.png%"
 CheckedMenuItem IDEMenu NetBeans        netbeans "%menu/netbeans.png%"
 #CheckedMenuItem IDEMenu "NetBeans 7.4"  /opt/netbeans-7.4/bin/netbeans "%menu/netbeans.png%"
@@ -511,8 +513,8 @@ CheckedMenuItem IDEMenu Anjuta          anjuta "%menu/anjuta.png%"
 CheckedMenuItem IDEMenu "Code::Blocks"  codeblocks "%menu/codeblocks.png%"
 CheckedMenuItem IDEMenu PyCharm         pycharm.sh "%menu/pycharm.png%"
 CheckedMenuItem IDEMenu Geany         	geany "%menu/geany-icon.png%"
-CheckedMenuItem IDEMenu "RubyMine" 		/opt/RubyMine/bin/rubymine.sh "%/opt/RubyMine/bin/rubymine.png%"
-CheckedMenuItem IDEMenu "CLion" 		/opt/clion/bin/clion.sh "%/opt/clion/bin/clion.svg.png%"
+CheckedMenuItem IDEMenu "RubyMine"             /opt/RubyMine/bin/rubymine.sh "%/opt/RubyMine/bin/rubymine.png%"
+CheckedMenuItem IDEMenu "CLion"                /opt/clion/bin/clion.sh "%/opt/clion/bin/clion.svg.png%"
 
 DestroyMenu UMLMenu
 AddToMenu UMLMenu "UML" Title
@@ -575,11 +577,14 @@ CheckedMenuItem DevMenu "KBabel" kbabel "%menu/kbabel.png%"
 #################################################################################
 AddToMenu SciMenu "Science" Title
 CheckedMenuItem SciMenu "Celestia"      celestia "%menu/celestia.png%"
+CheckedMenuItem SciMenu "OpenUniverse"  openuniverse "%menu/openuniverse.png%"
 CheckedMenuItem SciMenu "KStars"      	kstars "%menu/kstars_planets.png%"
 CheckedMenuItem SciMenu "Stellarium"    stellarium "%menu/stellarium.png%"
 CheckedMenuItem SciMenu "Google Earth"  googleearth "%menu/googleearth.png%"
 CheckedMenuItem SciMenu "Marble"  	marble "%menu/marble.png%"
 CheckedMenuItem SciMenu "kOctave"       koctave3 "%menu/koctave3.png%"
+CheckedMenuItem SciMenu "QtOctave"      qtoctave "%menu/qtoctave.png%"
+CheckedMenuItem SciMenu "Cantor"        cantor "%menu/cantor.png%"
 CheckedMenuItem SciMenu "RKWard"        rkward "%menu/rkward.png%"
 CheckedMenuItem SciMenu "wxMaxima"      wxmaxima "%menu/wxmaxima.png%"
 CheckedXTermMenuItem SciMenu "Singular" Singular
@@ -744,7 +749,6 @@ AddToMenu   GfxMenu "Graphics" Title
 + "Animation%menu/film.png%"		Popup AnimationMenu
 CheckedMenuItem GfxMenu "KSnapshot" ksnapshot "%menu/ksnapshot.png%"
 CheckedMenuItem GfxMenu "MeVisLab" /opt/MeVisLab/bin/MeVisLab "%menu/MeVisLab.png%"
-
 
 #####
 # Sound Menu
@@ -1065,6 +1069,7 @@ CheckedMenuItem MixMenu KMix "kmix" "%menu/kmix.png%"
 CheckedMenuItem MixMenu AuMix "aumix" "%menu/ico.png%"
 CheckedMenuItem MixMenu Xmixer "xmixer"
 CheckedMenuItem MixMenu "Pulse Audio Volume Control" pavucontrol "%menu/multimedia-volume-control.png%"
+CheckedMenuItem MixMenu "Pulse Audio Equalizer" pulseaudio-equalizer-gtk "%menu/multimedia-volume-control.png%"
 
 #####
 # FVWM Menu
