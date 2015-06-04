@@ -9,6 +9,9 @@ target=0
 [CDDA]
 use_dae=TRUE
 
+[alarm]
+alarm_h=8
+
 [alsa]
 drop-workaround=TRUE
 mixer-element=PCM
@@ -144,7 +147,7 @@ vis_position=3
 
 [gtkui-layout]
 item0_name=Search Tool
-item0_pos=0,-1,-1,231,634
+item0_pos=0,-1,-1,231,681
 item1_name=OpenGL Spectrum Analyzer
 item1_pos=-1,141,162,292,192
 item2_name=Spectrum Analyzer
