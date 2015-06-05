@@ -9,6 +9,9 @@ target=0
 [CDDA]
 use_dae=TRUE
 
+[alarm]
+alarm_h=8
+
 [alsa]
 drop-workaround=TRUE
 mixer-element=PCM
@@ -72,7 +75,6 @@ playlist_visible=TRUE
 recurse_for_cover=TRUE
 recurse_for_cover_depth=2
 remember_jtf_entry=TRUE
-repeat=TRUE
 replay_gain_album=TRUE
 replay_gain_preamp=0
 replay_gain_track=TRUE
@@ -84,6 +86,7 @@ resume_state=0
 show_filepopup_for_tuple=FALSE
 show_numbers_in_pl=TRUE
 software_volume_control=FALSE
+stop_after_current_song=TRUE
 sw_volume_left=100
 sw_volume_right=100
 titlestring_preset=1
@@ -97,7 +100,7 @@ close_dialog_add=TRUE
 equalizer_win=304,420,299,215
 filebrowser_win=1217,0,700,450
 filesel_path=/home/lene/Music/T/Test Dept./Gododdin [1989]
-info_win=672,48,605,421
+info_win=672,0,605,421
 no_confirm_playlist_delete=TRUE
 playlist_export_win=96,0,866,630
 playlist_import_win=108,149,866,630
@@ -128,11 +131,12 @@ close_button_visible=FALSE
 column_expand=0,1,1,0
 column_widths=-1,-1,-1,-1
 entry_count_visible=TRUE
+infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 multi_column_view=FALSE
-player_height=1045
+player_height=767
 player_width=619
-player_x=1299
+player_x=658
 player_y=0
 playlist_columns=number artist title length
 playlist_headers=FALSE
@@ -144,7 +148,7 @@ vis_position=3
 
 [gtkui-layout]
 item0_name=Search Tool
-item0_pos=0,-1,-1,231,634
+item0_pos=0,-1,-1,231,681
 item1_name=OpenGL Spectrum Analyzer
 item1_pos=-1,141,162,292,192
 item2_name=Spectrum Analyzer
