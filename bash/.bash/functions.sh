@@ -40,7 +40,7 @@ function cd () {
     test -f dir.sh && . dir.sh
 
 }
-register_function 'cd [targetdir]' 'cd, cat TO-DO, . functions.sh'
+register_function 'cd [targetdir]' 'cd, cat TO-DO, . dir.sh'
 
 ################################################################################
 #
