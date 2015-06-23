@@ -44,6 +44,11 @@
 			<execute>skype</execute>
 		  </action>
 		</item>
+		<item label="Vuze">
+		  <action name="Execute">
+			<execute>vuze</execute>
+		  </action>
+		</item>
 
 	  </menu>
 
