@@ -124,6 +124,11 @@
 	  <item label="Restart">
 		<action name="Restart"/>
 	  </item>
+	  <item label="Unity Control Center">
+		<action name="Execute">
+		  <execute>unity-control-center</execute>
+		</action>
+	  </item>
 	  <item label="Pulse Audio Volume Control">
 		<action name="Execute">
 		  <execute>pavucontrol</execute>
