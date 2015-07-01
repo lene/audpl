@@ -85,7 +85,6 @@ resume_playlist=5
 resume_state=0
 show_filepopup_for_tuple=FALSE
 show_numbers_in_pl=TRUE
-shuffle=TRUE
 software_volume_control=FALSE
 sw_volume_left=100
 sw_volume_right=100
