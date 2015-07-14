@@ -244,6 +244,11 @@
         <command>amixer -q -D pulse set Master 3%+ unmute</command>
       </action>
     </keybind>
+    <keybind key="XF86Launch1">
+      <action name="Execute">
+        <command>pavucontrol</command>
+      </action>
+    </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
         <command>amixer -q -D pulse set Master 3%- unmute</command>
