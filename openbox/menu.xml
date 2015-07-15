@@ -74,6 +74,11 @@
 			<execute>/opt/clion/bin/clion.sh</execute>
 		  </action>
 		</item>
+		<item label="pgAdmin III">
+		  <action name="Execute">
+			<execute>pgadmin3</execute>
+		  </action>
+		</item>
 		
 	  </menu>
 	  
