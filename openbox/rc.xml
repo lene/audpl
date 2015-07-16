@@ -140,7 +140,7 @@
   <margins>
     <top>0</top>
     <bottom>0</bottom>
-    <left>0</left>
+    <left>96</left>
     <right>0</right>
   </margins>
 
@@ -174,7 +174,7 @@
 	<file>menu.xml</file>
     <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
 
-    <hideDelay>200</hideDelay>
+    <hideDelay>250</hideDelay>
     <!-- if a press-release lasts longer than this setting (in milliseconds), the menu is hidden again -->
 
     <middle>no</middle>
