@@ -60,7 +60,7 @@ export LESS="-R -M -m --shift 5"
 #
 # Python settings
 #
-export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3' # This needs to be placed before the virtualenvwrapper command
+export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python2' # This needs to be placed before the virtualenvwrapper command
 export WORKON_HOME=~/.virtualenvs
 
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
