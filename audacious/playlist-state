@@ -1,4 +1,4 @@
-active 5
+active 7
 playing 5
 playlist 0
 filename file:///home/lene/workspace/configs/audacious/playlists/1002.audpl
@@ -23,9 +23,9 @@ position -1
 resume-state 1
 resume-time 0
 playlist 5
-position 14
+position 18
 resume-state 1
-resume-time 281717
+resume-time 253168
 playlist 6
 position 3
 resume-state 1
