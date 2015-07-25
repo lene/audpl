@@ -89,6 +89,11 @@
 			<execute>audacious</execute>
 		  </action>
 		</item>
+		<item label="Audacity">
+		  <action name="Execute">
+			<execute>audacity</execute>
+		  </action>
+		</item>
 		<item label="FBReader">
 		  <action name="Execute">
 			<execute>fbreader</execute>
