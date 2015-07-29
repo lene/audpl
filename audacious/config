@@ -97,18 +97,18 @@ use_file_cover=FALSE
 about_win=1326,0,591,428
 close_dialog_add=TRUE
 equalizer_win=304,420,299,215
-filebrowser_win=577,0,700,450
-filesel_path=/home/lene/Music/T/The The/Infected [1986]
+filebrowser_win=1217,0,700,450
+filesel_path=/home/lene
 info_win=1312,0,605,421
 no_confirm_playlist_delete=TRUE
 playlist_export_win=96,0,866,630
-playlist_import_win=108,149,866,630
+playlist_import_win=108,149,720,540
 playlist_manager_close_on_activate=TRUE
 playlist_manager_h=250
 playlist_manager_w=400
 playlist_manager_x=108
 playlist_manager_y=36
-playlist_path=file:///home/lene/workspace/configs/audacious/playlists
+playlist_path=file:///home/lene/Music/lists/audacious/audacious/playlists
 
 [audioscrobbler]
 password=5739f80c280bacd8cef4d724165515dc
@@ -154,7 +154,9 @@ item2_name=Spectrum Analyzer
 item2_pos=-1,144,168,292,192
 item3_name=Blur Scope
 item3_pos=-1,144,168,292,192
-item_count=4
+item4_name=Playlist Manager
+item4_pos=-1,1617,0,296,196
+item_count=5
 
 [history]
 entry0=http://stream.spc.org:8008/wirelessfm
