@@ -128,7 +128,7 @@ intensity=4
 [gtkui]
 close_button_visible=FALSE
 column_expand=0,1,1,0
-column_widths=75,275,175,10,175,175,10,100,10,10,275,275,275,10
+column_widths=76,261,175,10,175,175,10,100,10,10,275,275,275,10
 entry_count_visible=TRUE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
