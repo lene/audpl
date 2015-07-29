@@ -94,7 +94,7 @@ use_extension_probing=TRUE
 use_file_cover=FALSE
 
 [audgui]
-about_win=135,6,606,439
+about_win=1326,0,591,428
 close_dialog_add=TRUE
 equalizer_win=304,420,299,215
 filebrowser_win=577,0,700,450
@@ -128,14 +128,14 @@ intensity=4
 [gtkui]
 close_button_visible=FALSE
 column_expand=0,1,1,0
-column_widths=-1,-1,-1,-1
+column_widths=60,275,175,10,175,175,10,100,10,10,275,275,275,10
 entry_count_visible=TRUE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 multi_column_view=FALSE
-player_height=767
+player_height=1046
 player_width=619
-player_x=658
+player_x=1298
 player_y=0
 playlist_columns=number artist title length
 playlist_headers=FALSE
