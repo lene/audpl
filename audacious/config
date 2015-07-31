@@ -148,7 +148,7 @@ vis_position=3
 
 [gtkui-layout]
 item0_name=Search Tool
-item0_pos=0,-1,-1,231,681
+item0_pos=0,-1,-1,231,679
 item1_name=OpenGL Spectrum Analyzer
 item1_pos=-1,141,162,292,192
 item2_name=Spectrum Analyzer
@@ -156,7 +156,7 @@ item2_pos=-1,144,168,292,192
 item3_name=Blur Scope
 item3_pos=-1,144,168,292,192
 item4_name=Playlist Manager
-item4_pos=-1,1617,0,296,196
+item4_pos=-1,1617,0,288,188
 item_count=5
 
 [history]
