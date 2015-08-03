@@ -196,9 +196,9 @@
     </keybind>
 
     <!-- Fast access to Rox Filer -->
-    <keybind key="C-A-T">
+    <keybind key="C-A-R">
       <action name="Execute">
-        <command>mrxvt</command>
+        <command>rox</command>
       </action>
     </keybind>
 
