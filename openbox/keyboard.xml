@@ -195,6 +195,13 @@
       </action>
     </keybind>
 
+    <!-- Fast access to Rox Filer -->
+    <keybind key="C-A-T">
+      <action name="Execute">
+        <command>mrxvt</command>
+      </action>
+    </keybind>
+
     <!-- Fast access to filemanager -->
     <keybind key="C-A-D">
       <action name="Execute">
