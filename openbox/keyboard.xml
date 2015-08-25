@@ -216,7 +216,7 @@
     <!-- Keybinding for PrintScreen Key -->
     <keybind key="Print">
       <action name="Execute">
-        <execute>scrot</execute>
+        <execute>bash -c 'scrot ; shotwell $(ls -1 *_scrot.png | tail -1)'</execute>
       </action>
     </keybind>
     <keybind key="A-Print">

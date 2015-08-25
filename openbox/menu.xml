@@ -99,6 +99,11 @@
 			<execute>fbreader</execute>
 		  </action>
 		</item>
+		<item label="Kerbal Space Program">
+		  <action name="Execute">
+			<execute>/opt/KSP_linux/Launcher.x86_64</execute>
+		  </action>
+		</item>
 
 	  </menu>
 	  
