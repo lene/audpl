@@ -126,6 +126,9 @@ length=5
 [crystalizer]
 intensity=4
 
+[extra_stereo]
+intensity=1.5
+
 [gtkui]
 close_button_visible=FALSE
 column_expand=0,1,1,0
