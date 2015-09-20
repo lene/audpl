@@ -48,6 +48,7 @@ equalizer_band6=0
 equalizer_band7=0
 equalizer_band8=0
 equalizer_band9=0
+equalizer_bands=-6,-3,0,0,0,0,0,0,0,0
 equalizer_visible=FALSE
 filepopup_delay=20
 filepopup_pixelsize=150
