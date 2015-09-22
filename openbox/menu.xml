@@ -149,6 +149,11 @@
 		  <execute>pavucontrol</execute>
 		</action>
 	  </item>
+	  <item label="XScreenSaver">
+		<action name="Execute">
+		  <execute>xscreensaver-demo</execute>
+		</action>
+	  </item>
 	</menu>
 
 	<item label="Lock">
