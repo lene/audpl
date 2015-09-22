@@ -48,7 +48,7 @@ equalizer_band6=0
 equalizer_band7=0
 equalizer_band8=0
 equalizer_band9=0
-equalizer_bands=-6,-4,-2,0,0,0,0,0,0,0
+equalizer_bands=-6,-3,0,0,0,0,0,0,0,0
 equalizer_visible=FALSE
 filepopup_delay=20
 filepopup_pixelsize=150
@@ -75,7 +75,6 @@ playlist_visible=TRUE
 recurse_for_cover=TRUE
 recurse_for_cover_depth=2
 remember_jtf_entry=TRUE
-repeat=TRUE
 replay_gain_album=TRUE
 replay_gain_preamp=0
 replay_gain_track=TRUE
@@ -96,11 +95,12 @@ use_file_cover=FALSE
 
 [audgui]
 about_win=686,0,591,431
+clear_song_fields=FALSE
 close_dialog_add=TRUE
-equalizer_win=304,420,299,215
+equalizer_win=977,0,300,215
 filebrowser_win=577,0,700,450
-filesel_path=/home/lene/Music/T/Test Dept.
-info_win=1312,0,605,421
+filesel_path=/home/lene/Music/M/Moon Duo/Escape [2010]
+info_win=672,0,605,421
 no_confirm_playlist_delete=TRUE
 playlist_export_win=96,0,866,630
 playlist_import_win=108,149,720,540
@@ -126,6 +126,9 @@ length=5
 [crystalizer]
 intensity=4
 
+[extra_stereo]
+intensity=1.5
+
 [gtkui]
 close_button_visible=FALSE
 column_expand=0,1,1,0
@@ -134,9 +137,9 @@ entry_count_visible=TRUE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 multi_column_view=FALSE
-player_height=1047
+player_height=767
 player_width=619
-player_x=1298
+player_x=658
 player_y=0
 playlist_columns=number artist title length
 playlist_headers=FALSE
