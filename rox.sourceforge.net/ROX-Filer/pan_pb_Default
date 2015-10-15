@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<panel side="Left">
+  <options style="1" width="52" avoid="1" xinerama="0" monitor="0"/>
+  <start>
+    <icon label="Home">~</icon>
+    <icon label="Apps">/usr/lib64/rox</icon>
+    <icon label="Home">/home/lene</icon>
+    <icon label="Media" locked="true">/media</icon>
+    <icon label="Music">/home/scenes/Music</icon>
+    <icon label="Music">/mnt/usb/ext/scenes/Music</icon>
+    <icon label="cdrom">/mnt/cdrom</icon>
+  </start>
+  <end/>
+</panel>

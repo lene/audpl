@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<Settings>
+ <Setting name="Gtk/CanChangeAccels" type="int" value="1"/>
+ <Setting name="Gtk/FontName" type="string" value="Sans 10"/>
+ <Setting name="ROX/DPMSSuspend" type="int" value="20"/>
+ <Setting name="Net/CursorBlinkTime" type="int" value="1200"/>
+ <Setting name="ROX/CapsLock" type="int" value="0"/>
+ <Setting name="ROX/KbdDelay" type="int" value="500"/>
+ <Setting name="ROX/DPMSStandby" type="int" value="15"/>
+ <Setting name="ROX/ManageScreensaver" type="int" value="0"/>
+ <Setting name="Xft/Antialias" type="int" value="1"/>
+ <Setting name="ROX/NumLock" type="int" value="0"/>
+ <Setting name="ROX/WindowManager" type="string" value=""/>
+ <Setting name="ROX/BGamma" type="int" value="1000"/>
+ <Setting name="Gtk/KeyThemeName" type="string" value="Emacs"/>
+ <Setting name="ROX/AccelFactor" type="int" value="20"/>
+ <Setting name="ROX/AccelThreshold" type="int" value="10"/>
+ <Setting name="ROX/KbdRepeat" type="int" value="1"/>
+ <Setting name="ROX/GGamma" type="int" value="1000"/>
+ <Setting name="ROX/DPMSOff" type="int" value="30"/>
+ <Setting name="ROX/KeyTable" type="string" value=""/>
+ <Setting name="ROX/KbdInterval" type="int" value="30"/>
+ <Setting name="ROX/CursorSize" type="int" value="18"/>
+ <Setting name="ROX/DPMSEnable" type="int" value="1"/>
+ <Setting name="Net/ThemeName" type="string" value="Default"/>
+ <Setting name="ROX/RGamma" type="int" value="1000"/>
+ <Setting name="ROX/LeftHanded" type="int" value="0"/>
+ <Setting name="ROX/BlankTime" type="int" value="10"/>
+ <Setting name="ROX/CursorTheme" type="string" value=""/>
+</Settings>

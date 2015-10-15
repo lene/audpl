@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+for file in "$@"; do
+	name=$(echo $file | rev | cut -d '.' -f 2- | rev)
+	nice -n 19 lame --abr 192 -q 0 "$file" "${name}.mp3"
+done

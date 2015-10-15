@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+if [ $(which kdialog 2> /dev/null) ]; then
+	DIALOG=kdialog
+else
+	DIALOG="xterm -e dialog"
+fi
+
+svn update "$@" > /tmp/kdialog 2>&1 
+
+$DIALOG --textbox /tmp/kdialog 640 400 --title "svn update $@" 
+
+rm -f /tmp/kdialog

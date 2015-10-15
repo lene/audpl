@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -xv
+
+set -o nounset
+set -o errexit
+
+MOUNT_POINT=$1
+HOST=$(zenity --entry --text="Enter [user@]remote_host:[/path]")
+
+sshfs -o nonempty $HOST $MOUNT_POINT

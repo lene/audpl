@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<panel side="Bottom">
+  <options style="0" width="52" avoid="1" xinerama="0" monitor="0"/>
+  <start>
+    <icon label="Home">~</icon>
+    <icon label="cdrom">/mnt/cdrom</icon>
+    <icon label="floppy">/mnt/floppy</icon>
+    <icon label="usb">/mnt/usb</icon>
+  </start>
+  <end/>
+</panel>

@@ -1,0 +1,2 @@
+#! /bin/sh
+exec xterm -fn 8x16 -e bzless "$@"

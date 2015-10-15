@@ -1,0 +1,109 @@
+#!/bin/bash
+
+# open and mount a LUKS encrypted partition
+#
+# prerequisites:
+#  - user must have sudo(1) rights for cryptsetup(1)
+#  - gksudo(1) and either zenity(1) or kdialog(1) installed (and of course
+#    sudo(1) and cryptsetup(1))
+#  - mount point must be in fstab(5) and mountable to user
+#
+# todo:
+#  - select or automatically determine partition and mapping
+
+set -xv
+
+set -o nounset
+set -o errexit
+
+MOUNT_POINT=$1
+
+PARTITION=/dev/sdb5
+
+X_SUDO=gksudo
+SUDO=sudo
+
+# cryptsetup(1) may reside in /sbin or /usr/sbin, which may not be in the
+# user's path.
+for dir in /bin /sbin /usr/bin /usr/sbin; do
+	if [ -x $dir/cryptsetup ]; then 
+		CRYPTSETUP=$dir/cryptsetup
+		break
+	fi
+done
+
+if [ ! which $CRYPTSETUP ]; then 
+	xterm -e "echo cryptsetup(1) not found"
+	exit 1
+fi
+
+# determine which dialog program for X11 to use. check for either zenity(1) or
+# kdialog(1).
+DIALOG=zenity
+
+if [ ! which $DIALOG ]; then
+	DIALOG=kdialog
+fi
+
+if [ ! which $DIALOG ]; then
+	xterm -e "echo either zenity or kdialog is needed for GUI, none found; sleep 30"
+	exit 1
+fi
+
+# determine correct command line options for the dialog program.
+# because zenity(1) takes text in the form "zenity [options] --text=<text>"
+# and kdialog(1) needs "kdialog [options] <text>"
+# the text must follow the operation variable immediately, as seen below.
+# No spaces! Ugly, but better time investment than the alternatives...
+case $DIALOG in
+	"zenity") 
+		ERROR="--error --text="
+		PASSWORD="--entry --hide-text --text="
+		FILE="--file-selection --file-filter=sd* --file-name=/dev/"
+		;;
+	"kdialog")
+		ERROR="--sorry "
+		PASSWORD="--password "
+		FILE="--getopenfilename /dev sd*"
+		;;
+	"*")
+		xterm -e "echo X dialog program $DIALOG not supported"
+		exit 1
+		;;
+esac
+
+# check for gksudo(1)
+if [ -z $(which $X_SUDO 2> /dev/null) ]; then
+	$DIALOG $ERROR"$X_SUDO is needed for operation, but could not be found!"
+	exit 1
+fi
+
+# determine correct dm-crypt mapping for selected mount point
+MAPPING=$(grep "$MOUNT_POINT" /etc/fstab | cut -f 1 | rev | cut -d '/' -f 1 |rev)
+
+# because piping does not work correctly with gksudo(1), and I could not get 
+# writing the passphrase to a file and using the file as keyfile for 
+# cryptsetup(1) to work because the keyfile always ended in a CR, I use
+# gksudo(1) first to store the user's password, and then call sudo(1) with the
+# stored password.
+$X_SUDO --description "Enter your password to enable sudo(1)" ls / > /dev/null
+
+# read LUKS password...
+$DIALOG $PASSWORD"Enter LUKS password" | \
+#	...filter out CR at the end which may be created by $DIALOG...
+	sed -e 's/\r$//' | \
+#	...pipe LUKS password to cryptsetup
+	sudo $CRYPTSETUP luksOpen $PARTITION $MAPPING || {
+		$DIALOG $ERROR"$PARTITION could not be opened as dm-crypt mapping \"$MAPPING\""
+		exit 1
+	}
+
+
+mount "$MOUNT_POINT"
+if [ $? -ne 0 ]; then
+	$DIALOG $ERROR"$PARTITION could be opened at \"$MAPPING\", but could not be mounted under $MOUNT_POINT"
+	sudo $CRYPTSETUP luksClose $MAPPING
+	exit 1
+fi
+
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+kdiff3 "$@" 2>&1

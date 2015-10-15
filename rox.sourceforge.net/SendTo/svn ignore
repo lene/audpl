@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+tempfile=/tmp/svnignore
+
+svn up ${HOME} || true
+
+for i in "$@"; do
+	dir=$(dirname "$i")
+	svn propget svn:ignore "$dir" | sort > $tempfile
+	echo $(basename "$i") >> $tempfile
+	svn propset svn:ignore -F $tempfile "$dir"
+done
+
+svn commit -m "set ignore property on $@ - $(date)" ${HOME} || true
+
+rm -f $tempfile

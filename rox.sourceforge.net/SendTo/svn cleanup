@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -o nounset
+set -o errexit
+
+svn cleanup "$@" 2>&1

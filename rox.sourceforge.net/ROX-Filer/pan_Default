@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<panel side="Left">
+  <options style="0" width="52" avoid="0" xinerama="0" monitor="0"/>
+  <start>
+    <icon label="Home">~</icon>
+    <icon label="Apps">/usr/lib/rox</icon>
+    <icon label="ext">/mnt/usb/ext</icon>
+  </start>
+  <end/>
+</panel>

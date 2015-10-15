@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<panel side="Left">
+  <options style="0" width="52" avoid="1" xinerama="0" monitor="0"/>
+  <start>
+    <icon label="Home">~</icon>
+    <icon label="Apps">/usr/lib64/rox</icon>
+    <icon label="Find">/usr/lib64/rox/Find</icon>
+    <icon label="Memo">/usr/lib64/rox/Memo</icon>
+    <icon label="Ripper">/usr/lib64/rox/Ripper</icon>
+    <icon label="RoxISO">/usr/lib64/rox/RoxISO</icon>
+    <icon label="WiFi">/usr/lib64/rox/WiFi</icon>
+  </start>
+  <end/>
+</panel>
