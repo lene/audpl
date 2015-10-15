@@ -114,6 +114,11 @@
 		  <execute>kate</execute>
 		</action>
 	  </item>
+	  <item label="xv">
+		<action name="Execute">
+		  <execute>xv</execute>
+		</action>
+	  </item>
 
 	</menu>
 	
@@ -142,6 +147,11 @@
 	  <item label="Unity Control Center">
 		<action name="Execute">
 		  <execute>unity-control-center</execute>
+		</action>
+	  </item>
+	  <item label="System Settings">
+		<action name="Execute">
+		  <execute>systemsettings</execute>
 		</action>
 	  </item>
 	  <item label="Pulse Audio Volume Control">
