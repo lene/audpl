@@ -74,6 +74,11 @@
 			<execute>/opt/clion/bin/clion.sh</execute>
 		  </action>
 		</item>
+		<item label="KDevelop">
+		  <action name="Execute">
+			<execute>kdevelop</execute>
+		  </action>
+		</item>
 		<item label="pgAdmin III">
 		  <action name="Execute">
 			<execute>pgadmin3</execute>
@@ -151,7 +156,7 @@
 	  </item>
 	  <item label="System Settings">
 		<action name="Execute">
-		  <execute>systemsettings</execute>
+		  <execute>systemsettings5</execute>
 		</action>
 	  </item>
 	  <item label="Pulse Audio Volume Control">
