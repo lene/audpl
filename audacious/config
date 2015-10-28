@@ -99,7 +99,7 @@ clear_song_fields=FALSE
 close_dialog_add=TRUE
 equalizer_win=977,0,300,215
 filebrowser_win=1217,0,700,450
-filesel_path=/home/lene/Music/F/Frank London's Klezmer Brass Allstars/Best Of
+filesel_path=/home/lene/workspace/configs/audacious/playlists
 info_win=1312,0,605,421
 no_confirm_playlist_delete=TRUE
 playlist_export_win=96,0,866,630
@@ -109,7 +109,7 @@ playlist_manager_h=250
 playlist_manager_w=400
 playlist_manager_x=108
 playlist_manager_y=36
-playlist_path=file:///home/lene/Music/lists/audacious/audacious/playlists
+playlist_path=file:///home/lene/workspace/configs/audacious/playlists
 
 [audioscrobbler]
 password=5739f80c280bacd8cef4d724165515dc
