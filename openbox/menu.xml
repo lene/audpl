@@ -84,6 +84,11 @@
 			<execute>pgadmin3</execute>
 		  </action>
 		</item>
+		<item label="MySQL Workbench">
+		  <action name="Execute">
+			<execute>mysql-workbench</execute>
+		  </action>
+		</item>
 		
 	  </menu>
 	  
