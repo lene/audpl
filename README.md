@@ -56,10 +56,21 @@ Other than that, I think it is super useful to have some implementation of graph
 code library.
 
 ###Design considerations
+I chose Python because it is the language I currently work with and I am most familiar with it at the moment, 
+but also because I like it as a language that is very good for rapidly writing concise code, especially for
+small applications such as this.
+
 I basically have only two classes: `Edge` and `DirectedGraph`. I could easily have added more classes (a better 
 implementation of a priority queue come to mind, as well as a class that solves Dijkstra's algorithm instead 
 of a global function). In the Python community using classes for every data structure is somewhat discouraged
 though (if native types are sufficient), so I stuck with that.
+
+The decision to implement some of the assignment's solutions as methods on DirectedGraph and others as global
+functions was somewhat arbitrary. How much I consider something a core property of a graph played a role, aversion
+to long source files and long argument lists another.
+
+As per Python conventions, I do not define getters and setters but access properties directly, if needed.
+
 
 ###Testing
 `$ python3 run_tests.py`
@@ -70,3 +81,8 @@ I prioritize the DRY principle over the "Tests should test one thing and one thi
 
 Again, I assume reasonably well behaved input and don't test many pathological or border cases.
 
+
+##Thanks
+I had fun with this assignments. I hope you like my submission!
+
+Lene
