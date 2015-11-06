@@ -5,14 +5,15 @@ This program solves the trains assignment in Python3.
 
 
 ##Usage
+
 `$ python3 main.py -f|--file <graph definition file>`
 
 e.g.
 
 `$ python3 main.py -f graph.txt`
 
-to solve for the example data supplied with the problem.
- 
+to solve for the example data supplied with the problem. The program will print the questions asked
+in the assignment along with their answers (for the graph you pass it, of course).
  
 ###Data format
 The graph is given as a list of edges which is separated by whitespace (and optionally commas).
@@ -26,13 +27,20 @@ Example:
 
 `AB1 AC2 BC2`
 
+
 ##Assumptions and limitations
+
 I assume that the input is reasonably well behaved. You can easily find input that breaks the program, if
 you are so inclined. Don't do that. ;-)
 
 Since vertices are defined by a single character, the number of vertices is somewhat limited by the charset
-you use. (Giving the vertices Unicode names works, but do you really want to go there?). Due to the small 
-size of the graphs, I did not give performance optimization more than cursory thoughts.
+you use. (Giving the vertices Unicode names works, but do you really want to use thousands of single  
+unicode characters to represent your graph?). Due to the small size of the graphs, I did not give performance 
+optimization more than cursory thoughts.
+
+I am developing on a Linux system. I don't see why my code should break on another OS, but I have not tested
+that.
+
 
 ##Design and development process
 
@@ -48,7 +56,7 @@ Other than that, I think it is super useful to have some implementation of graph
 code library.
 
 ###Design considerations
-I basically have only two classes: Edge and DirectedGraph. I could easily have added more classes (a better 
+I basically have only two classes: `Edge` and `DirectedGraph`. I could easily have added more classes (a better 
 implementation of a priority queue come to mind, as well as a class that solves Dijkstra's algorithm instead 
 of a global function). In the Python community using classes for every data structure is somewhat discouraged
 though (if native types are sufficient), so I stuck with that.
@@ -56,7 +64,7 @@ though (if native types are sufficient), so I stuck with that.
 ###Testing
 `$ python3 run_tests.py`
 
-The tests loosely resemble my development process. As a result, there are many tests that may seem redundant.
+The tests resemble my development process. As a result, there are many tests that may seem redundant.
  
 I prioritize the DRY principle over the "Tests should test one thing and one thing only"-principle.
 
