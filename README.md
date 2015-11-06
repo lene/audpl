@@ -65,7 +65,7 @@ implementation of a priority queue come to mind, as well as a class that solves 
 of a global function). In the Python community using classes for every data structure is somewhat discouraged
 though (if native types are sufficient), so I stuck with that.
 
-The decision to implement some of the assignment's solutions as methods on DirectedGraph and others as global
+The decision to implement some of the assignment's solutions as methods on `DirectedGraph` and others as global
 functions was somewhat arbitrary. How much I consider something a core property of a graph played a role, aversion
 to long source files and long argument lists another.
 
@@ -83,6 +83,7 @@ Again, I assume reasonably well behaved input and don't test many pathological o
 
 
 ##Thanks
-I had fun with this assignments. I hope you like my submission!
+
+I had fun with this assignment. I hope you like my submission!
 
 Lene
