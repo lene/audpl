@@ -12,6 +12,11 @@
 		<execute>rox</execute>
 	  </action>
 	</item>
+	<item label="Dolphin">
+	  <action name="Execute">
+		<execute>dolphin</execute>
+	  </action>
+	</item>
 
 	<separator/>
 
