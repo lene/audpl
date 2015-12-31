@@ -54,6 +54,11 @@
 			<execute>vuze</execute>
 		  </action>
 		</item>
+		<item label="VirtualBox">
+		  <action name="Execute">
+			<execute>virtualbox</execute>
+		  </action>
+		</item>
 
 	  </menu>
 
