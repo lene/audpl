@@ -9,7 +9,7 @@
 	</item>
 	<item label="Rox">
 	  <action name="Execute">
-		<execute>rox</execute>
+		<execute>rox-filer</execute>
 	  </action>
 	</item>
 	<item label="Dolphin">
