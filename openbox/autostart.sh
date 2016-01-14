@@ -1,5 +1,7 @@
 #!/bin/bash
 
+which btsync && btsync --storage ~/.btsync
+
 gkrellm &
 xfce4-panel &
 nitrogen --restore &
