@@ -1,5 +1,7 @@
 #!/bin/bash
 
+test -x /opt/toggldesktop/TogglDesktop.sh && /opt/toggldesktop/TogglDesktop.sh &
+
 which btsync && btsync --storage ~/.btsync
 
 gkrellm &
