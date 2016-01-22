@@ -59,6 +59,11 @@
 			<execute>virtualbox</execute>
 		  </action>
 		</item>
+		<item label="KGpg">
+		  <action name="Execute">
+			<execute>kgpg</execute>
+		  </action>
+		</item>
 
 	  </menu>
 
