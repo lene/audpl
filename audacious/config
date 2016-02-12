@@ -102,14 +102,14 @@ filebrowser_win=577,0,700,450
 filesel_path=/home/lene/Music/mix/8tracks/eSex
 info_win=672,0,605,421
 no_confirm_playlist_delete=TRUE
-playlist_export_win=96,0,866,630
+playlist_export_win=96,0,792,585
 playlist_import_win=108,149,720,540
 playlist_manager_close_on_activate=TRUE
 playlist_manager_h=250
 playlist_manager_w=400
 playlist_manager_x=108
 playlist_manager_y=36
-playlist_path=file:///home/lene/workspace/configs/audacious/playlists
+playlist_path=file:///home/lene
 
 [audioscrobbler]
 password=5739f80c280bacd8cef4d724165515dc

@@ -5,7 +5,6 @@ position -1
 resume-state 1
 resume-time 0
 playlist 1
-filename file:///home/lene/workspace/configs/audacious/playlists/1002.audpl
 position -1
 resume-state 1
 resume-time 0
@@ -62,9 +61,9 @@ position -1
 resume-state 1
 resume-time 0
 playlist 15
-position -1
+position 20
 resume-state 1
-resume-time 0
+resume-time 39858
 playlist 16
 position -1
 resume-state 1
@@ -74,6 +73,7 @@ position -1
 resume-state 1
 resume-time 0
 playlist 18
+filename file:///home/lene/1002.audpl
 position -1
 resume-state 1
 resume-time 0
@@ -86,9 +86,9 @@ position -1
 resume-state 1
 resume-time 0
 playlist 21
-position 20
+position -1
 resume-state 1
-resume-time 39858
+resume-time 0
 playlist 22
 position -1
 resume-state 1
