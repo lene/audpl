@@ -151,13 +151,22 @@
     </keybind>
 
     <!-- Keybindings for running applications -->
-    <keybind key="W-e">
+    <keybind key="W-p">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>PCManFM</name>
         </startupnotify>
         <command>pcmanfm</command>
+      </action>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Emacs</name>
+        </startupnotify>
+        <command>emacs</command>
       </action>
     </keybind>
 

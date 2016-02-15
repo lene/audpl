@@ -17,6 +17,11 @@
 		<execute>dolphin</execute>
 	  </action>
 	</item>
+	<item label="KCalc">
+	  <action name="Execute">
+		<execute>kcalc</execute>
+	  </action>
+	</item>
 
 	<separator/>
 
