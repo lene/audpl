@@ -17,11 +17,6 @@
 		<execute>dolphin</execute>
 	  </action>
 	</item>
-	<item label="KCalc">
-	  <action name="Execute">
-		<execute>kcalc</execute>
-	  </action>
-	</item>
 
 	<separator/>
 
@@ -139,6 +134,11 @@
 	  
 	  <menu id="/Debian"/>
 
+	  <item label="KCalc">
+		<action name="Execute">
+		  <execute>kcalc</execute>
+		</action>
+	  </item>
 	  <item label="Kate">
 		<action name="Execute">
 		  <execute>kate</execute>
