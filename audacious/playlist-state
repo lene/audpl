@@ -1,5 +1,5 @@
-active 12
-playing 24
+active 24
+playing -1
 playlist 0
 position -1
 resume-state 1
@@ -98,6 +98,6 @@ position -1
 resume-state 1
 resume-time 0
 playlist 24
-position 7
+position -1
 resume-state 1
-resume-time 44677
+resume-time 0
