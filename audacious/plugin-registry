@@ -447,7 +447,7 @@ domain audacious-plugins
 priority 0
 about 1
 config 1
-enabled 0
+enabled 1
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/speed-pitch.so
 stamp 1433168835
 name Speed and Pitch

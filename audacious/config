@@ -121,7 +121,7 @@ strength=0.5
 target=0.5
 
 [crossfade]
-length=5
+length=4
 
 [crystalizer]
 intensity=4
