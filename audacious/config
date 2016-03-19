@@ -110,6 +110,7 @@ playlist_manager_w=400
 playlist_manager_x=108
 playlist_manager_y=36
 playlist_path=file:///home/lene
+queue_manager_win=877,0,400,250
 
 [audioscrobbler]
 password=5739f80c280bacd8cef4d724165515dc
