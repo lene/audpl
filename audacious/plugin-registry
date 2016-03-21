@@ -495,7 +495,7 @@ domain audacious-plugins
 priority 5
 about 1
 config 1
-enabled 1
+enabled 0
 output /usr/lib/x86_64-linux-gnu/audacious/Output/pulse_audio.so
 stamp 1433168837
 name PulseAudio Output
