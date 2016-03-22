@@ -152,7 +152,7 @@ vis_position=3
 
 [gtkui-layout]
 item0_name=Search Tool
-item0_pos=0,-1,-1,231,679
+item0_pos=0,-1,-1,231,967
 item1_name=OpenGL Spectrum Analyzer
 item1_pos=-1,141,162,292,192
 item2_name=Spectrum Analyzer
