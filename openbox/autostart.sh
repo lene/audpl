@@ -10,3 +10,4 @@ nitrogen --restore &
 
 sleep 5 && kdeinit4 &
 #sleep 5 && vuze &
+which slack && slack &
