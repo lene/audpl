@@ -100,7 +100,7 @@ clear_song_fields=FALSE
 close_dialog_add=TRUE
 equalizer_win=1540,0,377,211
 filebrowser_win=577,0,700,450
-filesel_path=/home/lene/Music/mix/8tracks/eSex
+filesel_path=/home/lene/Music/C/The Clash/Combat Rock [1982]
 info_win=1312,0,605,421
 no_confirm_playlist_delete=TRUE
 playlist_export_win=96,0,792,585
@@ -153,7 +153,7 @@ vis_position=3
 
 [gtkui-layout]
 item0_name=Search Tool
-item0_pos=0,-1,-1,231,967
+item0_pos=0,-1,-1,231,681
 item1_name=OpenGL Spectrum Analyzer
 item1_pos=-1,141,162,292,192
 item2_name=Spectrum Analyzer
