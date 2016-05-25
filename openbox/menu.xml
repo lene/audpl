@@ -54,6 +54,11 @@
 			<execute>slack</execute>
 		  </action>
 		</item>
+		<item label="Pidgin">
+		  <action name="Execute">
+			<execute>pidgin</execute>
+		  </action>
+		</item>
 		<item label="Vuze">
 		  <action name="Execute">
 			<execute>vuze</execute>
