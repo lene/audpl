@@ -59,6 +59,7 @@ iface_number=0
 iface_path=/usr/lib/audacious/General/gtkui.so
 no_confirm_playlist_delete=TRUE
 no_dithering=FALSE
+no_playlist_advance=TRUE
 output_buffer_size=500
 output_number=0
 output_path=/usr/lib/audacious/Output/pulse_audio.so
