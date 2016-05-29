@@ -1,4 +1,4 @@
-active 34
+active 33
 playing -1
 playlist 0
 position 74
@@ -134,10 +134,6 @@ position -1
 resume-state 1
 resume-time 0
 playlist 33
-position -1
-resume-state 1
-resume-time 0
-playlist 34
 position -1
 resume-state 1
 resume-time 0
