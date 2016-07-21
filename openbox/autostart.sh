@@ -1,5 +1,7 @@
 #!/bin/bash
 
+setxkbmap -layout us
+
 gkrellm &
 xfce4-panel &
 nitrogen --restore &
