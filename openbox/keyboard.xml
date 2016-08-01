@@ -200,7 +200,7 @@
     <!-- Fast access to Terminal -->
     <keybind key="C-A-T">
       <action name="Execute">
-        <command>mrxvt</command>
+        <command>konsole</command>
       </action>
     </keybind>
 

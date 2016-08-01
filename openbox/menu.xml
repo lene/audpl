@@ -7,6 +7,11 @@
 		<execute>mrxvt</execute>
 	  </action>
 	</item>
+	<item label="Konsole">
+	  <action name="Execute">
+		<execute>konsole</execute>
+	  </action>
+	</item>
 	<item label="Rox">
 	  <action name="Execute">
 		<execute>rox-filer</execute>

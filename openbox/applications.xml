@@ -84,7 +84,7 @@
 	<application name="gkrellm" class="Gkrellm">
       <decor>no</decor>
       <position>
-		<x>0</x>
+		<x>-1</x>
 		<y>0</y>
 	  </position>
       <desktop>all</desktop>
