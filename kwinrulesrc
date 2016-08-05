@@ -1,4 +1,25 @@
 [1]
+Description=Window settings for audacious
+clientmachine=4delpreuss
+clientmachinematch=0
+desktop[$d]
+desktoprule[$d]
+maximizevert[$d]
+maximizevertrule[$d]
+position=1293,0
+positionrule=3
+screen[$d]
+screenrule[$d]
+skiptaskbar[$d]
+skiptaskbarrule[$d]
+title=Audacious
+titlematch=1
+types=1
+wmclass=audacious
+wmclasscomplete=false
+wmclassmatch=1
+
+[2]
 Description=Application settings for audacious
 clientmachine=4delpreuss
 clientmachinematch=0
@@ -6,15 +27,19 @@ desktop=-1
 desktoprule=3
 maximizevert=true
 maximizevertrule=3
+position[$d]
+positionrule[$d]
 screen=0
 screenrule=3
+skipswitcher[$d]
+skipswitcherrule[$d]
 skiptaskbar=true
 skiptaskbarrule=2
 wmclass=audacious
 wmclasscomplete=false
 wmclassmatch=1
 
-[2]
+[3]
 Description=gkrellm
 desktop=-1
 desktoprule=2
@@ -24,11 +49,12 @@ skipswitcher=false
 skipswitcherrule=2
 skiptaskbar=false
 skiptaskbarrule=2
+types[$d]
 wmclass=gkrellm
 wmclasscomplete=true
 wmclassmatch=2
 
-[3]
+[4]
 Description=Workrave
 desktop=-1
 desktoprule=2
@@ -44,4 +70,4 @@ wmclasscomplete=false
 wmclassmatch=1
 
 [General]
-count=3
+count=4
