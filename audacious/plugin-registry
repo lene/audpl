@@ -185,6 +185,27 @@ enabled 1
 mime cdda
 subtunes 2
 writes 0
+input /usr/lib/x86_64-linux-gnu/audacious/Input/console.so
+stamp 1467271903
+name Game Console Music Decoder
+domain audacious-plugins
+priority 0
+about 1
+config 1
+enabled 1
+scheme ay
+scheme gbs
+scheme gym
+scheme hes
+scheme kss
+scheme nsf
+scheme nsfe
+scheme sap
+scheme spc
+scheme vgm
+scheme vgz
+subtunes 2
+writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/modplug.so
 stamp 1467271903
 name ModPlug (Module Player)
@@ -244,27 +265,6 @@ scheme minipsf2
 scheme spu
 scheme spx
 subtunes 0
-writes 0
-input /usr/lib/x86_64-linux-gnu/audacious/Input/console.so
-stamp 1467271903
-name Game Console Music Decoder
-domain audacious-plugins
-priority 0
-about 1
-config 1
-enabled 1
-scheme ay
-scheme gbs
-scheme gym
-scheme hes
-scheme kss
-scheme nsf
-scheme nsfe
-scheme sap
-scheme spc
-scheme vgm
-scheme vgz
-subtunes 2
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/metronom.so
 stamp 1467271902
@@ -408,6 +408,14 @@ priority 0
 about 0
 config 1
 enabled 0
+effect /usr/lib/x86_64-linux-gnu/audacious/Effect/compressor.so
+stamp 1467271904
+name Dynamic Range Compressor
+domain audacious-plugins
+priority 0
+about 1
+config 1
+enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/echo.so
 stamp 1467271904
 name Echo
@@ -424,22 +432,6 @@ priority 0
 about 1
 config 1
 enabled 1
-effect /usr/lib/x86_64-linux-gnu/audacious/Effect/speed-pitch.so
-stamp 1467271904
-name Speed and Pitch
-domain audacious-plugins
-priority 0
-about 0
-config 1
-enabled 0
-effect /usr/lib/x86_64-linux-gnu/audacious/Effect/compressor.so
-stamp 1467271904
-name Dynamic Range Compressor
-domain audacious-plugins
-priority 0
-about 1
-config 1
-enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/ladspa.so
 stamp 1467271904
 name LADSPA Host
@@ -456,6 +448,14 @@ priority 0
 about 1
 config 1
 enabled 1
+effect /usr/lib/x86_64-linux-gnu/audacious/Effect/speed-pitch.so
+stamp 1467271904
+name Speed and Pitch
+domain audacious-plugins
+priority 0
+about 0
+config 1
+enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/voice_removal.so
 stamp 1467271904
 name Voice Removal
@@ -464,17 +464,17 @@ priority 0
 about 0
 config 0
 enabled 0
-effect /usr/lib/x86_64-linux-gnu/audacious/Effect/resample.so
+effect /usr/lib/x86_64-linux-gnu/audacious/Effect/mixer.so
 stamp 1467271904
-name Sample Rate Converter
+name Channel Mixer
 domain audacious-plugins
 priority 2
 about 1
 config 1
 enabled 1
-effect /usr/lib/x86_64-linux-gnu/audacious/Effect/mixer.so
+effect /usr/lib/x86_64-linux-gnu/audacious/Effect/resample.so
 stamp 1467271904
-name Channel Mixer
+name Sample Rate Converter
 domain audacious-plugins
 priority 2
 about 1
@@ -552,14 +552,6 @@ priority 10
 about 0
 config 1
 enabled 0
-vis /usr/lib/x86_64-linux-gnu/audacious/Visualization/gl-spectrum.so
-stamp 1467271902
-name OpenGL Spectrum Analyzer
-domain audacious-plugins
-priority 0
-about 1
-config 0
-enabled 0
 vis /usr/lib/x86_64-linux-gnu/audacious/Visualization/blur_scope.so
 stamp 1467271902
 name Blur Scope
@@ -567,6 +559,14 @@ domain audacious-plugins
 priority 0
 about 0
 config 1
+enabled 0
+vis /usr/lib/x86_64-linux-gnu/audacious/Visualization/gl-spectrum.so
+stamp 1467271902
+name OpenGL Spectrum Analyzer
+domain audacious-plugins
+priority 0
+about 1
+config 0
 enabled 0
 vis /usr/lib/x86_64-linux-gnu/audacious/Visualization/cairo-spectrum.so
 stamp 1467271902
@@ -664,6 +664,14 @@ priority 0
 about 0
 config 0
 enabled 1
+general /usr/lib/x86_64-linux-gnu/audacious/General/playlist-manager.so
+stamp 1467271902
+name Playlist Manager
+domain audacious-plugins
+priority 0
+about 0
+config 0
+enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/scrobbler.so
 stamp 1467271902
 name Scrobbler 2.0
@@ -672,14 +680,6 @@ priority 0
 about 1
 config 1
 enabled 1
-general /usr/lib/x86_64-linux-gnu/audacious/General/statusicon.so
-stamp 1467271902
-name Status Icon
-domain audacious-plugins
-priority 0
-about 1
-config 1
-enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/search-tool.so
 stamp 1467271902
 name Search Tool
@@ -696,13 +696,13 @@ priority 0
 about 0
 config 1
 enabled 0
-general /usr/lib/x86_64-linux-gnu/audacious/General/playlist-manager.so
+general /usr/lib/x86_64-linux-gnu/audacious/General/statusicon.so
 stamp 1467271902
-name Playlist Manager
+name Status Icon
 domain audacious-plugins
 priority 0
-about 0
-config 0
+about 1
+config 1
 enabled 0
 iface /usr/lib/x86_64-linux-gnu/audacious/General/gtkui.so
 stamp 1467271902
