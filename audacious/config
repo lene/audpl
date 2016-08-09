@@ -85,7 +85,6 @@ resume_state=0
 show_filepopup_for_tuple=FALSE
 show_numbers_in_pl=TRUE
 software_volume_control=FALSE
-stop_after_current_song=TRUE
 sw_volume_left=100
 sw_volume_right=100
 titlestring_preset=1
