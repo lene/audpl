@@ -1,4 +1,25 @@
 [1]
+Description=Application settings for pidgin
+clientmachine=4delpreuss
+clientmachinematch=0
+desktop=-1
+desktoprule=2
+maximizevert[$d]
+maximizevertrule[$d]
+position[$d]
+positionrule[$d]
+screen[$d]
+screenrule[$d]
+skiptaskbar[$d]
+skiptaskbarrule[$d]
+title[$d]
+titlematch[$d]
+types[$d]
+wmclass=pidgin
+wmclasscomplete=false
+wmclassmatch=1
+
+[2]
 Description=Window settings for audacious
 clientmachine=4delpreuss
 clientmachinematch=0
@@ -10,6 +31,8 @@ position=1293,0
 positionrule=3
 screen[$d]
 screenrule[$d]
+skipswitcher[$d]
+skipswitcherrule[$d]
 skiptaskbar[$d]
 skiptaskbarrule[$d]
 title=Audacious
@@ -19,7 +42,7 @@ wmclass=audacious
 wmclasscomplete=false
 wmclassmatch=1
 
-[2]
+[3]
 Description=Application settings for audacious
 clientmachine=4delpreuss
 clientmachinematch=0
@@ -35,11 +58,12 @@ skipswitcher[$d]
 skipswitcherrule[$d]
 skiptaskbar=true
 skiptaskbarrule=2
+types[$d]
 wmclass=audacious
 wmclasscomplete=false
 wmclassmatch=1
 
-[3]
+[4]
 Description=gkrellm
 desktop=-1
 desktoprule=2
@@ -54,7 +78,7 @@ wmclass=gkrellm
 wmclasscomplete=true
 wmclassmatch=2
 
-[4]
+[5]
 Description=Workrave
 desktop=-1
 desktoprule=2
@@ -70,4 +94,4 @@ wmclasscomplete=false
 wmclassmatch=1
 
 [General]
-count=4
+count=5
