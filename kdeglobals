@@ -126,7 +126,7 @@ View Style=Simple
 listViewIconSize=0
 
 [Translations]
-LANGUAGE=en_US:de:nds:ru:tr
+LANGUAGE=en_US:de
 
 [WM]
 activeBackground=71,80,87
