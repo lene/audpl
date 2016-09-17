@@ -36,7 +36,6 @@ enable_adaptive_scaler=FALSE
 enable_clipping_prevention=FALSE
 enable_replay_gain=FALSE
 enabled_gplugins=scrobbler.so (#0)
-equalizer_active=TRUE
 equalizer_autoload=FALSE
 equalizer_band0=0
 equalizer_band1=0
@@ -48,7 +47,7 @@ equalizer_band6=0
 equalizer_band7=0
 equalizer_band8=0
 equalizer_band9=0
-equalizer_bands=5,2,0,0,0,7,0,0,1,5
+equalizer_bands=2,1,0,0,0,1,0,0,1,1
 equalizer_visible=FALSE
 filepopup_delay=20
 filepopup_pixelsize=150
@@ -96,7 +95,7 @@ use_file_cover=FALSE
 about_win=686,0,591,431
 clear_song_fields=FALSE
 close_dialog_add=TRUE
-equalizer_win=1540,0,377,211
+equalizer_win=900,0,377,215
 filebrowser_win=577,0,700,767
 filesel_path=/home/lene/Music/spoken/Meditation & Hypnosis
 info_win=672,0,605,767
@@ -121,7 +120,7 @@ strength=0.5
 target=0.5
 
 [crossfade]
-length=1
+length=6
 
 [crystalizer]
 intensity=4
