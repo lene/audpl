@@ -23,8 +23,8 @@
       <file leaf-file-name="copy_from_playlist.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
+            <state relative-caret-position="630">
+              <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -303,8 +303,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
+        <state relative-caret-position="630">
+          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
