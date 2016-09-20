@@ -49,9 +49,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1937" />
+    <option name="x" value="2684" />
+    <option name="y" value="41" />
     <option name="width" value="1784" />
-    <option name="height" value="1391" />
+    <option name="height" value="924" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -263,7 +264,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1937" y="0" width="1784" height="1391" extended-state="4" />
+    <frame x="2684" y="41" width="1784" height="924" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24985738" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
