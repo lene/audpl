@@ -1,4 +1,6 @@
-from urllib import unquote
+#!/usr/bin/env python3
+
+from urllib.parse import unquote
 import os
 from shutil import copy2
 from argparse import ArgumentParser
@@ -18,16 +20,20 @@ def playlist_directory():
     return find_first_dir(PLAYLIST_DIR_NAME, '.')
 
 
-def copy_playlist(playlist, number, target):
+def files_in_playlist(playlist):
     with open(os.path.join(playlist_directory(), playlist + PLAYLIST_EXTENSION)) as playlist_file:
         lines = playlist_file.readlines()
-
     files = [
         unquote(line[len(FILE_LINE_PREFIX):]).strip()
         for line in lines if line.startswith(FILE_LINE_PREFIX)
-    ]
-    files = [line for line in files if os.path.isfile(line)]
-    for file in files[:number]:
+        ]
+    return [line for line in files if os.path.isfile(line)]
+
+
+def copy_playlist(playlist, number, target):
+    if not os.path.isdir(target):
+        os.mkdir(target)
+    for file in files_in_playlist(playlist)[:number]:
         copy2(file, target)
 
 
