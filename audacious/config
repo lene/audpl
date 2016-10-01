@@ -73,7 +73,6 @@ playlist_visible=TRUE
 recurse_for_cover=TRUE
 recurse_for_cover_depth=2
 remember_jtf_entry=TRUE
-repeat=TRUE
 replay_gain_album=TRUE
 replay_gain_preamp=0
 replay_gain_track=TRUE
