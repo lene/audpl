@@ -16,39 +16,45 @@ class AudaciousTools:
 
     def __init__(self, base_config_dir):
         """
-        :param base_config_dir: directory under which the audacious playlists are searched
+        :param base_config_dir: Directory under which the audacious playlists are searched
         """
         self._base_directory = base_config_dir
         self._playlist_dir = None
 
-    def get_currently_playing_playlist_filename(self):
+    def get_currently_playing_playlist_id(self):
         order = self.get_playlist_order()
         return order[AudaciousTools._currently_playing_playlist_number() - 1]
 
     def get_playlist_order(self):
+        """All playlist ids for this audacious instance, sorted in tab order"""
         with open(self._playlist_order_file_path()) as order_file:
             return order_file.readlines()[0].split(' ')
 
     @property
     def playlist_directory(self):
+        """Directory under which the playlists are found for this audacious instance"""
         if self._playlist_dir is None:
             self._playlist_dir = find_first_dir(self.PLAYLIST_DIR_NAME, self._base_directory)
         return self._playlist_dir
 
-    def files_in_playlist(self, playlist=None):
-        lines = self._read_playlist(playlist)
+    def files_in_playlist(self, playlist_id):
+        """
+        :param playlist_id: Playlist ID (filename)
+        :return: All actually existing files in that playlist
+        """
+        lines = self._read_playlist(playlist_id)
         return existing_files(AudaciousTools._file_entries(lines))
 
     def _playlist_order_file_path(self):
         return os.path.join(self.playlist_directory, 'order')
 
-    def _read_playlist(self, playlist):
-        with open(self._playlist_file_path(playlist)) as playlist_file:
+    def _read_playlist(self, playlist_id):
+        with open(self._playlist_file_path(playlist_id)) as playlist_file:
             return playlist_file.readlines()
 
-    def _playlist_file_path(self, playlist):
+    def _playlist_file_path(self, playlist_id):
         return os.path.join(
-            self.playlist_directory, playlist + AudaciousTools.PLAYLIST_EXTENSION
+            self.playlist_directory, playlist_id + AudaciousTools.PLAYLIST_EXTENSION
         )
 
     @staticmethod
@@ -79,7 +85,7 @@ def copy_playlist(playlist, number, target):
 
     audacious = AudaciousTools('.')
     if not playlist:
-        playlist = audacious.get_currently_playing_playlist_filename()
+        playlist = audacious.get_currently_playing_playlist_id()
     for file in audacious.files_in_playlist(playlist)[:number]:
         copy2(file, target)
 
