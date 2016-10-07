@@ -4,6 +4,7 @@ from urllib.parse import unquote
 import os
 from shutil import copy2
 from argparse import ArgumentParser
+from subprocess import check_output
 
 PLAYLIST_DIR_NAME = 'playlists'
 PLAYLIST_EXTENSION = '.audpl'
@@ -22,8 +23,10 @@ def playlist_directory():
 
 def files_in_playlist(playlist):
     if not playlist:
-        playlist = 
-        raise ValueError('No playlist')
+        playlist_number = check_output(['audtool', 'current-playlist'])
+        with open(os.path.join(playlist_directory(), 'order')) as order_file:
+            order = order_file.readlines()[0].split(' ')
+        raise ValueError('Order: {}'.format(order))
     with open(os.path.join(playlist_directory(), playlist + PLAYLIST_EXTENSION)) as playlist_file:
         lines = playlist_file.readlines()
     files = [
