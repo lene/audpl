@@ -21,12 +21,17 @@ def playlist_directory():
     return find_first_dir(PLAYLIST_DIR_NAME, '.')
 
 
+def get_currently_playing_playlist():
+    playlist_number = int(check_output(['audtool', 'current-playlist']))
+    with open(os.path.join(playlist_directory(), 'order')) as order_file:
+        order = order_file.readlines()[0].split(' ')
+    playlist = order[playlist_number - 1]
+    return playlist
+
+
 def files_in_playlist(playlist):
     if not playlist:
-        playlist_number = check_output(['audtool', 'current-playlist'])
-        with open(os.path.join(playlist_directory(), 'order')) as order_file:
-            order = order_file.readlines()[0].split(' ')
-        raise ValueError('Order: {}'.format(order))
+        playlist = get_currently_playing_playlist()
     with open(os.path.join(playlist_directory(), playlist + PLAYLIST_EXTENSION)) as playlist_file:
         lines = playlist_file.readlines()
     files = [
