@@ -21,6 +21,9 @@ def playlist_directory():
 
 
 def files_in_playlist(playlist):
+    if not playlist:
+        playlist = 
+        raise ValueError('No playlist')
     with open(os.path.join(playlist_directory(), playlist + PLAYLIST_EXTENSION)) as playlist_file:
         lines = playlist_file.readlines()
     files = [
@@ -42,7 +45,8 @@ def main(args):
         description="Copy the first N existing files of an audacious playlist to a target folder"
     )
     parser.add_argument(
-        '-p', '--playlist', required=True, type=str, help='Name of the playlist to copy'
+        '-p', '--playlist', type=str,
+        help='Name of the playlist to copy (default: currently playing)'
     )
     parser.add_argument(
         '-n', '--number', default=-1, type=int,
