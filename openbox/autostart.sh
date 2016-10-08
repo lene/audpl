@@ -1,19 +1,23 @@
 #!/bin/bash
 
+OPENBOX_DIR=~/workspace/configs/openbox
+
 setxkbmap -layout us
 
-if [ -x ~/workspace/configs/openbox/setlayout ]; then
-    ~/workspace/configs/openbox/setlayout 0 3 3 0
+if [ -x $OPENBOX_DIR/setlayout ]; then
+    $OPENBOX_DIR/setlayout 0 3 3 0
 else
-    if [ - f ~/workspace/configs/openbox/setlayout.c ]; then
-	gcc ~/workspace/configs/openbox/setlayout.c -o ~/workspace/configs/openbox/setlayout
-	~/workspace/configs/openbox/setlayout 0 3 3 0
+    if [ - f $OPENBOX_DIR/setlayout.c ]; then
+		gcc $OPENBOX_DIR/setlayout.c -o $OPENBOX_DIR/setlayout
+		$OPENBOX_DIR/setlayout 0 3 3 0
+
     fi
 fi
     
 gkrellm &
 xfce4-panel &
 nitrogen --restore &
+audacious &
 
 sleep 5 && kdeinit4 &
 
