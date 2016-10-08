@@ -10,7 +10,16 @@ target=0
 use_dae=TRUE
 
 [alarm]
-alarm_h=8
+alarm_h=9
+fri_h=9
+mon_h=9
+playlist=file:///home/lene/workspace/configs/audacious/playlists/1002.audpl
+sat_h=9
+stop_h=3
+sun_h=9
+thu_h=9
+tue_h=9
+wed_h=9
 
 [alsa]
 drop-workaround=TRUE
@@ -84,6 +93,7 @@ resume_state=0
 show_filepopup_for_tuple=FALSE
 show_numbers_in_pl=TRUE
 software_volume_control=FALSE
+stop_after_current_song=TRUE
 sw_volume_left=100
 sw_volume_right=100
 titlestring_preset=1
@@ -139,7 +149,7 @@ entry_count_visible=TRUE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 multi_column_view=FALSE
-player_height=767
+player_height=766
 player_width=619
 player_x=658
 player_y=0
