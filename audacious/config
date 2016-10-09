@@ -101,7 +101,7 @@ use_extension_probing=TRUE
 use_file_cover=FALSE
 
 [audgui]
-about_win=686,0,591,431
+about_win=686,0,591,438
 clear_song_fields=FALSE
 close_dialog_add=TRUE
 equalizer_win=900,0,377,215
