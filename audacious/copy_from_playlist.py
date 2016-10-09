@@ -6,6 +6,10 @@ from shutil import copy2
 from argparse import ArgumentParser
 from subprocess import check_output
 
+DEFAULT_AUDACIOUS_CONFIG_DIR = os.path.join(
+    os.environ['HOME'], '.config', 'audacious'
+)
+
 
 class AudaciousTools:
     """Tools for working with the audacious media player"""
@@ -14,12 +18,14 @@ class AudaciousTools:
     PLAYLIST_EXTENSION = '.audpl'
     FILE_LINE_PREFIX = 'uri=file://'
 
-    def __init__(self, base_config_dir):
+    def __init__(self, base_config_dir=DEFAULT_AUDACIOUS_CONFIG_DIR):
         """
-        :param base_config_dir: Directory under which the audacious playlists are searched
+        :param base_config_dir: Directory containing the audacious configuration
         """
         self._base_directory = base_config_dir
-        self._playlist_dir = None
+        self._playlist_dir = find_first_dir(
+            self.PLAYLIST_DIR_NAME, self._base_directory
+        )
 
     def get_currently_playing_playlist_id(self):
         order = self.get_playlist_order()
@@ -32,9 +38,7 @@ class AudaciousTools:
 
     @property
     def playlist_directory(self):
-        """Directory under which the playlists are found for this audacious instance"""
-        if self._playlist_dir is None:
-            self._playlist_dir = find_first_dir(self.PLAYLIST_DIR_NAME, self._base_directory)
+        """Directory where the playlists are for this audacious instance"""
         return self._playlist_dir
 
     def files_in_playlist(self, playlist_id):
@@ -54,7 +58,8 @@ class AudaciousTools:
 
     def _playlist_file_path(self, playlist_id):
         return os.path.join(
-            self.playlist_directory, playlist_id + AudaciousTools.PLAYLIST_EXTENSION
+            self.playlist_directory,
+            playlist_id + AudaciousTools.PLAYLIST_EXTENSION
         )
 
     @staticmethod
@@ -79,24 +84,25 @@ def find_first_dir(name, path):
             return os.path.join(root, name)
 
 
-def copy_playlist(playlist, number, target):
+def copy_playlist(playlist_id, number, target):
     if not os.path.isdir(target):
         os.mkdir(target)
 
-    audacious = AudaciousTools('.')
-    if not playlist:
-        playlist = audacious.get_currently_playing_playlist_id()
-    for file in audacious.files_in_playlist(playlist)[:number]:
+    audacious = AudaciousTools()
+    if not playlist_id:
+        playlist_id = audacious.get_currently_playing_playlist_id()
+    for file in audacious.files_in_playlist(playlist_id)[:number]:
         copy2(file, target)
 
 
 def main(args):
     parser = ArgumentParser(
-        description="Copy the first N existing files of an audacious playlist to a target folder"
+        description="Copy the first N existing files of an audacious playlist"
+                    " to a target folder"
     )
     parser.add_argument(
         '-p', '--playlist', type=str,
-        help='Name of the playlist to copy (default: currently playing)'
+        help='ID of the playlist to copy (default: currently playing)'
     )
     parser.add_argument(
         '-n', '--number', default=-1, type=int,
