@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="10438f2d-989d-498f-9590-8b9c38e06c68" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlist-state" afterPath="$PROJECT_DIR$/playlist-state" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlists/1035.audpl" afterPath="$PROJECT_DIR$/playlists/1035.audpl" />
     </list>
     <ignored path="audacious.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +25,8 @@
       <file leaf-file-name="copy_from_playlist.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="902">
-              <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+            <state relative-caret-position="858">
+              <caret line="98" column="28" selection-start-line="98" selection-start-column="28" selection-end-line="98" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -372,8 +370,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+        <state relative-caret-position="858">
+          <caret line="98" column="28" selection-start-line="98" selection-start-column="28" selection-end-line="98" selection-end-column="28" />
           <folding />
         </state>
       </provider>
