@@ -88,7 +88,7 @@ export PATH="${CUDA_HOME}/bin:${PATH}"
 # source files delegated to .bash/ subdirectory
 #
 if [ -d ${HOME}/.bash ]; then
-    for s in ${HOME}/.bash/*.sh; do
+    for s in ${HOME}/.bash/*.sh ${HOME}/.bash/*.bash ; do
 	test -r $s && . $s
     done
 fi
