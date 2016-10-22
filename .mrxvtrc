@@ -1,3 +1,4 @@
+mrxvt.geometry:		    95x31+108
 mrxvt*vt0*tabTitle:		term1
 mrxvt*vt1*tabTitle:		term2
 mrxvt*vt2*tabTitle:		term3
