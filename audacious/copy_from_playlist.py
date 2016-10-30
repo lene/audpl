@@ -2,7 +2,7 @@
 
 from urllib.parse import unquote
 import os
-from shutil import copy2
+from shutil import copy2, SameFileError
 from argparse import ArgumentParser
 from subprocess import check_output
 
@@ -92,7 +92,10 @@ def copy_playlist(playlist_id, number, target):
     if not playlist_id:
         playlist_id = audacious.get_currently_playing_playlist_id()
     for file in audacious.files_in_playlist(playlist_id)[:number]:
-        copy2(file, target)
+        try:
+            copy2(file, target)
+        except SameFileError:
+            pass
 
 
 def main(args):
