@@ -86,7 +86,7 @@ def find_first_dir(name, path):
 
 def copy_playlist(playlist_id, number, target):
     if not os.path.isdir(target):
-        os.mkdir(target)
+        os.mkdirs(target, exist_ok=True)
 
     audacious = AudaciousTools()
     if not playlist_id:
