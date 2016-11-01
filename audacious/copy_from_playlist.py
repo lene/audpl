@@ -23,9 +23,7 @@ class AudaciousTools:
         :param base_config_dir: Directory containing the audacious configuration
         """
         self._base_directory = base_config_dir
-        self._playlist_dir = find_first_dir(
-            self.PLAYLIST_DIR_NAME, self._base_directory
-        )
+        self._playlist_dir = find_first_dir(self.PLAYLIST_DIR_NAME, self._base_directory)
 
     def get_currently_playing_playlist_id(self):
         order = self.get_playlist_order()
@@ -48,6 +46,10 @@ class AudaciousTools:
         """
         lines = self._read_playlist(playlist_id)
         return existing_files(AudaciousTools._file_entries(lines))
+
+    def get_files_to_copy(self, number, playlist_id):
+        files_to_copy = self.files_in_playlist(playlist_id)
+        return files_to_copy[:number] if number else files_to_copy
 
     def _playlist_order_file_path(self):
         return os.path.join(self.playlist_directory, 'order')
@@ -84,39 +86,52 @@ def find_first_dir(name, path):
             return os.path.join(root, name)
 
 
-def copy_playlist(playlist_id, number, target):
+def copy_playlist(playlist_id, number, target, verbose=False):
     if not os.path.isdir(target):
         os.mkdirs(target, exist_ok=True)
 
     audacious = AudaciousTools()
-    if not playlist_id:
-        playlist_id = audacious.get_currently_playing_playlist_id()
-    for file in audacious.files_in_playlist(playlist_id)[:number]:
-        try:
-            copy2(file, target)
-        except SameFileError:
-            pass
+
+    playlist_id = audacious.get_currently_playing_playlist_id() if not playlist_id else playlist_id
+
+    copy_files(audacious.get_files_to_copy(number, playlist_id), target, verbose)
+
+
+def copy_files(files_to_copy, target, verbose):
+    for i, file in enumerate(files_to_copy):
+        if verbose:
+            print("{}/{}: {}".format(i + 1, len(files_to_copy), file.split('/')[-1]))
+        copy_file(file, target)
+
+
+def copy_file(file, target):
+    try:
+        copy2(file, target)
+    except SameFileError as e:
+        print(str(e))
 
 
 def main(args):
     parser = ArgumentParser(
-        description="Copy the first N existing files of an audacious playlist"
-                    " to a target folder"
+        description="Copy the first N existing files of an audacious playlist to a target folder"
     )
     parser.add_argument(
         '-p', '--playlist', type=str,
         help='ID of the playlist to copy (default: currently playing)'
     )
     parser.add_argument(
-        '-n', '--number', default=-1, type=int,
+        '-n', '--number', default=0, type=int,
         help='First N files to copy from the playlist (default: all)'
     )
     parser.add_argument(
         '-t', '--target', default='.', type=str,
         help='Name of the target folder (default: current directory)'
     )
+    parser.add_argument(
+        '-v', '--verbose', action='store_true'
+    )
     opts = parser.parse_args(args)
-    copy_playlist(opts.playlist, opts.number, opts.target)
+    copy_playlist(opts.playlist, opts.number, opts.target, opts.verbose)
 
 if __name__ == '__main__':
     import sys

@@ -5,7 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/copy_from_playlist.py" afterPath="$PROJECT_DIR$/copy_from_playlist.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlist-state" afterPath="$PROJECT_DIR$/playlist-state" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrobbler.log" afterPath="$PROJECT_DIR$/scrobbler.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlists/1008.audpl" afterPath="$PROJECT_DIR$/playlists/1008.audpl" />
     </list>
     <ignored path="audacious.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,8 +28,8 @@
       <file leaf-file-name="copy_from_playlist.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="88" column="39" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="39" />
+            <state relative-caret-position="108">
+              <caret line="25" column="88" selection-start-line="25" selection-start-column="88" selection-end-line="25" selection-end-column="88" />
               <folding>
                 <element signature="e#24#56#0" expanded="true" />
               </folding>
@@ -432,8 +432,8 @@
     <entry file="file://$PROJECT_DIR$/parse_perrypedia.py" />
     <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="88" column="39" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="39" />
+        <state relative-caret-position="108">
+          <caret line="25" column="88" selection-start-line="25" selection-start-column="88" selection-end-line="25" selection-end-column="88" />
           <folding>
             <element signature="e#24#56#0" expanded="true" />
           </folding>
