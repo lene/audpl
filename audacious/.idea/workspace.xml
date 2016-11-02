@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10438f2d-989d-498f-9590-8b9c38e06c68" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/copy_from_playlist.py" afterPath="$PROJECT_DIR$/copy_from_playlist.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlist-state" afterPath="$PROJECT_DIR$/playlist-state" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlists/1008.audpl" afterPath="$PROJECT_DIR$/playlists/1008.audpl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlists/1016.audpl" afterPath="$PROJECT_DIR$/playlists/1016.audpl" />
     </list>
     <ignored path="audacious.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -281,7 +279,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="94" y="-1" width="1188" height="772" extended-state="1" />
+    <frame x="94" y="-1" width="1188" height="772" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16020672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
