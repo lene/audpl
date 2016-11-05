@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10438f2d-989d-498f-9590-8b9c38e06c68" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/copy_from_playlist.py" afterPath="$PROJECT_DIR$/copy_from_playlist.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlist-state" afterPath="$PROJECT_DIR$/playlist-state" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlists/1014.audpl" afterPath="$PROJECT_DIR$/playlists/1014.audpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlists/1025.audpl" afterPath="$PROJECT_DIR$/playlists/1025.audpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlists/1027.audpl" afterPath="$PROJECT_DIR$/playlists/1027.audpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlists/1030.audpl" afterPath="$PROJECT_DIR$/playlists/1030.audpl" />
     </list>
     <ignored path="audacious.iws" />
     <ignored path=".idea/workspace.xml" />
