@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10438f2d-989d-498f-9590-8b9c38e06c68" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlist-state" afterPath="$PROJECT_DIR$/playlist-state" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrobbler.log" afterPath="$PROJECT_DIR$/scrobbler.log" />
     </list>
     <ignored path="audacious.iws" />
     <ignored path=".idea/workspace.xml" />
