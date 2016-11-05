@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-from urllib.parse import unquote
 import os
+import re
+from math import log10
+from urllib.parse import unquote
 from shutil import copy2, SameFileError
 from argparse import ArgumentParser
 from subprocess import check_output
@@ -98,17 +100,20 @@ def copy_playlist(playlist_id, number, target, verbose=False, renumber=False):
     copy_files(audacious.get_files_to_copy(number, playlist_id), target, verbose, renumber)
 
 
+def strip_leading_numbers(filename):
+    return re.sub(r'^\d+\s*[-.]?\s*', '', filename)
+
+
 def renumber_file(filename, number, total):
-    return "{:02d} - {}".format(number, filename)
+    return "{:0{width}d} - {}".format(
+        number, strip_leading_numbers(filename), width=max(int(log10(total)) + 1, 2)
+    )
 
 
 def copy_files(files_to_copy, target_dir, verbose, renumber):
     for i, file in enumerate(files_to_copy):
         filename = file.split('/')[-1]
-        if renumber:
-            target_filename = renumber_file(filename, i+1, len(files_to_copy))
-        else:
-            target_filename = filename
+        target_filename = renumber_file(filename, i+1, len(files_to_copy)) if renumber else filename
         if verbose:
             print("{}/{}: {}".format(i + 1, len(files_to_copy), target_filename))
         copy_file(file, os.path.join(target_dir, target_filename))
