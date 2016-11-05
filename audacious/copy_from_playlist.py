@@ -45,6 +45,7 @@ class AudaciousTools:
         :return: All actually existing files in that playlist
         """
         lines = self._read_playlist(playlist_id)
+        return AudaciousTools._file_entries(lines)
         return existing_files(AudaciousTools._file_entries(lines))
 
     def get_files_to_copy(self, number, playlist_id):
@@ -86,7 +87,7 @@ def find_first_dir(name, path):
             return os.path.join(root, name)
 
 
-def copy_playlist(playlist_id, number, target, verbose=False):
+def copy_playlist(playlist_id, number, target, verbose=False, renumber=False):
     if not os.path.isdir(target):
         os.mkdir(target)
 
@@ -94,14 +95,23 @@ def copy_playlist(playlist_id, number, target, verbose=False):
 
     playlist_id = audacious.get_currently_playing_playlist_id() if not playlist_id else playlist_id
 
-    copy_files(audacious.get_files_to_copy(number, playlist_id), target, verbose)
+    copy_files(audacious.get_files_to_copy(number, playlist_id), target, verbose, renumber)
 
 
-def copy_files(files_to_copy, target, verbose):
+def renumber_file(filename, number, total):
+    return "{:02d} - {}".format(number, filename)
+
+
+def copy_files(files_to_copy, target_dir, verbose, renumber):
     for i, file in enumerate(files_to_copy):
+        filename = file.split('/')[-1]
+        if renumber:
+            target_filename = renumber_file(filename, i+1, len(files_to_copy))
+        else:
+            target_filename = filename
         if verbose:
-            print("{}/{}: {}".format(i + 1, len(files_to_copy), file.split('/')[-1]))
-        copy_file(file, target)
+            print("{}/{}: {}".format(i + 1, len(files_to_copy), target_filename))
+        copy_file(file, os.path.join(target_dir, target_filename))
 
 
 def copy_file(file, target):
@@ -128,10 +138,14 @@ def main(args):
         help='Name of the target folder (default: current directory)'
     )
     parser.add_argument(
+        '-r', '--renumber', action='store_true',
+        help='Rename files to have playlist position prepended to file name'
+    )
+    parser.add_argument(
         '-v', '--verbose', action='store_true'
     )
     opts = parser.parse_args(args)
-    copy_playlist(opts.playlist, opts.number, opts.target, opts.verbose)
+    copy_playlist(opts.playlist, opts.number, opts.target, opts.verbose, opts.renumber)
 
 if __name__ == '__main__':
     import sys
