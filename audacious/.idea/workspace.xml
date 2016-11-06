@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10438f2d-989d-498f-9590-8b9c38e06c68" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/strip_spaces_from_filename.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/copy_from_playlist.py" afterPath="$PROJECT_DIR$/copy_from_playlist.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlist-state" afterPath="$PROJECT_DIR$/playlist-state" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrobbler.log" afterPath="$PROJECT_DIR$/scrobbler.log" />
     </list>
@@ -23,13 +26,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="copy_from_playlist.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="copy_from_playlist.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="108" column="84" selection-start-line="108" selection-start-column="84" selection-end-line="108" selection-end-column="84" />
+            <state relative-caret-position="72">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding>
-                <element signature="e#24#33#0" expanded="true" />
+                <element signature="e#76#85#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strip_spaces_from_filename.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/strip_spaces_from_filename.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+              <folding>
+                <element signature="e#76#85#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,6 +67,7 @@
       <list>
         <option value="$PROJECT_DIR$/parse_perrypedia.py" />
         <option value="$PROJECT_DIR$/copy_from_playlist.py" />
+        <option value="$PROJECT_DIR$/strip_spaces_from_filename.py" />
       </list>
     </option>
   </component>
@@ -322,7 +338,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -332,7 +348,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -342,7 +358,7 @@
         <state relative-caret-position="1746">
           <caret line="97" column="16" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="16" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -352,7 +368,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -362,7 +378,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -372,7 +388,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -382,7 +398,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -392,7 +408,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -402,7 +418,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -412,7 +428,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -422,7 +438,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -432,7 +448,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -442,7 +458,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -450,10 +466,20 @@
     <entry file="file://$PROJECT_DIR$/parse_perrypedia.py" />
     <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="108" column="84" selection-start-line="108" selection-start-column="84" selection-end-line="108" selection-end-column="84" />
+        <state relative-caret-position="72">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="e#24#33#0" expanded="true" />
+            <element signature="e#76#85#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strip_spaces_from_filename.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <folding>
+            <element signature="e#76#85#0" expanded="true" />
           </folding>
         </state>
       </provider>

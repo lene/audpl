@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+__author__ = 'Lene Preuss <lene.preuss@gmail.com>'
+
 import os
 import re
 from math import log10
