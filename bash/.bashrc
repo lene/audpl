@@ -60,6 +60,7 @@ export LESS="-R -M -m --shift 5"
 #
 # Python settings
 #
+export PYTHONSTARTUP=$HOME/workspace/configs/bash/.pythonrc
 export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python2' # This needs to be placed before the virtualenvwrapper command
 export WORKON_HOME=~/.virtualenvs
 
