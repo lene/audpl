@@ -1,16 +1,20 @@
 #!/bin/bash
 
-OPENBOX_DIR=~/workspace/configs/openbox
+xrandr -q | grep "DP3 connected" && \
+    xrandr --output DP3 --mode 2560x1440 --rate 59.95 --output eDP1 --auto --left-of DP3
+
+OPENBOX_DIR=$HOME/workspace/configs/openbox
 
 setxkbmap -layout us
 
 if [ -x $OPENBOX_DIR/setlayout ]; then
+    echo found $OPENBOX_DIR/setlayout
     $OPENBOX_DIR/setlayout 0 3 3 0
 else
     if [ - f $OPENBOX_DIR/setlayout.c ]; then
-		gcc $OPENBOX_DIR/setlayout.c -o $OPENBOX_DIR/setlayout
-		$OPENBOX_DIR/setlayout 0 3 3 0
-
+	echo found $OPENBOX_DIR/setlayout.c
+	gcc $OPENBOX_DIR/setlayout.c -o $OPENBOX_DIR/setlayout
+	$OPENBOX_DIR/setlayout 0 3 3 0
     fi
 fi
     
