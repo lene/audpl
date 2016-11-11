@@ -13,6 +13,8 @@ ln -s $HOME/workspace/configs/kdeglobals         $HOME/.config
 ln -s $HOME/workspace/configs/kwinrc             $HOME/.config
 ln -s $HOME/workspace/configs/kwinrulesrc        $HOME/.config
 
+ln -s $HOME/.mrxvtrc $HOME
+
 if [ -f openbox/setlayout.c ]; then
     cd openbox && \
 	sudo apt install libx11-dev && \

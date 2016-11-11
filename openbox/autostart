@@ -23,6 +23,8 @@ xfce4-panel &
 nitrogen --restore &
 audacious &
 
+pidgin &
+
 sleep 5 && kdeinit4 &
 
 test -x /opt/toggldesktop/TogglDesktop.sh && /opt/toggldesktop/TogglDesktop.sh &
