@@ -18,6 +18,7 @@ else
     fi
 fi
     
+xscreensaver &
 gkrellm &
 xfce4-panel &
 nitrogen --restore &
