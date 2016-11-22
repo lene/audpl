@@ -1,4 +1,4 @@
-  <applications>
+<applications>
     <!--
   # this is an example with comments through out. use these to make your
   # own rules, but without the comments of course.
@@ -69,48 +69,53 @@
 
   # end of the example
 -->
-	<application name="audacious" class="Audacious">
-      <decor>yes</decor>
-      <position>
-		<x>-1</x>
-		<y>0</y>
-	  </position>
-      <desktop>all</desktop>
-      <iconic>no</iconic>
-      <skip_pager>yes</skip_pager>
-      <skip_taskbar>yes</skip_taskbar>
-	</application>
+  <application name="audacious" class="Audacious">
+    <decor>yes</decor>
+    <position>
+      <x>-1</x>
+      <y>0</y>
+    </position>
+    <desktop>all</desktop>
+    <iconic>no</iconic>
+    <skip_pager>yes</skip_pager>
+    <skip_taskbar>yes</skip_taskbar>
+  </application>
 
-	<application name="gkrellm" class="Gkrellm">
-      <decor>no</decor>
-      <position>
-		<x>-1</x>
-		<y>0</y>
-	  </position>
-      <desktop>all</desktop>
-      <iconic>no</iconic>
-      <skip_pager>yes</skip_pager>
-      <skip_taskbar>yes</skip_taskbar>
-	</application>
+  <application name="pidgin" class="Pidgin">
+    <desktop>all</desktop>
+    <skip_pager>yes</skip_pager>
+  </application>
 
-	<application name="stalonetray" class="stalonetray">
-      <decor>no</decor>
-      <position>
-		<x>0</x>
-		<y>0</y>
-	  </position>
-      <desktop>all</desktop>
-      <iconic>no</iconic>
-      <layer>below</layer>
-      <skip_pager>yes</skip_pager>
-      <skip_taskbar>yes</skip_taskbar>
-	</application>
+  <application name="gkrellm" class="Gkrellm">
+    <decor>no</decor>
+    <position>
+      <x>-1</x>
+      <y>0</y>
+    </position>
+    <desktop>all</desktop>
+    <iconic>no</iconic>
+    <skip_pager>yes</skip_pager>
+    <skip_taskbar>yes</skip_taskbar>
+  </application>
 
-	<application name="Mail" class="Thunderbird">
-      <decor>yes</decor>
-      <iconic>no</iconic>
-      <skip_pager>no</skip_pager>
-      <skip_taskbar>no</skip_taskbar>
-	</application>
+  <application name="stalonetray" class="stalonetray">
+    <decor>no</decor>
+    <position>
+      <x>0</x>
+      <y>0</y>
+    </position>
+    <desktop>all</desktop>
+    <iconic>no</iconic>
+    <layer>below</layer>
+    <skip_pager>yes</skip_pager>
+    <skip_taskbar>yes</skip_taskbar>
+  </application>
 
-  </applications>
+  <application name="Mail" class="Thunderbird">
+    <decor>yes</decor>
+    <iconic>no</iconic>
+    <skip_pager>no</skip_pager>
+    <skip_taskbar>no</skip_taskbar>
+  </application>
+
+</applications>
