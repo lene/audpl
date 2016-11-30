@@ -94,6 +94,16 @@
 			<execute>pycharm.sh</execute>
 		  </action>
 		</item>
+		<item label="IntelliJ IDEA">
+		  <action name="Execute">
+			<execute>/opt/idea/bin/idea.sh</execute>
+		  </action>
+		</item>
+		<item label="WebStorm">
+		  <action name="Execute">
+			<execute>webstorm.sh</execute>
+		  </action>
+		</item>
 		<item label="PhpStorm">
 		  <action name="Execute">
 			<execute>phpstorm.sh</execute>
