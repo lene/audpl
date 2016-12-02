@@ -203,6 +203,11 @@
         <command>konsole</command>
       </action>
     </keybind>
+    <keybind key="C-A-K">
+      <action name="Execute">
+        <command>konsole</command>
+      </action>
+    </keybind>
 
     <!-- Fast access to Rox Filer -->
     <keybind key="C-A-R">
