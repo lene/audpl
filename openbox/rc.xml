@@ -316,7 +316,7 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="W-e">
+    <keybind key="W-p">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
