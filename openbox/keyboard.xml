@@ -127,6 +127,9 @@
       <action name="ToggleMaximizeFull"/>
     </keybind>
     <keybind key="A-S-V">
+      <action name="ToggleMaximize"><direction>vertical</direction></action>
+    </keybind>
+    <keybind key="A-S-H">
       <action name="ToggleMaximize"><direction>horizontal</direction></action>
     </keybind>
 
@@ -213,6 +216,18 @@
     <keybind key="C-A-R">
       <action name="Execute">
         <command>rox</command>
+      </action>
+    </keybind>
+
+    <keybind key="Menu">
+      <action name="Execute">
+        <command>xscreensaver-command -lock</command>
+      </action>
+    </keybind>
+
+    <keybind key="Super_L">
+      <action name="Execute">
+        <command>xscreensaver-command -lock</command>
       </action>
     </keybind>
 

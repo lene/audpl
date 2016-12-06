@@ -26,14 +26,14 @@
     <!-- 'Smart' or 'UnderMouse' -->
     <center>no</center>
     <!-- whether to place windows in the center of the free area found or the top left corner -->
-    <monitor>Active</monitor>
+    <monitor>Mouse</monitor>
     <!-- with Smart placement on a multi-monitor system, try to place new windows
        on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where the active window is -->
     <primaryMonitor>1</primaryMonitor>
   </placement>
   <theme>
     <name>Onyx</name>
-    <titleLayout>NLIMC</titleLayout>
+    <titleLayout>NDLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -285,6 +285,9 @@
     <keybind key="A-S-V">
       <action name="ToggleMaximizeVert"/>
     </keybind>
+    <keybind key="A-S-H">
+      <action name="ToggleMaximize"><direction>horizontal</direction></action>
+    </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -352,6 +355,21 @@
       <action name="Execute">
         <command>mrxvt</command>
       </action>
+    </keybind> 
+    <keybind key="C-A-K">
+      <action name="Execute">
+        <command>konsole</command>
+      </action>
+    </keybind>
+    <!-- Fast access to emacs -->
+    <keybind key="W-e">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Emacs</name>
+        </startupnotify>
+        <command>emacs</command>
+      </action>
     </keybind>
     <!-- Fast access to Rox Filer -->
     <keybind key="C-A-R">
@@ -381,6 +399,11 @@
       </action>
     </keybind>
     <!-- Keybinding for audio management -->
+    <keybind key="A-C-a">
+      <action name="Execute">
+        <command>audacious -t</command>
+      </action>
+    </keybind>
     <keybind key="XF86AudioStop">
       <action name="Execute">
         <command>audacious -u</command>
@@ -421,6 +444,19 @@
         <command>amixer -q -D pulse set Master toggle</command>
       </action>
     </keybind>
+	<!-- keyboard layout selection -->
+	<keybind key="C-l">
+      <keybind key="d">
+        <action name="Execute">
+          <command>setxkbmap -layout de</command>
+		</action>
+      </keybind>
+      <keybind key="u">
+        <action name="Execute">
+          <command>setxkbmap -layout us</command>
+		</action>
+      </keybind>
+	</keybind>
     <!-- other function keys -->
     <keybind key="XF86WWW">
       <action name="Execute">
@@ -445,6 +481,12 @@
     <keybind key="XF86ScreenSaver">
       <action name="Execute">
         <command>xscreensaver-command -lock</command>
+      </action>
+    </keybind>
+    <keybind key="Menu">
+      <action name="Execute">
+        <!--command>xscreensaver-command -lock</command-->
+        <command>~/workspace/configs/openbox/bosskey.sh</command>
       </action>
     </keybind>
     <!-- reload openbox -->
