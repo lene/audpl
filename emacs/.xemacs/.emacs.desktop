@@ -1,0 +1,110 @@
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Sun Apr 16 11:53:38 2006
+;; Emacs version 21.4 (patch 17) "Jumbo Shrimp" XEmacs Lucid
+
+;; Global section:
+(setq file-name-history '("~/.xemacs/" "~/.fvwm/FVWMInit.ganymede" "~/.fvwm/FVWMInit" "~/.fvwm/FVWMMenu" "~/.xemacs/../src/HyperspaceExplorer/src/4DView.C" "~/.xemacs/../.fvwm/.fvwm2rc" "~/.xemacs/custom.el" "~/.emacs.customize" "~/.xemacs/init.el.bak" "~/.xemacs/init.el"))
+(setq desktop-missing-file-warning nil)
+(setq search-ring '("my-b" "big" "set-m" "activa" "creensh" "vm" "bold"))
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq command-history '((kill-buffer "*Directory*") (list-directory "/home/helge/.xemacs/" nil) (blink-paren nil) (blink-paren nil) (paren-set-mode nil) (blink-cursor-mode) (sh-mode) (kill-buffer "FVWMInit") (indent-region (region-beginning) (region-end) nil) (kill-buffer "*Group*") (kill-buffer "*Function List*") (kill-buffer "custom.el") (paren-activate) (insert-file "~/.xemacs/init.el.bak" nil) (paren-activate) (paren-activate) (paren-activate)))
+(setq iswitchb-history '("" "custom." "i" ".f" "init.e" "in"))
+(setq minibuffer-history '("1" "C4DView::C4DView" "C4DView::mouseReleaseEvent"))
+(setq buffer-history '("*Directory*" "FVWMInit" "*Group*" "*Function List*" "custom.el"))
+(setq cl-proclaim-history t)
+(setq :prompt-history ':prompt-history)
+(setq file-name-history '("~/.xemacs/" "~/.fvwm/FVWMInit.ganymede" "~/.fvwm/FVWMInit" "~/.fvwm/FVWMMenu" "~/.xemacs/../src/HyperspaceExplorer/src/4DView.C" "~/.xemacs/../.fvwm/.fvwm2rc" "~/.xemacs/custom.el" "~/.emacs.customize" "~/.xemacs/init.el.bak" "~/.xemacs/init.el"))
+(setq read-command-history '("blink-paren" "paren-set-mode" "blink-cursor-mode" "sh-mode" "indent-region" "paren-activate"))
+
+;; Buffer section:
+(desktop-create-buffer 205
+  "/home/helge/.emacs.customize"
+  ".emacs.customize"
+  'emacs-lisp-mode
+  '(line-number-mode column-number-mode font-lock-mode filladapt-mode)
+  7990
+  '(nil nil)
+  nil
+  nil
+  '((overwrite-mode) (fill-column . 70) (case-fold-search . t) (truncate-lines)))
+
+(desktop-create-buffer 205
+  "/home/helge/.fvwm/FVWMInit.ganymede"
+  "FVWMInit.ganymede"
+  'sh-mode
+  '(line-number-mode column-number-mode font-lock-mode filladapt-mode)
+  583
+  '(nil nil)
+  nil
+  nil
+  '((overwrite-mode) (fill-column . 70) (case-fold-search . t) (truncate-lines)))
+
+(desktop-create-buffer 205
+  "/home/helge/.fvwm/FVWMInit"
+  "FVWMInit"
+  'sh-mode
+  '(line-number-mode column-number-mode font-lock-mode filladapt-mode)
+  14
+  '(nil nil)
+  nil
+  nil
+  '((overwrite-mode) (fill-column . 70) (case-fold-search . t) (truncate-lines)))
+
+(desktop-create-buffer 205
+  "/home/helge/.fvwm/.fvwm2rc"
+  ".fvwm2rc"
+  'winmgr-mode
+  '(line-number-mode column-number-mode font-lock-mode filladapt-mode)
+  8403
+  '(8398 nil)
+  nil
+  nil
+  '((overwrite-mode) (fill-column . 70) (case-fold-search . t) (truncate-lines)))
+
+(desktop-create-buffer 205
+  "/home/helge/.fvwm/FVWMMenu"
+  "FVWMMenu"
+  'winmgr-mode
+  '(line-number-mode column-number-mode font-lock-mode filladapt-mode)
+  26265
+  '(26242 nil)
+  nil
+  nil
+  '((overwrite-mode) (fill-column . 70) (case-fold-search . t) (truncate-lines)))
+
+(desktop-create-buffer 205
+  "/home/helge/.xemacs/custom.el"
+  "custom.el"
+  'emacs-lisp-mode
+  '(line-number-mode column-number-mode font-lock-mode filladapt-mode)
+  7831
+  '(nil nil)
+  nil
+  nil
+  '((overwrite-mode) (fill-column . 70) (case-fold-search . t) (truncate-lines)))
+
+(desktop-create-buffer 205
+  "/home/helge/src/HyperspaceExplorer/src/4DView.C"
+  "4DView.C"
+  'c++-mode
+  '(abbrev-mode line-number-mode column-number-mode font-lock-mode filladapt-mode)
+  5652
+  '(17618 nil)
+  nil
+  nil
+  '((overwrite-mode) (fill-column . 70) (case-fold-search . t) (truncate-lines)))
+
+(desktop-create-buffer 205
+  "/home/helge/.xemacs/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(line-number-mode column-number-mode font-lock-mode filladapt-mode)
+  12102
+  '(12102 nil)
+  nil
+  nil
+  '((overwrite-mode) (fill-column . 70) (case-fold-search . t) (truncate-lines)))
+
