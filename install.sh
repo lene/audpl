@@ -24,3 +24,6 @@ if [ -f openbox/setlayout.c ]; then
 	./setlayout 0 3 3 0 && \
 	cd ..
 fi
+
+sudo apt install audacious zenity openbox emacs
+
