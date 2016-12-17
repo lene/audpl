@@ -17,13 +17,13 @@ ln -s $HOME/workspace/configs/.mrxvtrc $HOME
 ln -s $HOME/workspace/configs/.emacs   $HOME
 ln -s $HOME/workspace/configs/.xemacs  $HOME
 
+sudo apt install mrxvt gkrellm audacious zenity openbox emacs konsole xfce4 libx11-dev
+
 if [ -f openbox/setlayout.c ]; then
     cd openbox && \
-	sudo apt install libx11-dev && \
 	gcc setlayout.c -o setlayout -lX11 && \
 	./setlayout 0 3 3 0 && \
 	cd ..
 fi
 
-sudo apt install audacious zenity openbox emacs
 
