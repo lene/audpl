@@ -23,6 +23,7 @@ gkrellm &
 xfce4-panel &
 nitrogen --restore &
 audacious &
+which workrave && workrave &
 
 pidgin &
 
