@@ -2,6 +2,8 @@
 
 xrandr -q | grep "DP3 connected" && \
     xrandr --output DP3 --mode 2560x1440 --rate 59.95 --output eDP1 --auto --left-of DP3
+xrandr -q | grep "DP-1-3 connected" && \
+    xrandr --output DP-1-3 --mode 2560x1440 --rate 59.95 --output eDP1 --auto --left-of DP3
 
 OPENBOX_DIR=$HOME/workspace/configs/openbox
 
