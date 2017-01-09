@@ -1,9 +1,11 @@
 #!/bin/bash
 
-xrandr -q | grep "DP3 connected" && \
-    xrandr --output DP3 --mode 2560x1440 --rate 59.95 --output eDP1 --auto --left-of DP3
-xrandr -q | grep "DP-1-3 connected" && \
-    xrandr --output DP-1-3 --mode 2560x1440 --rate 59.95 --output eDP1 --auto --left-of DP3
+MAIN_DISPLAY=$(xrandr -q | grep 'connected 1920x1080' | cut -d ' ' -f 1)
+EXT_DISPLAY=$(xrandr -q | grep 'connected 2560x1440' | cut -d ' ' -f 1)
+if [ -n "$MAIN_DISPLAY" -a -n "$EXT_DISPLAY"]; then
+    xrandr --output $EXT_DISPLAY --mode 2560x1440 --rate 59.95 --output $MAIN_DISPLAY --auto --left-of $EXT_DISPLAY
+fi
+
 
 OPENBOX_DIR=$HOME/workspace/configs/openbox
 
