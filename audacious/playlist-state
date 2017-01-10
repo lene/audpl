@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 active 38
 playing -1
+=======
+active 36
+playing 36
+>>>>>>> f99e313666cad080d1624b38cfd077a512cc36e6
 playlist 0
 position -1
 resume-state 1
@@ -146,9 +151,9 @@ position 4
 resume-state 1
 resume-time 135582
 playlist 36
-position 312
-resume-state 1
-resume-time 0
+position 320
+resume-state 2
+resume-time 5656
 playlist 37
 position 9
 resume-state 1
