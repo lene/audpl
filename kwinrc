@@ -48,6 +48,11 @@ wobblywindowsEnabled=true
 PopupHideDelay=300
 TextOnly=false
 
+[TabBox]
+DesktopLayout=org.kde.breeze.desktop
+DesktopListLayout=org.kde.breeze.desktop
+LayoutName=org.kde.breeze.desktop
+
 [Windows]
 ActiveMouseScreen=true
 AutoRaise=false
