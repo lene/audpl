@@ -486,7 +486,7 @@
     <keybind key="Menu">
       <action name="Execute">
         <!--command>xscreensaver-command -lock</command-->
-        <command>~/workspace/configs/openbox/bosskey.sh</command>
+        <!--command>~/workspace/configs/openbox/bosskey.sh</command-->
       </action>
     </keybind>
     <!-- reload openbox -->
