@@ -19,16 +19,16 @@ IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=189,195,199
-BackgroundNormal=239,240,241
+BackgroundAlternate=77,77,77
+BackgroundNormal=49,54,59
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
-ForegroundInactive=127,140,141
+ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=49,54,59
+ForegroundNormal=239,240,241
 ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
@@ -36,7 +36,7 @@ ForegroundVisited=127,140,141
 BackgroundAlternate=29,153,243
 BackgroundNormal=61,174,233
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=252,252,252
 ForegroundInactive=239,240,241
 ForegroundLink=253,188,75
@@ -50,7 +50,7 @@ ForegroundVisited=189,195,199
 BackgroundAlternate=77,77,77
 BackgroundNormal=49,54,59
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
 ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
@@ -61,36 +61,36 @@ ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
 [Colors:View]
-BackgroundAlternate=239,240,241
-BackgroundNormal=252,252,252
+BackgroundAlternate=49,54,59
+BackgroundNormal=35,38,41
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
-ForegroundInactive=127,140,141
+ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=49,54,59
+ForegroundNormal=239,240,241
 ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
 [Colors:Window]
-BackgroundAlternate=189,195,199
-BackgroundNormal=239,240,241
+BackgroundAlternate=77,77,77
+BackgroundNormal=49,54,59
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
-ForegroundInactive=127,140,141
+ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=49,54,59
+ForegroundNormal=239,240,241
 ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
 [General]
-ColorScheme=Breeze
-Name=Breeze
+ColorScheme=Breeze Dark
+Name=Breeze Dark
 XftAntialias=true
 XftHintStyle=hintmedium
 XftSubPixel=none
@@ -99,10 +99,11 @@ shadeSortColumn=true
 widgetStyle=Breeze
 
 [Icons]
-Theme=breeze
+Theme=breeze-dark
 
 [KDE]
 ColorScheme=Breeze
+LookAndFeelPackage=org.kde.breezedark.desktop
 contrast=4
 widgetStyle=Breeze
 
@@ -129,9 +130,9 @@ listViewIconSize=0
 LANGUAGE=en_US:de
 
 [WM]
-activeBackground=71,80,87
+activeBackground=49,54,59
 activeBlend=255,255,255
 activeForeground=239,240,241
-inactiveBackground=239,240,241
+inactiveBackground=49,54,59
 inactiveBlend=75,71,67
-inactiveForeground=189,195,199
+inactiveForeground=127,140,141
