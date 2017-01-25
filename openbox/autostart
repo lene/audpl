@@ -2,7 +2,7 @@
 
 MAIN_DISPLAY=$(xrandr -q | grep 'connected 1920x1080' | cut -d ' ' -f 1)
 EXT_DISPLAY=$(xrandr -q | grep 'connected 2560x1440' | cut -d ' ' -f 1)
-if [ -n "$MAIN_DISPLAY" -a -n "$EXT_DISPLAY"]; then
+if [ -n "$MAIN_DISPLAY" -a -n "$EXT_DISPLAY" ]; then
     xrandr --output $EXT_DISPLAY --mode 2560x1440 --rate 59.95 --output $MAIN_DISPLAY --auto --left-of $EXT_DISPLAY
 fi
 
