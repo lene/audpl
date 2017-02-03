@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10438f2d-989d-498f-9590-8b9c38e06c68" name="Default" comment="" />
+    <list default="true" id="10438f2d-989d-498f-9590-8b9c38e06c68" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/playlist-state" afterPath="$PROJECT_DIR$/playlist-state" />
+    </list>
     <ignored path="audacious.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -268,7 +271,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3222" y="0" width="1182" height="1440" extended-state="5" />
+    <frame x="3222" y="0" width="1182" height="1440" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16017316" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -306,6 +309,23 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#387#2778#0" expanded="false" />
+            <element signature="e#2812#2867#0" expanded="false" />
+            <element signature="e#2906#3014#0" expanded="false" />
+            <element signature="e#3100#3361#0" expanded="false" />
+            <element signature="e#3405#3452#0" expanded="false" />
+            <element signature="e#3503#3628#0" expanded="false" />
+            <element signature="e#3697#4046#0" expanded="false" />
+            <element signature="e#4082#4167#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/copy_from_playlist.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
