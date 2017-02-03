@@ -129,10 +129,25 @@ def copy_file(file, target):
 
 
 def move_files_to_original_places(playlist_id):
+
+    def find_all(name, path):
+        result = []
+        for root, dirs, files in os.walk(path):
+            if name in files:
+                result.append(os.path.join(root, name))
+        return result
+
     audacious = AudaciousTools()
     playlist_id = playlist_id or audacious.get_currently_playing_playlist_id()
     for file in audacious.files_in_playlist(playlist_id):
-        print(file)
+        if os.path.isfile(file):
+            continue
+        filename = file.split('/')[-1]
+        target_dir = '/'.join(file.split('/')[:-1])
+        original_files = find_all(filename, '/home/preuss/Music')
+        if not original_files:
+            continue
+        print(target_dir, filename, original_files)
 
 
 def main(args):
@@ -158,8 +173,14 @@ def main(args):
     parser.add_argument(
         '-v', '--verbose', action='store_true'
     )
+    parser.add_argument(
+        '-m', '--move', action='store_true'
+    )
     opts = parser.parse_args(args)
-    copy_playlist(opts.playlist, opts.number, opts.target, opts.verbose, opts.renumber)
+    if opts.move:
+        move_files_to_original_places(opts.playlist)
+    else:
+        copy_playlist(opts.playlist, opts.number, opts.target, opts.verbose, opts.renumber)
 
 if __name__ == '__main__':
     import sys
