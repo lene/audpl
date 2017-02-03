@@ -97,7 +97,7 @@ def copy_playlist(playlist_id, number, target, verbose=False, renumber=False):
 
     audacious = AudaciousTools()
 
-    playlist_id = audacious.get_currently_playing_playlist_id() if not playlist_id else playlist_id
+    playlist_id = playlist_id or audacious.get_currently_playing_playlist_id()
 
     copy_files(audacious.get_files_to_copy(number, playlist_id), target, verbose, renumber)
 
@@ -126,6 +126,13 @@ def copy_file(file, target):
         copy2(file, target)
     except SameFileError as e:
         print(str(e))
+
+
+def move_files_to_original_places(playlist_id):
+    audacious = AudaciousTools()
+    playlist_id = playlist_id or audacious.get_currently_playing_playlist_id()
+    for file in audacious.files_in_playlist(playlist_id):
+        print(file)
 
 
 def main(args):
