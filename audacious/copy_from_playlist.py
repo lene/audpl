@@ -130,12 +130,10 @@ def copy_file(file, target):
 
 def move_files_to_original_places(playlist_id):
 
-    def find_all(name, path):
-        result = []
+    def find(name, path):
         for root, dirs, files in os.walk(path):
             if name in files:
-                result.append(os.path.join(root, name))
-        return result
+                return os.path.join(root, name)
 
     audacious = AudaciousTools()
     playlist_id = playlist_id or audacious.get_currently_playing_playlist_id()
@@ -144,10 +142,17 @@ def move_files_to_original_places(playlist_id):
             continue
         filename = file.split('/')[-1]
         target_dir = '/'.join(file.split('/')[:-1])
-        original_files = find_all(filename, '/home/preuss/Music')
-        if not original_files:
+        original_file = find(filename, '/home/preuss/Music')
+        if not original_file:
             continue
-        print(target_dir, filename, original_files)
+        original_file_parent_dir = '/'.join(original_file.split('/')[:-1])
+        files_to_move = [f for f in os.listdir(original_file_parent_dir) if os.path.isfile(original_file_parent_dir+'/'+f)]
+        print('TO MOVE', original_file, target_dir, files_to_move)
+        os.makedirs(target_dir, exist_ok=True)
+        for f in files_to_move:
+            os.rename(original_file_parent_dir+'/'+f, target_dir+'/'+f)
+            print('        MOVING', original_file_parent_dir+'/'+f, target_dir)
+        os.rmdir(original_file_parent_dir)
 
 
 def main(args):
