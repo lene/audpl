@@ -129,30 +129,34 @@ def copy_file(file, target):
         print(str(e))
 
 
-def move_files_to_original_places(playlist_id):
+def move_files_to_original_places(playlist_id, music_dir='/home/preuss/Music', verbose=False, audacious=None):
 
     def find(name, path):
         for root, dirs, files in os.walk(path):
             if name in files:
                 return os.path.join(root, name)
 
-    audacious = AudaciousTools()
+    if audacious is None:
+        audacious = AudaciousTools()
+
     playlist_id = playlist_id or audacious.get_currently_playing_playlist_id()
     for file in audacious.files_in_playlist(playlist_id):
         if os.path.isfile(file):
             continue
         filename = file.split('/')[-1]
         target_dir = '/'.join(file.split('/')[:-1])
-        original_file = find(filename, '/home/preuss/Music')
+        original_file = find(filename, music_dir)
         if not original_file:
             continue
         original_file_parent_dir = '/'.join(original_file.split('/')[:-1])
         files_to_move = [f for f in os.listdir(original_file_parent_dir) if os.path.isfile(original_file_parent_dir+'/'+f)]
-        print('TO MOVE', original_file, target_dir, files_to_move)
+        if verbose:
+            print('TO MOVE', original_file, target_dir, files_to_move)
         os.makedirs(target_dir, exist_ok=True)
         for f in files_to_move:
             os.rename(original_file_parent_dir+'/'+f, target_dir+'/'+f)
-            print('        MOVING', original_file_parent_dir+'/'+f, target_dir)
+            if verbose:
+                print('        MOVING', original_file_parent_dir+'/'+f, target_dir)
         os.rmdir(original_file_parent_dir)
 
 
@@ -212,7 +216,7 @@ def main(args):
     )
     opts = parser.parse_args(args)
     if opts.move:
-        move_files_to_original_places(opts.playlist)
+        move_files_to_original_places(opts.playlist, verbose=opts.verbose)
     elif opts.clean_filenames:
         clean_filenames(opts.clean_filenames)
     elif opts.copy_newer_than_days:

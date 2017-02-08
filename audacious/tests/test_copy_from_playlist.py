@@ -1,12 +1,13 @@
 from itertools import chain
 from tempfile import TemporaryDirectory
-from os.path import join
-from os import mkdir, listdir
+from os.path import join, exists
+from os import mkdir, listdir, remove
+from hashlib import md5
+
 import unittest
-from unittest.mock import patch
 
 from copy_from_playlist import find_first_dir, existing_files, strip_leading_numbers, renumber_file, \
-    AudaciousTools, copy_playlist
+    AudaciousTools, copy_playlist, move_files_to_original_places, clean_filenames
 
 __author__ = 'Lene Preuss <lene.preuss@gmail.com>'
 
@@ -123,3 +124,76 @@ class TestAudaciousTools(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             with TemporaryDirectory() as temp_dir:
                 copy_playlist('0001', 0, temp_dir, audacious=self.audacious)
+
+
+class TestMoveFilesToOriginalPlaces(unittest.TestCase):
+
+    TARGETDIR = '/tmp'  # as defined in data/audacious_config/playlists/0002.audpl
+
+    def setUp(self):
+        self.audacious = AudaciousTools('data/audacious_config')
+
+        self.testdir = TemporaryDirectory()
+        self.file_names = ('01 - Test A.mp3', 'Test B.mp3')
+        for file in self.file_names:
+            with open(join(self.testdir.name, file), 'w'):
+                pass
+
+        for file in self.file_names:
+            self.assertIn(file, listdir(self.testdir.name))
+
+    def tearDown(self):
+        try:
+            self.testdir.cleanup()
+        except FileNotFoundError:
+            pass
+
+        for file in self.file_names:
+            try:
+                remove(join(self.TARGETDIR, file))
+            except FileNotFoundError:
+                pass
+
+    def test_move_files_to_original_places_creates_target_files(self):
+        move_files_to_original_places('0002', music_dir=self.testdir.name, audacious=self.audacious)
+        for file in self.file_names:
+            self.assertIn(file, listdir(self.TARGETDIR))
+
+    def test_move_files_to_original_places_deletes_source_dir(self):
+        move_files_to_original_places('0002', music_dir=self.testdir.name, audacious=self.audacious)
+        self.assertFalse(exists(self.testdir.name))
+
+
+class TestCleanFilenames(unittest.TestCase):
+
+    def setUp(self):
+        self.testdir = TemporaryDirectory()
+
+    def tearDown(self):
+        self.testdir.cleanup()
+
+    def test_clean_filenames_succeeds(self):
+        clean_filenames(self.testdir.name)
+
+    def test_clean_filenames_removes_longest_common_part(self):
+        self._create_files('{} - blah blah blah - {}.mp3', 10)
+        print(listdir(self.testdir.name))
+        clean_filenames(self.testdir.name)
+
+    def test_clean_filenames_leaves_numbering_intact(self):
+        pass
+
+    def test_clean_filenames_leaves_extension_intact(self):
+        pass
+
+    def test_clean_filenames_honors_min_length(self):
+        pass
+
+    def _create_files(self, template: str, number: int):
+        self.files = []
+        for i in range(1, number+1):
+            filename = template.format(i, md5(str(i).encode('utf-8')).hexdigest())
+            path = join(self.testdir.name, filename)
+            with open(path, 'wb'):
+                pass
+            self.files.append(path)
