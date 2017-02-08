@@ -10,6 +10,7 @@ from shutil import copy2, SameFileError
 from argparse import ArgumentParser
 from subprocess import check_output
 from typing import List
+from time import time
 
 DEFAULT_AUDACIOUS_CONFIG_DIR = os.path.join(
     os.environ['HOME'], '.config', 'audacious'
@@ -185,24 +186,33 @@ def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False):
         return
     if to_remove[:3] == ' - ':
         to_remove = to_remove[3:]
-    if re.match(r'\.\w+$', to_remove):
+    if re.match(r'.*\.\w+$', to_remove):
         to_remove = re.sub(r'\.\w+?$', '', to_remove)
-        print('TO REMOVE', to_remove)
     for file in files:
         if verbose:
             print('MOVE ', os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
         os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
 
 
-def copy_newest_files(max_days: int, target_dir: str):
-    from time import time
-    def find_newer_than(base_path):
-        for root, _, files in os.walk(base_path):
-            for file in files:
-                if time() - os.path.getmtime(file) > (max_days * 24 * 60 * 60):
-                    return os.path.join(root, file)
+def find_newer_than(base_path, seconds):
+    return [
+        os.path.join(root, file)
+        for root, _, files in os.walk(base_path)
+        for file in files
+        if os.path.exists(os.path.join(root, file))
+        if time() - os.path.getctime(os.path.join(root, file)) < seconds
+    ]
 
-    raise NotImplemented()
+
+def copy_newest_files(src_dir: str, max_days: int, target_dir: str):
+    to_copy = find_newer_than(src_dir, max_days * 24 * 60 * 60)
+    for file in to_copy:
+        basedir = os.path.join('/', *os.path.split(file)[:-1])
+        target_subdir = basedir.replace(src_dir, '').split(os.path.sep)
+        target_path = os.path.join(target_dir, *target_subdir)
+        os.makedirs(target_path, exist_ok=True)
+        copy2(file, target_path)
+        # print(basedir, target_path)
 
 
 def main(args):

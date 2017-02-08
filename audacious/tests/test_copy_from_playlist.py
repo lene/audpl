@@ -1,14 +1,14 @@
 from itertools import chain
 from tempfile import TemporaryDirectory
 from os.path import join, exists
-from os import mkdir, listdir, remove
+from os import mkdir, listdir, remove, walk
 from hashlib import md5
 
 import unittest
 
 from copy_from_playlist import find_first_dir, existing_files, strip_leading_numbers, renumber_file, \
     AudaciousTools, copy_playlist, move_files_to_original_places, longest_common_substring, \
-    clean_filenames
+    clean_filenames, copy_newest_files
 
 __author__ = 'Lene Preuss <lene.preuss@gmail.com>'
 
@@ -236,3 +236,21 @@ class TestCleanFilenames(unittest.TestCase):
             with open(path, 'wb'):
                 pass
             self.files.append(path)
+
+class TestCopyNewestFiles(unittest.TestCase):
+
+    def setUp(self):
+        self.testdir = TemporaryDirectory()
+
+    def tearDown(self):
+        self.testdir.cleanup()
+
+    def test_run(self):
+        copy_newest_files('/home/lene/Music/new', 10, self.testdir.name)
+        print(list(walk(self.testdir.name)))
+
+    def XXX_test_files_are_copied(self):
+        copy_newest_files('/home/lene/Music/new', 10, '/tmp')
+
+    def XXX_test_directory_structure_is_preserved(self):
+        copy_newest_files('/home/lene/Music/new', 10, '/tmp')
