@@ -212,7 +212,6 @@ def copy_newest_files(src_dir: str, max_days: int, target_dir: str):
         target_path = os.path.join(target_dir, *target_subdir)
         os.makedirs(target_path, exist_ok=True)
         copy2(file, target_path)
-        # print(basedir, target_path)
 
 
 def main(args):
