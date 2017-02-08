@@ -49,6 +49,7 @@ class AudaciousTools:
         :return: All actually existing files in that playlist
         """
         lines = self._read_playlist(playlist_id)
+        print(lines)
         return AudaciousTools._file_entries(lines)
         return existing_files(AudaciousTools._file_entries(lines))
 
