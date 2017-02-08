@@ -117,7 +117,7 @@ def renumber_file(filename: str, number: int, total: int):
     )
 
 
-def copy_files(files_to_copy, target_dir, verbose, renumber):
+def copy_files(files_to_copy: List[str], target_dir: str, verbose: bool, renumber: bool):
     for i, file in enumerate(files_to_copy):
         filename = file.split('/')[-1]
         target_filename = renumber_file(filename, i+1, len(files_to_copy)) if renumber else filename
@@ -126,14 +126,16 @@ def copy_files(files_to_copy, target_dir, verbose, renumber):
         copy_file(file, os.path.join(target_dir, target_filename))
 
 
-def copy_file(file, target):
+def copy_file(file: str, target: str):
     try:
         copy2(file, target)
     except SameFileError as e:
         print(str(e))
 
 
-def move_files_to_original_places(playlist_id, music_dir='/home/preuss/Music', verbose=False, audacious=None):
+def move_files_to_original_places(
+        playlist_id: str, music_dir: str='/home/preuss/Music', verbose: bool=False, audacious=None
+):
 
     def find(name, path):
         for root, dirs, files in os.walk(path):
@@ -184,8 +186,8 @@ def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False):
     if to_remove[:3] == ' - ':
         to_remove = to_remove[3:]
     if re.match(r'\.\w+$', to_remove):
-        to_remove = re.sub(r'\.\w+$', '', to_remove)
-        print(to_remove)
+        to_remove = re.sub(r'\.\w+?$', '', to_remove)
+        print('TO REMOVE', to_remove)
     for file in files:
         if verbose:
             print('MOVE ', os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
