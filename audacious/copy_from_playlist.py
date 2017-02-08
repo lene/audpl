@@ -205,15 +205,18 @@ def find_newer_than(base_path, seconds):
 
 
 def copy_newest_files(src_dir: str, target_dir: str, max_days: int, verbose: bool=False):
-    to_copy = find_newer_than(src_dir, max_days * 24 * 60 * 60)
+    to_copy = sorted(find_newer_than(src_dir, max_days * 24 * 60 * 60))
     for i, file in enumerate(to_copy):
         basedir = os.path.join('/', *os.path.split(file)[:-1])
         target_subdir = basedir.replace(src_dir, '').split(os.path.sep)
         target_path = os.path.join(target_dir, *target_subdir)
         os.makedirs(target_path, exist_ok=True)
         if verbose:
-            print("{}/{} {}".format(i+1, len(to_copy), file.replace(src_dir, '')))
-        copy2(file, target_path)
+            print("{}/{} {}".format(i+1, len(to_copy), file.replace(src_dir, '').strip('/')))
+        try:
+            copy2(file, target_path)
+        except OSError:
+            pass
 
 
 def get_options(args):
