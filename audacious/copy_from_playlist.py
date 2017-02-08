@@ -179,11 +179,28 @@ def main(args):
         '-v', '--verbose', action='store_true'
     )
     parser.add_argument(
-        '-m', '--move', action='store_true'
+        '-m', '--move', action='store_true',
+        help='Move files to the places in the file system they have on the playlist'
+    )
+    parser.add_argument(
+        '--clean-filenames', type=str,
+        help='Remove longest common substring from music files in this dir'
+    )
+    parser.add_argument(
+        '--copy-files-newer-than-days', type=int,
+        help='Copy files newer than this many days'
+    )
+    parser.add_argument(
+        '--copy-files-newer-than-days-target', type=str,
+        help='Copy files newer than this many days to *this* target directory'
     )
     opts = parser.parse_args(args)
     if opts.move:
         move_files_to_original_places(opts.playlist)
+    elif opts.clean_filenames:
+        clean_filenames(opts.clean_filenames)
+    elif opts.copy_newer_than_days:
+        copy_newest_files(opts.copy_newer_than_days, opts.copy_newer_than_days_target)
     else:
         copy_playlist(opts.playlist, opts.number, opts.target, opts.verbose, opts.renumber)
 
