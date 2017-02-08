@@ -204,17 +204,19 @@ def find_newer_than(base_path, seconds):
     ]
 
 
-def copy_newest_files(src_dir: str, max_days: int, target_dir: str):
+def copy_newest_files(src_dir: str, target_dir: str, max_days: int, verbose: bool=False):
     to_copy = find_newer_than(src_dir, max_days * 24 * 60 * 60)
-    for file in to_copy:
+    for i, file in enumerate(to_copy):
         basedir = os.path.join('/', *os.path.split(file)[:-1])
         target_subdir = basedir.replace(src_dir, '').split(os.path.sep)
         target_path = os.path.join(target_dir, *target_subdir)
         os.makedirs(target_path, exist_ok=True)
+        if verbose:
+            print("{}/{} {}".format(i+1, len(to_copy), file.replace(src_dir, '')))
         copy2(file, target_path)
 
 
-def main(args):
+def get_options(args):
     parser = ArgumentParser(
         description="Copy the first N existing files of an audacious playlist to a target folder"
     )
@@ -250,18 +252,32 @@ def main(args):
         help='Copy files newer than this many days'
     )
     parser.add_argument(
+        '--copy-files-newer-than-days-source', type=str,
+        default=os.path.expanduser('~/Music'),
+        help='Copy files newer than this many days from *this* source directory.\n' +
+             'Default: ' + os.path.expanduser('~/Music')
+    )
+    parser.add_argument(
         '--copy-files-newer-than-days-target', type=str,
         help='Copy files newer than this many days to *this* target directory'
     )
-    opts = parser.parse_args(args)
+    return parser.parse_args(args)
+
+
+def main(args):
+    opts = get_options(args)
     if opts.move:
         move_files_to_original_places(opts.playlist, verbose=opts.verbose)
     elif opts.clean_filenames:
         clean_filenames(opts.clean_filenames, verbose=opts.verbose)
-    elif opts.copy_newer_than_days:
-        copy_newest_files(opts.copy_newer_than_days, opts.copy_newer_than_days_target)
+    elif opts.copy_files_newer_than_days:
+        copy_newest_files(
+            opts.copy_files_newer_than_days_source, opts.copy_files_newer_than_days_target,
+            opts.copy_files_newer_than_days, verbose=opts.verbose
+        )
     else:
         copy_playlist(opts.playlist, opts.number, opts.target, opts.verbose, opts.renumber)
+
 
 if __name__ == '__main__':
     import sys

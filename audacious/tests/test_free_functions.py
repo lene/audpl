@@ -16,13 +16,11 @@ class TestFreeFunctions(TempDirTestCase):
         self.file_names = ('A', 'B', 'D')
         self.dir_names = ('C', 'E')
         for file in self.file_names:
-            with open(join(self.testdir.name, file), 'w'):
-                pass
+            self.create_file(join(self.testdir.name, file))
         for dir in self.dir_names:
             mkdir(join(self.testdir.name, dir))
             for file in self.file_names:
-                with open(join(self.testdir.name, dir, file), 'w'):
-                    pass
+                self.create_file(join(self.testdir.name, dir, file))
 
     def test_find_first_dir_finds_dirs(self):
         for dir in self.dir_names:
@@ -51,7 +49,7 @@ class TestFreeFunctions(TempDirTestCase):
         ]:
             self.assertEqual('blah', strip_leading_numbers(possible_name))
 
-    def test_strip_leading_numbers_nonsens(self):
+    def test_strip_leading_numbers_nonsense(self):
         for impossible_name in ['1x. blah', 'x1.blah', '² - blah', '1/blah', '01--blah']:
             self.assertNotEqual('blah', strip_leading_numbers(impossible_name))
 

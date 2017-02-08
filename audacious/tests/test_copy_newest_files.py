@@ -20,8 +20,8 @@ class TestCopyNewestFiles(TempDirTestCase):
         self.dest_dir = join(self.testdir.name, 'dest')
         mkdir(self.dest_dir)
 
-    def test_files_are_copied(self):
-        copy_newest_files(self.src_dir, 1, self.dest_dir)
+    def test_files_and_dir_structure_are_copied(self):
+        copy_newest_files(self.src_dir, self.dest_dir, 1)
         self.assertTrue(isfile(join(self.dest_dir, 'x')))
         self.assertTrue(isdir(join(self.dest_dir, 'sub_dir')))
         self.assertTrue(isfile(join(self.dest_dir, 'sub_dir', 'x')))
