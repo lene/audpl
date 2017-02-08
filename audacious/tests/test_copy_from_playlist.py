@@ -76,11 +76,28 @@ class TestAudaciousTools(unittest.TestCase):
         self.assertIn('0001', self.audacious.get_playlist_order())
 
     def test_get_currently_playing_playlist_id(self):
-        print(self.audacious.get_currently_playing_playlist_id())
+        self.assertEqual('0001', self.audacious.get_currently_playing_playlist_id())
+
+    def test_files_in_playlist(self):
+        files = self.audacious.files_in_playlist('0001')
+        self.assertEqual(3, len(files))
+        self.assertIn('data/audacious_config/01 - Test A.mp3', files)
+        self.assertIn('data/audacious_config/02 - Test B.mp3', files)
+        self.assertIn('NONEXISTENT.mp3', files)
+
+    def test_get_files_to_copy(self):
+        files = self.audacious.get_files_to_copy(0, '0001')
+        self.assertEqual(3, len(files))
+        self.assertIn('data/audacious_config/01 - Test A.mp3', files)
+        self.assertIn('data/audacious_config/02 - Test B.mp3', files)
+        self.assertIn('NONEXISTENT.mp3', files)
+        files = self.audacious.get_files_to_copy(1, '0001')
+        self.assertEqual(1, len(files))
+        self.assertIn('data/audacious_config/01 - Test A.mp3', files)
 
     def test_copy_playlist(self):
         with patch('copy_from_playlist.AudaciousTools') as audacious:
             # audacious = self.audacious
             copy_playlist('0001', 1, '/tmp')
-        print(listdir('/tmp'))
-        assert
+        # print(listdir('/tmp'))
+        audacious.assert_called_with()
