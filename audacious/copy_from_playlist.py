@@ -9,6 +9,7 @@ from urllib.parse import unquote
 from shutil import copy2, SameFileError
 from argparse import ArgumentParser
 from subprocess import check_output
+from typing import List
 
 DEFAULT_AUDACIOUS_CONFIG_DIR = os.path.join(
     os.environ['HOME'], '.config', 'audacious'
@@ -22,7 +23,7 @@ class AudaciousTools:
     PLAYLIST_EXTENSION = '.audpl'
     FILE_LINE_PREFIX = 'uri=file://'
 
-    def __init__(self, base_config_dir=DEFAULT_AUDACIOUS_CONFIG_DIR):
+    def __init__(self, base_config_dir: str=DEFAULT_AUDACIOUS_CONFIG_DIR):
         """
         :param base_config_dir: Directory containing the audacious configuration
         """
@@ -43,7 +44,7 @@ class AudaciousTools:
         """Directory where the playlists are for this audacious instance"""
         return self._playlist_dir
 
-    def files_in_playlist(self, playlist_id):
+    def files_in_playlist(self, playlist_id: str):
         """
         :param playlist_id: Playlist ID (filename)
         :return: All actually existing files in that playlist
@@ -52,25 +53,25 @@ class AudaciousTools:
         return AudaciousTools._file_entries(lines)
         return existing_files(AudaciousTools._file_entries(lines))
 
-    def get_files_to_copy(self, number, playlist_id):
+    def get_files_to_copy(self, number: int, playlist_id: str):
         files_to_copy = self.files_in_playlist(playlist_id)
         return files_to_copy[:number] if number else files_to_copy
 
     def _playlist_order_file_path(self):
         return os.path.join(self.playlist_directory, 'order')
 
-    def _read_playlist(self, playlist_id):
+    def _read_playlist(self, playlist_id: str):
         with open(self._playlist_file_path(playlist_id)) as playlist_file:
             return playlist_file.readlines()
 
-    def _playlist_file_path(self, playlist_id):
+    def _playlist_file_path(self, playlist_id: str):
         return os.path.join(
             self.playlist_directory,
             playlist_id + AudaciousTools.PLAYLIST_EXTENSION
         )
 
     @staticmethod
-    def _file_entries(lines):
+    def _file_entries(lines: int):
         return [
             unquote(line[len(AudaciousTools.FILE_LINE_PREFIX):]).strip()
             for line in lines if line.startswith(AudaciousTools.FILE_LINE_PREFIX)
@@ -81,17 +82,20 @@ class AudaciousTools:
         return int(check_output(['audtool', 'current-playlist']))
 
 
-def existing_files(files):
+def existing_files(files: List[str]):
     return [file for file in files if os.path.isfile(file)]
 
 
-def find_first_dir(name, path):
+def find_first_dir(name: str, path: str):
     for root, dirs, files in os.walk(path):
         if name in dirs:
             return os.path.join(root, name)
 
 
-def copy_playlist(playlist_id, number, target, verbose=False, renumber=False, audacious=None):
+def copy_playlist(
+        playlist_id: str, number: int, target: str, verbose: bool=False, renumber: bool=False,
+        audacious=None
+):
     if not os.path.isdir(target):
         os.mkdir(target)
 
@@ -103,11 +107,11 @@ def copy_playlist(playlist_id, number, target, verbose=False, renumber=False, au
     copy_files(audacious.get_files_to_copy(number, playlist_id), target, verbose, renumber)
 
 
-def strip_leading_numbers(filename):
+def strip_leading_numbers(filename: str):
     return re.sub(r'^\d+\s*[-.]?\s*', '', filename)
 
 
-def renumber_file(filename, number, total):
+def renumber_file(filename: str, number: int, total: int):
     return "{:0{width}d} - {}".format(
         number, strip_leading_numbers(filename), width=max(int(log10(total)) + 1, 2)
     )
@@ -160,11 +164,35 @@ def move_files_to_original_places(playlist_id, music_dir='/home/preuss/Music', v
         os.rmdir(original_file_parent_dir)
 
 
-def clean_filenames(basedir):
-    raise NotImplemented()
+def longest_common_substring(data: List[str]):
+    substr = ''
+    if len(data) > 1 and len(data[0]) > 0:
+        for i in range(len(data[0])):
+            for j in range(len(data[0])-i+1):
+                if j > len(substr) and all(data[0][i:i+j] in x for x in data):
+                    substr = data[0][i:i+j]
+    return substr
 
 
-def copy_newest_files(max_days, target_dir):
+def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False):
+    files = sorted(os.listdir(basedir))
+    to_remove = longest_common_substring(files)
+    if not to_remove:
+        return
+    if min_length and len(to_remove) < min_length:
+        return
+    if to_remove[:3] == ' - ':
+        to_remove = to_remove[3:]
+    if re.match(r'\.\w+$', to_remove):
+        to_remove = re.sub(r'\.\w+$', '', to_remove)
+        print(to_remove)
+    for file in files:
+        if verbose:
+            print('MOVE ', os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
+        os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
+
+
+def copy_newest_files(max_days: int, target_dir: str):
     from time import time
     def find_newer_than(base_path):
         for root, _, files in os.walk(base_path):
@@ -218,7 +246,7 @@ def main(args):
     if opts.move:
         move_files_to_original_places(opts.playlist, verbose=opts.verbose)
     elif opts.clean_filenames:
-        clean_filenames(opts.clean_filenames)
+        clean_filenames(opts.clean_filenames, verbose=opts.verbose)
     elif opts.copy_newer_than_days:
         copy_newest_files(opts.copy_newer_than_days, opts.copy_newer_than_days_target)
     else:
