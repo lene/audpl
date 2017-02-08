@@ -82,22 +82,44 @@ class TestAudaciousTools(unittest.TestCase):
         files = self.audacious.files_in_playlist('0001')
         self.assertEqual(3, len(files))
         self.assertIn('data/audacious_config/01 - Test A.mp3', files)
-        self.assertIn('data/audacious_config/02 - Test B.mp3', files)
+        self.assertIn('data/audacious_config/Test B.mp3', files)
         self.assertIn('NONEXISTENT.mp3', files)
 
     def test_get_files_to_copy(self):
         files = self.audacious.get_files_to_copy(0, '0001')
         self.assertEqual(3, len(files))
         self.assertIn('data/audacious_config/01 - Test A.mp3', files)
-        self.assertIn('data/audacious_config/02 - Test B.mp3', files)
+        self.assertIn('data/audacious_config/Test B.mp3', files)
         self.assertIn('NONEXISTENT.mp3', files)
         files = self.audacious.get_files_to_copy(1, '0001')
         self.assertEqual(1, len(files))
         self.assertIn('data/audacious_config/01 - Test A.mp3', files)
 
     def test_copy_playlist(self):
-        with patch('copy_from_playlist.AudaciousTools') as audacious:
-            # audacious = self.audacious
-            copy_playlist('0001', 1, '/tmp')
-        # print(listdir('/tmp'))
-        audacious.assert_called_with()
+        with TemporaryDirectory() as temp_dir:
+            copy_playlist('0001', 2, temp_dir, audacious=self.audacious)
+            copied_files = listdir(temp_dir)
+            self.assertEqual(2, len(copied_files))
+            self.assertIn('01 - Test A.mp3', copied_files)
+            self.assertIn('Test B.mp3', copied_files)
+
+    def test_copy_playlist_with_renumber(self):
+        with TemporaryDirectory() as temp_dir:
+            copy_playlist('0001', 2, temp_dir, renumber=True, audacious=self.audacious)
+            copied_files = listdir(temp_dir)
+            self.assertEqual(2, len(copied_files))
+            self.assertIn('01 - Test A.mp3', copied_files)
+            self.assertIn('02 - Test B.mp3', copied_files)
+
+    def test_copy_playlist_honors_length_limit(self):
+        with TemporaryDirectory() as temp_dir:
+            copy_playlist('0001', 1, temp_dir, audacious=self.audacious)
+            copied_files = listdir(temp_dir)
+            self.assertEqual(1, len(copied_files))
+            self.assertIn('01 - Test A.mp3', copied_files)
+            self.assertNotIn('Test B.mp3', copied_files)
+
+    def test_copy_playlist_fails_on_nonexisting_file(self):
+        with self.assertRaises(FileNotFoundError):
+            with TemporaryDirectory() as temp_dir:
+                copy_playlist('0001', 0, temp_dir, audacious=self.audacious)

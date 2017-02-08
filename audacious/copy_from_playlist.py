@@ -91,11 +91,12 @@ def find_first_dir(name, path):
             return os.path.join(root, name)
 
 
-def copy_playlist(playlist_id, number, target, verbose=False, renumber=False):
+def copy_playlist(playlist_id, number, target, verbose=False, renumber=False, audacious=None):
     if not os.path.isdir(target):
         os.mkdir(target)
 
-    audacious = AudaciousTools()
+    if audacious is None:
+        audacious = AudaciousTools()
 
     playlist_id = playlist_id or audacious.get_currently_playing_playlist_id()
 
