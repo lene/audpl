@@ -155,6 +155,21 @@ def move_files_to_original_places(playlist_id):
         os.rmdir(original_file_parent_dir)
 
 
+def clean_filenames(basedir):
+    raise NotImplemented()
+
+
+def copy_newest_files(max_days, target_dir):
+    from time import time
+    def find_newer_than(base_path):
+        for root, _, files in os.walk(base_path):
+            for file in files:
+                if time() - os.path.getmtime(file) > (max_days * 24 * 60 * 60):
+                    return os.path.join(root, file)
+
+    raise NotImplemented()
+
+
 def main(args):
     parser = ArgumentParser(
         description="Copy the first N existing files of an audacious playlist to a target folder"
