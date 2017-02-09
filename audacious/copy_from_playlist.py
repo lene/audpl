@@ -213,10 +213,11 @@ def copy_newest_files(src_dir: str, target_dir: str, max_days: int, verbose: boo
         os.makedirs(target_path, exist_ok=True)
         if verbose:
             print("{}/{} {}".format(i+1, len(to_copy), file.replace(src_dir, '').strip('/')))
-        try:
-            copy2(file, target_path)
-        except OSError:
-            pass
+        if not os.path.isfile(os.path.join(file, target_path)):
+            try:
+                copy2(file, target_path)
+            except OSError:
+                pass
 
 
 def get_options(args):
