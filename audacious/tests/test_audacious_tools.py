@@ -17,8 +17,9 @@ class TestAudaciousTools(TempDirTestCase):
         self.assertEqual(2, len(self.audacious.get_playlist_order()))
         self.assertIn('0001', self.audacious.get_playlist_order())
 
-    # def test_get_currently_playing_playlist_id(self):
-        # self.assertEqual('0001', self.audacious.get_currently_playing_playlist_id())
+    def test_get_currently_playing_playlist_id(self):
+        # currently playing playlist depends on external audacious state, so this is best we can do
+        self.assertIn(self.audacious.get_currently_playing_playlist_id(), ('0001', '0002'))
 
     def test_files_in_playlist(self):
         files = self.audacious.files_in_playlist('0001')
