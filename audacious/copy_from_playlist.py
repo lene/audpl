@@ -194,14 +194,18 @@ def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False):
         os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
 
 
-def find_newer_than(base_path, seconds):
+def find_files(base_path, condition):
     return [
         os.path.join(root, file)
         for root, _, files in os.walk(base_path)
         for file in files
         if os.path.exists(os.path.join(root, file))
-        if time() - os.path.getctime(os.path.join(root, file)) < seconds
+        if condition(os.path.join(root, file))
     ]
+
+
+def find_newer_than(base_path, seconds):
+    return find_files(base_path, lambda file: time() - os.path.getctime(file) < seconds)
 
 
 def copy_newest_files(src_dir: str, target_dir: str, max_days: int, verbose: bool=False):
