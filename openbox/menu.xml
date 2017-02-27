@@ -79,6 +79,11 @@
 			<execute>kgpg</execute>
 		  </action>
 		</item>
+		<item label="Multibit-HD">
+		  <action name="Execute">
+			<execute>/opt/multibit-hd/multibit-hd</execute>
+		  </action>
+		</item>
 
 	  </menu>
 
