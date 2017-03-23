@@ -143,14 +143,14 @@ intensity=1.5
 [gtkui]
 close_button_visible=FALSE
 column_expand=0,1,1,0
-column_widths=75,225,175,10,175,175,10,100,39,75,275,275,275,10
+column_widths=83,225,175,10,175,175,10,100,43,75,275,275,275,10
 entry_count_visible=TRUE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 multi_column_view=FALSE
 player_height=767
 player_width=619
-player_x=658
+player_x=1298
 player_y=0
 playlist_columns=queued number artist title length
 playlist_headers=FALSE
