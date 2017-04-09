@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Settings>
+  <FilerWindow path="/home/lene">
+    <Width>1392</Width>
+    <Height>872</Height>
+    <ShowHidden>0</ShowHidden>
+    <DisplayStyle>2</DisplayStyle>
+    <SortType>0</SortType>
+    <SortOrder>0</SortOrder>
+    <ViewType>0</ViewType>
+    <DetailsType>0</DetailsType>
+    <ShowThumbs>1</ShowThumbs>
+    <FilterType>0</FilterType>
+    <FilterDirectories>0</FilterDirectories>
+  </FilerWindow>
+</Settings>
