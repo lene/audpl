@@ -40,6 +40,7 @@ which xv || (
     patch -p1 < ../xv-3.10a-jumbo-fix-patch-20050410.txt
     patch -p1 < ../xv-3.10a-jumbo-enh-patch-20050501.txt
     patch -p1 < ../xv-3.10a-jumbo20050501-1.diff
+    sed -i s/75/95/g xvjpeg.c
     sudo apt install libxt-dev libc6-dev xlibs-dev libjpeg62-dev libtiff5-dev libpng12-dev libxt-dev
     make -j4
     sudo mv -i xv /usr/local/bin/
