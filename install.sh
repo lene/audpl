@@ -27,3 +27,23 @@ if [ -f openbox/setlayout.c ]; then
 fi
 
 
+# (try to) install xv
+which xv || (
+    cd /tmp
+    wget ftp://ftp.trilon.com/pub/xv/xv-3.10a.tar.gz
+    wget http://www.ulich.org/hints/resources/xv-3.10a-jumbo20050501-1.diff.gz
+    wget http://www.ulich.org/hints/resources/xv-3.10a-jumbo-patches-20050501.tar.gz
+    tar xvzf xv-3.10a.tar.gz
+    tar xvzf xv-3.10a-jumbo-patches-20050501.tar.gz
+    gzip -d xv-3.10a-jumbo20050501-1.diff.gz
+    cd xv-3.10a
+    patch -p1 < ../xv-3.10a-jumbo-fix-patch-20050410.txt
+    patch -p1 < ../xv-3.10a-jumbo-enh-patch-20050501.txt
+    patch -p1 < ../xv-3.10a-jumbo20050501-1.diff
+    # set JPEG quality default to 95%
+    sed -i s/75/95/g xvjpeg.c
+    sudo apt install libxt-dev libc6-dev xlibs-dev libjpeg62-dev libtiff5-dev libpng12-dev libxt-dev
+    make -j4
+    sudo mv -i xv /usr/local/bin/
+    cd -
+)
