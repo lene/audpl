@@ -132,7 +132,7 @@
   <margins>
     <top>0</top>
     <bottom>0</bottom>
-    <left>96</left>
+    <left>128</left>
     <right>0</right>
   </margins>
   <dock>
@@ -941,7 +941,7 @@
     <application name="gkrellm" class="Gkrellm">
       <decor>no</decor>
       <position>
-        <x>0</x>
+        <x>-3810</x>
         <y>0</y>
       </position>
       <desktop>all</desktop>
