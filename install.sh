@@ -17,7 +17,7 @@ ln -s $HOME/workspace/configs/.mrxvtrc $HOME
 ln -s $HOME/workspace/configs/.emacs   $HOME
 ln -s $HOME/workspace/configs/.xemacs  $HOME
 
-sudo apt install mrxvt gkrellm audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools
+sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools
 
 if [ -f openbox/setlayout.c ]; then
     cd openbox && \
@@ -42,7 +42,7 @@ which xv || (
     patch -p1 < ../xv-3.10a-jumbo20050501-1.diff
     # set JPEG quality default to 95%
     sed -i s/75/95/g xvjpeg.c
-    sudo apt install libxt-dev libc6-dev xlibs-dev libjpeg62-dev libtiff5-dev libpng12-dev libxt-dev
+    sudo apt install libxt-dev libc6-dev xlibs-dev libjpeg62-dev libtiff5-dev libpng12-dev
     make -j4
     sudo mv -i xv /usr/local/bin/
     cd -
