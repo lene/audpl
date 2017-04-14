@@ -399,7 +399,7 @@ domain audacious-plugins
 priority 0
 about 0
 config 1
-enabled 0
+enabled 1
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/crystalizer.so
 stamp 1467271904
 name Crystalizer
@@ -447,7 +447,7 @@ domain audacious-plugins
 priority 0
 about 1
 config 1
-enabled 1
+enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/speed-pitch.so
 stamp 1467271904
 name Speed and Pitch
