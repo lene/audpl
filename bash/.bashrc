@@ -64,7 +64,9 @@ export PYTHONSTARTUP=$HOME/workspace/configs/bash/.pythonrc
 export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python2' # This needs to be placed before the virtualenvwrapper command
 export WORKON_HOME=~/.virtualenvs
 
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+if [ -f $HOME/.local/bin/virtualenvwrapper.sh ]; then
+	source $HOME/.local/bin/virtualenvwrapper.sh
+elif [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 	source /usr/local/bin/virtualenvwrapper.sh
 elif [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ];  then
 	source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
