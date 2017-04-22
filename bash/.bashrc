@@ -8,6 +8,11 @@
 # debugging off
 set +xv
 
+alias time="/usr/bin/time --format='%E wall, %Us user, %Ss sys 
+%M kB max (%Xtext+%Ddata)
+%P CPU'"
+alias 	ll='ls -l'
+
 # set PATH, if not set properly for root
 echo $PATH | grep sbin > /dev/null || export PATH=/sbin:/usr/sbin:/usr/local/sbin:/root/usr/X11R6/bin:$PATH
 
