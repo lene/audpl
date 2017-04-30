@@ -8,6 +8,8 @@ for i in bash/.??*; do
     rm -rf $HOME/$file && ln -s $(pwd)/$i $HOME/$file
 done
 
+ln -s $HOME/workspace/configs/fish		 $HOME/.config
+
 ln -s $HOME/workspace/configs/kglobalshortcutsrc $HOME/.config
 ln -s $HOME/workspace/configs/kdeglobals         $HOME/.config
 ln -s $HOME/workspace/configs/kwinrc             $HOME/.config
