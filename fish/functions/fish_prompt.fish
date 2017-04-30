@@ -39,5 +39,5 @@ function fish_prompt --description 'Write out the prompt'
   		test $UID -eq 0; and export PS1="\u@\h:\w # "
 	end	
 
-	echo -n -s "[ " (date +'%H:%M:%S') " ] " (set_color $color_cwd) (prompt_pwd) (set_color normal) "$suffix "
+	echo -n -s (set_color 888) "[ " (date +'%H:%M:%S') " ] " (set_color $color_cwd) (prompt_pwd) (set_color normal) "$suffix "
 end
