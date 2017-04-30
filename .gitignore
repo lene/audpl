@@ -11,3 +11,4 @@ setlayout
 # vi backups
 .\#*
 */.idea/*
+tmp
