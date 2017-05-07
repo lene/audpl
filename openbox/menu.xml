@@ -29,14 +29,14 @@
 
 	  <menu id="net-menu" label="Net">
 
-		<item label="Firefox">
-		  <action name="Execute">
-			<execute>firefox</execute>
-		  </action>
-		</item>
 		<item label="Chromium">
 		  <action name="Execute">
 			<execute>chromium-browser</execute>
+		  </action>
+		</item>
+		<item label="Firefox">
+		  <action name="Execute">
+			<execute>firefox</execute>
 		  </action>
 		</item>
 		<item label="Thunderbird">
