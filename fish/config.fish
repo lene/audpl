@@ -1,8 +1,8 @@
 function PYTHON
-    if which python3.6
+    if which python3.6 > /dev/null 2>&1
         python3.6 $argv
     else
-        python2.7 $argv
+        python $argv
     end
 end	
 eval (PYTHON -m virtualfish auto_activation global_requirements compat_aliases)
