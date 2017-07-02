@@ -20,8 +20,8 @@ mrxvt*itabBackground:		grey20
 
 mrxvt*fading:			20
 
-#mrxvt*font:			12x24
-mrxvt*font:			10x20
+mrxvt*font:			12x24
+#mrxvt*font:			10x20
 #mrxvt*xft:			True
 mrxvt*xft:			False
 mrxvt*xftAntialias:		True
