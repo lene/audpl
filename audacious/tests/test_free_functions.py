@@ -57,3 +57,4 @@ class TestFreeFunctions(TempDirTestCase):
         self.assertEqual('10 - blah', renumber_file('01 - blah', 10, 10))
         self.assertEqual('10 - blah', renumber_file('blah', 10, 10))
         self.assertEqual('010 - blah', renumber_file('01 - blah', 10, 123))
+        self.assertEqual('10 - blah', renumber_file('01 blah', 10, 10))
