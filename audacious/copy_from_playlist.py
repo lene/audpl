@@ -66,10 +66,7 @@ class AudaciousTools:
             return playlist_file.readlines()
 
     def _playlist_file_path(self, playlist_id: str):
-        return os.path.join(
-            self.playlist_directory,
-            playlist_id + AudaciousTools.PLAYLIST_EXTENSION
-        )
+        return os.path.join(self.playlist_directory, playlist_id + AudaciousTools.PLAYLIST_EXTENSION)
 
     @staticmethod
     def _file_entries(lines: int):
