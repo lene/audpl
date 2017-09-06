@@ -19,7 +19,7 @@ ln -s $HOME/workspace/configs/.mrxvtrc $HOME
 ln -s $HOME/workspace/configs/.emacs   $HOME
 ln -s $HOME/workspace/configs/.xemacs  $HOME
 
-sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools
+sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools network-manager-gnome
 
 if [ -f openbox/setlayout.c ]; then
     cd openbox && \
