@@ -505,6 +505,11 @@
         <!--command>~/workspace/configs/openbox/bosskey.sh</command-->
       </action>
     </keybind>
+    <keybind key="S-A-C-L">
+      <action name="Execute">
+        <command>xscreensaver-command -lock</command>
+      </action>
+    </keybind>
     <!-- reload openbox -->
     <keybind key="S-A-C-R">
       <action name="Reconfigure"/>
