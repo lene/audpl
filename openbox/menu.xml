@@ -124,6 +124,11 @@
 			<execute>kdevelop</execute>
 		  </action>
 		</item>
+		<item label="NetBeans">
+		  <action name="Execute">
+			<execute>/opt/netbeans/bin/netbeans</execute>
+		  </action>
+		</item>
 		<item label="pgAdmin III">
 		  <action name="Execute">
 			<execute>pgadmin3</execute>
