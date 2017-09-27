@@ -221,6 +221,36 @@
         <wrap>no</wrap>
       </action>
     </keybind>
+    <keybind key="W-Left">
+      <action name="MoveResizeTo">
+        <!-- move to next monitor -->
+        <monitor>next</monitor>
+      </action>
+    </keybind>
+    <keybind key="W-Right">
+      <action name="MoveResizeTo">
+        <!-- move to next monitor -->
+        <monitor>next</monitor>
+      </action>
+    </keybind> 
+    <keybind key="S-A-C-Left">
+      <action name="MoveResizeTo">
+        <!-- move to next monitor -->
+        <monitor>next</monitor>
+      </action>
+    </keybind>
+    <keybind key="S-A-C-Right">
+      <action name="MoveResizeTo">
+        <!-- move to next monitor -->
+        <monitor>next</monitor>
+      </action>
+    </keybind>
+    <keybind key="S-A-C-W-S">
+      <action name="MoveResizeTo">
+        <!-- move to next monitor -->
+        <monitor>next</monitor>
+      </action>
+    </keybind>
     <keybind key="W-F1">
       <action name="Desktop">
         <desktop>1</desktop>
