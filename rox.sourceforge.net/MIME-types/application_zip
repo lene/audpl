@@ -1,2 +1,2 @@
 #! /bin/sh
-exec unzip "$@"
+exec soffice "$@"
