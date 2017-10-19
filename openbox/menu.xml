@@ -164,6 +164,11 @@
 			<execute>/opt/KSP_linux/KSP.x86_64</execute>
 		  </action>
 		</item>
+		<item label="Freeciv">
+		  <action name="Execute">
+			<execute>freeciv</execute>
+		  </action>
+		</item>
 
 	  </menu>
 	  
