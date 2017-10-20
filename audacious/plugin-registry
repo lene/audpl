@@ -1,6 +1,8 @@
-format 9
+format 11
 transport /usr/lib/x86_64-linux-gnu/audacious/Transport/gio.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name GIO Plugin
 domain audacious-plugins
 priority 0
@@ -10,8 +12,11 @@ enabled 1
 scheme ftp
 scheme sftp
 scheme smb
+scheme mtp
 transport /usr/lib/x86_64-linux-gnu/audacious/Transport/mms.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name MMS Plugin
 domain audacious-plugins
 priority 0
@@ -20,7 +25,9 @@ config 0
 enabled 1
 scheme mms
 transport /usr/lib/x86_64-linux-gnu/audacious/Transport/neon.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Neon HTTP/HTTPS Plugin
 domain audacious-plugins
 priority 0
@@ -30,7 +37,9 @@ enabled 1
 scheme http
 scheme https
 playlist /usr/lib/x86_64-linux-gnu/audacious/Container/asx.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name ASXv1/ASXv2 Playlists
 domain audacious-plugins
 priority 0
@@ -38,8 +47,11 @@ about 0
 config 0
 enabled 1
 ext asx
+saves 0
 playlist /usr/lib/x86_64-linux-gnu/audacious/Container/asx3.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name ASXv3 Playlists
 domain audacious-plugins
 priority 0
@@ -47,8 +59,11 @@ about 0
 config 0
 enabled 1
 ext asx
+saves 1
 playlist /usr/lib/x86_64-linux-gnu/audacious/Container/audpl.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Audacious Playlists (audpl)
 domain audacious-plugins
 priority 0
@@ -56,8 +71,11 @@ about 0
 config 0
 enabled 1
 ext audpl
+saves 1
 playlist /usr/lib/x86_64-linux-gnu/audacious/Container/cue.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Cue Sheet Plugin
 domain audacious-plugins
 priority 0
@@ -65,8 +83,11 @@ about 0
 config 0
 enabled 1
 ext cue
+saves 0
 playlist /usr/lib/x86_64-linux-gnu/audacious/Container/m3u.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name M3U Playlists
 domain audacious-plugins
 priority 0
@@ -75,8 +96,11 @@ config 0
 enabled 1
 ext m3u
 ext m3u8
+saves 1
 playlist /usr/lib/x86_64-linux-gnu/audacious/Container/pls.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name PLS Playlists
 domain audacious-plugins
 priority 0
@@ -84,8 +108,11 @@ about 0
 config 0
 enabled 1
 ext pls
+saves 1
 playlist /usr/lib/x86_64-linux-gnu/audacious/Container/xspf.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name XML Shareable Playlists (XSPF)
 domain audacious-plugins
 priority 0
@@ -93,8 +120,11 @@ about 0
 config 0
 enabled 1
 ext xspf
+saves 1
 input /usr/lib/x86_64-linux-gnu/audacious/Input/xsf.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name 2SF Decoder
 domain audacious-plugins
 priority 0
@@ -106,7 +136,9 @@ scheme mini2sf
 subtunes 0
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/aac-raw.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name AAC (Raw) Decoder
 domain audacious-plugins
 priority 0
@@ -117,7 +149,9 @@ scheme aac
 subtunes 0
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/adplug.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name AdPlug (AdLib Player)
 domain audacious-plugins
 priority 0
@@ -161,7 +195,9 @@ scheme xsm
 subtunes 0
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/amidi-plug.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name AMIDI-Plug (MIDI Player)
 domain audacious-plugins
 priority 0
@@ -175,7 +211,9 @@ scheme rmid
 subtunes 0
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/cdaudio-ng.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Audio CD Plugin
 domain audacious-plugins
 priority 0
@@ -186,7 +224,9 @@ mime cdda
 subtunes 2
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/console.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name Game Console Music Decoder
 domain audacious-plugins
 priority 0
@@ -207,7 +247,9 @@ scheme vgz
 subtunes 2
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/modplug.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name ModPlug (Module Player)
 domain audacious-plugins
 priority 0
@@ -237,7 +279,9 @@ scheme ft2
 subtunes 2
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/madplug.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name MPG123 Plugin
 domain audacious-plugins
 priority 0
@@ -251,7 +295,9 @@ scheme bmu
 subtunes 0
 writes 1
 input /usr/lib/x86_64-linux-gnu/audacious/Input/psf2.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name OpenPSF PSF1/PSF2 Decoder
 domain audacious-plugins
 priority 0
@@ -267,7 +313,9 @@ scheme spx
 subtunes 0
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/metronom.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Tact Generator
 domain audacious-plugins
 priority 0
@@ -278,7 +326,9 @@ mime tact
 subtunes 0
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/tonegen.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Tone Generator
 domain audacious-plugins
 priority 0
@@ -289,7 +339,9 @@ mime tone
 subtunes 0
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/vtx.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name VTX Decoder
 domain audacious-plugins
 priority 0
@@ -300,7 +352,9 @@ scheme vtx
 subtunes 0
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/wavpack.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name WavPack Decoder
 domain audacious-plugins
 priority 0
@@ -311,7 +365,9 @@ scheme wv
 subtunes 0
 writes 1
 input /usr/lib/x86_64-linux-gnu/audacious/Input/flacng.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name FLAC Decoder
 domain audacious-plugins
 priority 1
@@ -323,7 +379,9 @@ scheme fla
 subtunes 0
 writes 1
 input /usr/lib/x86_64-linux-gnu/audacious/Input/vorbis.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Ogg Vorbis Decoder
 domain audacious-plugins
 priority 2
@@ -337,7 +395,9 @@ ext application/ogg
 subtunes 0
 writes 1
 input /usr/lib/x86_64-linux-gnu/audacious/Input/sid.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name SID Player
 domain audacious-plugins
 priority 5
@@ -349,7 +409,9 @@ scheme psid
 subtunes 2
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/sndfile.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Sndfile Plugin
 domain audacious-plugins
 priority 9
@@ -363,7 +425,9 @@ scheme wav
 subtunes 0
 writes 0
 input /usr/lib/x86_64-linux-gnu/audacious/Input/ffaudio.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name FFmpeg Plugin
 domain audacious-plugins
 priority 10
@@ -389,11 +453,14 @@ scheme oga
 scheme opus
 scheme spx
 scheme tta
+scheme webm
 ext application/ogg
 subtunes 0
 writes 1
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/bs2b.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Bauer Stereophonic-to-Binaural (BS2B)
 domain audacious-plugins
 priority 0
@@ -401,7 +468,9 @@ about 0
 config 1
 enabled 1
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/crystalizer.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Crystalizer
 domain audacious-plugins
 priority 0
@@ -409,7 +478,9 @@ about 0
 config 1
 enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/compressor.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Dynamic Range Compressor
 domain audacious-plugins
 priority 0
@@ -417,7 +488,9 @@ about 1
 config 1
 enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/echo.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Echo
 domain audacious-plugins
 priority 0
@@ -425,7 +498,9 @@ about 1
 config 1
 enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/stereo.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Extra Stereo
 domain audacious-plugins
 priority 0
@@ -433,7 +508,9 @@ about 1
 config 1
 enabled 1
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/ladspa.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name LADSPA Host
 domain audacious-plugins
 priority 0
@@ -441,7 +518,9 @@ about 1
 config 1
 enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/silence-removal.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Silence Removal
 domain audacious-plugins
 priority 0
@@ -449,7 +528,9 @@ about 1
 config 1
 enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/speed-pitch.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Speed and Pitch
 domain audacious-plugins
 priority 0
@@ -457,7 +538,9 @@ about 0
 config 1
 enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/voice_removal.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Voice Removal
 domain audacious-plugins
 priority 0
@@ -465,7 +548,9 @@ about 0
 config 0
 enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/mixer.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Channel Mixer
 domain audacious-plugins
 priority 2
@@ -473,7 +558,9 @@ about 1
 config 1
 enabled 1
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/resample.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Sample Rate Converter
 domain audacious-plugins
 priority 2
@@ -481,7 +568,9 @@ about 1
 config 1
 enabled 1
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/sox-resampler.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name SoX Resampler
 domain audacious-plugins
 priority 2
@@ -489,7 +578,9 @@ about 1
 config 1
 enabled 0
 effect /usr/lib/x86_64-linux-gnu/audacious/Effect/crossfade.so
-stamp 1467271904
+stamp 1503584346
+version 48
+flags 0
 name Crossfade
 domain audacious-plugins
 priority 5
@@ -497,23 +588,19 @@ about 1
 config 1
 enabled 1
 output /usr/lib/x86_64-linux-gnu/audacious/Output/pulse_audio.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name PulseAudio Output
 domain audacious-plugins
 priority 2
 about 1
 config 0
 enabled 1
-output /usr/lib/x86_64-linux-gnu/audacious/Output/oss4.so
-stamp 1467271903
-name OSS4 Output
-domain audacious-plugins
-priority 4
-about 1
-config 1
-enabled 0
 output /usr/lib/x86_64-linux-gnu/audacious/Output/alsa.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name ALSA Output
 domain audacious-plugins
 priority 5
@@ -521,15 +608,29 @@ about 1
 config 1
 enabled 0
 output /usr/lib/x86_64-linux-gnu/audacious/Output/sndio-ng.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name Sndio Output
 domain audacious-plugins
 priority 5
 about 0
 config 1
 enabled 0
+output /usr/lib/x86_64-linux-gnu/audacious/Output/oss4.so
+stamp 1503584346
+version 48
+flags 0
+name OSS3 Output
+domain audacious-plugins
+priority 6
+about 1
+config 1
+enabled 0
 output /usr/lib/x86_64-linux-gnu/audacious/Output/sdlout.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name SDL Output
 domain audacious-plugins
 priority 9
@@ -537,7 +638,9 @@ about 1
 config 0
 enabled 0
 output /usr/lib/x86_64-linux-gnu/audacious/Output/filewriter.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name FileWriter Plugin
 domain audacious-plugins
 priority 10
@@ -545,7 +648,9 @@ about 1
 config 1
 enabled 0
 output /usr/lib/x86_64-linux-gnu/audacious/Output/jack-ng.so
-stamp 1467271903
+stamp 1503584346
+version 48
+flags 0
 name JACK Output
 domain audacious-plugins
 priority 10
@@ -553,7 +658,9 @@ about 0
 config 1
 enabled 0
 vis /usr/lib/x86_64-linux-gnu/audacious/Visualization/blur_scope.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name Blur Scope
 domain audacious-plugins
 priority 0
@@ -561,7 +668,9 @@ about 0
 config 1
 enabled 0
 vis /usr/lib/x86_64-linux-gnu/audacious/Visualization/gl-spectrum.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name OpenGL Spectrum Analyzer
 domain audacious-plugins
 priority 0
@@ -569,7 +678,9 @@ about 1
 config 0
 enabled 0
 vis /usr/lib/x86_64-linux-gnu/audacious/Visualization/cairo-spectrum.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name Spectrum Analyzer
 domain audacious-plugins
 priority 0
@@ -577,7 +688,9 @@ about 0
 config 0
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/alarm.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name Alarm
 domain audacious-plugins
 priority 0
@@ -585,7 +698,9 @@ about 1
 config 1
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/albumart.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name Album Art
 domain audacious-plugins
 priority 0
@@ -593,7 +708,9 @@ about 0
 config 0
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/aosd.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name AOSD (On-Screen Display)
 domain audacious-plugins
 priority 0
@@ -601,7 +718,9 @@ about 1
 config 1
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/cd-menu-items.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Audio CD Menu Items
 domain audacious-plugins
 priority 0
@@ -609,7 +728,9 @@ about 0
 config 0
 enabled 1
 general /usr/lib/x86_64-linux-gnu/audacious/General/delete-files.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Delete Files
 domain audacious-plugins
 priority 0
@@ -617,7 +738,9 @@ about 0
 config 1
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/notify.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Desktop Notifications
 domain audacious-plugins
 priority 0
@@ -625,7 +748,9 @@ about 1
 config 1
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/hotkey.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name Global Hotkeys
 domain audacious-plugins
 priority 0
@@ -633,7 +758,9 @@ about 1
 config 1
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/gnomeshortcuts.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name GNOME Shortcuts
 domain audacious-plugins
 priority 0
@@ -641,7 +768,9 @@ about 1
 config 0
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/lirc.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name LIRC Plugin
 domain audacious-plugins
 priority 0
@@ -649,7 +778,9 @@ about 1
 config 1
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/lyricwiki.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name LyricWiki Plugin
 domain audacious-plugins
 priority 0
@@ -657,7 +788,9 @@ about 0
 config 0
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/mpris2.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name MPRIS 2 Server
 domain audacious-plugins
 priority 0
@@ -665,7 +798,9 @@ about 0
 config 0
 enabled 1
 general /usr/lib/x86_64-linux-gnu/audacious/General/playlist-manager.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name Playlist Manager
 domain audacious-plugins
 priority 0
@@ -673,7 +808,9 @@ about 0
 config 0
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/scrobbler.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Scrobbler 2.0
 domain audacious-plugins
 priority 0
@@ -681,7 +818,9 @@ about 1
 config 1
 enabled 1
 general /usr/lib/x86_64-linux-gnu/audacious/General/search-tool.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name Search Tool
 domain audacious-plugins
 priority 0
@@ -689,7 +828,9 @@ about 0
 config 0
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/song_change.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 0
 name Song Change
 domain audacious-plugins
 priority 0
@@ -697,7 +838,9 @@ about 0
 config 1
 enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/statusicon.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name Status Icon
 domain audacious-plugins
 priority 0
@@ -705,7 +848,9 @@ about 1
 config 1
 enabled 0
 iface /usr/lib/x86_64-linux-gnu/audacious/General/gtkui.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name GTK Interface
 domain audacious-plugins
 priority 0
@@ -713,7 +858,9 @@ about 0
 config 1
 enabled 1
 iface /usr/lib/x86_64-linux-gnu/audacious/General/skins.so
-stamp 1467271902
+stamp 1503584346
+version 48
+flags 1
 name Winamp Classic Interface
 domain audacious-plugins
 priority 0
