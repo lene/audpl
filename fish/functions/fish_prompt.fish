@@ -32,11 +32,11 @@ function fish_prompt --description 'Write out the prompt'
 	# before each prompt display
 	# TBD: does not work correctly with all xterm types on all systems
 	# 
-	if [ $TERM = "xterm" ]
+	if [ (echo $TERM | cut -c -5) = "xterm" ]
 		echo -ne "\033]30;"(whoami)@{$__fish_prompt_hostname}: (pwd | rev | cut -d / -f -2 | rev)"\007"
 	else                                            # no xterm, probably 
-  		echo -n "{$USER}@{$__fish_prompt_hostname}"                      # display user, host and cwd
-  		test $UID -eq 0; and export PS1="\u@\h:\w # "
+  		echo -n "$USER@$__fish_prompt_hostname"                      # display user, host and cwd
+  		test (id -u) -eq 0; and export PS1="\u@\h:\w # "
 	end	
 
 	echo -n -s (set_color 888) "[ " (date +'%H:%M:%S') " ] " (set_color $color_cwd) (prompt_pwd) (set_color normal) "$suffix "
