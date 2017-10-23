@@ -12,3 +12,5 @@ function time -d "Use /usr/bin/time to display not only running time, but also m
 %M kB max (%Xtext+%Ddata)
 %P CPU' $argv
 end
+
+set -x LD_LIBRARY_PATH /usr/lib/nvidia-384
