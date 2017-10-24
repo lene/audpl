@@ -98,7 +98,12 @@ XftAntialias=true
 XftHintStyle=hintmedium
 XftSubPixel=none
 dbfile=/home/preuss/.mozilla/firefox/g2tdasz8.default/places.sqlite
+fixed=Hack,18,-1,5,50,0,0,0,0,0,Regular
+font=Noto Sans,20,-1,5,50,0,0,0,0,0,Regular
+menuFont=Noto Sans,20,-1,5,50,0,0,0,0,0,Regular
 shadeSortColumn=true
+smallestReadableFont=Noto Sans,16,-1,5,50,0,0,0,0,0,Regular
+toolBarFont=Noto Sans,18,-1,5,50,0,0,0,0,0,Regular
 widgetStyle=Breeze
 
 [Icons]
@@ -135,6 +140,7 @@ LANGUAGE=en_US:de
 [WM]
 activeBackground=49,54,59
 activeBlend=255,255,255
+activeFont=Noto Sans,20,-1,5,50,0,0,0,0,0,Regular
 activeForeground=239,240,241
 inactiveBackground=49,54,59
 inactiveBlend=75,71,67
