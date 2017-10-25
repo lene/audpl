@@ -29,7 +29,7 @@ if [ -f openbox/setlayout.c ]; then
 fi
 
 crontab -l | grep -q workspace/configs || (
-	crontab -l | { cat; echo '40 *    *   *   *   cd $HOME/workspace/configs; git pull && git add . && git commit -m "$(hostname) $(date)" && git push origin master' } | crontab -
+	crontab -l | { cat; echo ' 40 *    *   *   *   cd $HOME/workspace/configs; git pull && git add . && git commit -m "$(hostname) $(date)" && git push origin master' } | crontab -
 )
 
 # (try to) install xv
