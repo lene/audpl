@@ -48,48 +48,51 @@
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>sans</name>
-      <size>10</size>
+      <size>16</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
       <name>sans</name>
-      <size>10</size>
+      <size>16</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>sans</name>
-      <size>10</size>
+      <name>Sans</name>
+      <size>14</size>
       <!-- font size in points -->
-      <weight>normal</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>sans</name>
-      <size>10</size>
+      <name>Sans</name>
+      <size>14</size>
       <!-- font size in points -->
-      <weight>normal</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name/>
+      <name>Sans</name>
+      <size>12</size>
+      <weight>Normal</weight>
+      <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
       <name>Sans</name>
-      <size>8</size>
-      <weight/>
-      <slant/>
+      <size>12</size>
+      <weight>Normal</weight>
+      <slant>Normal</slant>
     </font>
   </theme>
   <desktops>
@@ -153,7 +156,6 @@
     <moveButton>Middle</moveButton>
     <!-- 'Left', 'Middle', 'Right' -->
   </dock>
-
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <keybind key="F12">
@@ -161,17 +163,16 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
-	<keybind key="C-F12">
-        <action name="ShowMenu">
-          <menu>client-menu</menu>
-        </action>
-	</keybind>
-	<keybind key="S-F12">
-	  <action name="ShowMenu">
+    <keybind key="C-F12">
+      <action name="ShowMenu">
+        <menu>client-menu</menu>
+      </action>
+    </keybind>
+    <keybind key="S-F12">
+      <action name="ShowMenu">
         <menu>client-list-combined-menu</menu>
       </action>
-	</keybind>
-
+    </keybind>
     <!-- Keybindings for desktop switching -->
     <keybind key="C-Left">
       <action name="DesktopLeft">
@@ -232,7 +233,7 @@
         <!-- move to next monitor -->
         <monitor>next</monitor>
       </action>
-    </keybind> 
+    </keybind>
     <keybind key="S-A-C-Left">
       <action name="MoveResizeTo">
         <!-- move to next monitor -->
@@ -332,7 +333,9 @@
       <action name="ToggleMaximizeVert"/>
     </keybind>
     <keybind key="A-S-H">
-      <action name="ToggleMaximize"><direction>horizontal</direction></action>
+      <action name="ToggleMaximize">
+        <direction>horizontal</direction>
+      </action>
     </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
@@ -401,7 +404,7 @@
       <action name="Execute">
         <command>mrxvt</command>
       </action>
-    </keybind> 
+    </keybind>
     <keybind key="C-A-K">
       <action name="Execute">
         <command>konsole</command>
@@ -490,19 +493,19 @@
         <command>amixer -q -D pulse set Master toggle</command>
       </action>
     </keybind>
-	<!-- keyboard layout selection -->
-	<keybind key="C-l">
+    <!-- keyboard layout selection -->
+    <keybind key="C-l">
       <keybind key="d">
         <action name="Execute">
           <command>setxkbmap -layout de</command>
-		</action>
+        </action>
       </keybind>
       <keybind key="u">
         <action name="Execute">
           <command>setxkbmap -layout us</command>
-		</action>
+        </action>
       </keybind>
-	</keybind>
+    </keybind>
     <!-- other function keys -->
     <keybind key="XF86WWW">
       <action name="Execute">
@@ -545,8 +548,6 @@
       <action name="Reconfigure"/>
     </keybind>
   </keyboard>
-
-
   <mouse>
     <dragThreshold>8</dragThreshold>
     <!-- number of pixels the mouse must move before a drag begins -->
@@ -879,7 +880,6 @@
       </mousebind>
     </context>
   </mouse>
-
   <menu>
     <!-- You can specify more than one menu file in here and they are all loaded,
        just don't make menu ids clash or, well, it'll be kind of pointless -->
@@ -897,7 +897,6 @@
     <manageDesktops>yes</manageDesktops>
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
-
   <applications>
     <!--
   # this is an example with comments through out. use these to make your
@@ -1019,5 +1018,4 @@
       <skip_taskbar>no</skip_taskbar>
     </application>
   </applications>
-
 </openbox_config>
