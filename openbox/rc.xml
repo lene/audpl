@@ -420,6 +420,12 @@
         <command>emacs</command>
       </action>
     </keybind>
+    <!-- RandR tool -->
+    <keybind key="C-A-a">
+      <action name="Execute">
+        <command>arandr</command>
+      </action>
+    </keybind>
     <!-- Fast access to Rox Filer -->
     <keybind key="C-A-R">
       <action name="Execute">

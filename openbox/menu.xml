@@ -208,6 +208,11 @@
 		  <execute>nitrogen</execute>
 		</action>
 	  </item>
+	  <item label="ARandR">
+		<action name="Execute">
+		  <execute>arandr</execute>
+		</action>
+	  </item>
 	  <item label="Reconfig">
 		<action name="Reconfigure"/>
 	  </item>
