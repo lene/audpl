@@ -148,6 +148,9 @@ Speedbar Width=167
 View Style=Simple
 listViewIconSize=0
 
+[PreviewSettings]
+MaximumRemoteSize=0
+
 [Translations]
 LANGUAGE=en_US:de
 
