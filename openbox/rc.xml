@@ -358,7 +358,7 @@
         <y>100</y>
       </action>
     </keybind>
-    <keybind key="W-c">
+    <keybind key="A-C-c">
       <action name="MoveResizeTo">
         <x>center</x>
         <y>center</y>
