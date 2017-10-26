@@ -337,6 +337,33 @@
         <direction>horizontal</direction>
       </action>
     </keybind>
+	<!-- Keybindings for moving windows -->
+    <keybind key="A-C-Left">
+      <action name="MoveRelative">
+        <x>-100</x>
+      </action>
+    </keybind>
+    <keybind key="A-C-Right">
+      <action name="MoveRelative">
+        <x>100</x>
+      </action>
+    </keybind>
+    <keybind key="A-C-Up">
+      <action name="MoveRelative">
+        <y>-100</y>
+      </action>
+    </keybind>
+    <keybind key="A-C-Down">
+      <action name="MoveRelative">
+        <y>100</y>
+      </action>
+    </keybind>
+    <keybind key="W-c">
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+      </action>
+    </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
