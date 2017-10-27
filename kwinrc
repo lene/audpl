@@ -6,9 +6,10 @@ GLColorCorrection=false
 GLCore=true
 GLPreferBufferSwap=a
 GLTextureFilter=2
-HiddenPreviews=5
+HiddenPreviews=6
 OpenGLIsUnsafe=false
 UnredirectFullscreen=false
+WindowsBlockCompositing=true
 XRenderSmoothScale=false
 
 [Desktops]
