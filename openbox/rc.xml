@@ -470,7 +470,7 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>PCManFM</name>
+          <!--name>PCManFM</name-->
         </startupnotify>
         <command>pcmanfm</command>
       </action>
@@ -540,6 +540,33 @@
         </action>
       </keybind>
       <keybind key="u">
+        <action name="Execute">
+          <command>setxkbmap -layout us</command>
+        </action>
+      </keybind>
+      <keybind key="f">
+        <action name="Execute">
+          <command>setxkbmap -layout fr</command>
+        </action>
+      </keybind>
+      <keybind key="t">
+        <action name="Execute">
+          <command>setxkbmap -layout tr</command>
+        </action>
+      </keybind>
+      <keybind key="r">
+        <action name="Execute">
+          <command>setxkbmap -layout ru</command>
+        </action>
+      </keybind>
+      <keybind key="g">
+        <action name="Execute">
+          <command>setxkbmap -layout gr</command>
+        </action>
+      </keybind>	  
+    </keybind>
+    <keybind key="C-λ">
+      <keybind key="θ">
         <action name="Execute">
           <command>setxkbmap -layout us</command>
         </action>

@@ -240,6 +240,11 @@
 		  <execute>pavucontrol</execute>
 		</action>
 	  </item>
+	  <item label="Blueman Manager">
+		<action name="Execute">
+		  <execute>blueman-manager</execute>
+		</action>
+	  </item>
 	  <item label="XScreenSaver">
 		<action name="Execute">
 		  <execute>xscreensaver-demo</execute>
