@@ -402,7 +402,7 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>PCManFM</name>
+          <!--name>PCManFM</name-->
         </startupnotify>
         <command>pcmanfm</command>
       </action>
@@ -448,7 +448,7 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Emacs</name>
+          <!--name>Emacs</name-->
         </startupnotify>
         <command>emacs</command>
       </action>

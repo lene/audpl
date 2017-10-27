@@ -126,11 +126,9 @@ class rcHandler(saxutils.handler.ContentHandler): # handler class inherits from 
     # override function from DefaultHandler, called as each character outside an xml tag is read
     def characters(self,ch):
         # only save chars within a <name> item
-        if self.in_name or self.has_command:
+        if self.in_name or (self.has_command and not self.in_name):
             self.name = self.name + ch
-        # if self.has_command:
-        #     self.action += ch
-            
+
 if __name__ == '__main__':
     parser = make_parser() # create a parser
     parser.setFeature(feature_namespaces, 0) # tell parser we're not interested in XML namespaces
