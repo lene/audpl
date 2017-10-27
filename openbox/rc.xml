@@ -454,7 +454,7 @@
       </action>
     </keybind>
     <!-- RandR tool -->
-    <keybind key="C-A-a">
+    <keybind key="C-A-S-a">
       <action name="Execute">
         <command>arandr</command>
       </action>

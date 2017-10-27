@@ -211,16 +211,19 @@
 		  <execute>nitrogen</execute>
 		</action>
 	  </item>
-	  <item label="ARandR">
-		<action name="Execute">
-		  <execute>arandr</execute>
-		</action>
-	  </item>
 	  <item label="Reconfig">
 		<action name="Reconfigure"/>
 	  </item>
 	  <item label="Restart">
 		<action name="Restart"/>
+	  </item>
+	  <menu id="show_keybindings" label="Key bindings"
+			execute="~/workspace/configs/openbox/show_ob_keybindings.py"
+	  />
+	  <item label="ARandR">
+		<action name="Execute">
+		  <execute>arandr</execute>
+		</action>
 	  </item>
 	  <item label="Unity Control Center">
 		<action name="Execute">

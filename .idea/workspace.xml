@@ -4,7 +4,8 @@
     <list default="true" id="8019611e-5c8e-4e34-9570-572b11e575de" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/audacious/playlist-state" afterPath="$PROJECT_DIR$/audacious/playlist-state" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kwinrc" afterPath="$PROJECT_DIR$/kwinrc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openbox/menu.xml" afterPath="$PROJECT_DIR$/openbox/menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openbox/rc.xml" afterPath="$PROJECT_DIR$/openbox/rc.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +19,8 @@
       <file leaf-file-name="menu.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="189" column="0" lean-forward="true" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+            <state relative-caret-position="1056">
+              <caret line="220" column="48" lean-forward="true" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
               <folding>
                 <element signature="n#menu#2;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
                 <element signature="n#item#0;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
@@ -56,13 +57,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/openbox/menu.xml" />
         <option value="$PROJECT_DIR$/openbox/menu.py" />
+        <option value="$PROJECT_DIR$/openbox/menu.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="3200" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="128" />
+    <option name="y" value="4" />
     <option name="width" value="3077" />
     <option name="height" value="1780" />
   </component>
@@ -165,7 +167,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3200" y="0" width="3077" height="1780" extended-state="1" />
+    <frame x="128" y="4" width="3077" height="1780" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13390785" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -208,8 +210,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="189" column="0" lean-forward="true" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+        <state relative-caret-position="1056">
+          <caret line="220" column="48" lean-forward="true" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
           <folding>
             <element signature="n#menu#2;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
             <element signature="n#item#0;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
