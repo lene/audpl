@@ -189,6 +189,9 @@
 		  <execute>xv</execute>
 		</action>
 	  </item>
+	  <menu id="dynamic" label="Dynamic"
+			execute="python3 /home/lene/workspace/config/openbox/menu.py"
+	  />
 
 	</menu>
 	
