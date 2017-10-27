@@ -38,10 +38,12 @@ from os.path import expanduser
 
 # following line needs to be set to point the xml file containing your openbox keybindings
 rcfilepath = expanduser('~') + "/.config/openbox/rc.xml"
+COLUMN_WIDTH = 80
 
 class rcHandler(saxutils.handler.ContentHandler): # handler class inherits from saxutils.DefaultHandler
     def __init__(self): # constructor 
         self.in_keybind = 0
+        self.in_execute = 0
         self.in_action = 0
         self.in_name = 0
         self.has_command = 0
@@ -74,13 +76,15 @@ class rcHandler(saxutils.handler.ContentHandler): # handler class inherits from 
         elif (name == 'action') and (self.in_keybind > 0):
             self.in_action = 1
             self.action = attrs.get('name', None)
+        # elif name == 'execute' or name == 'command':# and (self.in_action > 0):
+        #     self.in_execute = 1
         # start of <name> item within <keybind ...> item
         elif (name == 'name') and (self.in_keybind > 0):
             # reset "name" variable (it gets set by "characters" function)
             self.name = ''
             self.in_name = 1
         # start of <command> item
-        elif (name == 'command'):
+        elif name == 'execute' or name == 'command':
             self.has_command = 1
             
     # override function from DefaultHandler, called at end of xml element            
@@ -98,8 +102,8 @@ class rcHandler(saxutils.handler.ContentHandler): # handler class inherits from 
         elif (name == 'name'):
             self.in_name = 0
         # print menu item after end of </command> item (which is in a <keybind ...> item)
-        elif (name == 'command') and self.in_keybind:
-            print '<item label="' + self.keybind2 + rjust(strip(self.name),100) + \
+        elif (name == 'command' or name =='execute') and self.in_keybind:
+            print '<item label="' + self.keybind2 + rjust(strip(self.name),COLUMN_WIDTH) + \
                 '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
             self.name = '' 
         # print menu item after end of </action> item (within <keybind ...> item)
@@ -107,20 +111,25 @@ class rcHandler(saxutils.handler.ContentHandler): # handler class inherits from 
         elif (name =='action') and (self.in_keybind > 0) and (not self.has_command):
             # if there's no <name> item for this action, print the action name
             if self.name == '':
-                print '<item label="' + self.keybind2 + rjust(self.action,100) + \
+                print '<item label="' + self.keybind2 + rjust(self.action,COLUMN_WIDTH) + \
                   '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
             # otherwise print the <name>
             else:
-                print '<item label="' + self.keybind2 + rjust(strip(self.name),100) + \
+                print '<item label="' + self.keybind2 + rjust(strip(self.name),COLUMN_WIDTH) + \
                   '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
                 self.name = ''
-                
+        elif False:
+            print '<item label="' + self.keybind2 + rjust(strip(self.action), COLUMN_WIDTH) + \
+            '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
+            self.name = ''
 
     # override function from DefaultHandler, called as each character outside an xml tag is read
     def characters(self,ch):
         # only save chars within a <name> item
-        if self.in_name:
+        if self.in_name or self.has_command:
             self.name = self.name + ch
+        # if self.has_command:
+        #     self.action += ch
             
 if __name__ == '__main__':
     parser = make_parser() # create a parser

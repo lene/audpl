@@ -4,8 +4,8 @@
     <list default="true" id="8019611e-5c8e-4e34-9570-572b11e575de" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/audacious/playlist-state" afterPath="$PROJECT_DIR$/audacious/playlist-state" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openbox/menu.xml" afterPath="$PROJECT_DIR$/openbox/menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openbox/rc.xml" afterPath="$PROJECT_DIR$/openbox/rc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/audacious/playlists/1007.audpl" afterPath="$PROJECT_DIR$/audacious/playlists/1007.audpl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openbox/show_ob_keybindings.py" afterPath="$PROJECT_DIR$/openbox/show_ob_keybindings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="menu.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="menu.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1056">
@@ -26,6 +26,26 @@
                 <element signature="n#item#0;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
                 <element signature="n#item#1;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rc.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/openbox/rc.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1464">
+              <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_ob_keybindings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openbox/show_ob_keybindings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1258">
+              <caret line="144" column="0" lean-forward="true" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -51,6 +71,15 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>,</find>
+      <find>100</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>COLUMN_WIDTH</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -59,10 +88,11 @@
       <list>
         <option value="$PROJECT_DIR$/openbox/menu.py" />
         <option value="$PROJECT_DIR$/openbox/menu.xml" />
+        <option value="$PROJECT_DIR$/openbox/show_ob_keybindings.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="128" />
     <option name="y" value="4" />
     <option name="width" value="3077" />
@@ -167,7 +197,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="128" y="4" width="3077" height="1780" extended-state="0" />
+    <frame x="128" y="4" width="3077" height="1780" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13390785" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -217,6 +247,22 @@
             <element signature="n#item#0;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
             <element signature="n#item#1;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openbox/show_ob_keybindings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="144" column="0" lean-forward="true" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openbox/rc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1464">
+          <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
