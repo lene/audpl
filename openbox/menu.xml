@@ -190,7 +190,7 @@
 		</action>
 	  </item>
 	  <menu id="dynamic" label="Dynamic"
-			execute="python3 /home/lene/workspace/config/openbox/menu.py"
+			execute="~/workspace/configs/openbox/menu.py"
 	  />
 
 	</menu>
