@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8019611e-5c8e-4e34-9570-572b11e575de" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openbox/menu.xml" afterPath="$PROJECT_DIR$/openbox/menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/audacious/playlist-state" afterPath="$PROJECT_DIR$/audacious/playlist-state" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/audacious/playlists/1007.audpl" afterPath="$PROJECT_DIR$/audacious/playlists/1007.audpl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openbox/show_ob_keybindings.py" afterPath="$PROJECT_DIR$/openbox/show_ob_keybindings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="menu.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="menu.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
@@ -37,14 +40,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show_ob_keybindings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="show_ob_keybindings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/openbox/show_ob_keybindings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#4186#6145#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="936">
+              <caret line="132" column="16" lean-forward="false" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -87,9 +88,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/openbox/menu.py" />
-        <option value="$PROJECT_DIR$/openbox/show_ob_keybindings.py" />
         <option value="$PROJECT_DIR$/openbox/rc.xml" />
         <option value="$PROJECT_DIR$/openbox/menu.xml" />
+        <option value="$PROJECT_DIR$/openbox/show_ob_keybindings.py" />
       </list>
     </option>
   </component>
@@ -239,12 +240,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openbox/show_ob_keybindings.py">
+    <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="264">
+          <caret line="258" column="30" lean-forward="false" selection-start-line="258" selection-start-column="30" selection-end-line="258" selection-end-column="30" />
           <folding>
-            <element signature="e#4186#6145#0" expanded="false" />
+            <element signature="n#menu#2;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
+            <element signature="n#item#0;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
+            <element signature="n#item#1;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -257,15 +260,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
+    <entry file="file://$PROJECT_DIR$/openbox/show_ob_keybindings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="258" column="30" lean-forward="false" selection-start-line="258" selection-start-column="30" selection-end-line="258" selection-end-column="30" />
-          <folding>
-            <element signature="n#menu#2;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
-            <element signature="n#item#0;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
-            <element signature="n#item#1;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
-          </folding>
+        <state relative-caret-position="936">
+          <caret line="132" column="16" lean-forward="false" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>

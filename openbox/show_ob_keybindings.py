@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# encoding=utf8
+
 # OpenBox pipe menu to show currently defined openbox keybindings, and edit them.
 #
 # Copyright 2010 Joe Bloggs (vapniks@yahoo.com)
@@ -90,38 +92,45 @@ class rcHandler(saxutils.handler.ContentHandler): # handler class inherits from 
     # override function from DefaultHandler, called at end of xml element            
     def endElement(self, name):
         # end of </keybind> item
-        if name == 'keybind':
-            self.in_action = 0
-            self.has_command = 0
-            # remove last keybinding from the current keychain
-            self.in_keybind -= 1
-            self.keybind2 = re.sub("  [^ ]+$","",self.keybind2)
-            # make sure we don't carry unused names across to next keybinding
-            self.name = ''
-        # end of </name> item
-        elif (name == 'name'):
-            self.in_name = 0
-        # print menu item after end of </command> item (which is in a <keybind ...> item)
-        elif (name == 'command' or name =='execute') and self.in_keybind:
-            print '<item label="' + self.keybind2 + rjust(strip(self.name),COLUMN_WIDTH) + \
-                '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
-            self.name = '' 
-        # print menu item after end of </action> item (within <keybind ...> item)
-        # unless a <command> item has already been printed
-        elif (name =='action') and (self.in_keybind > 0) and (not self.has_command):
-            # if there's no <name> item for this action, print the action name
-            if self.name == '':
-                print '<item label="' + self.keybind2 + rjust(self.action,COLUMN_WIDTH) + \
-                  '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
-            # otherwise print the <name>
-            else:
-                print '<item label="' + self.keybind2 + rjust(strip(self.name),COLUMN_WIDTH) + \
-                  '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
+        try:
+            self.name = unicode(self.name)
+            if name == 'keybind':
+                self.in_action = 0
+                self.has_command = 0
+                # remove last keybinding from the current keychain
+                self.in_keybind -= 1
+                self.keybind2 = re.sub("  [^ ]+$","",self.keybind2)
+                # make sure we don't carry unused names across to next keybinding
                 self.name = ''
-        elif False:
-            print '<item label="' + self.keybind2 + rjust(strip(self.action), COLUMN_WIDTH) + \
-            '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
-            self.name = ''
+            # end of </name> item
+            elif (name == 'name'):
+                self.in_name = 0
+            # print menu item after end of </command> item (which is in a <keybind ...> item)
+            elif (name == 'command' or name =='execute') and self.in_keybind:
+                print '<item label="' + unicode(self.keybind2) + \
+                      rjust(strip(self.name),COLUMN_WIDTH) + \
+                    '">\n<action name="execute"><execute>' + \
+                      unicode(self.editCommand()) + \
+                      '</execute></action>\n</item>'
+                self.name = ''
+            # print menu item after end of </action> item (within <keybind ...> item)
+            # unless a <command> item has already been printed
+            elif (name =='action') and (self.in_keybind > 0) and (not self.has_command):
+                # if there's no <name> item for this action, print the action name
+                if self.name == '':
+                    print '<item label="' + self.keybind2 + rjust(self.action,COLUMN_WIDTH) + \
+                      '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
+                # otherwise print the <name>
+                else:
+                    print '<item label="' + self.keybind2 + rjust(strip(self.name),COLUMN_WIDTH) + \
+                      '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
+                    self.name = ''
+            elif False:
+                print '<item label="' + self.keybind2 + rjust(strip(self.action), COLUMN_WIDTH) + \
+                '">\n<action name="execute"><execute>' + self.editCommand() + '</execute></action>\n</item>'
+                self.name = ''
+        except UnicodeEncodeError:
+            pass
 
     # override function from DefaultHandler, called as each character outside an xml tag is read
     def characters(self,ch):
