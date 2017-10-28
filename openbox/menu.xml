@@ -250,6 +250,38 @@
 		  <execute>xscreensaver-demo</execute>
 		</action>
 	  </item>
+        <menu id="languages" label="Keyboard">
+          <item label="US">
+            <action name="Execute">
+              <execute>setxkbmap -layout us</execute>
+            </action>
+          </item>
+          <item label="Deutsch">
+            <action name="Execute">
+              <execute>setxkbmap -layout de</execute>
+            </action>
+          </item>
+          <item label="Français">
+            <action name="Execute">
+              <execute>setxkbmap -layout fr</execute>
+            </action>
+          </item>
+          <item label="Türkçe">
+            <action name="Execute">
+              <execute>setxkbmap -layout tr</execute>
+            </action>
+          </item>
+          <item label="По-Русский">
+            <action name="Execute">
+              <execute>setxkbmap -layout ru</execute>
+            </action>
+          </item>
+          <item label="Ελλενηκη">
+            <action name="Execute">
+              <execute>setxkbmap -layout gr</execute>
+            </action>
+          </item>
+        </menu>
 	</menu>
 
 	<item label="Lock">

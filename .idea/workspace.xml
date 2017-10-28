@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8019611e-5c8e-4e34-9570-572b11e575de" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/audacious/playlist-state" afterPath="$PROJECT_DIR$/audacious/playlist-state" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openbox/menu.xml" afterPath="$PROJECT_DIR$/openbox/menu.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="menu.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="menu.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1128">
-              <caret line="244" column="34" lean-forward="false" selection-start-line="244" selection-start-column="34" selection-end-line="244" selection-end-column="34" />
+            <state relative-caret-position="264">
+              <caret line="258" column="30" lean-forward="false" selection-start-line="258" selection-start-column="30" selection-end-line="258" selection-end-column="30" />
               <folding>
                 <element signature="n#menu#2;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
                 <element signature="n#item#0;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
@@ -27,7 +27,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rc.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rc.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openbox/rc.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1430">
@@ -88,8 +88,8 @@
       <list>
         <option value="$PROJECT_DIR$/openbox/menu.py" />
         <option value="$PROJECT_DIR$/openbox/show_ob_keybindings.py" />
-        <option value="$PROJECT_DIR$/openbox/menu.xml" />
         <option value="$PROJECT_DIR$/openbox/rc.xml" />
+        <option value="$PROJECT_DIR$/openbox/menu.xml" />
       </list>
     </option>
   </component>
@@ -249,23 +249,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1128">
-          <caret line="244" column="34" lean-forward="false" selection-start-line="244" selection-start-column="34" selection-end-line="244" selection-end-column="34" />
-          <folding>
-            <element signature="n#menu#2;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
-            <element signature="n#item#0;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
-            <element signature="n#item#1;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/openbox/rc.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1430">
           <caret line="488" column="34" lean-forward="true" selection-start-line="488" selection-start-column="34" selection-end-line="488" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="258" column="30" lean-forward="false" selection-start-line="258" selection-start-column="30" selection-end-line="258" selection-end-column="30" />
+          <folding>
+            <element signature="n#menu#2;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
+            <element signature="n#item#0;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
+            <element signature="n#item#1;n#menu#0;n#menu#0;n#openbox_menu#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
