@@ -585,7 +585,7 @@
     </keybind>
     <keybind key="XF86MyComputer">
       <action name="Execute">
-        <command>pcmanfm</command>
+        <command>arandr</command>
       </action>
     </keybind>
     <keybind key="XF86Terminal">
