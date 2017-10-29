@@ -499,7 +499,7 @@
     </keybind>
     <keybind key="XF86AudioPlay">
       <action name="Execute">
-        <command>audacious -p</command>
+        <command>audtool playback-playpause</command>
       </action>
     </keybind>
     <keybind key="XF86AudioPrev">
