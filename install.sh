@@ -19,8 +19,10 @@ test -L $HOME/.mrxvtrc || ln -s $HOME/workspace/configs/.mrxvtrc $HOME
 test -L $HOME/.emacs   || ln -s $HOME/workspace/configs/.emacs   $HOME
 test -L $HOME/.xemacs  || ln -s $HOME/workspace/configs/.xemacs  $HOME
 
-sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools network-manager-gnome tor rox-filer lxtask menu
+# install some software I'll definitely need
+sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools network-manager-gnome tor socat rox-filer lxtask menu
 
+# build setlayout program for openbox pager to display desktops in a grid rather than a line
 if [ -f openbox/setlayout.c ]; then
     cd openbox && \
 	gcc setlayout.c -o setlayout -lX11 && \
@@ -28,14 +30,16 @@ if [ -f openbox/setlayout.c ]; then
 	cd ..
 fi
 
+# Set up periodic cronjob to commit and push changes in config directory to git
 crontab -l | grep -q workspace/configs || (
 	crontab -l | { cat; echo ' 40 *    *   *   *   cd $HOME/workspace/configs; git pull && git add . && git commit -m "$(hostname) $(date)" && git push origin master' } | crontab -
 )
 
 
-# (try to) install xv
+# (try to) install xv (this is becoming more and more complicated :-\)
 which xv || (
 	cd /tmp
+	# libpng12
 	sudo apt install libpng12-dev || (
 		test -f zlib-1.2.11.tar.gz || wget https://zlib.net/zlib-1.2.11.tar.gz
 		test -f libpng-1.2.54.tar.bz2 || wget https://sourceforge.net/projects/libpng/files/libpng12/older-releases/1.2.54/libpng-1.2.54.tar.bz2

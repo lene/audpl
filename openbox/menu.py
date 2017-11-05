@@ -64,8 +64,7 @@ def create_menu(entries):
     return menu
 create_menu.indent = 0
 
-print(
-"""<?xml version="1.0" encoding="UTF-8"?>
+print("""<?xml version="1.0" encoding="UTF-8"?>
 <openbox_pipe_menu>
 {}
 </openbox_pipe_menu>
