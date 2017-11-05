@@ -35,10 +35,11 @@ programs = OrderedDict({
         "FBReader": "fbreader",
         "Kerbal Space Program": "/opt/KSP_Linux/KSP.x86_64",
         "Freeciv": "freeciv",
+        "Scrivener": "scrivener",
     },
     "KCalc": "kcalc",
     "Kate": "kate",
-    "XV": "xv"
+    "xv": "xv"
 })
 
 

@@ -19,7 +19,7 @@ test -L $HOME/.mrxvtrc || ln -s $HOME/workspace/configs/.mrxvtrc $HOME
 test -L $HOME/.emacs   || ln -s $HOME/workspace/configs/.emacs   $HOME
 test -L $HOME/.xemacs  || ln -s $HOME/workspace/configs/.xemacs  $HOME
 
-sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools network-manager-gnome tor rox-filer lxtask 
+sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools network-manager-gnome tor rox-filer lxtask menu
 
 if [ -f openbox/setlayout.c ]; then
     cd openbox && \
@@ -31,6 +31,7 @@ fi
 crontab -l | grep -q workspace/configs || (
 	crontab -l | { cat; echo ' 40 *    *   *   *   cd $HOME/workspace/configs; git pull && git add . && git commit -m "$(hostname) $(date)" && git push origin master' } | crontab -
 )
+
 
 # (try to) install xv
 which xv || (
@@ -69,4 +70,20 @@ which xv || (
 		sudo mv -i xv /usr/local/bin/
 		cd -
 	)
+)
+
+# try installing scrivener
+which scrivener || (
+	cd /tmp
+	test -f scrivener-1.9.0.1-amd64.deb || wget http://www.literatureandlatte.com/scrivenerforlinux/scrivener-1.9.0.1-amd64.deb
+	test -f libgstreamer-plugins-base0.10-0_0.10.36-1_amd64.deb || wget http://fr.archive.ubuntu.com/ubuntu/pool/main/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-1_amd64.deb
+	test -f libgstreamer0.10-0_0.10.36-1.5ubuntu1_amd64.deb || wget http://fr.archive.ubuntu.com/ubuntu/pool/universe/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.5ubuntu1_amd64.deb
+	sudo dpkg -i libgstreamer*.deb scrivener*.deb
+)
+
+# google-drive-ocamlfuse
+which google-drive-ocamlfuse || (
+	sudo add-apt-repository ppa:alessandro-strada/ppa
+	sudo apt-get update
+	sudo apt-get install google-drive-ocamlfuse
 )
