@@ -1,0 +1,4 @@
+#!/bin/bash
+
+socat TCP4-LISTEN:22400,fork SOCKS4A:localhost:server.slsknet.org:2242,socksport=9050 &
+nicotine

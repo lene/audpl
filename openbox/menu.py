@@ -9,7 +9,7 @@ programs = OrderedDict({
         "Chromium": "chromium-browser",
         "Firefox": "firefox",
         "Thunderbird": "thunderbird",
-        "Nicotine": "/home/lene/scripts/nicotine-tor",
+        "Nicotine": "/home/lene/workspace/configs/nicotine-tor",
         "Skype": "skype",
         "Slack": "slack",
         "Pidgin": "pidgin",
