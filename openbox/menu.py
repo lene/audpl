@@ -6,22 +6,35 @@ __author__ = 'Lene Preuss <lene.preuss@gmail.com>'
 
 programs = OrderedDict({
     "Net": {
-        "Chromium": "x",
-        "Firefox": "x",
-        "Thunderbird": "x",
-        "Nicotine": "x",
-        "Skype": "x",
-        "Slack": "x",
-        "Pidgin": "x",
-        "Vuze": "x",
-        "VirtualBox": "x",
-        "KGPG": "x",
+        "Chromium": "chromium-browser",
+        "Firefox": "firefox",
+        "Thunderbird": "thunderbird",
+        "Nicotine": "/home/lene/scripts/nicotine-tor",
+        "Skype": "skype",
+        "Slack": "slack",
+        "Pidgin": "pidgin",
+        "Vuze": "vuze",
+        "VirtualBox": "virtualbox",
+        "KGPG": "kgpg",
+        "Multibit-HD": "/opt/multibit-hd/multibit-hd",
     },
     "Dev": {
         "Emacs": "emacs",
+        "PyCharm": "pycharm.sh",
+        "IntelliJ IDEA": "/opt/idea/bin/idea.sh",
+        "WebStorm": "webstorm.sh",
+        "PHPStorm": "phpstorm.sh",
+        "CLion": "/opt/clion/bin/clion.sh",
+        "NetBeans": "/opt/netbeans/bin/netbeans",
+        "pgAdmin III": "pgadmin3",
+        "MySQL Workbench": "mysql-workbench",
     },
     "Fun": {
         "Audacious": "audacious",
+        "Audacity": "audacity",
+        "FBReader": "fbreader",
+        "Kerbal Space Program": "/opt/KSP_Linux/KSP.x86_64",
+        "Freeciv": "freeciv",
     },
     "KCalc": "kcalc",
     "Kate": "kate",
@@ -30,10 +43,11 @@ programs = OrderedDict({
 
 
 def create_menu(entries):
-    menu = ''
     create_menu.indent += 4
+    indent = " " * create_menu.indent
+    menu = ''
+
     for item in entries.keys():
-        indent = " " * create_menu.indent
         if isinstance(entries[item], dict):
             submenu = create_menu(entries[item])
             if submenu:
