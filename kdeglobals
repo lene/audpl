@@ -148,6 +148,9 @@ Speedbar Width=167
 View Style=Simple
 listViewIconSize=0
 
+[KShortcutsDialog Settings]
+Dialog Size=600,480
+
 [PreviewSettings]
 MaximumRemoteSize=0
 
