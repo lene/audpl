@@ -12,6 +12,7 @@ programs = OrderedDict({
         "Nicotine": "/home/lene/workspace/configs/nicotine-tor",
         "Skype": "skype",
         "Slack": "slack",
+        "Telegram": "Telegram",
         "Pidgin": "pidgin",
         "Vuze": "vuze",
         "VirtualBox": "virtualbox",
