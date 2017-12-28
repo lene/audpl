@@ -9,12 +9,16 @@ programs = OrderedDict({
         "Chromium": "chromium-browser",
         "Firefox": "firefox",
         "Thunderbird": "thunderbird",
-        "Nicotine": "/home/lene/workspace/configs/nicotine-tor",
+        # chat clients
         "Skype": "skype",
         "Slack": "slack",
         "Telegram": "Telegram",
+        "Signal": "signal-desktop",
         "Pidgin": "pidgin",
+        # file sharing
+        "Nicotine": "/home/lene/workspace/configs/nicotine-tor",
         "Vuze": "vuze",
+        # other stuff
         "VirtualBox": "virtualbox",
         "KGPG": "kgpg",
         "Multibit-HD": "/opt/multibit-hd/multibit-hd",
