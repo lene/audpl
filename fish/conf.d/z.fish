@@ -1,0 +1,1 @@
+/home/lene/.config/fisherman/z/conf.d/z.fish
