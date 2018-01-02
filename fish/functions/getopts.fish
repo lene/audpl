@@ -1,1 +1,1 @@
-/home/lene/.config/fisherman/getopts/getopts.fish
+/home/preuss/.config/fisherman/getopts/getopts.fish

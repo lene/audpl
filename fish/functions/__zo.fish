@@ -1,1 +1,1 @@
-/home/lene/.config/fisherman/z/functions/__zo.fish
+/home/preuss/.config/fisherman/z/functions/__zo.fish

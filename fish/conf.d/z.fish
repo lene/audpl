@@ -1,1 +1,1 @@
-/home/lene/.config/fisherman/z/conf.d/z.fish
+/home/preuss/.config/fisherman/z/conf.d/z.fish

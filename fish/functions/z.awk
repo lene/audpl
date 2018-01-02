@@ -1,1 +1,1 @@
-/home/lene/.config/fisherman/z/functions/z.awk
+/home/preuss/.config/fisherman/z/functions/z.awk
