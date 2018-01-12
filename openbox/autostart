@@ -26,10 +26,10 @@ xscreensaver &
 gkrellm &
 xfce4-panel &
 nitrogen --restore &
-audacious &
+which audacious && audacious &
 which workrave && workrave &
 
-pidgin &
+which pidgin && pidgin &
 
 sleep 5 && kdeinit5 &
 sleep 20 && /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd & 
