@@ -31,8 +31,8 @@ which workrave && workrave &
 
 pidgin &
 
-sleep 5 && kdeinit4 &
-
+sleep 5 && kdeinit5 &
+sleep 20 && /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd & 
 test -x /opt/toggldesktop/TogglDesktop.sh && /opt/toggldesktop/TogglDesktop.sh &
 #which btsync && sleep 60 && btsync --storage ~/.btsync
 #which slack && sleep 120 && slack &
