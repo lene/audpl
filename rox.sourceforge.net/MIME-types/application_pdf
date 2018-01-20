@@ -1,2 +1,2 @@
 #! /bin/sh
-exec acroread "$@" || okular "$@"
+exec okular "$@"
