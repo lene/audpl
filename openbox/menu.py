@@ -41,6 +41,7 @@ programs = OrderedDict({
         "Kerbal Space Program": "/opt/KSP_Linux/KSP.x86_64",
         "Freeciv": "freeciv",
         "Scrivener": "scrivener",
+        "K3B": "k3b",
     },
     "KCalc": "kcalc",
     "Kate": "kate",
