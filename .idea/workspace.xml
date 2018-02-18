@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8019611e-5c8e-4e34-9570-572b11e575de" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/audacious/playlist-state" afterPath="$PROJECT_DIR$/audacious/playlist-state" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/audacious/playlists/1007.audpl" afterPath="$PROJECT_DIR$/audacious/playlists/1007.audpl" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,7 +17,7 @@
       <file leaf-file-name="menu.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2024">
+            <state relative-caret-position="3312">
               <caret line="92" column="30" lean-forward="false" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
               <folding />
             </state>
@@ -26,7 +27,7 @@
       <file leaf-file-name="rc.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openbox/rc.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10736">
+            <state relative-caret-position="17568">
               <caret line="488" column="34" lean-forward="false" selection-start-line="488" selection-start-column="34" selection-end-line="488" selection-end-column="34" />
               <folding />
             </state>
@@ -36,8 +37,8 @@
       <file leaf-file-name="show_ob_keybindings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/openbox/show_ob_keybindings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="132" column="16" lean-forward="false" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+            <state relative-caret-position="1704">
+              <caret line="130" column="30" lean-forward="true" selection-start-line="130" selection-start-column="30" selection-end-line="130" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -46,9 +47,19 @@
       <file leaf-file-name="menu.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openbox/menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1254">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="2016">
+              <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding>
+                <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+                <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+                <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+                <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+                <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+                <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+                <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+                <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+                <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,8 +136,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -193,7 +204,7 @@
     <frame x="1290" y="88" width="3077" height="1780" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13779397" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13875124" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -223,6 +234,48 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3312">
+          <caret line="92" column="30" lean-forward="false" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openbox/rc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17568">
+          <caret line="488" column="34" lean-forward="false" selection-start-line="488" selection-start-column="34" selection-end-line="488" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openbox/menu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2016">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openbox/show_ob_keybindings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4536">
+          <caret line="132" column="16" lean-forward="false" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2024">
           <caret line="92" column="30" lean-forward="false" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
           <folding />
@@ -241,7 +294,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1254">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -273,7 +336,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
           <caret line="42" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -305,7 +378,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
           <caret line="42" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -321,7 +404,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
           <caret line="42" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -369,7 +462,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1476">
           <caret line="42" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -401,7 +504,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
           <caret line="42" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -433,7 +546,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
           <caret line="42" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -447,7 +570,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/openbox/menu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2024">
+        <state relative-caret-position="3312">
           <caret line="92" column="30" lean-forward="false" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
           <folding />
         </state>
@@ -455,7 +578,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/openbox/rc.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10736">
+        <state relative-caret-position="17568">
           <caret line="488" column="34" lean-forward="false" selection-start-line="488" selection-start-column="34" selection-end-line="488" selection-end-column="34" />
           <folding />
         </state>
@@ -463,17 +586,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/openbox/show_ob_keybindings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="132" column="16" lean-forward="false" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+        <state relative-caret-position="1704">
+          <caret line="130" column="30" lean-forward="true" selection-start-line="130" selection-start-column="30" selection-end-line="130" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/openbox/menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="2016">
+          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <marker date="1516568965262" expanded="true" signature="158:1403" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="171:288" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1336:1343" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1433:2107" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1546:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1590:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1663:1830" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1844:2063" ph="..." />
+            <marker date="1516568965262" expanded="true" signature="1881:2063" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
