@@ -9,16 +9,16 @@ programs = OrderedDict({
         "Chromium": "chromium-browser",
         "Firefox": "firefox",
         "Thunderbird": "thunderbird",
-        # chat clients
+        "Chat Clients": None,
         "Skype": "skype",
         "Slack": "slack",
         "Telegram": "Telegram",
         "Signal": "signal-desktop",
         "Pidgin": "pidgin",
-        # file sharing
+        "File Sharing": None,
         "Nicotine": "/home/lene/workspace/configs/nicotine-tor",
         "Vuze": "vuze",
-        # other stuff
+        "Other Stuff": None,
         "VirtualBox": "virtualbox",
         "KGPG": "kgpg",
         "Multibit-HD": "/opt/multibit-hd/multibit-hd",
@@ -62,7 +62,9 @@ def create_menu(entries):
                     indent, item.lower(), item, submenu, indent
                 )
         else:
-            if which(entries[item]):
+            if entries[item] is None:
+                menu += '<separator />\n'
+            elif which(entries[item]):
                 menu += '{}<item label="{}"><action name="execute"><execute>{}</execute></action></item>\n'.format(
                     indent, item, entries[item]
                 )
