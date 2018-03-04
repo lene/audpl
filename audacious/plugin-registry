@@ -736,7 +736,7 @@ domain audacious-plugins
 priority 0
 about 1
 config 1
-enabled 0
+enabled 1
 general /usr/lib/x86_64-linux-gnu/audacious/General/cd-menu-items.so
 stamp 1503316634
 version 48
@@ -766,7 +766,7 @@ domain audacious-plugins
 priority 0
 about 1
 config 1
-enabled 1
+enabled 0
 general /usr/lib/x86_64-linux-gnu/audacious/General/hotkey.so
 stamp 1503316634
 version 48
