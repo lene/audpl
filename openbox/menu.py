@@ -63,7 +63,7 @@ def create_menu(entries):
                 )
         else:
             if entries[item] is None:
-                menu += '<separator />\n'
+                menu += indent + '<separator label="{}"/>\n'.format(item)
             elif which(entries[item]):
                 menu += '{}<item label="{}"><action name="execute"><execute>{}</execute></action></item>\n'.format(
                     indent, item, entries[item]
