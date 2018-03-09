@@ -56,7 +56,7 @@ which xv || (
 		make -j4
 		sudo make install
 	)
-    sudo apt install libxt-dev libc6-dev libjpeg-dev libtiff5-dev  && (
+    sudo apt install libxt-dev libc6-dev libjpeg62 libjpeg62-dev libtiff5-dev  && (
 		rm -r xv-3.10a 
 		test -f xv-3.10a.tar.gz || wget ftp://ftp.trilon.com/pub/xv/xv-3.10a.tar.gz
 		test -f xv-3.10a-jumbo20050501-1.diff.gz || wget http://www.ulich.org/hints/resources/xv-3.10a-jumbo20050501-1.diff.gz
