@@ -49,6 +49,13 @@ decrease_volume=Volume Down,Volume Down,Decrease Volume
 increase_volume=Volume Up,Volume Up,Increase Volume
 mute=Volume Mute,Volume Mute,Mute
 
+[knotes]
+_k_friendly_name=KNotes
+hide_all_notes=,Alt+Shift+H,Hide All Notes
+new_note=Alt+Shift+N,Alt+Shift+N,New Note
+new_note_clipboard=Alt+Shift+C,Alt+Shift+C,New Note From Clipboard
+show_all_notes=Alt+Shift+S,Alt+Shift+S,Show All Notes
+
 [krunner]
 _k_friendly_name=krunner
 run command=Alt+Space\tAlt+F2\tSearch,Alt+Space,Run Command

@@ -33,6 +33,7 @@ programs = OrderedDict({
         "NetBeans": "/opt/netbeans/bin/netbeans",
         "pgAdmin III": "pgadmin3",
         "MySQL Workbench": "mysql-workbench",
+        "Qt Creator": "qtcreator",
     },
     "Fun": {
         "Audacious": "audacious",
