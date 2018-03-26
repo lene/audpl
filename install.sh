@@ -16,8 +16,8 @@ test -L $HOME/.config/kwinrc             || ln -s $HOME/workspace/configs/kwinrc
 test -L $HOME/.config/kwinrulesrc        || ln -s $HOME/workspace/configs/kwinrulesrc        $HOME/.config
 
 test -L $HOME/.mrxvtrc || ln -s $HOME/workspace/configs/.mrxvtrc $HOME
-test -L $HOME/.emacs   || ln -s $HOME/workspace/configs/.emacs   $HOME
-test -L $HOME/.xemacs  || ln -s $HOME/workspace/configs/.xemacs  $HOME
+test -L $HOME/.emacs   || ln -s $HOME/workspace/configs/emacs/.emacs   $HOME
+test -L $HOME/.xemacs  || ln -s $HOME/workspace/configs/emacs/.xemacs  $HOME
 
 # install some software I'll definitely need
 sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools network-manager-gnome tor socat rox-filer lxtask menu gcc
