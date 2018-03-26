@@ -195,7 +195,7 @@
     <keybind key="C-Up">
       <action name="DesktopUp">
         <dialog>no</dialog>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="C-Down">
