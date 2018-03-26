@@ -1,8 +1,8 @@
-mrxvt.geometry:		    95x31+108
+mrxvt.geometry:		    120x40+108
 mrxvt*vt0*tabTitle:		term1
 mrxvt*vt1*tabTitle:		term2
 mrxvt*vt2*tabTitle:		term3
-mrxvt*saveLines:		1024
+mrxvt*saveLines:		10240
 !mrxvt*vt0*Pixmap:		/home/images/vt0bg.xpm
 !mrxvt*vt1*Pixmap:		/home/images/vt1bg.xpm
 !mrxvt*vt2*Pixmap:		/home/images/vt2bg.xpm
@@ -22,8 +22,8 @@ mrxvt*fading:			20
 
 mrxvt*font:			12x24
 #mrxvt*font:			10x20
-#mrxvt*xft:			True
-mrxvt*xft:			False
+mrxvt*xft:			True
+#mrxvt*xft:			False
 mrxvt*xftAntialias:		True
 
 mrxvt*syncTabTitle:		True
