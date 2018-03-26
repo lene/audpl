@@ -1,7 +1,7 @@
 # Many more interesting options at:
 # https://github.com/gwtaylor/dotfiles/blob/master/.mrxvtrc
 
-mrxvt.geometry:		    120x40+108
+mrxvt.geometry:		    98x28+10
 mrxvt*vt0*tabTitle:		term1
 mrxvt*vt1*tabTitle:		term2
 mrxvt*vt2*tabTitle:		term3
@@ -27,13 +27,13 @@ mrxvt*font:			12x24
 #mrxvt*font:			10x20
 mrxvt*xft:			True
 #mrxvt*xft:			False
-mrxvt*xftSize:			24
+mrxvt*xftSize:			16
 mrxvt*xftAntialias:		True
 
 mrxvt.xftPFont:			ubuntu
-mrxvt.xftPSize:			20
+mrxvt.xftPSize:			10
 
-Mrxvt.titleFormat:		%n. %t 
+# Mrxvt.titleFormat:		%n. %t 
 mrxvt*syncTabTitle:		True
 mrxvt*syncTabIcon:		True
 
@@ -41,3 +41,5 @@ mrxvt*cursorBlink:		True
 
 #Mrxvt.maxTabWidth:		80
 Mrxvt.autohideTabbar:	True
+
+Mrxvt.command:			fish
