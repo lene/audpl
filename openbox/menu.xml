@@ -79,6 +79,11 @@
 		  <execute>blueman-manager</execute>
 		</action>
 	  </item>
+	  <item label="NVIDIA Settings">
+		<action name="Execute">
+		  <execute>nvidia-settings</execute>
+		</action>
+	  </item>
 	  <item label="XScreenSaver">
 		<action name="Execute">
 		  <execute>xscreensaver-demo</execute>
