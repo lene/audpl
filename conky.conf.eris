@@ -50,6 +50,7 @@ conky.config = {
     out_to_stderr = false,
     extra_newline = false,
     own_window = true,
+    own_window_title = "conky",
     double_buffer = true,
     own_window_class = override,
     own_window_type = "normal",
@@ -58,7 +59,7 @@ conky.config = {
     uppercase = false,
     use_spacer = 'none',
 	short_units = true,
-    show_graph_scale = false,
+    show_graph_scale = true,
     show_graph_range = false
 }
 
@@ -79,11 +80,12 @@ ${if_match $memperc < 97}${color #FF4000}${else}\
 ${color red}${endif}${endif}${endif}${endif}${endif}${endif}${endif}\
 $memperc% ${membar 4}
 ${color grey}Swap:${color}${alignr}$swap/$swapmax
-${if_match $swapperc < 10}${color green}${else}\
-${if_match $swapperc < 25}${color yellow}${else}\
+${if_match $swapperc < 10}${color #00c000}${else}\
+${if_match $swapperc < 25}${color green}${else}\
+${if_match $swapperc < 50}${color yellow}${else}\
 ${if_match $swapperc < 75}${color orange}${else}\
 ${if_match $swapperc < 90}${color red}${else}\
-${color #800000}${endif}${endif}${endif}${endif}\
+${color #800000}${endif}${endif}${endif}${endif}${endif}\
 $swapperc% ${swapbar 4}
 ${color grey}CPU:${color}${alignr}${platform coretemp.0/hwmon/hwmon2 temp 1}°C
 ${if_match $cpu < 13}${color #00c000}${else}\
@@ -92,7 +94,7 @@ ${if_match $cpu < 40}${color #adff2f}${else}\
 ${if_match $cpu < 50}${color yellow}${else}\
 ${if_match $cpu < 75}${color orange}${else}\
 ${if_match $cpu < 90}${color red}${else}\
-${color #800000}${endif}${endif}${endif}${endif}${endif}${endif}\
+${color #c00000}${endif}${endif}${endif}${endif}${endif}${endif}\
 $cpu% ${cpubar 4}${color}
 ${cpugraph -t 00ff00 ff8000}
 ${color grey}Procs:${color} $processes${color grey}${alignr}Run: ${color}${running_processes}
