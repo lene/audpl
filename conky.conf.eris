@@ -69,14 +69,27 @@ ${alignc}${time %A, %B %d, %Y}
 $hr
 ${color grey}Frequency:${color}${alignr}$freq_g GHz
 ${color grey}RAM:${color}${alignr}$mem/$memmax
+${if_match $memperc < 50}${color #00c000}${else}\
+${if_match $memperc < 60}${color green}${else}\
+${if_match $memperc < 70}${color #adff2f}${else}\
+${if_match $memperc < 80}${color yellow}${else}\
+${if_match $memperc < 90}${color orange}${else}\
+${if_match $memperc < 95}${color red}${else}\
+${color #800000}${endif}${endif}${endif}${endif}${endif}${endif}\
 $memperc% ${membar 4}
 ${color grey}Swap:${color}${alignr}$swap/$swapmax
+${if_match $swapperc < 10}${color green}${else}\
+${if_match $swapperc < 25}${color yellow}${else}\
+${if_match $swapperc < 75}${color orange}${else}\
+${if_match $swapperc < 90}${color red}${else}\
+${color #800000}${endif}${endif}${endif}${endif}\
 $swapperc% ${swapbar 4}
 ${color grey}CPU:${color}${alignr}$cpu%
+${if_match $cpu < 13}${color #00c000}${else}\
 ${if_match $cpu < 25}${color green}${else}\
 ${if_match $cpu < 50}${color yellow}${else}\
 ${if_match $cpu < 75}${color orange}${else}\
-${color red}${endif}${endif}${endif}\
+${color red}${endif}${endif}${endif}${endif}\
 ${cpubar 4}${color}
 ${cpugraph -t 00ff00 ff8000}
 ${color grey}Procs:${color} $processes${color grey}${alignr}Run: ${color}${running_processes}

@@ -1071,7 +1071,7 @@
       <skip_pager>yes</skip_pager>
       <skip_taskbar>yes</skip_taskbar>
     </application>
-    <application name="conky" class="Conky">
+    <application name="conky*" class="Conky">
       <decor>no</decor>
       <desktop>all</desktop>
       <iconic>no</iconic>
