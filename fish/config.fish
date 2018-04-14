@@ -13,4 +13,4 @@ function time -d "Use /usr/bin/time to display not only running time, but also m
 %P CPU' $argv
 end
 
-set -x LD_LIBRARY_PATH /usr/lib/nvidia-384
+set -xg LD_LIBRARY_PATH /usr/lib/nvidia-384:/usr/local/cuda/extras/CUPTI/lib64/

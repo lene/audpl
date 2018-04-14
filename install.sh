@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mkdir -p $HOME/.config
+
 test -L $HOME/.config/audacious || ln -s $HOME/workspace/configs/audacious $HOME/.config
 test -L $HOME/.config/openbox || ln -s $HOME/workspace/configs/openbox   $HOME/.config
 
@@ -20,6 +21,7 @@ test -L $HOME/.mrxvtrc || ln -s $HOME/workspace/configs/.mrxvtrc $HOME
 test -L $HOME/.emacs   || ln -s $HOME/workspace/configs/emacs/.emacs   $HOME
 test -L $HOME/.xemacs  || ln -s $HOME/workspace/configs/emacs/.xemacs  $HOME
 
+exit
 # install some software I'll definitely need
 sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools network-manager-gnome tor socat rox-filer lxtask menu gcc make
 
