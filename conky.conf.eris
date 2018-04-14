@@ -38,7 +38,7 @@ conky.config = {
     draw_outline = false,
     draw_shades = false,
     use_xft = true,
-    font = 'DejaVu Sans Mono:size=12',
+    font = 'Ubuntu:size=14',
     gap_x = 5,
     gap_y = 0,
     minimum_height = 5,
@@ -63,8 +63,10 @@ conky.config = {
 
 conky.text = [[
 $alignc $nodename ${color grey}(${uptime})${color}
+${font Arial Black:size=28}${alignc}${time %H:%M}${font}
+${alignc}${time %A, %B %d, %Y}
 $hr
-${color grey}Frequency (in GHz):$color $freq_g
+${color grey}Frequency:$color $freq_g GHz
 ${color grey}RAM Usage:$color $mem/$memmax
 $memperc% ${membar 4}
 ${color grey}Swap Usage:$color $swap/$swapmax
