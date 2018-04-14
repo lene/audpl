@@ -43,6 +43,7 @@ conky.config = {
     gap_y = 0,
     minimum_height = 5,
 	minimum_width = 5,
+	maximum_width = 200,
     net_avg_samples = 2,
     no_buffers = true,
     out_to_console = false,
@@ -66,15 +67,25 @@ $alignc $nodename ${color grey}(${uptime})${color}
 ${font Arial Black:size=28}${alignc}${time %H:%M}${font}
 ${alignc}${time %A, %B %d, %Y}
 $hr
-${color grey}Frequency:$color $freq_g GHz
-${color grey}RAM Usage:$color $mem/$memmax
+${color grey}Frequency:${color}${alignr}$freq_g GHz
+${color grey}RAM:${color}${alignr}$mem/$memmax
 $memperc% ${membar 4}
-${color grey}Swap Usage:$color $swap/$swapmax
+${color grey}Swap:${color}${alignr}$swap/$swapmax
 $swapperc% ${swapbar 4}
-${color grey}CPU Usage:$color $cpu%
-${cpubar 4}
+${color grey}CPU:${color}${alignr}$cpu%
+${if_match $cpu < 25}${color green}${else}\
+${if_match $cpu < 50}${color yellow}${else}\
+${if_match $cpu < 75}${color orange}${else}\
+${color red}${endif}${endif}${endif}\
+${cpubar 4}${color}
 ${cpugraph -t 00ff00 ff8000}
-${color grey}Processes:$color $processes  ${color grey}Running:$color $running_processes
+${color grey}Procs:${color} $processes${color grey}${alignr}Run: ${color}${running_processes}
+${font Ubuntu:size=10}${voffset -1}${goto 115}  CPU%${alignr}Mem%
+${voffset -1}${goto 2}${top name 1} ${goto 115}${top cpu 1}${alignr}${top mem 1}
+${voffset -1}${goto 2}${top name 2} ${goto 115}${top cpu 2}${alignr}${top mem 2}
+${voffset -1}${goto 2}${top name 3} ${goto 115}${top cpu 3}${alignr}${top mem 3}
+${voffset -1}${goto 2}${top name 4} ${goto 115}${top cpu 4}${alignr}${top mem 4}
+${voffset -1}${goto 2}${top name 5} ${goto 115}${top cpu 5}${alignr}${top mem 5}${font}
 $hr
 ${color grey}File systems:
  / $color${fs_used /}/${fs_size /} ${fs_bar 6 /}
@@ -89,12 +100,6 @@ ${if_match ${battery_percent} < 35}${color yellow}${else}\
 ${if_match ${battery_percent} < 90}${color white}${else}\
 ${color green}${endif}${endif}${endif}${endif}\
 ${battery_bar}${color}
-${voffset -1}${goto 2}Name${goto 144}  CPU%${alignr}MEM%
-${voffset -1}${goto 2}${top name 1} ${goto 144}${top cpu 1}${alignr}${top mem 1}
-${voffset -1}${goto 2}${top name 2} ${goto 144}${top cpu 2}${alignr}${top mem 2}
-${voffset -1}${goto 2}${top name 3} ${goto 144}${top cpu 3}${alignr}${top mem 3}
-${voffset -1}${goto 2}${top name 4} ${goto 144}${top cpu 4}${alignr}${top mem 4}
-${voffset -1}${goto 2}${top name 5} ${goto 144}${top cpu 5}${alignr}${top mem 5}
 #
 #${color grey}Name               ${alignc}CPU% ${alignr}MEM%
 #${color lightgrey}${top name 1} ${alignc}${top cpu 1} ${alignr}${top mem 1}
