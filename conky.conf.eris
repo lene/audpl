@@ -42,7 +42,7 @@ conky.config = {
     gap_x = 5,
     gap_y = 0,
     minimum_height = 5,
-	minimum_width = 5,
+	minimum_width = 200,
 	maximum_width = 200,
     net_avg_samples = 2,
     no_buffers = true,
@@ -63,9 +63,9 @@ conky.config = {
 }
 
 conky.text = [[
-$alignc $nodename ${color grey}(${uptime})${color}
-${font Arial Black:size=28}${alignc}${time %H:%M}${font}
-${alignc}${time %A, %B %d, %Y}
+$alignc $nodename ${color grey}  (${uptime})${color}
+${font Arial Black:size=28}${alignc}${time %H:%M}${font}:${time %S}
+${alignc}${time %a., %b %d, %Y}
 $hr
 ${color grey}Frequency:${color}${alignr}$freq_g GHz
 ${color grey}RAM:${color}${alignr}$mem/$memmax
@@ -74,8 +74,9 @@ ${if_match $memperc < 60}${color green}${else}\
 ${if_match $memperc < 70}${color #adff2f}${else}\
 ${if_match $memperc < 80}${color yellow}${else}\
 ${if_match $memperc < 90}${color orange}${else}\
-${if_match $memperc < 95}${color red}${else}\
-${color #800000}${endif}${endif}${endif}${endif}${endif}${endif}\
+${if_match $memperc < 94}${color #ff6000}${else}\
+${if_match $memperc < 97}${color #FF4000}${else}\
+${color red}${endif}${endif}${endif}${endif}${endif}${endif}${endif}\
 $memperc% ${membar 4}
 ${color grey}Swap:${color}${alignr}$swap/$swapmax
 ${if_match $swapperc < 10}${color green}${else}\
@@ -101,8 +102,15 @@ ${voffset -1}${goto 2}${top name 4} ${goto 115}${top cpu 4}${alignr}${top mem 4}
 ${voffset -1}${goto 2}${top name 5} ${goto 115}${top cpu 5}${alignr}${top mem 5}${font}
 $hr
 ${color grey}File systems:
- / $color${fs_used /}/${fs_size /} ${fs_bar 6 /}
-Down:$color ${downspeed wlp58s0} $alignr Up: $color ${upspeed wlp58s0}
+ / $color${fs_used /}/${fs_size /} ${if_match $fs_used_perc < 13}${color #00c000}${else}\
+${if_match $fs_used_perc < 50}${color green}${else}\
+${if_match $fs_used_perc < 70}${color #adff2f}${else}\
+${if_match $fs_used_perc < 80}${color yellow}${else}\
+${if_match $fs_used_perc < 90}${color #ffc000}${else}\
+${if_match $fs_used_perc < 95}${color orange}${else}\
+${color red}${endif}${endif}${endif}${endif}${endif}${endif}\
+${fs_bar 6 /}
+${color grey}Down:$color ${downspeed wlp58s0} ${alignr}Up:$color ${upspeed wlp58s0}
 ${downspeedgraph wlp58s0 00ff00 ff8000 -t -l}
 ${upspeedgraph wlp58s0 00ff00 ff8000 -l}
 $hr
