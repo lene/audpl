@@ -22,12 +22,13 @@ else
     fi
 fi
     
-xscreensaver &
-gkrellm &
-xfce4-panel &
-nitrogen --restore &
+which xscreensaver && xscreensaver &
+which gkrellm && gkrellm &
+which xfce4-panel && xfce4-panel &
+which nitrogen && nitrogen --restore &
 which audacious && audacious &
 which workrave && workrave &
+which conky && conky -o -c $HOME/workspace/configs/conky.conf.$(hostname) &
 
 which pidgin && pidgin &
 

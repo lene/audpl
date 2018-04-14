@@ -135,7 +135,7 @@
   <margins>
     <top>0</top>
     <bottom>0</bottom>
-    <left>128</left>
+    <left>136</left>
     <right>0</right>
   </margins>
   <dock>
@@ -1063,9 +1063,16 @@
     <application name="gkrellm" class="Gkrellm">
       <decor>no</decor>
       <position>
-        <x>-3810</x>
+        <x>-3814</x>
         <y>0</y>
       </position>
+      <desktop>all</desktop>
+      <iconic>no</iconic>
+      <skip_pager>yes</skip_pager>
+      <skip_taskbar>yes</skip_taskbar>
+    </application>
+    <application name="conky" class="Conky">
+      <decor>no</decor>
       <desktop>all</desktop>
       <iconic>no</iconic>
       <skip_pager>yes</skip_pager>
