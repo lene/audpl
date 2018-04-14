@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p $HOME/.config
 test -L $HOME/.config/audacious || ln -s $HOME/workspace/configs/audacious $HOME/.config
 test -L $HOME/.config/openbox || ln -s $HOME/workspace/configs/openbox   $HOME/.config
 
@@ -20,7 +21,7 @@ test -L $HOME/.emacs   || ln -s $HOME/workspace/configs/emacs/.emacs   $HOME
 test -L $HOME/.xemacs  || ln -s $HOME/workspace/configs/emacs/.xemacs  $HOME
 
 # install some software I'll definitely need
-sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools network-manager-gnome tor socat rox-filer lxtask menu gcc
+sudo apt install mrxvt gkrelltop audacious zenity openbox emacs konsole xfce4 libx11-dev inotify-tools network-manager-gnome tor socat rox-filer lxtask menu gcc make
 
 # build setlayout program for openbox pager to display desktops in a grid rather than a line
 if [ -f openbox/setlayout.c ]; then
