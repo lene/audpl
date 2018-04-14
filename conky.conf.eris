@@ -85,13 +85,15 @@ ${if_match $swapperc < 75}${color orange}${else}\
 ${if_match $swapperc < 90}${color red}${else}\
 ${color #800000}${endif}${endif}${endif}${endif}\
 $swapperc% ${swapbar 4}
-${color grey}CPU:${color}${alignr}$cpu%
+${color grey}CPU:${color}${alignr}${platform coretemp.0/hwmon/hwmon2 temp 1}°C
 ${if_match $cpu < 13}${color #00c000}${else}\
 ${if_match $cpu < 25}${color green}${else}\
+${if_match $cpu < 40}${color #adff2f}${else}\
 ${if_match $cpu < 50}${color yellow}${else}\
 ${if_match $cpu < 75}${color orange}${else}\
-${color red}${endif}${endif}${endif}${endif}\
-${cpubar 4}${color}
+${if_match $cpu < 90}${color red}${else}\
+${color #800000}${endif}${endif}${endif}${endif}${endif}${endif}\
+$cpu% ${cpubar 4}${color}
 ${cpugraph -t 00ff00 ff8000}
 ${color grey}Procs:${color} $processes${color grey}${alignr}Run: ${color}${running_processes}
 ${font Ubuntu:size=10}${voffset -1}${goto 115}  CPU%${alignr}Mem%
