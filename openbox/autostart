@@ -23,7 +23,7 @@ else
 fi
     
 which xscreensaver && xscreensaver &
-which gkrellm && gkrellm &
+# which gkrellm && gkrellm &
 which xfce4-panel && xfce4-panel &
 which nitrogen && nitrogen --restore &
 which audacious && audacious &
