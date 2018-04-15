@@ -572,6 +572,13 @@
         </action>
       </keybind>
     </keybind>
+    <keybind key="C-д">
+      <keybind key="г">
+        <action name="Execute">
+          <command>setxkbmap -layout us</command>
+        </action>
+      </keybind>
+    </keybind>
     <!-- other function keys -->
     <keybind key="XF86WWW">
       <action name="Execute">
