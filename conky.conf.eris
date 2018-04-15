@@ -34,7 +34,7 @@ conky.config = {
     default_outline_color = 'white',
     default_shade_color = 'white',
     draw_borders = false,
-    draw_graph_borders = true,
+    draw_graph_borders = false,
     draw_outline = false,
     draw_shades = false,
     use_xft = true,
@@ -67,36 +67,12 @@ conky.text = [[
 $alignc $nodename ${color grey}  (${uptime})${color}
 ${font Arial Black:size=28}${alignc}${time %H:%M}${font}:${time %S}
 ${alignc}${time %a., %b %d, %Y}
-$hr
-${color grey}Frequency:${color}${alignr}$freq_g GHz
-#
-# Mem
-#
-${color grey}RAM:${color}${alignr}$mem/$memmax
-${if_match $memperc < 50}${color #00c000}${else}\
-${if_match $memperc < 60}${color green}${else}\
-${if_match $memperc < 70}${color #adff2f}${else}\
-${if_match $memperc < 80}${color yellow}${else}\
-${if_match $memperc < 90}${color orange}${else}\
-${if_match $memperc < 94}${color #ff6000}${else}\
-${if_match $memperc < 97}${color #FF4000}${else}\
-${color red}${endif}${endif}${endif}${endif}${endif}${endif}${endif}\
-$memperc% ${membar 4}
-#
-# Swap
-#
-${color grey}Swap:${color}${alignr}$swap/$swapmax
-${if_match $swapperc < 10}${color #00c000}${else}\
-${if_match $swapperc < 25}${color green}${else}\
-${if_match $swapperc < 50}${color yellow}${else}\
-${if_match $swapperc < 75}${color orange}${else}\
-${if_match $swapperc < 90}${color red}${else}\
-${color #800000}${endif}${endif}${endif}${endif}${endif}\
-$swapperc% ${swapbar 4}
+
 #
 # CPU
 #
-${color grey}CPU:${color}${alignr}${platform coretemp.0/hwmon/hwmon2 temp 1}°C
+${font Ubuntu:weight=bold:size=14}${color grey}CPU${font} ${hr 2}
+$freq_g GHz${alignr}${platform coretemp.0/hwmon/hwmon2 temp 1}°C
 ${if_match $cpu < 13}${color #00c000}${else}\
 ${if_match $cpu < 25}${color green}${else}\
 ${if_match $cpu < 40}${color #adff2f}${else}\
@@ -104,8 +80,8 @@ ${if_match $cpu < 50}${color yellow}${else}\
 ${if_match $cpu < 75}${color orange}${else}\
 ${if_match $cpu < 90}${color red}${else}\
 ${color #c00000}${endif}${endif}${endif}${endif}${endif}${endif}\
-$cpu% ${cpubar 4}${color}
-${cpugraph -t 00ff00 ff8000}
+$cpu% ${cpubar 8}${color}
+${cpugraph 60,200 00ff00 ff0000 -t}
 #
 # GPU
 #
@@ -124,11 +100,38 @@ ${voffset -1}${goto 2}${top name 2} ${goto 115}${top cpu 2}${alignr}${top mem 2}
 ${voffset -1}${goto 2}${top name 3} ${goto 115}${top cpu 3}${alignr}${top mem 3}
 ${voffset -1}${goto 2}${top name 4} ${goto 115}${top cpu 4}${alignr}${top mem 4}
 ${voffset -1}${goto 2}${top name 5} ${goto 115}${top cpu 5}${alignr}${top mem 5}${font}
-$hr
+
+#
+# Mem
+#
+${font Ubuntu:weight=bold:size=14}${color grey}Memory${font} ${hr 2}
+${color grey}RAM:${color}${alignr}$mem/$memmax
+${if_match $memperc < 50}${color #00c000}${else}\
+${if_match $memperc < 60}${color green}${else}\
+${if_match $memperc < 70}${color #adff2f}${else}\
+${if_match $memperc < 80}${color yellow}${else}\
+${if_match $memperc < 90}${color orange}${else}\
+${if_match $memperc < 94}${color #ff6000}${else}\
+${if_match $memperc < 97}${color #FF4000}${else}\
+${color red}${endif}${endif}${endif}${endif}${endif}${endif}${endif}\
+$memperc% ${membar 8}
+#
+# Swap
+#
+${color grey}Swap:${color}${alignr}$swap/$swapmax
+${if_match $swapperc < 10}${color #00c000}${else}\
+${if_match $swapperc < 25}${color green}${else}\
+${if_match $swapperc < 50}${color yellow}${else}\
+${if_match $swapperc < 75}${color orange}${else}\
+${if_match $swapperc < 90}${color red}${else}\
+${color #800000}${endif}${endif}${endif}${endif}${endif}\
+$swapperc% ${swapbar 8}
+
 #
 # File systems
 #
-${color grey}File systems:
+${font Ubuntu:weight=bold:size=14}${color grey}File systems${font} ${hr 2}
+${diskiograph 00ff00 ff8000}
  / $color${fs_used /}/${fs_size /} ${if_match $fs_used_perc < 13}${color #00c000}${else}\
 ${if_match $fs_used_perc < 50}${color green}${else}\
 ${if_match $fs_used_perc < 70}${color #adff2f}${else}\
@@ -136,24 +139,24 @@ ${if_match $fs_used_perc < 80}${color yellow}${else}\
 ${if_match $fs_used_perc < 90}${color #ffc000}${else}\
 ${if_match $fs_used_perc < 95}${color orange}${else}\
 ${color red}${endif}${endif}${endif}${endif}${endif}${endif}\
-${fs_bar 6 /}
-$hr
+${fs_bar 8 /}
+
 #
 # Net
 #
-${color grey}Down:$color ${downspeed wlp58s0} ${alignr}Up:$color ${upspeed wlp58s0}
+${color grey}Net${font} ${hr 2}
+${color grey}Down:$color ${downspeed wlp58s0} ${alignr}${color grey}Up:$color ${upspeed wlp58s0}
 ${downspeedgraph wlp58s0 00ff00 ff8000 -t}
 ${upspeedgraph wlp58s0 00ff00 ff8000}
-$hr
+
 #
 # Battery
 #
-Battery:${alignr}\
+${font Ubuntu:weight=bold:size=14}${color grey}Battery${font} ${hr 2}
 ${if_match "${exec cat /sys/class/power_supply/BAT0/status | head -c 1}" == "D"}${color red}\
 ${else}${if_match "${exec cat /sys/class/power_supply/BAT0/status | head -c 1}" == "C"}${color green}\
 ${else}${color}${endif}${endif}\
-${exec cat /sys/class/power_supply/BAT0/status | head -c 1}${color} \
-${battery_time}
+${exec cat /sys/class/power_supply/BAT0/status}${color}${alignr}${battery_time}
 ${if_match ${battery_percent} <  5}${color magenta}${else}\
 ${if_match ${battery_percent} < 10}${color #900000}${else}\
 ${if_match ${battery_percent} < 15}${color #c00000}${else}\
@@ -162,5 +165,6 @@ ${if_match ${battery_percent} < 35}${color orange}${else}\
 ${if_match ${battery_percent} < 50}${color yellow}${else}\
 ${if_match ${battery_percent} < 75}${color #adff2f}${else}\
 ${color green}${endif}${endif}${endif}${endif}${endif}${endif}${endif}\
-${battery_percent}% ${battery_bar}${color}
+${battery_percent}% ${battery_bar 8}${color}
+Power: ${alignr}${exec echo "scale=1; `cat /sys/class/power_supply/BAT0/current_now` * `cat /sys/class/power_supply/BAT0/voltage_now` / 1000000000000" | bc} W
 ]]
