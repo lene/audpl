@@ -119,16 +119,14 @@ ${downspeedgraph wlp58s0 00ff00 ff8000 -t -l}
 ${upspeedgraph wlp58s0 00ff00 ff8000 -l}
 $hr
 Battery: ${battery_percent}% # Color battery bar based on percentage remaining.
-${if_match ${battery_percent} < 15}${color red}${else}\
-${if_match ${battery_percent} < 25}${color orange}${else}\
-${if_match ${battery_percent} < 35}${color yellow}${else}\
-${if_match ${battery_percent} < 90}${color white}${else}\
-${color green}${endif}${endif}${endif}${endif}\
+${if_match ${battery_percent} <  5}${color magenta}${else}\
+${if_match ${battery_percent} < 10}${color #900000}${else}\
+${if_match ${battery_percent} < 15}${color #c00000}${else}\
+${if_match ${battery_percent} < 20}${color red}${else}\
+${if_match ${battery_percent} < 35}${color orange}${else}\
+${if_match ${battery_percent} < 50}${color yellow}${else}\
+${if_match ${battery_percent} < 75}${color #adff2f}${else}\
+${color green}${endif}${endif}${endif}${endif}${endif}${endif}${endif}\
 ${battery_bar}${color}
-#
-#${color grey}Name               ${alignc}CPU% ${alignr}MEM%
-#${color lightgrey}${top name 1} ${alignc}${top cpu 1} ${alignr}${top mem 1}
-#${color lightgrey}${top name 2} ${alignc}${top cpu 2} ${alignr}${top mem 2}
-#${color lightgrey}${top name 3} ${alignc}${top cpu 3} ${alignr}${top mem 3}
-#${color lightgrey}${top name 4} ${alignc}${top cpu 4} ${alignr}${top mem 4}
+${alignr}${battery_time}
 ]]
