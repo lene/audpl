@@ -72,8 +72,8 @@ ${if_match ${exec nvidia-smi | grep \% | cut -c 62-63} < 50}${color yellow}${els
 ${if_match ${exec nvidia-smi | grep \% | cut -c 62-63} < 75}${color orange}${else}\
 ${if_match ${exec nvidia-smi | grep \% | cut -c 62-63} < 90}${color red}${else}\
 ${color #c00000}${endif}${endif}${endif}${endif}${endif}${endif}\
-${exec nvidia-smi | grep \% | cut -c 62-63}% ${execgraph "nvidia-smi | grep \% | cut -c 62-63 " 00ff00 ff0000 -t}\
-${execbar nvidia-smi | grep \% | cut -c 62-63}
+${exec nvidia-smi | grep \% | cut -c 62-63}% ${execbar echo "$(nvidia-smi | grep \% | cut -c 62-63)"}
+${execgraph "nvidia-smi | grep \% | cut -c 62-63 " 00ff00 ff0000 -t} 
 ${color grey}Mem: $alignr ${exec nvidia-smi | grep MiB | head -n 1 | cut -c 36-54 | sed s/iB//g}
 ${if_match ${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia-smi | grep MiB | head -n 1 | cut -c 46-51)" | bc} < 50}${color #00c000}${else}\
 ${if_match ${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia-smi | grep MiB | head -n 1 | cut -c 46-51)" | bc} < 60}${color green}${else}\
@@ -145,8 +145,8 @@ ${fs_bar 8 /}
 #
 ${font Ubuntu:weight=bold:size=14}${color grey}Net${font} ${hr 2}
 ${color grey}Down:$color ${downspeed wlp58s0} ${alignr}${color grey}Up:$color ${upspeed wlp58s0}
-${downspeedgraph wlp58s0 00ff00 ff0040 -t}
-${upspeedgraph wlp58s0 00ffff ff8000}
+${downspeedgraph enp0s31f6 00ff00 ff0040 -t}
+${upspeedgraph enp0s31f6 00ffff ff8000}
 
 #
 # Battery
