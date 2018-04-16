@@ -15,7 +15,7 @@ conky.config = {
     draw_shades = false,
     extra_newline = false,
     font = 'Ubuntu:size=14',
-    gap_x = 5,
+    gap_x = 4280,
     gap_y = 0,
     minimum_height = 5,
     minimum_width = 200,
@@ -30,13 +30,13 @@ conky.config = {
     own_window_title = "conky",
     own_window_transparent = true,
     own_window_type = "desktop", -- "normal"
-	short_units = true,
+    short_units = true,
     show_graph_scale = true,
     show_graph_range = false,
     stippled_borders = 0,
     update_interval = 1.0,
-	update_interval_on_battery = 5.0,
-	uppercase = false,
+    update_interval_on_battery = 5.0,
+    uppercase = false,
     use_spacer = 'none',
     use_xft = true,
 }
@@ -50,7 +50,7 @@ ${alignc}${time %a., %b %d, %Y}
 # CPU
 #
 ${font Ubuntu:weight=bold:size=14}${color grey}CPU${font} ${hr 2}
-$freq_g GHz${alignr}${platform coretemp.0/hwmon/hwmon4 temp 1}°C
+$freq_g GHz${alignr}${platform coretemp.0/hwmon/hwmon3 temp 1}°C
 ${if_match $cpu < 13}${color #00c000}${else}\
 ${if_match $cpu < 25}${color green}${else}\
 ${if_match $cpu < 40}${color #adff2f}${else}\
