@@ -72,7 +72,7 @@ ${if_match ${exec nvidia-smi | grep \% | cut -c 62-63} < 50}${color yellow}${els
 ${if_match ${exec nvidia-smi | grep \% | cut -c 62-63} < 75}${color orange}${else}\
 ${if_match ${exec nvidia-smi | grep \% | cut -c 62-63} < 90}${color red}${else}\
 ${color #c00000}${endif}${endif}${endif}${endif}${endif}${endif}\
-${exec nvidia-smi | grep \% | cut -c 62-63}% ${execbar echo "$(nvidia-smi | grep \% | cut -c 62-63)"}
+${exec nvidia-smi | grep \% | cut -c 62-63}% ${execbar 8 echo "$(nvidia-smi | grep \% | cut -c 62-63)"}
 ${execgraph "nvidia-smi | grep \% | cut -c 62-63 " 00ff00 ff0000 -t} 
 ${color grey}Mem: $alignr ${exec nvidia-smi | grep MiB | head -n 1 | cut -c 36-54 | sed s/iB//g}
 ${if_match ${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia-smi | grep MiB | head -n 1 | cut -c 46-51)" | bc} < 50}${color #00c000}${else}\
@@ -83,7 +83,7 @@ ${if_match ${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 10
 ${if_match ${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia-smi | grep MiB | head -n 1 | cut -c 46-51)" | bc} < 94}${color #ff6000}${else}\
 ${if_match ${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia-smi | grep MiB | head -n 1 | cut -c 46-51)" | bc} < 97}${color #FF4000}${else}\
 ${color red}${endif}${endif}${endif}${endif}${endif}${endif}${endif}\
-${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia-smi | grep MiB | head -n 1 | cut -c 46-51)" | bc}% ${execbar echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia-smi | grep MiB | head -n 1 | cut -c 46-51)" | bc}${color}
+${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia-smi | grep MiB | head -n 1 | cut -c 46-51)" | bc}% ${execbar 8 echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia-smi | grep MiB | head -n 1 | cut -c 46-51)" | bc}${color}
 #${if_match ${exec lsmod | grep 'nvidia' -c} > 0}\
 #Discrete GPU ${hr 2}
 #${goto 6}${voffset 5}${font conkycolorslogos:size=16}n${font}${voffset -6}${goto 32}${exec nvidia-smi --query-gpu=name --format=csv,noheader}
