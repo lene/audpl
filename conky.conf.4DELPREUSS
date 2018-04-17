@@ -14,12 +14,12 @@ conky.config = {
     draw_outline = false,
     draw_shades = false,
     extra_newline = false,
-    font = 'Ubuntu:size=14',
+    font = 'Ubuntu:size=11',
     gap_x = 4280,
     gap_y = 0,
     minimum_height = 5,
-    minimum_width = 200,
-    maximum_width = 200,
+    minimum_width = 140,
+    maximum_width = 140,
     net_avg_samples = 2,
     no_buffers = true,
     out_to_console = false,
@@ -43,13 +43,13 @@ conky.config = {
 
 conky.text = [[
 $alignc $nodename ${color grey}  (${uptime})${color}
-${font Arial Black:size=28}${alignc}${time %H:%M}${font}:${time %S}
+${font Arial Black:size=24}${alignc}${time %H:%M}${font}:${time %S}
 ${alignc}${time %a., %b %d, %Y}
 
 #
 # CPU
 #
-${font Ubuntu:weight=bold:size=14}${color grey}CPU${font} ${hr 2}
+${font Ubuntu:weight=bold:size=12}${color grey}CPU${font} ${hr 2}
 $freq_g GHz${alignr}${platform coretemp.0/hwmon/hwmon3 temp 1}°C
 ${if_match $cpu < 13}${color #00c000}${else}\
 ${if_match $cpu < 25}${color green}${else}\
@@ -63,7 +63,7 @@ ${cpugraph 60,200 00ff00 ff0000 -t}
 #
 # GPU
 #
-${font Ubuntu:weight=bold:size=14}${color grey}GPU${font} ${hr 2}
+${font Ubuntu:weight=bold:size=12}${color grey}GPU${font} ${hr 2}
 ${color grey}${alignr}${exec nvidia-smi | grep MiB | head -n 1 | cut -c 8-10}°C
 ${if_match $cpu < 13}${color #00c000}${else}\
 ${if_match ${exec nvidia-smi | grep \% | cut -c 62-63} < 25}${color green}${else}\
@@ -93,7 +93,7 @@ ${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia
 #Memory:${alignr}${exec nvidia-smi --query-gpu=memory.used --format=csv,noheader} / ${exec nvidia-smi --query-gpu=memory.total --format=csv,noheader}
 #${endif}\
 ${color grey}Procs:${color} $processes${color grey}${alignr}Run: ${color}${running_processes}
-${font Ubuntu:size=10}${voffset -1}${goto 115}  CPU%${alignr}Mem%
+${font Ubuntu:size=9}${voffset -1}${goto 115}  CPU%${alignr}Mem%
 ${voffset -1}${goto 2}${top name 1} ${goto 115}${top cpu 1}${alignr}${top mem 1}
 ${voffset -1}${goto 2}${top name 2} ${goto 115}${top cpu 2}${alignr}${top mem 2}
 ${voffset -1}${goto 2}${top name 3} ${goto 115}${top cpu 3}${alignr}${top mem 3}
@@ -103,7 +103,7 @@ ${voffset -1}${goto 2}${top name 5} ${goto 115}${top cpu 5}${alignr}${top mem 5}
 #
 # Mem
 #
-${font Ubuntu:weight=bold:size=14}${color grey}Memory${font} ${hr 2}
+${font Ubuntu:weight=bold:size=12}${color grey}Memory${font} ${hr 2}
 ${color grey}RAM:${color}${alignr}$mem/$memmax
 ${if_match $memperc < 50}${color #00c000}${else}\
 ${if_match $memperc < 60}${color green}${else}\
@@ -129,7 +129,7 @@ $swapperc% ${swapbar 8}
 #
 # File systems
 #
-${font Ubuntu:weight=bold:size=14}${color grey}Disk${font} ${hr 2}
+${font Ubuntu:weight=bold:size=12}${color grey}Disk${font} ${hr 2}
 ${diskiograph 00ff00 ff8000}
  / $color${fs_used /}/${fs_size /} ${if_match $fs_used_perc < 13}${color #00c000}${else}\
 ${if_match $fs_used_perc < 50}${color green}${else}\
@@ -143,7 +143,7 @@ ${fs_bar 8 /}
 #
 # Net
 #
-${font Ubuntu:weight=bold:size=14}${color grey}Net${font} ${hr 2}
+${font Ubuntu:weight=bold:size=12}${color grey}Net${font} ${hr 2}
 ${color grey}Down:$color ${downspeed wlp58s0} ${alignr}${color grey}Up:$color ${upspeed wlp58s0}
 ${downspeedgraph enp0s31f6 00ff00 ff0040 -t}
 ${upspeedgraph enp0s31f6 00ffff ff8000}
@@ -151,7 +151,7 @@ ${upspeedgraph enp0s31f6 00ffff ff8000}
 #
 # Battery
 #
-${font Ubuntu:weight=bold:size=14}${color grey}Battery${font} ${hr 2}
+${font Ubuntu:weight=bold:size=12}${color grey}Battery${font} ${hr 2}
 ${if_match "${exec cat /sys/class/power_supply/BAT0/status | head -c 1}" == "D"}${color red}\
 ${else}${if_match "${exec cat /sys/class/power_supply/BAT0/status | head -c 1}" == "C"}${color green}\
 ${else}${color}${endif}${endif}\
