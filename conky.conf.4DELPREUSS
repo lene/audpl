@@ -93,12 +93,12 @@ ${exec echo "$(nvidia-smi | grep MiB | head -n 1 | cut -c 35-40) * 100 /$(nvidia
 #Memory:${alignr}${exec nvidia-smi --query-gpu=memory.used --format=csv,noheader} / ${exec nvidia-smi --query-gpu=memory.total --format=csv,noheader}
 #${endif}\
 ${color grey}Procs:${color} $processes${color grey}${alignr}Run: ${color}${running_processes}
-${font Ubuntu:size=9}${voffset -1}${goto 115}  CPU%${alignr}Mem%
-${voffset -1}${goto 2}${top name 1} ${goto 115}${top cpu 1}${alignr}${top mem 1}
-${voffset -1}${goto 2}${top name 2} ${goto 115}${top cpu 2}${alignr}${top mem 2}
-${voffset -1}${goto 2}${top name 3} ${goto 115}${top cpu 3}${alignr}${top mem 3}
-${voffset -1}${goto 2}${top name 4} ${goto 115}${top cpu 4}${alignr}${top mem 4}
-${voffset -1}${goto 2}${top name 5} ${goto 115}${top cpu 5}${alignr}${top mem 5}${font}
+${font Ubuntu:size=9}${voffset -1}${goto 80}  CPU%${alignr}Mem%
+${voffset -1}${goto 2}${top name 1} ${goto 80}${top cpu 1}${alignr}${top mem 1}
+${voffset -1}${goto 2}${top name 2} ${goto 80}${top cpu 2}${alignr}${top mem 2}
+${voffset -1}${goto 2}${top name 3} ${goto 80}${top cpu 3}${alignr}${top mem 3}
+${voffset -1}${goto 2}${top name 4} ${goto 80}${top cpu 4}${alignr}${top mem 4}
+${voffset -1}${goto 2}${top name 5} ${goto 80}${top cpu 5}${alignr}${top mem 5}${font}
 
 #
 # Mem
