@@ -131,10 +131,10 @@ ${upspeedgraph wlp58s0 00ffff ff8000}
 # Battery
 #
 ${font Ubuntu:weight=bold:size=14}${color grey}Battery${font} ${hr 2}
-${if_match "${exec cat /sys/class/power_supply/BAT0/status | head -c 1}" == "D"}${color red}\
-${else}${if_match "${exec cat /sys/class/power_supply/BAT0/status | head -c 1}" == "C"}${color green}\
+${if_match "${exec cat /sys/class/power_supply/BAT0/status 2> /dev/null | head -c 1}" == "D"}${color red}\
+${else}${if_match "${exec cat /sys/class/power_supply/BAT0/status 2> /dev/null | head -c 1}" == "C"}${color green}\
 ${else}${color}${endif}${endif}\
-${exec cat /sys/class/power_supply/BAT0/status}${color}${alignr}${battery_time}
+${exec cat /sys/class/power_supply/BAT0/status 2> /dev/null}${color}${alignr}${battery_time}
 ${if_match ${battery_percent} <  5}${color magenta}${else}\
 ${if_match ${battery_percent} < 10}${color #900000}${else}\
 ${if_match ${battery_percent} < 15}${color #c00000}${else}\
@@ -144,5 +144,5 @@ ${if_match ${battery_percent} < 50}${color yellow}${else}\
 ${if_match ${battery_percent} < 75}${color #adff2f}${else}\
 ${color green}${endif}${endif}${endif}${endif}${endif}${endif}${endif}\
 ${battery_percent}% ${battery_bar 8}${color}
-Power: ${alignr}${exec echo "scale=1; `cat /sys/class/power_supply/BAT0/current_now` * `cat /sys/class/power_supply/BAT0/voltage_now` / 1000000000000" | bc} W
+Power: ${alignr}${exec echo "scale=1; `cat /sys/class/power_supply/BAT0/current_now 2> /dev/null || echo 0` * `cat /sys/class/power_supply/BAT0/voltage_now 2> /dev/null || echo 0` / 1000000000000" | bc} W
 ]]
