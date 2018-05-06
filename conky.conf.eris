@@ -134,7 +134,7 @@ ${font Ubuntu:weight=bold:size=14}${color grey}Battery${font} ${hr 2}
 ${if_match "${exec cat /sys/class/power_supply/BAT0/status 2> /dev/null | head -c 1}" == "D"}${color red}\
 ${else}${if_match "${exec cat /sys/class/power_supply/BAT0/status 2> /dev/null | head -c 1}" == "C"}${color green}\
 ${else}${color}${endif}${endif}\
-${exec cat /sys/class/power_supply/BAT0/status 2> /dev/null}${color}${alignr}${battery_time}
+${font Ubuntu:size=13}${exec cat /sys/class/power_supply/BAT0/status 2> /dev/null}${font}${color}${alignr}${battery_time}
 ${if_match ${battery_percent} <  5}${color magenta}${else}\
 ${if_match ${battery_percent} < 10}${color #900000}${else}\
 ${if_match ${battery_percent} < 15}${color #c00000}${else}\
