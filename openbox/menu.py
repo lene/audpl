@@ -9,15 +9,19 @@ programs = OrderedDict({
         "Chromium": "chromium-browser",
         "Firefox": "firefox",
         "Thunderbird": "thunderbird",
+        
         "Chat Clients": None,
         "Skype": "skype",
         "Slack": "slack",
         "Telegram": "Telegram",
         "Signal": "signal-desktop",
         "Pidgin": "pidgin",
+        
         "File Sharing": None,
         "Nicotine": "/home/lene/workspace/configs/nicotine-tor",
         "Vuze": "vuze",
+        "Transmission": "transmission-gtk",
+
         "Other Stuff": None,
         "VirtualBox": "virtualbox",
         "KGPG": "kgpg",
