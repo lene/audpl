@@ -147,6 +147,9 @@ ${font Ubuntu:weight=bold:size=12}${color grey}Net${font} ${hr 2}
 ${color grey}Down:$color ${downspeed enp0s31f6} ${alignr}${color grey}Up:$color ${upspeed enp0s31f6}
 ${downspeedgraph enp0s31f6 00ff00 ff0040 -t}
 ${upspeedgraph enp0s31f6 00ffff ff8000}
+${color grey}Down:$color ${downspeed wlp2s0} ${alignr}${color grey}Up:$color ${upspeed wlp2s0}
+${downspeedgraph wlp2s0 00ff00 ff0040 -t}
+${upspeedgraph wlp2s0 00ffff ff8000}
 
 #
 # Battery
