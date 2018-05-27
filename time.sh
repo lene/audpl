@@ -30,8 +30,9 @@ for DIR in * ; do
 		for i in *.[oO][gG][gG]; do
 			if [ -f "$i" ]; then
 				TIME=$(ogginfo "$i" | grep "Playback length" | cut -d : -f 2-)
-				SECONDS=$[$(echo $TIME | cut -d m -f 1) * 60 + $(echo $TIME | cut -f : -f 2 | cut -d . -f 1)]
-				TOTAL=$[$TOTAL+$SECONDS]
+				MINUTES=$(echo $TIME | cut -d m -f 1)
+				SECONDS=$(echo $TIME | cut -d : -f 2 | cut -d . -f 1)]
+				TOTAL=$[$TOTAL+$MINUTES*60+$SECONDS]
 			fi
 		done
 
