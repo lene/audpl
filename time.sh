@@ -27,6 +27,14 @@ for DIR in * ; do
 			fi
 		done
 
+		for i in *.[oO][gG][gG]; do
+			if [ -f "$i" ]; then
+				TIME=$(ogginfo "$i" | grep "Playback length" | cut -d : -f 2-)
+				SECONDS=$[$(echo $TIME | cut -d m -f 1) * 60 + $(echo $TIME | cut -f : -f 2 | cut -d . -f 1)]
+				TOTAL=$[$TOTAL+$SECONDS]
+			fi
+		done
+
 		for i in *.[mM]4[aA] *.[wW][mM][aA]; do
 			if [ -f "$i" ]; then
 				MILLISECONDS=$(mediainfo --Inform="Audio;%Duration%" "$i")
