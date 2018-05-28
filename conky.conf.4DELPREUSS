@@ -50,7 +50,7 @@ ${alignc}${time %a., %b %d, %Y}
 # CPU
 #
 ${font Ubuntu:weight=bold:size=12}${color grey}CPU${font} ${hr 2}
-$freq_g GHz${alignr}${platform coretemp.0/hwmon/hwmon3 temp 1}°C
+$freq_g GHz${alignr}${platform coretemp.0/hwmon/hwmon2 temp 1}°C
 ${if_match $cpu < 13}${color #00c000}${else}\
 ${if_match $cpu < 25}${color green}${else}\
 ${if_match $cpu < 40}${color #adff2f}${else}\
