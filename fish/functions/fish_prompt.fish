@@ -21,7 +21,7 @@ function fish_prompt --description 'Write out the prompt'
 	end
 	
 	set logfile {$HOME}/history/$__fish_prompt_hostname
-	echo '#' (date +'%Y%m%d %H:%M:%S') (pwd) '#' (history | head -1) >> $logfile
+	echo '#' (date +'%Y%m%d %H:%M:%S') (pwd) '#' (history -1) >> $logfile
 
 	if set -q VIRTUAL_ENV
     		echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
@@ -41,3 +41,4 @@ function fish_prompt --description 'Write out the prompt'
 
 	echo -n -s (set_color 888) "[ " (date +'%H:%M:%S') " ] " (set_color $color_cwd) (prompt_pwd) (set_color normal) "$suffix "
 end
+
