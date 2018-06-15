@@ -9,7 +9,7 @@ TARGET_FOLDER=/media/backup
 
 # sudo cryptsetup -y -v luksFormat --type luks2 /dev/sda1
 # password: same as laptop
-cryptsetup open /dev/sda1 backup 
+cryptsetup open /dev/sdb1 backup 
 # sudo mkfs.ext4 /dev/mapper/backup
 
 mkdir -p $TARGET_FOLDER
