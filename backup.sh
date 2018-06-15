@@ -8,10 +8,12 @@ fi
 DEVICE=${1:-/dev/sda1}
 TARGET_FOLDER=/media/backup
 
-# sudo cryptsetup -y -v luksFormat --type luks2 /dev/sda1
+# created with:
+# cryptsetup -y -v luksFormat --type luks2 $DEVICE
 # password: same as laptop
 cryptsetup open $DEVICE backup || exit 1
-# sudo mkfs.ext4 /dev/mapper/backup
+# mkfs.ext4 /dev/mapper/backup
+# tune2fs -m 0 /dev/mapper/backup
 
 mkdir -p $TARGET_FOLDER
 mount /dev/mapper/backup $TARGET_FOLDER || exit 1
