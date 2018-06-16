@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $UID != 0 ]; then
-	echo "execute me with sudo plz tyvm"
+	echo "sudo me plz tyvm"
 	exit
 fi
 
