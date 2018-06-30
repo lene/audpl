@@ -1,5 +1,5 @@
 [$Version]
-update_info=fonts_global.upd:Fonts_Global
+update_info=fonts_global.upd:Fonts_Global,fonts_global_toolbar.upd:Fonts_Global_Toolbar
 
 [ColorEffects:Disabled]
 Color=
@@ -117,7 +117,7 @@ font=Noto Sans,20,-1,5,50,0,0,0,0,0,Regular
 menuFont=Noto Sans,20,-1,5,50,0,0,0,0,0,Regular
 shadeSortColumn=true
 smallestReadableFont=Noto Sans,16,-1,5,50,0,0,0,0,0,Regular
-toolBarFont=Noto Sans,18,-1,5,50,0,0,0,0,0,Regular
+toolBarFont=Noto Sans,20,-1,5,50,0,0,0,0,0,Regular
 widgetStyle=Breeze
 
 [Icons]
