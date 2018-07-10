@@ -15,7 +15,7 @@ conky.config = {
     draw_shades = false,
     extra_newline = false,
     font = 'Ubuntu:size=11',
-    gap_x = 4280,
+    gap_x = 4340,
     gap_y = 0,
     minimum_height = 5,
     minimum_width = 140,
