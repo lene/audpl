@@ -532,6 +532,23 @@
         <command>amixer -q -D pulse set Master toggle</command>
       </action>
     </keybind>
+	<!-- external monitors -->
+	<keybind key="C-A-x">
+	  <keybind key="r">
+		<action name="Execute">
+		  <command>
+			xrandr --output eDP-1 --mode 3200x1800 --output DP-1 --mode 3840x2160 --right-of eDP-1
+		  </command>
+		</action>
+	  </keybind>
+	  <keybind key="l">
+		<action name="Execute">
+		  <command>
+			xrandr --output eDP-1 --mode 3200x1800 --output DP-1 --mode 3840x2160 --left-of eDP-1
+		  </command>
+		</action>
+	  </keybind>
+	</keybind>
     <!-- keyboard layout selection -->
     <keybind key="C-l">
       <keybind key="d">
