@@ -130,7 +130,7 @@
 	</item>
 	<item label="Suspend">
 	  <action name="Execute">
-		<execute>zenity --question --text='Suspend?' && systemctl suspend</execute>
+		<execute>zenity --question --text='Suspend?'; if test $? -eq 0; then systemctl suspend; fi</execute>
 	  </action>
 	</item>
 	<item label="Exit">
