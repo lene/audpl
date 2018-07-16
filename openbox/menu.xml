@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org file:///usr/share/openbox/menu.xsd">
 
+  <menu id="randr-menu" label="randr" execute="~/workspace/configs/openbox/ob-randr.py" />
+
   <menu id="root-menu" label="Openbox 3">
-	<item label="MRxvt">
-	  <action name="Execute">
-		<execute>mrxvt</execute>
-	  </action>
-	</item>
-	<item label="Konsole">
-	  <action name="Execute">
-		<execute>konsole</execute>
-	  </action>
-	</item>
-	<item label="Rox">
-	  <action name="Execute">
-		<execute>rox-filer</execute>
-	  </action>
-	</item>
-	<item label="Dolphin">
-	  <action name="Execute">
-		<execute>dolphin</execute>
-	  </action>
-	</item>
+    <item label="MRxvt">
+      <action name="Execute">
+        <execute>mrxvt</execute>
+      </action>
+    </item>
+    <item label="Konsole">
+      <action name="Execute">
+        <execute>konsole</execute>
+      </action>
+    </item>
+    <item label="Rox">
+      <action name="Execute">
+        <execute>rox-filer</execute>
+      </action>
+    </item>
+    <item label="Dolphin">
+      <action name="Execute">
+        <execute>dolphin</execute>
+      </action>
+    </item>
 
-	<separator/>
+    <separator/>
 
-	<menu id="dynamic-apps" label="Apps" execute="~/workspace/configs/openbox/menu.py" />
+    <menu id="dynamic-apps" label="Apps" execute="~/workspace/configs/openbox/menu.py" />
 
-	<menu id="/Debian" />
+    <menu id="/Debian" />
 
-	<separator/>
+    <separator/>
 
     <menu id="config" label="Config">
 
-	  <menu id="client-list-menu"/>
+      <menu id="client-list-menu"/>
 
-	  <item label="ObConf">
-		<action name="Execute">
-		  <execute>obconf</execute>
-		</action>
-	  </item>
+      <menu id="randr-menu" />
+
+      <item label="ObConf">
+	<action name="Execute">
+	  <execute>obconf</execute>
+	</action>
+      </item>
 	  <item label="Wallpaper">
 		<action name="Execute">
 		  <execute>nitrogen</execute>
