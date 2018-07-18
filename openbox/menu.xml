@@ -40,9 +40,9 @@
       <menu id="randr-menu" />
 
       <item label="ObConf">
-	<action name="Execute">
-	  <execute>obconf</execute>
-	</action>
+	    <action name="Execute">
+	      <execute>obconf</execute>
+	    </action>
       </item>
 	  <item label="Wallpaper">
 		<action name="Execute">
@@ -134,7 +134,9 @@
 	</item>
 	<item label="Suspend">
 	  <action name="Execute">
-		<execute>zenity --question --text='Suspend?'; if test $? -eq 0; then systemctl suspend; fi</execute>
+		<execute>
+		  zenity --question --text='Suspend?'; if test $? -eq 0; then systemctl suspend; fi
+		</execute>
 	  </action>
 	</item>
 	<item label="Exit">
