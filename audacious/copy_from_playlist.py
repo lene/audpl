@@ -84,23 +84,22 @@ class FilenameCleaner:
 
     MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
     PATTERNS_TO_FIX = [
-        r'(\d{1,3}) (.+)',      # 01 blah
-        r'(\d{1,3})\. (.+)',    # 01. blah
-        r'(\d{1,3})\.(.+)',     # 01.blah
-        r'(\d{1,3})- (.+)',     # 01- blah
-        r'(\d{1,3})--(.+)',     # 01--blah
-        r'(\d{1,3})-(.+)',      # 01-blah
-        r'-(\d{1,3})-(.+)',     # -01-blah
-        r'- (\d{1,3})\. (.+)',  # - 01. blah
-        r'(\d{1,3})_(.+)',      # 01_blah
-        r'\[(\d{1,3})\](.+)',   # [01]blah
-        r'\((\d{1,3})\)(.+)',   # (01)blah
-        r'(\d{1,3})(\D+)',      # 01blah
-        r'([a-z]\d) (.+)',      # a1 blah
-        r'([a-z]\d)-(.+)',      # a1-blah
-        r'([a-z]\d)\.(.+)',     # a1.blah
-        r'\[([a-z]\d)\](.+)',   # [a1]blah
-        r'\(([a-z]\d)\)(.+)',   # (a1)blah
+        r'\s*(\d{1,3}) (.+)',      # 01 blah
+        r'\s*(\d{1,3})\. (.+)',    # 01. blah
+        r'\s*(\d{1,3})\.(.+)',     # 01.blah
+        r'\s*(\d{1,3})-\s*(.+)',     # 01- blah
+        r'\s*(\d{1,3})--(.+)',     # 01--blah
+        r'\s*-(\d{1,3})-(.+)',     # -01-blah
+        r'\s*-\s*(\d{1,3})\. (.+)',  # - 01. blah
+        r'\s*(\d{1,3})_(.+)',      # 01_blah
+        r'\s*\[(\d{1,3})\](.+)',   # [01]blah
+        r'\s*\((\d{1,3})\)\s*(.+)',   # (01)blah
+        r'\s*(\d{1,3})(\D+)',      # 01blah
+        r'\s*([a-z]\d)\s+(.+)',      # a1 blah
+        r'\s*([a-z]\d)-(.+)',      # a1-blah
+        r'\s*([a-z]\d)\.(.+)',     # a1.blah
+        r'\s*\[([a-z]\d)\](.+)',   # [a1]blah
+        r'\s*\(([a-z]\d)\)(.+)',   # (a1)blah
     ]
 
     def __init__(self, basedir):
@@ -124,7 +123,7 @@ class FilenameCleaner:
         if min_length and len(to_remove) < min_length:
             return
         if verbose:
-            print('DIR:', self._base_directory, 'REMOVE:', to_remove)
+            print('--  DIR:', self._base_directory, '--  REMOVE:', to_remove)
         for file in files:
             if verbose:
                 self.print_utf8_error(
@@ -138,7 +137,8 @@ class FilenameCleaner:
         try:
             print(*string)
         except UnicodeEncodeError:
-            raise ValueError(self._base_directory)
+            raise ValueError(string)
+            # raise ValueError(self._base_directory)
 
     def clean_numbering(self, verbose: bool = False, force: bool = False):
         def numbering_mismatch(filename: str) -> bool:
