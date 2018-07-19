@@ -191,6 +191,13 @@ def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False):
         os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
 
 
+def clean_numbering(basedir: str, verbose: bool=False):
+    def numbering_mismatch(filename: str) -> bool:
+        return filename.endswith('.mp3') and not re.search(r'\d+ - .+\.mp3', filename)
+    for file in sorted(find_files(basedir, numbering_mismatch)):
+        if re.search(r'(\d+) ')
+
+
 def find_files(base_path, condition):
     return [
         os.path.join(root, file)
@@ -253,6 +260,10 @@ def get_options(args):
         help='Remove longest common substring from music files in this dir'
     )
     parser.add_argument(
+        '--clean-numbering', type=str,
+        help='Number music files in this dir to let them start with "%d - "'
+    )
+    parser.add_argument(
         '--copy-files-newer-than-days', type=int,
         help='Copy files newer than this many days'
     )
@@ -275,6 +286,8 @@ def main(args):
         move_files_to_original_places(opts.playlist, verbose=opts.verbose)
     elif opts.clean_filenames:
         clean_filenames(opts.clean_filenames, verbose=opts.verbose)
+    elif opts.clean_numbering:
+        clean_numbering(opts.clean_numbering, verbose=opts.verbose)
     elif opts.copy_files_newer_than_days:
         copy_newest_files(
             opts.copy_files_newer_than_days_source, opts.copy_files_newer_than_days_target,
