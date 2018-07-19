@@ -83,6 +83,20 @@ class AudaciousTools:
 class FilenameCleaner:
 
     MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
+    PATTERNS_TO_FIX = [
+        r'(\d{1,3}) (.+)',  # 01 blah
+        r'(\d{1,3})\. (.+)',  # 01. blah
+        r'(\d{1,3})\.(.+)',  # 01.blah
+        r'(\d{1,3})- (.+)',  # 01- blah
+        r'(\d{1,3})--(.+)',  # 01--blah
+        r'(\d{1,3})-(.+)',  # 01-blah
+        r'(\d{1,3})_(.+)',  # 01_blah
+        r'\[(\d{1,3})\](.+)',  # [01]blah
+        r'\((\d{1,3})\)(.+)',  # (01)blah
+        r'(\d{1,3})(\D+)',  # 01blah
+        r'([a-z]\d) (.+)',  # a1 blah
+        r'([a-z]\d)-(.+)',  # a1-blah
+    ]
 
     def __init__(self, basedir):
         self._base_directory = basedir
@@ -98,23 +112,10 @@ class FilenameCleaner:
             for subdir in subdirs:
                 cleaner = FilenameCleaner(os.path.join(self._base_directory, subdir))
                 cleaner.clean_filenames(min_length, verbose, recurse, force)
-        files = sorted(
-            [
-                name for name in os.listdir(self._base_directory)
-                if os.path.isfile(os.path.join(self._base_directory, name)) and self.is_music_file(name)
-            ]
-        )
-        to_remove = longest_common_substring(files)
-        if not to_remove:
-            return
-        if to_remove[:3] == ' - ':
-            to_remove = to_remove[3:]
-        if re.match(r'.*\.\w+$', to_remove):
-            to_remove = re.sub(r'\.\w+?$', '', to_remove)
-        if to_remove.endswith('-'):
-            to_remove = to_remove[:-1]
-        elif to_remove.startswith('-'):
-            to_remove = to_remove[1:]
+
+        files = self.get_music_files()
+        to_remove = self.longest_common_substring(files)
+        to_remove = self.exclude_common_use_cases(to_remove)
         if min_length and len(to_remove) < min_length:
             return
         if verbose:
@@ -125,9 +126,76 @@ class FilenameCleaner:
             if force:
                 os.rename(os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
 
+    def clean_numbering(self, verbose: bool = False, force: bool = False):
+        def numbering_mismatch(filename: str) -> bool:
+            return self.is_music_file(filename) and \
+                   bool(re.search(r'\d+', '.'.join(filename.split('/')[-1].split('.')[:-1]))) and \
+                   not re.search(r'\d+ - .+\.mp3', filename) and \
+                   not re.search(r'\d+ - .+\.flac', filename) and \
+                   not re.search(r'\d+ - .+\.ogg', filename) and \
+                   not re.search(r'\d+ - .+\.m4a', filename)
+
+        mismatches = sorted(find_files(self._base_directory, numbering_mismatch))
+        fix_commands = []
+        for file in mismatches:
+            self.check_file_for_renumbering(file, fix_commands)
+
+        for source, destination in fix_commands:
+            if verbose and source is not None and destination is not None:
+                print(source, '->', destination)
+            if force and source is not None and destination is not None:
+                try:
+                    move(source, destination)
+                except FileNotFoundError:
+                    pass
+        print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
+
+    @classmethod
+    def check_file_for_renumbering(cls, file: str, fix_commands):
+        for extension in cls.MUSIC_EXTENSIONS:
+            if re.match(r'(.*)/(\d{1,4})\.' + extension, file, flags=re.IGNORECASE):
+                fix_commands.append((None, None))
+                return
+            for pattern in cls.PATTERNS_TO_FIX:
+                match = re.search('(.*)/' + pattern + r'\.' + extension, file, flags=re.IGNORECASE)
+                if match:
+                    fix_commands.append((file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3"))
+                    return
+        print(file)
+
+    @staticmethod
+    def exclude_common_use_cases(to_remove):
+        if to_remove[:3] == ' - ':
+            to_remove = to_remove[3:]
+        if re.match(r'.*\.\w+$', to_remove):
+            to_remove = re.sub(r'\.\w+?$', '', to_remove)
+        if to_remove.endswith('-'):
+            to_remove = to_remove[:-1]
+        elif to_remove.startswith('-'):
+            to_remove = to_remove[1:]
+        return to_remove
+
+    def get_music_files(self):
+        return sorted(
+            [
+                name for name in os.listdir(self._base_directory)
+                if os.path.isfile(os.path.join(self._base_directory, name)) and self.is_music_file(name)
+            ]
+        )
+
     @staticmethod
     def is_music_file(filename: str) -> bool:
         return any([filename.upper().endswith(ext.upper()) for ext in FilenameCleaner.MUSIC_EXTENSIONS])
+
+    @staticmethod
+    def longest_common_substring(data: List[str]):
+        substr = ''
+        if len(data) > 1 and len(data[0]) > 0:
+            for i in range(len(data[0])):
+                for j in range(len(data[0])-i+1):
+                    if j > len(substr) and all(data[0][i:i+j] in x for x in data):
+                        substr = data[0][i:i+j]
+        return substr
 
 
 def existing_files(files: List[str]):
@@ -212,71 +280,6 @@ def move_files_to_original_places(
             if verbose:
                 print('        MOVING', original_file_parent_dir+'/'+f, target_dir)
         os.rmdir(original_file_parent_dir)
-
-
-def longest_common_substring(data: List[str]):
-    substr = ''
-    if len(data) > 1 and len(data[0]) > 0:
-        for i in range(len(data[0])):
-            for j in range(len(data[0])-i+1):
-                if j > len(substr) and all(data[0][i:i+j] in x for x in data):
-                    substr = data[0][i:i+j]
-    return substr
-
-
-
-
-
-def check_file_for_renumbering(file: str, fix_commands):
-    patterns_to_check = [
-        r'(\d{1,3}) (.+)',     # 01 blah
-        r'(\d{1,3})\. (.+)',   # 01. blah
-        r'(\d{1,3})\.(.+)',    # 01.blah
-        r'(\d{1,3})- (.+)',    # 01- blah
-        r'(\d{1,3})--(.+)',    # 01--blah
-        r'(\d{1,3})-(.+)',     # 01-blah
-        r'(\d{1,3})_(.+)',     # 01_blah
-        r'\[(\d{1,3})\](.+)',  # [01]blah
-        r'\((\d{1,3})\)(.+)',  # (01)blah
-        r'(\d{1,3})(\D+)',     # 01blah
-        r'([a-z]\d) (.+)',     # a1 blah
-        r'([a-z]\d)-(.+)',     # a1-blah
-    ]
-    for extension in MUSIC_EXTENSIONS:
-        if re.match(r'(.*)/(\d{1,4})\.' + extension, file, flags=re.IGNORECASE):
-            fix_commands.append((None, None))
-            return
-        for pattern in patterns_to_check:
-            match = re.search('(.*)/' + pattern + r'\.' + extension, file, flags=re.IGNORECASE)
-            if match:
-                fix_commands.append((file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3"))
-                return
-
-    print(file)
-
-
-def clean_numbering(basedir: str, verbose: bool=False, force: bool=False):
-    def numbering_mismatch(filename: str) -> bool:
-        return is_music_file(filename) and \
-               bool(re.search(r'\d+', '.'.join(filename.split('/')[-1].split('.')[:-1]))) and \
-               not re.search(r'\d+ - .+\.mp3', filename) and \
-               not re.search(r'\d+ - .+\.flac', filename) and \
-               not re.search(r'\d+ - .+\.ogg', filename) and \
-               not re.search(r'\d+ - .+\.m4a', filename)
-    mismatches = sorted(find_files(basedir, numbering_mismatch))
-    fix_commands = []
-    for file in mismatches:
-        check_file_for_renumbering(file, fix_commands)
-
-    for source, destination in fix_commands:
-        if verbose and source is not None and destination is not None:
-            print(source, '->', destination)
-        if force and source is not None and destination is not None:
-            try:
-                move(source, destination)
-            except FileNotFoundError:
-                pass
-    print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
 
 
 def find_files(base_path, condition):
@@ -368,11 +371,10 @@ def main(args):
         move_files_to_original_places(opts.playlist, verbose=opts.verbose)
     elif opts.clean_filenames:
         cleaner = FilenameCleaner(opts.clean_filenames)
-        cleaner.clean_filenames(
-            min_length=5, verbose=opts.verbose, recurse=opts.recurse, force=opts.force
-        )
+        cleaner.clean_filenames(min_length=5, verbose=opts.verbose, recurse=opts.recurse, force=opts.force)
     elif opts.clean_numbering:
-        clean_numbering(opts.clean_numbering, verbose=opts.verbose, force=opts.force)
+        cleaner = FilenameCleaner(opts.clean_numbering)
+        cleaner.clean_numbering(verbose=opts.verbose, force=opts.force)
     elif opts.copy_files_newer_than_days:
         copy_newest_files(
             opts.copy_files_newer_than_days_source, opts.copy_files_newer_than_days_target,
