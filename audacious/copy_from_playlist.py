@@ -80,6 +80,56 @@ class AudaciousTools:
         return int(check_output(['audtool', 'current-playlist']))
 
 
+class FilenameCleaner:
+
+    MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
+
+    def __init__(self, basedir):
+        self._base_directory = basedir
+
+    def clean_filenames(
+            self, min_length: int=0, verbose: bool=False, recurse: bool=False, force: bool=False
+    ) -> None:
+        if recurse:
+            subdirs = sorted(
+                [name for name in os.listdir(self._base_directory)
+                 if os.path.isdir(os.path.join(self._base_directory, name))]
+            )
+            for subdir in subdirs:
+                cleaner = FilenameCleaner(os.path.join(self._base_directory, subdir))
+                cleaner.clean_filenames(min_length, verbose, recurse, force)
+        files = sorted(
+            [
+                name for name in os.listdir(self._base_directory)
+                if os.path.isfile(os.path.join(self._base_directory, name)) and self.is_music_file(name)
+            ]
+        )
+        to_remove = longest_common_substring(files)
+        if not to_remove:
+            return
+        if to_remove[:3] == ' - ':
+            to_remove = to_remove[3:]
+        if re.match(r'.*\.\w+$', to_remove):
+            to_remove = re.sub(r'\.\w+?$', '', to_remove)
+        if to_remove.endswith('-'):
+            to_remove = to_remove[:-1]
+        elif to_remove.startswith('-'):
+            to_remove = to_remove[1:]
+        if min_length and len(to_remove) < min_length:
+            return
+        if verbose:
+            print('REMOVE:', to_remove)
+        for file in files:
+            if verbose:
+                print('MOVE ', os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
+            if force:
+                os.rename(os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
+
+    @staticmethod
+    def is_music_file(filename: str) -> bool:
+        return any([filename.upper().endswith(ext.upper()) for ext in FilenameCleaner.MUSIC_EXTENSIONS])
+
+
 def existing_files(files: List[str]):
     return [file for file in files if os.path.isfile(file)]
 
@@ -174,46 +224,7 @@ def longest_common_substring(data: List[str]):
     return substr
 
 
-MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
 
-
-def is_music_file(filename: str) -> bool:
-    return any([filename.upper().endswith(ext.upper()) for ext in MUSIC_EXTENSIONS])
-
-
-def clean_filenames(
-        basedir: str, min_length: int=0, verbose: bool=False, recurse: bool=False, force: bool=False
-) -> None:
-    if recurse:
-        subdirs = sorted([name for name in os.listdir(basedir) if os.path.isdir(os.path.join(basedir, name))])
-        for subdir in subdirs:
-            clean_filenames(os.path.join(basedir, subdir), min_length, verbose, recurse, force)
-    files = sorted(
-        [
-            name for name in os.listdir(basedir)
-            if os.path.isfile(os.path.join(basedir, name)) and is_music_file(name)
-        ]
-    )
-    to_remove = longest_common_substring(files)
-    if not to_remove:
-        return
-    if to_remove[:3] == ' - ':
-        to_remove = to_remove[3:]
-    if re.match(r'.*\.\w+$', to_remove):
-        to_remove = re.sub(r'\.\w+?$', '', to_remove)
-    if to_remove.endswith('-'):
-        to_remove = to_remove[:-1]
-    elif to_remove.startswith('-'):
-        to_remove = to_remove[1:]
-    if min_length and len(to_remove) < min_length:
-        return
-    if verbose:
-        print('REMOVE:', to_remove)
-    for file in files:
-        if verbose:
-            print('MOVE ', os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
-        if force:
-            os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
 
 
 def check_file_for_renumbering(file: str, fix_commands):
@@ -248,7 +259,10 @@ def clean_numbering(basedir: str, verbose: bool=False, force: bool=False):
     def numbering_mismatch(filename: str) -> bool:
         return is_music_file(filename) and \
                bool(re.search(r'\d+', '.'.join(filename.split('/')[-1].split('.')[:-1]))) and \
-               not re.search(r'\d+ - .+\.mp3', filename)
+               not re.search(r'\d+ - .+\.mp3', filename) and \
+               not re.search(r'\d+ - .+\.flac', filename) and \
+               not re.search(r'\d+ - .+\.ogg', filename) and \
+               not re.search(r'\d+ - .+\.m4a', filename)
     mismatches = sorted(find_files(basedir, numbering_mismatch))
     fix_commands = []
     for file in mismatches:
@@ -353,8 +367,9 @@ def main(args):
     if opts.move:
         move_files_to_original_places(opts.playlist, verbose=opts.verbose)
     elif opts.clean_filenames:
-        clean_filenames(
-            opts.clean_filenames, min_length=5, verbose=opts.verbose, recurse=opts.recurse, force=opts.force
+        cleaner = FilenameCleaner(opts.clean_filenames)
+        cleaner.clean_filenames(
+            min_length=5, verbose=opts.verbose, recurse=opts.recurse, force=opts.force
         )
     elif opts.clean_numbering:
         clean_numbering(opts.clean_numbering, verbose=opts.verbose, force=opts.force)
