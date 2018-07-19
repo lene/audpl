@@ -174,17 +174,14 @@ def longest_common_substring(data: List[str]):
     return substr
 
 
-def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False, recursive: bool=True):
-    if recursive:
+def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False, recurse: bool=False, force: bool=False):
+    if recurse:
         subdirs = sorted([name for name in os.listdir(basedir) if os.path.isdir(os.path.join(basedir, name))])
         for subdir in subdirs:
-            # print('DIR:', os.path.join(basedir, subdir))
-            clean_filenames(os.path.join(basedir, subdir), min_length, verbose, recursive)
+            clean_filenames(os.path.join(basedir, subdir), min_length, verbose, recurse, force)
     files = sorted(os.listdir(basedir))
     to_remove = longest_common_substring(files)
     if not to_remove:
-        return
-    if min_length and len(to_remove) < min_length:
         return
     if to_remove[:3] == ' - ':
         to_remove = to_remove[3:]
@@ -194,13 +191,15 @@ def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False, recurs
         to_remove = to_remove[:-1]
     elif to_remove.startswith('-'):
         to_remove = to_remove[1:]
-    if not to_remove:
+    if min_length and len(to_remove) < min_length:
         return
-    print('REMOVE:', to_remove)
+    if verbose:
+        print('REMOVE:', to_remove)
     for file in files:
-        # if verbose:
+        if verbose:
             print('MOVE ', os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
-        # os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
+        if force:
+            os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
 
 
 def clean_numbering(basedir: str, verbose: bool=False):
@@ -241,6 +240,17 @@ def clean_numbering(basedir: str, verbose: bool=False):
             # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
             num_fixed += 1
             continue
+        match = re.search(r'(.*)/\[(\d{1,3})\](.+).mp3', file)
+        if match:
+            print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
+            num_fixed += 1
+            continue
+
+        match = re.search(r'(.*)/(\d{1,3})(\D+).mp3', file)
+        if match:
+            print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
+            num_fixed += 1
+            continue
         print(file)
     print(f"{num_fixed} fixed out of {len(mismatches)}")
 
@@ -275,7 +285,7 @@ def copy_newest_files(src_dir: str, target_dir: str, max_days: int, verbose: boo
                 pass
 
 
-def get_options(args):
+def get_options(args: List[str]):
     parser = ArgumentParser(
         description="Copy the first N existing files of an audacious playlist to a target folder"
     )
@@ -306,23 +316,24 @@ def get_options(args):
         '--clean-filenames', type=str,
         help='Remove longest common substring from music files in this dir'
     )
+    parser.add_argument('--recurse', action='store_true', help='Scan subdirectories recursively')
+    parser.add_argument('-f', '--force', action='store_true', help='Force rename files')
     parser.add_argument(
         '--clean-numbering', type=str,
         help='Number music files in this dir to let them start with "%d - "'
     )
     parser.add_argument(
-        '--copy-files-newer-than-days', type=int,
-        help='Copy files newer than this many days'
+        '--copy-files-newer-than-days', type=int, help='Copy files newer than this many days'
     )
     parser.add_argument(
         '--copy-files-newer-than-days-source', type=str,
         default=os.path.expanduser('~/Music'),
-        help='Copy files newer than this many days from *this* source directory.\n' +
+        help='If copying files newer than this many days, use *this* source directory.\n' +
              'Default: ' + os.path.expanduser('~/Music')
     )
     parser.add_argument(
         '--copy-files-newer-than-days-target', type=str,
-        help='Copy files newer than this many days to *this* target directory'
+        help='If copying files newer than this many days, use *this* target directory'
     )
     return parser.parse_args(args)
 
@@ -332,7 +343,9 @@ def main(args):
     if opts.move:
         move_files_to_original_places(opts.playlist, verbose=opts.verbose)
     elif opts.clean_filenames:
-        clean_filenames(opts.clean_filenames, min_length=7, verbose=opts.verbose)
+        clean_filenames(
+            opts.clean_filenames, min_length=5, verbose=opts.verbose, recurse=opts.recurse, force=opts.force
+        )
     elif opts.clean_numbering:
         clean_numbering(opts.clean_numbering, verbose=opts.verbose)
     elif opts.copy_files_newer_than_days:
