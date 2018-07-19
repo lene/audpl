@@ -84,18 +84,20 @@ class FilenameCleaner:
 
     MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
     PATTERNS_TO_FIX = [
-        r'(\d{1,3}) (.+)',  # 01 blah
-        r'(\d{1,3})\. (.+)',  # 01. blah
-        r'(\d{1,3})\.(.+)',  # 01.blah
-        r'(\d{1,3})- (.+)',  # 01- blah
-        r'(\d{1,3})--(.+)',  # 01--blah
-        r'(\d{1,3})-(.+)',  # 01-blah
-        r'(\d{1,3})_(.+)',  # 01_blah
+        r'(\d{1,3}) (.+)',     # 01 blah
+        r'(\d{1,3})\. (.+)',   # 01. blah
+        r'(\d{1,3})\.(.+)',    # 01.blah
+        r'(\d{1,3})- (.+)',    # 01- blah
+        r'(\d{1,3})--(.+)',    # 01--blah
+        r'(\d{1,3})-(.+)',     # 01-blah
+        r'(\d{1,3})_(.+)',     # 01_blah
         r'\[(\d{1,3})\](.+)',  # [01]blah
         r'\((\d{1,3})\)(.+)',  # (01)blah
-        r'(\d{1,3})(\D+)',  # 01blah
-        r'([a-z]\d) (.+)',  # a1 blah
-        r'([a-z]\d)-(.+)',  # a1-blah
+        r'(\d{1,3})(\D+)',     # 01blah
+        r'([a-z]\d) (.+)',     # a1 blah
+        r'([a-z]\d)-(.+)',     # a1-blah
+        r'([a-z]\d)\.(.+)',    # a1.blah
+        r'\[([a-z]\d)\](.+)',  # [a1]blah
     ]
 
     def __init__(self, basedir):
