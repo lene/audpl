@@ -127,11 +127,18 @@ class FilenameCleaner:
             print('DIR:', self._base_directory, 'REMOVE:', to_remove)
         for file in files:
             if verbose:
-                try:
-                    print('MOVE ', os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
-                except U
+                self.print_utf8_error(
+                    'MOVE ', os.path.join(self._base_directory, file),
+                    os.path.join(self._base_directory, file.replace(to_remove, ''))
+                )
             if force:
                 os.rename(os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
+
+    def print_utf8_error(self, *string: str):
+        try:
+            print(*string)
+        except UnicodeEncodeError:
+            raise ValueError(self._base_directory)
 
     def clean_numbering(self, verbose: bool = False, force: bool = False):
         def numbering_mismatch(filename: str) -> bool:
@@ -157,18 +164,17 @@ class FilenameCleaner:
                     pass
         print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
 
-    @classmethod
-    def check_file_for_renumbering(cls, file: str, fix_commands):
-        for extension in cls.MUSIC_EXTENSIONS:
+    def check_file_for_renumbering(self, file: str, fix_commands):
+        for extension in self.MUSIC_EXTENSIONS:
             if re.match(r'(.*)/(\d{1,4})\.' + extension, file, flags=re.IGNORECASE):
                 fix_commands.append((None, None))
                 return
-            for pattern in cls.PATTERNS_TO_FIX:
+            for pattern in self.PATTERNS_TO_FIX:
                 match = re.search('(.*)/' + pattern + r'\.' + extension, file, flags=re.IGNORECASE)
                 if match:
                     fix_commands.append((file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3"))
                     return
-        print(file)
+        self.print_utf8_error(file)
 
     @staticmethod
     def exclude_common_use_cases(to_remove):
