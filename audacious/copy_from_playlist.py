@@ -174,12 +174,26 @@ def longest_common_substring(data: List[str]):
     return substr
 
 
-def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False, recurse: bool=False, force: bool=False):
+MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
+
+
+def is_music_file(filename: str) -> bool:
+    return any([filename.upper().endswith(ext.upper()) for ext in MUSIC_EXTENSIONS])
+
+
+def clean_filenames(
+        basedir: str, min_length: int=0, verbose: bool=False, recurse: bool=False, force: bool=False
+) -> None:
     if recurse:
         subdirs = sorted([name for name in os.listdir(basedir) if os.path.isdir(os.path.join(basedir, name))])
         for subdir in subdirs:
             clean_filenames(os.path.join(basedir, subdir), min_length, verbose, recurse, force)
-    files = sorted(os.listdir(basedir))
+    files = sorted(
+        [
+            name for name in os.listdir(basedir)
+            if os.path.isfile(os.path.join(basedir, name)) and is_music_file(name)
+        ]
+    )
     to_remove = longest_common_substring(files)
     if not to_remove:
         return
@@ -202,56 +216,35 @@ def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False, recurs
             os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
 
 
+def check_file_for_renumbering(file: str, fix_commands):
+    extension = 'mp3'
+    if re.match(r'(.*)/(\d{1,4})\.' + extension, file):
+        fix_commands.append(None)
+        return
+    patterns_to_check = [
+        r'(\d{1,3}) (.+)', r'(\d{1,3})\. (.+)', r'(\d{1,3})\.(.+)', r'(\d{1,3})- (.+)', r'(\d{1,3})--(.+)',
+        r'(\d{1,3})-(.+)', r'(\d{1,3})_(.+)', r'\[(\d{1,3})\](.+)', r'\((\d{1,3})\)(.+)', r'(\d{1,3})(\D+)'
+    ]
+    for pattern in patterns_to_check:
+        match = re.search('(.*)/' + pattern + '\.' + extension, file)
+        if match:
+            fix_commands.append(['mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3"])
+            return
+
+    print(file)
+
+
 def clean_numbering(basedir: str, verbose: bool=False):
     def numbering_mismatch(filename: str) -> bool:
-        return filename.endswith('.mp3') and \
+        return is_music_file(filename) and \
                bool(re.search(r'\d+', '.'.join(filename.split('/')[-1].split('.')[:-1]))) and \
                not re.search(r'\d+ - .+\.mp3', filename)
     mismatches = sorted(find_files(basedir, numbering_mismatch))
     num_fixed = 0
+    fix_commands = []
     for file in mismatches:
-        match = re.search(r'(.*)/(\d{1,3}) (.+).mp3', file)
-        if match:
-            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
-            num_fixed += 1
-            continue
-        match = re.search(r'(.*)/(\d{1,3})\. (.+).mp3', file)
-        if match:
-            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
-            num_fixed += 1
-            continue
-        match = re.search(r'(.*)/(\d{1,3})\.(.+).mp3', file)
-        if match:
-            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
-            num_fixed += 1
-            continue
-        match = re.search(r'(.*)/(\d{1,3})- (.+).mp3', file)
-        if match:
-            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
-            num_fixed += 1
-            continue
-        match = re.search(r'(.*)/(\d{1,3})-(.+).mp3', file)
-        if match:
-            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
-            num_fixed += 1
-            continue
-        match = re.search(r'(.*)/(\d{1,3})_(.+).mp3', file)
-        if match:
-            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
-            num_fixed += 1
-            continue
-        match = re.search(r'(.*)/\[(\d{1,3})\](.+).mp3', file)
-        if match:
-            print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
-            num_fixed += 1
-            continue
-
-        match = re.search(r'(.*)/(\d{1,3})(\D+).mp3', file)
-        if match:
-            print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
-            num_fixed += 1
-            continue
-        print(file)
+        check_file_for_renumbering(file, fix_commands)
+    num_fixed += len(fix_commands)
     print(f"{num_fixed} fixed out of {len(mismatches)}")
 
 
