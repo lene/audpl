@@ -174,7 +174,12 @@ def longest_common_substring(data: List[str]):
     return substr
 
 
-def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False):
+def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False, recursive: bool=True):
+    if recursive:
+        subdirs = sorted([name for name in os.listdir(basedir) if os.path.isdir(os.path.join(basedir, name))])
+        for subdir in subdirs:
+            # print('DIR:', os.path.join(basedir, subdir))
+            clean_filenames(os.path.join(basedir, subdir), min_length, verbose, recursive)
     files = sorted(os.listdir(basedir))
     to_remove = longest_common_substring(files)
     if not to_remove:
@@ -185,17 +190,59 @@ def clean_filenames(basedir: str, min_length: int=0, verbose: bool=False):
         to_remove = to_remove[3:]
     if re.match(r'.*\.\w+$', to_remove):
         to_remove = re.sub(r'\.\w+?$', '', to_remove)
+    if to_remove.endswith('-'):
+        to_remove = to_remove[:-1]
+    elif to_remove.startswith('-'):
+        to_remove = to_remove[1:]
+    if not to_remove:
+        return
+    print('REMOVE:', to_remove)
     for file in files:
-        if verbose:
+        # if verbose:
             print('MOVE ', os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
-        os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
+        # os.rename(os.path.join(basedir, file), os.path.join(basedir, file.replace(to_remove, '')))
 
 
 def clean_numbering(basedir: str, verbose: bool=False):
     def numbering_mismatch(filename: str) -> bool:
-        return filename.endswith('.mp3') and not re.search(r'\d+ - .+\.mp3', filename)
-    for file in sorted(find_files(basedir, numbering_mismatch)):
-        if re.search(r'(\d+) ')
+        return filename.endswith('.mp3') and \
+               bool(re.search(r'\d+', '.'.join(filename.split('/')[-1].split('.')[:-1]))) and \
+               not re.search(r'\d+ - .+\.mp3', filename)
+    mismatches = sorted(find_files(basedir, numbering_mismatch))
+    num_fixed = 0
+    for file in mismatches:
+        match = re.search(r'(.*)/(\d{1,3}) (.+).mp3', file)
+        if match:
+            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
+            num_fixed += 1
+            continue
+        match = re.search(r'(.*)/(\d{1,3})\. (.+).mp3', file)
+        if match:
+            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
+            num_fixed += 1
+            continue
+        match = re.search(r'(.*)/(\d{1,3})\.(.+).mp3', file)
+        if match:
+            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
+            num_fixed += 1
+            continue
+        match = re.search(r'(.*)/(\d{1,3})- (.+).mp3', file)
+        if match:
+            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
+            num_fixed += 1
+            continue
+        match = re.search(r'(.*)/(\d{1,3})-(.+).mp3', file)
+        if match:
+            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
+            num_fixed += 1
+            continue
+        match = re.search(r'(.*)/(\d{1,3})_(.+).mp3', file)
+        if match:
+            # print('mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3", )
+            num_fixed += 1
+            continue
+        print(file)
+    print(f"{num_fixed} fixed out of {len(mismatches)}")
 
 
 def find_files(base_path, condition):
@@ -285,7 +332,7 @@ def main(args):
     if opts.move:
         move_files_to_original_places(opts.playlist, verbose=opts.verbose)
     elif opts.clean_filenames:
-        clean_filenames(opts.clean_filenames, verbose=opts.verbose)
+        clean_filenames(opts.clean_filenames, min_length=7, verbose=opts.verbose)
     elif opts.clean_numbering:
         clean_numbering(opts.clean_numbering, verbose=opts.verbose)
     elif opts.copy_files_newer_than_days:
