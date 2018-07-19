@@ -100,6 +100,7 @@ class FilenameCleaner:
         r'([a-z]\d)-(.+)',      # a1-blah
         r'([a-z]\d)\.(.+)',     # a1.blah
         r'\[([a-z]\d)\](.+)',   # [a1]blah
+        r'\(([a-z]\d)\)(.+)',   # (a1)blah
     ]
 
     def __init__(self, basedir):
@@ -126,7 +127,9 @@ class FilenameCleaner:
             print('DIR:', self._base_directory, 'REMOVE:', to_remove)
         for file in files:
             if verbose:
-                print('MOVE ', os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
+                try:
+                    print('MOVE ', os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
+                except U
             if force:
                 os.rename(os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
 
