@@ -84,20 +84,22 @@ class FilenameCleaner:
 
     MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
     PATTERNS_TO_FIX = [
-        r'(\d{1,3}) (.+)',     # 01 blah
-        r'(\d{1,3})\. (.+)',   # 01. blah
-        r'(\d{1,3})\.(.+)',    # 01.blah
-        r'(\d{1,3})- (.+)',    # 01- blah
-        r'(\d{1,3})--(.+)',    # 01--blah
-        r'(\d{1,3})-(.+)',     # 01-blah
-        r'(\d{1,3})_(.+)',     # 01_blah
-        r'\[(\d{1,3})\](.+)',  # [01]blah
-        r'\((\d{1,3})\)(.+)',  # (01)blah
-        r'(\d{1,3})(\D+)',     # 01blah
-        r'([a-z]\d) (.+)',     # a1 blah
-        r'([a-z]\d)-(.+)',     # a1-blah
-        r'([a-z]\d)\.(.+)',    # a1.blah
-        r'\[([a-z]\d)\](.+)',  # [a1]blah
+        r'(\d{1,3}) (.+)',      # 01 blah
+        r'(\d{1,3})\. (.+)',    # 01. blah
+        r'(\d{1,3})\.(.+)',     # 01.blah
+        r'(\d{1,3})- (.+)',     # 01- blah
+        r'(\d{1,3})--(.+)',     # 01--blah
+        r'(\d{1,3})-(.+)',      # 01-blah
+        r'-(\d{1,3})-(.+)',     # -01-blah
+        r'- (\d{1,3})\. (.+)',  # - 01. blah
+        r'(\d{1,3})_(.+)',      # 01_blah
+        r'\[(\d{1,3})\](.+)',   # [01]blah
+        r'\((\d{1,3})\)(.+)',   # (01)blah
+        r'(\d{1,3})(\D+)',      # 01blah
+        r'([a-z]\d) (.+)',      # a1 blah
+        r'([a-z]\d)-(.+)',      # a1-blah
+        r'([a-z]\d)\.(.+)',     # a1.blah
+        r'\[([a-z]\d)\](.+)',   # [a1]blah
     ]
 
     def __init__(self, basedir):
@@ -121,7 +123,7 @@ class FilenameCleaner:
         if min_length and len(to_remove) < min_length:
             return
         if verbose:
-            print('REMOVE:', to_remove)
+            print('DIR:', self._base_directory, 'REMOVE:', to_remove)
         for file in files:
             if verbose:
                 print('MOVE ', os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
