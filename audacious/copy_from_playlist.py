@@ -6,7 +6,7 @@ import os
 import re
 from math import log10
 from urllib.parse import unquote
-from shutil import copy2, SameFileError
+from shutil import copy2, move, SameFileError
 from argparse import ArgumentParser
 from subprocess import check_output
 from typing import List
@@ -217,35 +217,52 @@ def clean_filenames(
 
 
 def check_file_for_renumbering(file: str, fix_commands):
-    extension = 'mp3'
-    if re.match(r'(.*)/(\d{1,4})\.' + extension, file):
-        fix_commands.append(None)
-        return
     patterns_to_check = [
-        r'(\d{1,3}) (.+)', r'(\d{1,3})\. (.+)', r'(\d{1,3})\.(.+)', r'(\d{1,3})- (.+)', r'(\d{1,3})--(.+)',
-        r'(\d{1,3})-(.+)', r'(\d{1,3})_(.+)', r'\[(\d{1,3})\](.+)', r'\((\d{1,3})\)(.+)', r'(\d{1,3})(\D+)'
+        r'(\d{1,3}) (.+)',     # 01 blah
+        r'(\d{1,3})\. (.+)',   # 01. blah
+        r'(\d{1,3})\.(.+)',    # 01.blah
+        r'(\d{1,3})- (.+)',    # 01- blah
+        r'(\d{1,3})--(.+)',    # 01--blah
+        r'(\d{1,3})-(.+)',     # 01-blah
+        r'(\d{1,3})_(.+)',     # 01_blah
+        r'\[(\d{1,3})\](.+)',  # [01]blah
+        r'\((\d{1,3})\)(.+)',  # (01)blah
+        r'(\d{1,3})(\D+)',     # 01blah
+        r'([a-z]\d) (.+)',     # a1 blah
+        r'([a-z]\d)-(.+)',     # a1-blah
     ]
-    for pattern in patterns_to_check:
-        match = re.search('(.*)/' + pattern + '\.' + extension, file)
-        if match:
-            fix_commands.append(['mv', file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3"])
+    for extension in MUSIC_EXTENSIONS:
+        if re.match(r'(.*)/(\d{1,4})\.' + extension, file, flags=re.IGNORECASE):
+            fix_commands.append((None, None))
             return
+        for pattern in patterns_to_check:
+            match = re.search('(.*)/' + pattern + r'\.' + extension, file, flags=re.IGNORECASE)
+            if match:
+                fix_commands.append((file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3"))
+                return
 
     print(file)
 
 
-def clean_numbering(basedir: str, verbose: bool=False):
+def clean_numbering(basedir: str, verbose: bool=False, force: bool=False):
     def numbering_mismatch(filename: str) -> bool:
         return is_music_file(filename) and \
                bool(re.search(r'\d+', '.'.join(filename.split('/')[-1].split('.')[:-1]))) and \
                not re.search(r'\d+ - .+\.mp3', filename)
     mismatches = sorted(find_files(basedir, numbering_mismatch))
-    num_fixed = 0
     fix_commands = []
     for file in mismatches:
         check_file_for_renumbering(file, fix_commands)
-    num_fixed += len(fix_commands)
-    print(f"{num_fixed} fixed out of {len(mismatches)}")
+
+    for source, destination in fix_commands:
+        if verbose and source is not None and destination is not None:
+            print(source, '->', destination)
+        if force and source is not None and destination is not None:
+            try:
+                move(source, destination)
+            except FileNotFoundError:
+                pass
+    print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
 
 
 def find_files(base_path, condition):
@@ -340,7 +357,7 @@ def main(args):
             opts.clean_filenames, min_length=5, verbose=opts.verbose, recurse=opts.recurse, force=opts.force
         )
     elif opts.clean_numbering:
-        clean_numbering(opts.clean_numbering, verbose=opts.verbose)
+        clean_numbering(opts.clean_numbering, verbose=opts.verbose, force=opts.force)
     elif opts.copy_files_newer_than_days:
         copy_newest_files(
             opts.copy_files_newer_than_days_source, opts.copy_files_newer_than_days_target,
