@@ -37,6 +37,8 @@ class TestMoveFilesToOriginalPlaces(TempDirTestCase):
             self.assertIn(file, listdir(self.TARGETDIR))
 
     def test_move_files_to_original_places_deletes_source_dir(self):
+        print(self.audacious.playlist_directory)
+        raise ValueError(self.audacious.playlist_directory)
         move_files_to_original_places('0002', music_dir=self.testdir.name, audacious=self.audacious)
         self.assertFalse(exists(self.testdir.name))
 

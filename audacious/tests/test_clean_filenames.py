@@ -4,7 +4,7 @@ from hashlib import md5
 
 from .temp_dir_test_case import TempDirTestCase
 
-from copy_from_playlist import longest_common_substring, clean_filenames
+from clean_filenames import FilenameCleaner #longest_common_substring, clean_filenames
 
 __author__ = 'Lene Preuss <lene.preuss@gmail.com>'
 
@@ -17,7 +17,7 @@ class TestCleanFilenames(TempDirTestCase):
         self._longest_common_substr_is(('ÄÖÜ', 'ÖÜxxxxx'), 'ÖÜ')
 
     def _longest_common_substr_is(self, strings, expected):
-        self.assertEqual(longest_common_substring(strings), expected)
+        self.assertEqual(FilenameCleaner.longest_common_substring(strings), expected)
 
     def test_clean_filenames_succeeds(self):
         clean_filenames(self.testdir.name)
