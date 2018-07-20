@@ -15,8 +15,8 @@ class FilenameCleaner:
 
     MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
     PATTERNS_TO_FIX = [
-        r'\s*(\d{1,3})\s+(.+)',      # 01 blah
-        r'\s*(\d{1,3})\.\s+(.+)',    # 01. blah
+        r'\s*(\d{1,3})\s+(.+)',    # 01 blah
+        r'\s*(\d{1,3})\.\s+(.+)',  # 01. blah
         r'\s*(\d{1,3})\.(.+)',     # 01.blah
         r'\s*(\d{1,3})--(.+)',     # 01--blah
         r'\s*(\d{1,3})-\s*(.+)',   # 01-blah or 01- blah
@@ -26,13 +26,13 @@ class FilenameCleaner:
         r'\s*\[(\d{1,3})\](.+)',   # [01]blah
         r'\s*\((\d{1,3})\)\s*(.+)',  # (01)blah
         r'\s*(\d{1,3})(\D.*)',      # 01blah
-        r'\s*([a-z]\d{1,2})\s+(.+)',    # a1 blah
+        r'\s*([a-z]\d{1,2})\s+(.+)',  # a1 blah
         r'\s*([a-z]\d)-(.+)',      # a1-blah
         r'\s*([a-z]\d)\.(.+)',     # a1.blah
         r'\s*\[([a-z]\d)\](.+)',   # [a1]blah
         r'\s*([a-z]\d)\](.+)',     # a1]blah
         r'\s*\(([a-z]\d)\)(.+)',   # (a1)blah
-        r'\s*([a-z]\d)(.+)',  # a1blah
+        r'\s*([a-z]\d{1,2})(\D.+)',  # a1blah
     ]
     JUNK_TO_REMOVE = {
         ' $': '',     # space(s) at beginning and before ".mp3"
@@ -167,7 +167,7 @@ class FilenameCleaner:
                         )
                     )
                     return
-        self.print_utf8_error(file)
+        self.print_utf8_error('-'*8, file)
 
     @staticmethod
     def exclude_common_use_cases(to_remove):
