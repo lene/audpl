@@ -9,15 +9,14 @@ from clean_filenames import FilenameCleaner
 
 class TestCleanNumbering(TestJunkFilenames):
 
-    SIDE_AND_NUMBER_CASE_TEMPLATES = [
-        'a{:01d} {}.mp3', 'a{:01d}-{}.mp3', 'a{:01d}.{}.mp3', 'a{:01d}{}.mp3',
-        '[a{:01d}]{}.mp3', 'a{:01d}]{}.mp3', '(a{:01d}){}.mp3'
-    ]
-
     NUMBER_CASE_TEMPLATES = [
         '{:02d}a{}.mp3', '[{:02d}]{}.mp3', '{:02d}_{}.mp3', '-{:02d}. {}.mp3', '-{:02d}-{}.mp3',
         '{:02d}--{}.mp3', '{:02d}-   {}.mp3', '{:02d}-{}.mp3', '{:02d}- {}.mp3', '{:02d}.   {}.mp3',
         '{:02d}.{}.mp3', '{:02d}. {}.mp3', '{:02d}   {}.mp3', '{:02d} {}.mp3'
+    ]
+    SIDE_AND_NUMBER_CASE_TEMPLATES = [
+        'a{:01d} {}.mp3', 'a{:01d}-{}.mp3', 'a{:01d}.{}.mp3', 'a{:01d}{}.mp3',
+        '[a{:01d}]{}.mp3', 'a{:01d}]{}.mp3', '(a{:01d}){}.mp3'
     ]
 
     def test_space_after_number(self):
