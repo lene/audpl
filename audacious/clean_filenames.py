@@ -42,8 +42,10 @@ class FilenameCleaner:
         '--': '-',    # --
         '- -': '-',   # stray double dashes
         '_': ' ',     # underscores
-        ' -(\S)': r' - \1',
+        ' -(\S)': r' - \1',  # immediately leading dash with space before
+        '(\S)- ': r'\1 - ',  # immediately trailing dash with space after
         '  ': ' ',    # double spaces
+        ' ,': ',',    # space before comma
     }
 
     def __init__(self, basedir):
@@ -97,7 +99,7 @@ class FilenameCleaner:
     def execute_fix_commands(self, fix_commands, force, verbose):
         for source, destination in fix_commands:
             if verbose and source is not None and destination is not None:
-                print(source, '->', destination)
+                self.print_utf8_error(source, '->', destination)
             if force and source is not None and destination is not None:
                 try:
                     move(source, destination)
@@ -129,7 +131,7 @@ class FilenameCleaner:
                     new_fixed = re.sub(search, replace, fixed)
                     if new_fixed != fixed:
                         changed = True
-                        print(search, ':', fixed, '->', new_fixed)
+                        # print(search, ':', fixed, '->', new_fixed)
                     fixed = new_fixed
             fix_commands.append((mismatch, os.path.join(root, fixed + '.' + extension)))
         return fix_commands
