@@ -12,3 +12,4 @@ setlayout
 .\#*
 */.idea/*
 tmp
+__pycache__
