@@ -15,7 +15,7 @@ class FilenameCleaner:
 
     MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
     PATTERNS_TO_FIX = [
-        r'\s*(\d{1,3}) (.+)',      # 01 blah
+        r'\s*(\d{1,3})\s+(.+)',      # 01 blah
         r'\s*(\d{1,3})\.\s+(.+)',    # 01. blah
         r'\s*(\d{1,3})\.(.+)',     # 01.blah
         r'\s*(\d{1,3})-\s*(.+)',   # 01- blah
