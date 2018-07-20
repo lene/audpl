@@ -18,21 +18,21 @@ class FilenameCleaner:
         r'\s*(\d{1,3})\s+(.+)',      # 01 blah
         r'\s*(\d{1,3})\.\s+(.+)',    # 01. blah
         r'\s*(\d{1,3})\.(.+)',     # 01.blah
-        r'\s*(\d{1,3})-\s*(.+)',   # 01- blah
         r'\s*(\d{1,3})--(.+)',     # 01--blah
+        r'\s*(\d{1,3})-\s*(.+)',   # 01-blah or 01- blah
         r'\s*-(\d{1,3})-(.+)',     # -01-blah
         r'\s*-\s*(\d{1,3})\.\s*(.+)',  # - 01. blah
         r'\s*(\d{1,3})_(.+)',      # 01_blah
         r'\s*\[(\d{1,3})\](.+)',   # [01]blah
         r'\s*\((\d{1,3})\)\s*(.+)',  # (01)blah
-        r'\s*(\d{1,3})(\D+)',      # 01blah
+        r'\s*(\d{1,3})(\D.*)',      # 01blah
         r'\s*([a-z]\d{1,2})\s+(.+)',    # a1 blah
         r'\s*([a-z]\d)-(.+)',      # a1-blah
         r'\s*([a-z]\d)\.(.+)',     # a1.blah
-        r'\s*([a-z]\d)(.+)',     # a1blah
         r'\s*\[([a-z]\d)\](.+)',   # [a1]blah
         r'\s*([a-z]\d)\](.+)',     # a1]blah
         r'\s*\(([a-z]\d)\)(.+)',   # (a1)blah
+        r'\s*([a-z]\d)(.+)',  # a1blah
     ]
     NONSENSE_TO_REMOVE = [
         # space(s) at beginning and before ".mp3"
@@ -113,7 +113,7 @@ class FilenameCleaner:
             for pattern in self.PATTERNS_TO_FIX:
                 match = re.search('(.*)/' + pattern + r'\.' + extension, file, flags=re.IGNORECASE)
                 if match:
-                    fix_commands.append((file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}.mp3"))
+                    fix_commands.append((file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}." + extension))
                     return
         self.print_utf8_error(file)
 
