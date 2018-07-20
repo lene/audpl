@@ -98,10 +98,19 @@ class FilenameCleaner:
         r'\s*([a-z]\d{1,2})\s+(.+)',    # a1 blah
         r'\s*([a-z]\d)-(.+)',      # a1-blah
         r'\s*([a-z]\d)\.(.+)',     # a1.blah
+        r'\s*([a-z]\d)(.+)',     # a1blah
         r'\s*\[([a-z]\d)\](.+)',   # [a1]blah
         r'\s*([a-z]\d)\](.+)',     # a1]blah
         r'\s*\(([a-z]\d)\)(.+)',   # (a1)blah
     ]
+    NONSENSE_TO_REMOVE = [
+        # space(s) at beginning and before ".mp3"
+        # "-.mp3", " - .mp3"
+        # --
+        # _
+        # double spaces
+    ]
+
 
     def __init__(self, basedir):
         self._base_directory = basedir
