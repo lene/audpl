@@ -90,15 +90,16 @@ class FilenameCleaner:
         r'\s*(\d{1,3})-\s*(.+)',   # 01- blah
         r'\s*(\d{1,3})--(.+)',     # 01--blah
         r'\s*-(\d{1,3})-(.+)',     # -01-blah
-        r'\s*-\s*(\d{1,3})\. (.+)',  # - 01. blah
+        r'\s*-\s*(\d{1,3})\.\s*(.+)',  # - 01. blah
         r'\s*(\d{1,3})_(.+)',      # 01_blah
         r'\s*\[(\d{1,3})\](.+)',   # [01]blah
         r'\s*\((\d{1,3})\)\s*(.+)',  # (01)blah
         r'\s*(\d{1,3})(\D+)',      # 01blah
-        r'\s*([a-z]\d)\s+(.+)',    # a1 blah
+        r'\s*([a-z]\d{1,2})\s+(.+)',    # a1 blah
         r'\s*([a-z]\d)-(.+)',      # a1-blah
         r'\s*([a-z]\d)\.(.+)',     # a1.blah
         r'\s*\[([a-z]\d)\](.+)',   # [a1]blah
+        r'\s*([a-z]\d)\](.+)',     # a1]blah
         r'\s*\(([a-z]\d)\)(.+)',   # (a1)blah
     ]
 
@@ -123,7 +124,7 @@ class FilenameCleaner:
         if min_length and len(to_remove) < min_length:
             return
         if verbose:
-            print('--  DIR:', self._base_directory, '--  REMOVE:', to_remove)
+            print(f'--  DIR: {self._base_directory}  --  REMOVE: "{to_remove}"')
         for file in files:
             if verbose:
                 self.print_utf8_error(
