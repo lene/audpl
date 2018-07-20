@@ -96,6 +96,13 @@ class FilenameCleaner:
         self.execute_fix_commands(fix_commands, force, verbose)
         print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
 
+    def clean_junk(self, verbose: bool=False, force: bool=False):
+
+        fix_commands = self.fix_commands_for_junk()
+
+        self.execute_fix_commands(fix_commands, force, verbose)
+        print(f"{len(fix_commands)} fixed")
+
     def execute_fix_commands(self, fix_commands, force, verbose):
         for source, destination in fix_commands:
             if verbose and source is not None and destination is not None:
@@ -105,13 +112,6 @@ class FilenameCleaner:
                     move(source, destination)
                 except FileNotFoundError:
                     pass
-
-    def clean_junk(self, verbose: bool=False, force: bool=False):
-
-        fix_commands = self.fix_commands_for_junk()
-
-        self.execute_fix_commands(fix_commands, force, verbose)
-        print(f"{len(fix_commands)} fixed")
 
     def fix_commands_for_junk(self):
         def has_junk(filename: str) -> bool:
@@ -134,6 +134,7 @@ class FilenameCleaner:
                         # print(search, ':', fixed, '->', new_fixed)
                     fixed = new_fixed
             fix_commands.append((mismatch, os.path.join(root, fixed + '.' + extension)))
+            print(mismatch, os.path.join(root, fixed + '.' + extension))
         return fix_commands
 
     @staticmethod
