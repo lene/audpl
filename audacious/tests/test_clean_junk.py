@@ -85,8 +85,8 @@ class TestCleanJunk(TestJunkFilenames):
         for letter in (
             # 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
             # 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-            '.',
-            # 'X',
+            # '.',
+            'X',
         ):
             fixed = FilenameCleaner('/home/lene/Music/' + letter).fix_commands_for_junk()
             for _, replacement, patterns in fixed:
@@ -110,7 +110,7 @@ class TestCleanJunk(TestJunkFilenames):
                 # ideal filename pattern
                 if not re.match(r'^\d{1,3}\s?-\s?.*$', core):
                     if not re.match(r'\D.*\D', core) and not re.match(r'^\d{1,3}$', core):
-                        # but it's not possible everywhere
+                        # but it's not possible everywhere, so don't really test for it
                         if False:
                             fails.append((core, patterns))
                 if re.match(r'-\w{1,4}$', core):
