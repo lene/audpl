@@ -11,7 +11,7 @@ class TestAudaciousTools(TempDirTestCase):
 
     def setUp(self):
         super().setUp()
-        self.audacious = AudaciousTools('data/audacious_config')
+        self.audacious = AudaciousTools(self.get_data_dir())
 
     def test_playlist_order(self):
         self.assertEqual(2, len(self.audacious.get_playlist_order()))

@@ -32,7 +32,6 @@ class AudaciousTools:
         """
         self._base_directory = base_config_dir
         self._playlist_dir = find_first_dir(self.PLAYLIST_DIR_NAME, self._base_directory)
-        print(self)
 
     def get_currently_playing_playlist_id(self):
         order = self.get_playlist_order()

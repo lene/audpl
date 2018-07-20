@@ -12,3 +12,13 @@ def find_files(base_path, condition):
         if condition(os.path.join(root, file))
     ]
 
+
+def find_dirs(base_path, condition):
+    return [
+        os.path.join(root, dir)
+        for root, dirs, _ in os.walk(base_path)
+        for dir in dirs
+        if os.path.exists(os.path.join(root, dir))
+        if condition(os.path.join(root, dir))
+    ]
+
