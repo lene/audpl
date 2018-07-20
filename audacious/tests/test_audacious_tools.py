@@ -63,4 +63,3 @@ class TestAudaciousTools(TempDirTestCase):
     def test_copy_playlist_fails_on_nonexistent_file(self):
         with self.assertRaises(FileNotFoundError):
             copy_playlist('0001', 0, self.testdir.name, audacious=self.audacious)
-

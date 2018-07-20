@@ -26,5 +26,7 @@ class TempDirTestCase(unittest.TestCase):
     def get_data_dir() -> str:
         candidates = find_dirs('.', lambda d: d.endswith('data/audacious_config'))
         if len(candidates) != 1:
-            raise ValueError(f"Test audacious config dir not found in {getcwd()} - see {candidates}")
+            raise ValueError(
+                f"Test audacious config dir not found in {os.getcwd()} - see {candidates}"
+            )
         return candidates[0]

@@ -5,8 +5,9 @@ __author__ = 'Lene Preuss <lene.preuss@gmail.com>'
 import re
 import os
 from argparse import ArgumentParser, Namespace
+from pprint import pprint
 from shutil import move
-from typing import List
+from typing import List, Tuple
 
 from util import find_files
 
@@ -34,14 +35,16 @@ class FilenameCleaner:
         r'\s*\(([a-z]\d)\)(.+)',   # (a1)blah
         r'\s*([a-z]\d)(.+)',  # a1blah
     ]
-    NONSENSE_TO_REMOVE = [
+    NONSENSE_TO_REMOVE = {
         # space(s) at beginning and before ".mp3"
         # "-.mp3", " - .mp3"
         # dash at beginning, with or without spaces
-        # --
-        # _
-        # double spaces
-    ]
+        '--': '-',       # --
+        '- -': '-',
+        '_': ' ',        # _
+        ' -(\S)': r' - \1',
+        '  ': ' ', # double spaces
+    }
 
     def __init__(self, basedir):
         self._base_directory = basedir
@@ -72,26 +75,19 @@ class FilenameCleaner:
                     os.path.join(self._base_directory, file.replace(to_remove, ''))
                 )
             if force:
-                os.rename(os.path.join(self._base_directory, file), os.path.join(self._base_directory, file.replace(to_remove, '')))
+                os.rename(
+                    os.path.join(self._base_directory, file),
+                    os.path.join(self._base_directory, file.replace(to_remove, ''))
+                )
 
-    def print_utf8_error(self, *string: str):
-        try:
-            print(*string)
-        except UnicodeEncodeError:
-            raise ValueError(string)
-            # raise ValueError(self._base_directory)
-
-    def clean_numbering(self, verbose: bool = False, force: bool = False):
-        def numbering_mismatch(filename: str) -> bool:
+    def clean_numbering(self, verbose: bool=False, force: bool=False):
+        def has_screwy_numbering(filename: str) -> bool:
             return self.is_music_file(filename) and \
-                   bool(re.search(r'\d+', '.'.join(filename.split('/')[-1].split('.')[:-1]))) and \
-                   not re.search(r'\d+ - .+\.mp3', filename) and \
-                   not re.search(r'\d+ - .+\.flac', filename) and \
-                   not re.search(r'\d+ - .+\.ogg', filename) and \
-                   not re.search(r'\d+ - .+\.m4a', filename)
+                   bool(re.search(r'\d+', self.filename_base(filename))) and \
+                   not any([re.search(r'\d+ - .+\.' + e, filename) for e in self.MUSIC_EXTENSIONS])
 
-        mismatches = sorted(find_files(self._base_directory, numbering_mismatch))
-        fix_commands = []
+        mismatches = sorted(find_files(self._base_directory, has_screwy_numbering))
+        fix_commands: List[Tuple[str, str]] = []
         for file in mismatches:
             self.check_file_for_renumbering(file, fix_commands)
 
@@ -105,6 +101,34 @@ class FilenameCleaner:
                     pass
         print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
 
+    def clean_junk(self, verbose: bool=False, force: bool=False):
+        def has_junk(filename: str) -> bool:
+            return self.is_music_file(filename) and \
+                   any([re.search(s, self.filename_base(filename)) for s in self.NONSENSE_TO_REMOVE])
+
+        mismatches = sorted(find_files(self._base_directory, has_junk))
+        print(mismatches)
+        fix_commands: List[Tuple[str, str]] = []
+        for mismatch in mismatches:
+            fixed = mismatch
+            changed = False
+            for search, replace in self.NONSENSE_TO_REMOVE.items():
+                fixed = re.sub(search, replace, fixed)
+
+            fix_commands.append((mismatch, fixed))
+        pprint(fix_commands)
+
+    @staticmethod
+    def filename_base(filename):
+        return '.'.join(filename.split('/')[-1].split('.')[:-1])
+
+    @staticmethod
+    def print_utf8_error(*string: str):
+        try:
+            print(*string)
+        except UnicodeEncodeError:
+            raise ValueError(string)
+
     def check_file_for_renumbering(self, file: str, fix_commands):
         for extension in self.MUSIC_EXTENSIONS:
             if re.match(r'(.*)/(\d{1,4})\.' + extension, file, flags=re.IGNORECASE):
@@ -113,7 +137,9 @@ class FilenameCleaner:
             for pattern in self.PATTERNS_TO_FIX:
                 match = re.search('(.*)/' + pattern + r'\.' + extension, file, flags=re.IGNORECASE)
                 if match:
-                    fix_commands.append((file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}." + extension))
+                    fix_commands.append(
+                        (file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}." + extension)
+                    )
                     return
         self.print_utf8_error(file)
 
@@ -132,14 +158,14 @@ class FilenameCleaner:
     def get_music_files(self):
         return sorted(
             [
-                name for name in os.listdir(self._base_directory)
-                if os.path.isfile(os.path.join(self._base_directory, name)) and self.is_music_file(name)
+                f for f in os.listdir(self._base_directory)
+                if os.path.isfile(os.path.join(self._base_directory, f)) and self.is_music_file(f)
             ]
         )
 
     @staticmethod
     def is_music_file(filename: str) -> bool:
-        return any([filename.upper().endswith(ext.upper()) for ext in FilenameCleaner.MUSIC_EXTENSIONS])
+        return any([filename.upper().endswith(e.upper()) for e in FilenameCleaner.MUSIC_EXTENSIONS])
 
     @staticmethod
     def longest_common_substring(data: List[str]):
@@ -154,7 +180,7 @@ class FilenameCleaner:
 
 def parse_commandline(args: List[str]) -> Namespace:
     parser = ArgumentParser(
-        description="Copy the first N existing files of an audacious playlist to a target folder"
+        description="Perform several operations to remove junk from music file names"
     )
     parser.add_argument(
         '-v', '--verbose', action='store_true'
@@ -169,6 +195,7 @@ def parse_commandline(args: List[str]) -> Namespace:
         '--clean-numbering', type=str,
         help='Number music files in this dir to let them start with "%d - "'
     )
+    parser.add_argument('--clean-junk', type=str, help='Remove junk from filenames')
     return parser.parse_args(args)
 
 
@@ -176,10 +203,15 @@ def main(args):
     opts = parse_commandline(args)
     if opts.clean_filenames:
         cleaner = FilenameCleaner(opts.clean_filenames)
-        cleaner.clean_filenames(min_length=5, verbose=opts.verbose, recurse=opts.recurse, force=opts.force)
+        cleaner.clean_filenames(
+            min_length=5, verbose=opts.verbose, recurse=opts.recurse, force=opts.force
+        )
     elif opts.clean_numbering:
         cleaner = FilenameCleaner(opts.clean_numbering)
         cleaner.clean_numbering(verbose=opts.verbose, force=opts.force)
+    elif opts.clean_junk:
+        cleaner = FilenameCleaner(opts.clean_junk)
+        cleaner.clean_junk(verbose=opts.verbose, force=opts.force)
 
 
 if __name__ == '__main__':

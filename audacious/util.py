@@ -21,4 +21,3 @@ def find_dirs(base_path, condition):
         if os.path.exists(os.path.join(root, dir))
         if condition(os.path.join(root, dir))
     ]
-

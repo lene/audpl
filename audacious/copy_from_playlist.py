@@ -26,7 +26,7 @@ class AudaciousTools:
     PLAYLIST_EXTENSION = '.audpl'
     FILE_LINE_PREFIX = 'uri=file://'
 
-    def __init__(self, base_config_dir: str=DEFAULT_AUDACIOUS_CONFIG_DIR):
+    def __init__(self, base_config_dir: str=DEFAULT_AUDACIOUS_CONFIG_DIR) -> None:
         """
         :param base_config_dir: Directory containing the audacious configuration
         """
@@ -43,11 +43,11 @@ class AudaciousTools:
             return order_file.readlines()[0].split(' ')
 
     @property
-    def playlist_directory(self):
+    def playlist_directory(self) -> str:
         """Directory where the playlists are for this audacious instance"""
         return self._playlist_dir
 
-    def files_in_playlist(self, playlist_id: str):
+    def files_in_playlist(self, playlist_id: str) -> List[str]:
         """
         :param playlist_id: Playlist ID (filename)
         :return: All actually existing files in that playlist
@@ -60,25 +60,27 @@ class AudaciousTools:
         files_to_copy = self.files_in_playlist(playlist_id)
         return files_to_copy[:number] if number else files_to_copy
 
-    def _playlist_order_file_path(self):
+    def _playlist_order_file_path(self) -> str:
         return os.path.join(self.playlist_directory, 'order')
 
-    def _read_playlist(self, playlist_id: str):
+    def _read_playlist(self, playlist_id: str) -> List[str]:
         with open(self._playlist_file_path(playlist_id)) as playlist_file:
             return playlist_file.readlines()
 
-    def _playlist_file_path(self, playlist_id: str):
-        return os.path.join(self.playlist_directory, playlist_id + AudaciousTools.PLAYLIST_EXTENSION)
+    def _playlist_file_path(self, playlist_id: str) -> str:
+        return os.path.join(
+            self.playlist_directory, playlist_id + AudaciousTools.PLAYLIST_EXTENSION
+        )
 
     @staticmethod
-    def _file_entries(lines: int):
+    def _file_entries(lines: List[str]) -> List[str]:
         return [
             unquote(line[len(AudaciousTools.FILE_LINE_PREFIX):]).strip()
             for line in lines if line.startswith(AudaciousTools.FILE_LINE_PREFIX)
         ]
 
     @staticmethod
-    def _currently_playing_playlist_number():
+    def _currently_playing_playlist_number() -> int:
         return int(check_output(['audtool', 'current-playlist']))
 
 
@@ -155,7 +157,10 @@ def move_files_to_original_places(
         if not original_file:
             continue
         original_file_parent_dir = '/'.join(original_file.split('/')[:-1])
-        files_to_move = [f for f in os.listdir(original_file_parent_dir) if os.path.isfile(original_file_parent_dir+'/'+f)]
+        files_to_move = [
+            f for f in os.listdir(original_file_parent_dir)
+            if os.path.isfile(original_file_parent_dir+'/'+f)
+        ]
         if verbose:
             print('TO MOVE', original_file, target_dir, files_to_move)
         os.makedirs(target_dir, exist_ok=True)
