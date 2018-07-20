@@ -71,42 +71,50 @@ class TestCleanJunk(TestJunkFilenames):
         self.create_files(' {:02d} - blah blub.mp3', 3)
         self._perform_and_check_cleaning()
 
+    def test_free_comma(self):
+        self.create_files('{:02d} - blah , blub.mp3', 3)
+        self._perform_and_check_cleaning('\d\d - blah, blub.mp3')
+
+    def test_dash_comma_does_not_loop_infinitely_and_gives_sensible_result(self):
+        self.create_files('{:02d} -, blah blub.mp3', 3)
+        self._perform_and_check_cleaning('\d\d - blah blub.mp3')
+
     def test_real_world_cases(self):
         self.maxDiff = None
         fails = []
         for letter in (
             # 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
             # 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-            # '.',
-            'X',
+            '.',
+            # 'X',
         ):
             fixed = FilenameCleaner('/home/lene/Music/' + letter).fix_commands_for_junk()
-            for _, replacement in fixed:
+            for _, replacement, patterns in fixed:
                 core = '.'.join(os.path.basename(replacement).split('.')[:-1])
                 if '_' in core:
-                    fails.append(core)
+                    fails.append((core, patterns))
                 if '  ' in core:
-                    fails.append(core)
+                    fails.append((core, patterns))
                 if '--' in core:
-                    fails.append(core)
+                    fails.append((core, patterns))
                 if '- -' in core:
-                    fails.append(core)
+                    fails.append((core, patterns))
                 if core.endswith('-'):
-                    fails.append(core)
+                    fails.append((core, patterns))
                 if core.startswith('-'):
-                    fails.append(core)
+                    fails.append((core, patterns))
                 if core.endswith(' '):
-                    fails.append(core)
+                    fails.append((core, patterns))
                 if core.startswith(' '):
-                    fails.append(core)
+                    fails.append((core, patterns))
                 # ideal filename pattern
                 if not re.match(r'^\d{1,3}\s?-\s?.*$', core):
                     if not re.match(r'\D.*\D', core) and not re.match(r'^\d{1,3}$', core):
                         # but it's not possible everywhere
                         if False:
-                            fails.append(core)
+                            fails.append((core, patterns))
                 if re.match(r'-\w{1,4}$', core):
-                    fails.append(core)
+                    fails.append((core, patterns))
         self.assertEqual([], fails)
 
     def _perform_and_check_cleaning(self, regex: str=r'^\d\d\ - blah blub.mp3$'):

@@ -42,6 +42,7 @@ class FilenameCleaner:
         '--': '-',    # --
         '- -': '-',   # stray double dashes
         '_': ' ',     # underscores
+        '-,': '-',    # dash before comma (BECAUSE THAT HAPPENS AND FUCKS EVERYTHING UP JFC)
         ' -(\S)': r' - \1',  # immediately leading dash with space before
         '(\S)- ': r'\1 - ',  # immediately trailing dash with space after
         '  ': ' ',    # double spaces
@@ -69,13 +70,14 @@ class FilenameCleaner:
         if min_length and len(to_remove) < min_length:
             return
         if verbose:
-            print(f'--  DIR: {self._base_directory}  --  REMOVE: "{to_remove}"')
+            print(f'----    DIR: {self._base_directory}    ----    REMOVE: "{to_remove}"')
         for file in files:
             if verbose:
                 self.print_utf8_error(
                     'MOVE ', os.path.join(self._base_directory, file),
                     os.path.join(self._base_directory, file.replace(to_remove, ''))
                 )
+                pass
             if force:
                 os.rename(
                     os.path.join(self._base_directory, file),
@@ -104,14 +106,15 @@ class FilenameCleaner:
         print(f"{len(fix_commands)} fixed")
 
     def execute_fix_commands(self, fix_commands, force, verbose):
-        for source, destination in fix_commands:
+        for source, destination, pattern_matches in fix_commands:
             if verbose and source is not None and destination is not None:
-                self.print_utf8_error(source, '->', destination)
+                self.print_utf8_error(source, '->', destination, pattern_matches)
             if force and source is not None and destination is not None:
                 try:
                     move(source, destination)
                 except FileNotFoundError:
-                    pass
+                    if verbose:
+                        self.print_utf8_error('FAIL:', source, '->', destination)
 
     def fix_commands_for_junk(self):
         def has_junk(filename: str) -> bool:
@@ -119,11 +122,12 @@ class FilenameCleaner:
                    any([re.search(s, self.filename_base(filename)) for s in self.JUNK_TO_REMOVE])
 
         mismatches = sorted(find_files(self._base_directory, has_junk))
-        fix_commands: List[Tuple[str, str]] = []
+        fix_commands: List[Tuple[str, str, List[str]]] = []
         for mismatch in mismatches:
             root = os.path.dirname(mismatch)
             fixed = self.filename_base(mismatch)
             extension = mismatch.split('.')[-1]
+            matches = []
             changed = True
             while changed:
                 changed = False
@@ -131,10 +135,9 @@ class FilenameCleaner:
                     new_fixed = re.sub(search, replace, fixed)
                     if new_fixed != fixed:
                         changed = True
-                        # print(search, ':', fixed, '->', new_fixed)
+                        matches.append(search)
                     fixed = new_fixed
-            fix_commands.append((mismatch, os.path.join(root, fixed + '.' + extension)))
-            print(mismatch, os.path.join(root, fixed + '.' + extension))
+            fix_commands.append((mismatch, os.path.join(root, fixed + '.' + extension), matches))
         return fix_commands
 
     @staticmethod
@@ -151,13 +154,17 @@ class FilenameCleaner:
     def check_file_for_renumbering(self, file: str, fix_commands):
         for extension in self.MUSIC_EXTENSIONS:
             if re.match(r'(.*)/(\d{1,4})\.' + extension, file, flags=re.IGNORECASE):
-                fix_commands.append((None, None))
+                fix_commands.append((None, None, None))
                 return
             for pattern in self.PATTERNS_TO_FIX:
                 match = re.search('(.*)/' + pattern + r'\.' + extension, file, flags=re.IGNORECASE)
                 if match:
                     fix_commands.append(
-                        (file, f"{match.group(1)}/{match.group(2)} - {match.group(3)}." + extension)
+                        (
+                            file,
+                            f"{match.group(1)}/{match.group(2)} - {match.group(3)}." + extension,
+                            pattern
+                        )
                     )
                     return
         self.print_utf8_error(file)
