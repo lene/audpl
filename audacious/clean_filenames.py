@@ -5,7 +5,6 @@ __author__ = 'Lene Preuss <lene.preuss@gmail.com>'
 import re
 import os
 from argparse import ArgumentParser, Namespace
-from pprint import pprint
 from shutil import move
 from typing import List, Tuple
 
@@ -35,15 +34,16 @@ class FilenameCleaner:
         r'\s*\(([a-z]\d)\)(.+)',   # (a1)blah
         r'\s*([a-z]\d)(.+)',  # a1blah
     ]
-    NONSENSE_TO_REMOVE = {
-        # space(s) at beginning and before ".mp3"
-        # "-.mp3", " - .mp3"
-        # dash at beginning, with or without spaces
-        '--': '-',       # --
-        '- -': '-',
-        '_': ' ',        # _
+    JUNK_TO_REMOVE = {
+        ' $': '',     # space(s) at beginning and before ".mp3"
+        '-$': '',     # "-.mp3", " - .mp3"
+        '^-': '',     # dash at beginning, with or without spaces
+        '^ ': '',     # space at beginning, with or without spaces
+        '--': '-',    # --
+        '- -': '-',   # stray double dashes
+        '_': ' ',     # underscores
         ' -(\S)': r' - \1',
-        '  ': ' ', # double spaces
+        '  ': ' ',    # double spaces
     }
 
     def __init__(self, basedir):
@@ -91,6 +91,10 @@ class FilenameCleaner:
         for file in mismatches:
             self.check_file_for_renumbering(file, fix_commands)
 
+        self.execute_fix_commands(fix_commands, force, verbose)
+        print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
+
+    def execute_fix_commands(self, fix_commands, force, verbose):
         for source, destination in fix_commands:
             if verbose and source is not None and destination is not None:
                 print(source, '->', destination)
@@ -99,24 +103,36 @@ class FilenameCleaner:
                     move(source, destination)
                 except FileNotFoundError:
                     pass
-        print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
 
     def clean_junk(self, verbose: bool=False, force: bool=False):
+
+        fix_commands = self.fix_commands_for_junk()
+
+        self.execute_fix_commands(fix_commands, force, verbose)
+        print(f"{len(fix_commands)} fixed")
+
+    def fix_commands_for_junk(self):
         def has_junk(filename: str) -> bool:
             return self.is_music_file(filename) and \
-                   any([re.search(s, self.filename_base(filename)) for s in self.NONSENSE_TO_REMOVE])
+                   any([re.search(s, self.filename_base(filename)) for s in self.JUNK_TO_REMOVE])
 
         mismatches = sorted(find_files(self._base_directory, has_junk))
-        print(mismatches)
         fix_commands: List[Tuple[str, str]] = []
         for mismatch in mismatches:
-            fixed = mismatch
-            changed = False
-            for search, replace in self.NONSENSE_TO_REMOVE.items():
-                fixed = re.sub(search, replace, fixed)
-
-            fix_commands.append((mismatch, fixed))
-        pprint(fix_commands)
+            root = os.path.dirname(mismatch)
+            fixed = self.filename_base(mismatch)
+            extension = mismatch.split('.')[-1]
+            changed = True
+            while changed:
+                changed = False
+                for search, replace in self.JUNK_TO_REMOVE.items():
+                    new_fixed = re.sub(search, replace, fixed)
+                    if new_fixed != fixed:
+                        changed = True
+                        print(search, ':', fixed, '->', new_fixed)
+                    fixed = new_fixed
+            fix_commands.append((mismatch, os.path.join(root, fixed + '.' + extension)))
+        return fix_commands
 
     @staticmethod
     def filename_base(filename):
