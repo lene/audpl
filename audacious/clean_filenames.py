@@ -89,7 +89,9 @@ class FilenameCleaner:
     def undo(self, verbose: bool=False, force: bool=False):
         path = os.path.realpath(self._base_directory)
 
-        for source, dest in [(dest, source) for source, dest in self._undo_info.items() if dest.startswith(path)]:
+        for source, dest in [
+            (dest, source) for source, dest in self._undo_info.items() if dest.startswith(path)
+        ]:
             if os.path.isfile(source):
                 if verbose:
                     print('MOVE', source, dest)
@@ -103,7 +105,7 @@ class FilenameCleaner:
         try:
             with open(self._undo_db, 'rb') as db_file:
                 return pickle.load(db_file)
-        except FileNotFoundError:
+        except (FileNotFoundError, EOFError):
             return {}
 
     def _fix_commands_for_filenames(
@@ -121,7 +123,7 @@ class FilenameCleaner:
 
         files = self.get_music_files()
         to_remove = self.longest_common_substring(files)
-        to_remove = self.exclude_common_use_cases(to_remove)
+        to_remove = self._exclude_common_use_cases(to_remove)
         if min_length and len(to_remove) < min_length:
             return fix_commands
         if verbose:
@@ -150,20 +152,20 @@ class FilenameCleaner:
         mismatches = sorted(find_files(self._base_directory, has_screwy_numbering))
         fix_commands: List[Tuple[str, str]] = []
         for file in mismatches:
-            self.check_file_for_renumbering(file, fix_commands)
+            self._check_file_for_renumbering(file, fix_commands)
         return fix_commands
 
     def _execute_fix_commands(self, fix_commands, force, verbose):
         for source, destination, pattern_matches in fix_commands:
             self._undo_info[os.path.realpath(source)] = os.path.realpath(destination)
             if verbose and source is not None and destination is not None:
-                self.print_utf8_error(source, '->', destination, pattern_matches)
+                self._print_utf8_error(source, '->', destination, pattern_matches)
             if force and source is not None and destination is not None:
                 try:
                     move(source, destination)
                 except FileNotFoundError:
                     if verbose:
-                        self.print_utf8_error('FAIL:', source, '->', destination)
+                        self._print_utf8_error('FAIL:', source, '->', destination)
 
     def _fix_commands_for_junk(self):
         def has_junk(filename: str) -> bool:
@@ -197,13 +199,13 @@ class FilenameCleaner:
         return '.'.join(filename.split('/')[-1].split('.')[:-1])
 
     @staticmethod
-    def print_utf8_error(*string: str):
+    def _print_utf8_error(*string: str):
         try:
             print(*string)
         except UnicodeEncodeError:
             raise ValueError(string)
 
-    def check_file_for_renumbering(self, file: str, fix_commands):
+    def _check_file_for_renumbering(self, file: str, fix_commands):
         for extension in self.MUSIC_EXTENSIONS:
             if re.match(r'(.*)/(\d{1,4})\.' + extension, file, flags=re.IGNORECASE):
                 fix_commands.append((None, None, None))
@@ -219,10 +221,10 @@ class FilenameCleaner:
                         )
                     )
                     return
-        self.print_utf8_error('-'*8, file)
+        self._print_utf8_error('-' * 8, file)
 
     @staticmethod
-    def exclude_common_use_cases(to_remove):
+    def _exclude_common_use_cases(to_remove):
         if to_remove[:3] == ' - ':
             to_remove = to_remove[3:]
         if re.match(r'.*\.\w+$', to_remove):

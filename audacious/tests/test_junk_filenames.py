@@ -6,6 +6,10 @@ from hashlib import md5
 from os.path import join
 
 from .temp_dir_test_case import TempDirTestCase
+from clean_filenames import FilenameCleaner
+
+
+UNDO_DB = '/tmp/undo.pickle'
 
 
 class TestJunkFilenames(TempDirTestCase):
@@ -17,3 +21,6 @@ class TestJunkFilenames(TempDirTestCase):
             path = join(self.testdir.name, filename)
             self.create_file(path)
             self.files.append(path)
+
+    def get_cleaner(self):
+        return FilenameCleaner(self.testdir.name, undo_db=UNDO_DB)

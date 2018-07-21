@@ -127,6 +127,6 @@ class TestCleanJunk(TestJunkFilenames):
         self.assertEqual([], fails)
 
     def _perform_and_check_cleaning(self, regex: str=r'^\d\d\ - blah blub.mp3$'):
-        FilenameCleaner(self.testdir.name).clean_junk(force=True, verbose=True)
+        self.get_cleaner().clean_junk(force=True, verbose=True)
         for file in os.listdir(self.testdir.name):
             self.assertRegex(file, regex)
