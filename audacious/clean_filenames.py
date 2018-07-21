@@ -21,6 +21,7 @@ class FilenameCleaner:
         r'(\d\d)\2\s+-\s+([^/]+)',     # 0101 - blah
         r'\s*(\d{1,3}-\d)\s+([^-][^/]+)',  # 01-1 blah
         r'\s*(\d-\d{1,2})\s+([^-][^/]+)',  # 1-01 blah
+        r'\s*(\d\d-\d\d)\s+([^-][^/]+)',  # 01-01 blah
         r'\s*(\d{1,4})\s+([^/]+)',     # 01 blah
         r'\s*(\d{1,3})\.\s+([^/]+)',   # 01. blah
         r'\s*(\d{1,3})\.([^/]+)',      # 01.blah
@@ -94,7 +95,7 @@ class FilenameCleaner:
 
     def undo(self):
         path = os.path.realpath(self._base_directory)
-        print([i for i in self._undo_info if i.startswith(path)])
+        print([(dest, source) for source, dest in self._undo_info.items() if dest.startswith(path)])
 
     def _fix_commands_for_filenames(
             self,  min_length: int, verbose: bool, recurse: bool, force: bool,
@@ -132,8 +133,7 @@ class FilenameCleaner:
                 not re.search(r'^\d{1,4} - [^/]+', base, flags=re.IGNORECASE) and
                 not re.search(r'^\d{1,4}$', base, flags=re.IGNORECASE) and
                 not re.search(r'^\d{1,2}-\d{1,2}$', base, flags=re.IGNORECASE) and
-                not re.search(r'^\d{2}-\d - [^/]+', base, flags=re.IGNORECASE) and
-                not re.search(r'^\d-\d{1,2} - [^/]+', base, flags=re.IGNORECASE) and
+                not re.search(r'^\d{1,2}-\d{1,2} - [^/]+', base, flags=re.IGNORECASE) and
                 not re.search(r'^[a-z]\d{1,2} - [^/]+', base, flags=re.IGNORECASE) or
                 re.search(r'^(\d\d)\1 - [^/]+', base, flags=re.IGNORECASE)
             )

@@ -158,6 +158,10 @@ class TestCleanNumbering(TestJunkFilenames):
         self._perform_and_check_cleaning(r'^\d\d-\d - \w+\.mp3$')
 
     def test_other_ttc_numbering_scheme(self):
+        self.create_files('10-{:02d} {}.mp3', NUM_TESTS)
+        self._perform_and_check_cleaning(r'^\d\d-\d\d - \w+\.mp3$')
+
+    def test_yet_other_ttc_numbering_scheme(self):
         self.create_files('10{:02d} {}.mp3', NUM_TESTS)
         self._perform_and_check_cleaning(r'^\d\d\d\d - \w+\.mp3$')
 
