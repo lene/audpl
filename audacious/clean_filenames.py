@@ -116,14 +116,15 @@ class FilenameCleaner:
 
     def _fix_commands_for_numbering(self):
         def has_screwy_numbering(filename: str) -> bool:
+            base = self.filename_base(filename)
             return self.is_music_file(filename) and \
-                   bool(re.search(r'\d+', self.filename_base(filename))) and \
-                   not any([
-                       re.search(r'\d{1,3} - [^/]+\.' + e, filename, flags=re.IGNORECASE)
-                       for e in self.MUSIC_EXTENSIONS
-                   ])
+                bool(re.search(r'\d+', base)) and \
+                not re.search(r'^\d{1,4} - [^/]+', base, flags=re.I) and \
+                not re.search(r'^[a-z]\d{1,2} - [^/]+', base, flags=re.I) or \
+                re.search(r'^(\d\d)\1 - [^/]+', base, flags=re.I)
 
         mismatches = sorted(find_files(self._base_directory, has_screwy_numbering))
+        print(mismatches)
         fix_commands: List[Tuple[str, str]] = []
         for file in mismatches:
             self.check_file_for_renumbering(file, fix_commands)
@@ -191,8 +192,8 @@ class FilenameCleaner:
                 return
             for pattern in self.PATTERNS_TO_FIX:
                 match = re.search('(.*)/' + pattern + r'\.' + extension, file, flags=re.IGNORECASE)
-                print(file, pattern, match)
                 if match:
+                    print(file, pattern, match)
                     fix_commands.append(
                         (
                             file,
