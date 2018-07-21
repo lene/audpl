@@ -93,9 +93,18 @@ class FilenameCleaner:
         self.execute_fix_commands(fix_commands, force, verbose)
         print(f"{len(fix_commands)} fixed")
 
-    def undo(self):
+    def undo(self, verbose: bool=False, force: bool=False):
         path = os.path.realpath(self._base_directory)
-        print([(dest, source) for source, dest in self._undo_info.items() if dest.startswith(path)])
+
+        for source, dest in [(dest, source) for source, dest in self._undo_info.items() if dest.startswith(path)]:
+            if os.path.isfile(source):
+                if verbose:
+                    print('MOVE', source, dest)
+                if force:
+                    move(source, dest)
+            else:
+                if verbose:
+                    print('FAIL', source)
 
     def _fix_commands_for_filenames(
             self,  min_length: int, verbose: bool, recurse: bool, force: bool,
@@ -276,7 +285,7 @@ def main(args):
     opts = parse_commandline(args)
     cleaner = FilenameCleaner(opts.target)
     if opts.undo:
-        cleaner.undo()
+        cleaner.undo(verbose=opts.verbose, force=opts.force)
         sys.exit(0)
     if opts.clean_filenames:
         cleaner.clean_filenames(
