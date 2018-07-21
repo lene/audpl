@@ -78,11 +78,25 @@ class FilenameCleaner:
     def clean_filenames(
             self, min_length: int=0, verbose: bool=False, recurse: bool=False, force: bool=False
     ) -> None:
-        fix_commands = self.fix_commands_for_filenames(min_length, verbose, recurse, force, [])
+        fix_commands = self._fix_commands_for_filenames(min_length, verbose, recurse, force, [])
         self.execute_fix_commands(fix_commands, force, verbose)
         # print(f"{len(fix_commands)} fixed")
 
-    def fix_commands_for_filenames(
+    def clean_numbering(self, verbose: bool=False, force: bool=False):
+        fix_commands = self._fix_commands_for_numbering()
+        self.execute_fix_commands(fix_commands, force, verbose)
+        print(f"{len(fix_commands)} fixed")
+
+    def clean_junk(self, verbose: bool=False, force: bool=False):
+        fix_commands = self._fix_commands_for_junk()
+        self.execute_fix_commands(fix_commands, force, verbose)
+        print(f"{len(fix_commands)} fixed")
+
+    def undo(self):
+        path = os.path.realpath(self._base_directory)
+        print([i for i in self._undo_info if i.startswith(path)])
+
+    def _fix_commands_for_filenames(
             self,  min_length: int, verbose: bool, recurse: bool, force: bool,
             fix_commands: List[Tuple[str, str, List]]
     ) -> List[Tuple[str, str, List]]:
@@ -110,11 +124,6 @@ class FilenameCleaner:
                 ))
         return fix_commands
 
-    def clean_numbering(self, verbose: bool=False, force: bool=False):
-        fix_commands = self._fix_commands_for_numbering()
-        self.execute_fix_commands(fix_commands, force, verbose)
-        print(f"{len(fix_commands)} fixed")
-
     def _fix_commands_for_numbering(self):
         def has_screwy_numbering(filename: str) -> bool:
             base = self.filename_base(filename)
@@ -135,14 +144,9 @@ class FilenameCleaner:
             self.check_file_for_renumbering(file, fix_commands)
         return fix_commands
 
-    def clean_junk(self, verbose: bool=False, force: bool=False):
-        fix_commands = self._fix_commands_for_junk()
-        self.execute_fix_commands(fix_commands, force, verbose)
-        print(f"{len(fix_commands)} fixed")
-
     def execute_fix_commands(self, fix_commands, force, verbose):
         for source, destination, pattern_matches in fix_commands:
-            self._undo_info[source] = destination
+            self._undo_info[os.path.realpath(source)] = os.path.realpath(destination)
             if verbose and source is not None and destination is not None:
                 self.print_utf8_error(source, '->', destination, pattern_matches)
             if force and source is not None and destination is not None:
