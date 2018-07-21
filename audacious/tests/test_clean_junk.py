@@ -85,7 +85,7 @@ class TestCleanJunk(TestJunkFilenames):
 
     def test_dash_comma_does_not_loop_infinitely_and_gives_sensible_result(self):
         self.create_files('{:02d} -, blah blub.mp3', 3)
-        self._perform_and_check_cleaning('\d\d - blah blub.mp3')
+        self._perform_and_check_cleaning()
 
     def test_real_world_cases(self):
         self.maxDiff = None
