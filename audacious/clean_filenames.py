@@ -69,13 +69,21 @@ class FilenameCleaner:
         self._undo_info = self._load_undo_info()
 
     def __del__(self):
-        print(self._base_directory, self._undo_info)
+        # print(self._base_directory, self._undo_info)
         with open(self._undo_db, 'wb') as db_file:
             return pickle.dump(self._undo_info, db_file)
 
     def clean_filenames(
             self, min_length: int=0, verbose: bool=False, recurse: bool=False, force: bool=False
     ) -> None:
+        fix_commands = self.fix_commands_for_filenames(min_length, verbose, recurse, force, [])
+        self.execute_fix_commands(fix_commands, force, verbose)
+        # print(f"{len(fix_commands)} fixed")
+
+    def fix_commands_for_filenames(
+            self,  min_length: int, verbose: bool, recurse: bool, force: bool,
+            fix_commands: List[Tuple[str, str, List]]
+    ) -> List[Tuple[str, str, List]]:
         if recurse:
             subdirs = sorted(
                 [name for name in os.listdir(self._base_directory)
@@ -89,21 +97,16 @@ class FilenameCleaner:
         to_remove = self.longest_common_substring(files)
         to_remove = self.exclude_common_use_cases(to_remove)
         if min_length and len(to_remove) < min_length:
-            return
+            return fix_commands
         if verbose:
             print(f'----    DIR: {self._base_directory}    ----    REMOVE: "{to_remove}"')
         for file in files:
-            if verbose:
-                self.print_utf8_error(
-                    'MOVE ', os.path.join(self._base_directory, file),
-                    os.path.join(self._base_directory, file.replace(to_remove, ''))
-                )
-                pass
-            if force:
-                os.rename(
+                fix_commands.append((
                     os.path.join(self._base_directory, file),
-                    os.path.join(self._base_directory, file.replace(to_remove, ''))
-                )
+                    os.path.join(self._base_directory, file.replace(to_remove, '')),
+                    [to_remove]
+                ))
+        return fix_commands
 
     def clean_numbering(self, verbose: bool=False, force: bool=False):
         fix_commands = self._fix_commands_for_numbering()
