@@ -97,7 +97,7 @@ class TestCleanJunk(TestJunkFilenames):
             'X',
         ):
             basedir = '/home/lene/Music/' + letter
-            fixed = FilenameCleaner([basedir]).fix_commands_for_junk(basedir)
+            fixed = FilenameCleaner(basedir)._fix_commands_for_junk()
             for _, replacement, patterns in fixed:
                 core = '.'.join(os.path.basename(replacement).split('.')[:-1])
                 if '_' in core:
@@ -127,6 +127,6 @@ class TestCleanJunk(TestJunkFilenames):
         self.assertEqual([], fails)
 
     def _perform_and_check_cleaning(self, regex: str=r'^\d\d\ - blah blub.mp3$'):
-        FilenameCleaner([self.testdir.name]).clean_junk(force=True, verbose=True)
+        FilenameCleaner(self.testdir.name).clean_junk(force=True, verbose=True)
         for file in os.listdir(self.testdir.name):
             self.assertRegex(file, regex)

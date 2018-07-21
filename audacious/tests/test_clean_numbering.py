@@ -130,20 +130,20 @@ class TestCleanNumbering(TestJunkFilenames):
     def test_all_number_stuff_does_not_rename_nonmusical_files(self):
         for template in self.NUMBER_CASE_TEMPLATES:
             self.create_files(template.replace('mp3', 'txt'), 3)
-            FilenameCleaner([self.testdir.name]).clean_numbering(force=True)
+            FilenameCleaner(self.testdir.name).clean_numbering(force=True)
             for file in listdir(self.testdir.name):
                 self.assertNotRegex(file, r'^\d+ - \w+\.txt$')
 
     def test_all_side_and_number_stuff_does_not_rename_nonmusical_files(self):
         for template in self.SIDE_AND_NUMBER_CASE_TEMPLATES:
             self.create_files(template.replace('mp3', 'txt'), 3)
-            FilenameCleaner([self.testdir.name]).clean_numbering(force=True)
+            FilenameCleaner(self.testdir.name).clean_numbering(force=True)
             for file in listdir(self.testdir.name):
                 self.assertNotRegex(file, r'^\d+ - \w+\.txt$')
 
     def test_unnumbered_files_are_not_renamed(self):
         self.create_files('abc{:02d}{}.mp3', 3)
-        FilenameCleaner([self.testdir.name]).clean_numbering(force=True)
+        FilenameCleaner(self.testdir.name).clean_numbering(force=True)
         for file in listdir(self.testdir.name):
             self.assertNotRegex(file, r'^\d+ - \w+\.mp3$')
 
@@ -160,6 +160,6 @@ class TestCleanNumbering(TestJunkFilenames):
         self._perform_and_check_cleaning(r'^\d\d\d\d - \w+\.mp3$')
 
     def _perform_and_check_cleaning(self, regex: str=r'^\d+ - \w+\.mp3$'):
-        FilenameCleaner([self.testdir.name]).clean_numbering(force=True)
+        FilenameCleaner(self.testdir.name).clean_numbering(force=True)
         for file in listdir(self.testdir.name):
             self.assertRegex(file, regex)
