@@ -159,6 +159,10 @@ class TestCleanNumbering(TestJunkFilenames):
         self.create_files('10{:02d} {}.mp3', 3)
         self._perform_and_check_cleaning(r'^\d\d\d\d - \w+\.mp3$')
 
+    def test_doubled_numbers(self):
+        self.create_files('{0:02d}{0:02d} - {1}.mp3', 3)
+        self._perform_and_check_cleaning(r'^\d\d - \w+\.mp3$')
+
     def _perform_and_check_cleaning(self, regex: str=r'^\d+ - \w+\.mp3$'):
         FilenameCleaner(self.testdir.name).clean_numbering(force=True)
         for file in listdir(self.testdir.name):
