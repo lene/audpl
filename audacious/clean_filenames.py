@@ -18,29 +18,29 @@ class FilenameCleaner:
 
     MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
     PATTERNS_TO_FIX = [
-        r'(\d\d)\2\s+-\s+([^/]+)',     # 0101 - blah
+        r'(\d\d)\2\s+-\s+([^/]+)',       # 0101 - blah (note: regex is prefixed by group for path)
         r'\s*(\d{1,3}-\d)\s+([^-][^/]+)',  # 01-1 blah
         r'\s*(\d-\d{1,2})\s+([^-][^/]+)',  # 1-01 blah
-        r'\s*(\d\d-\d\d)\s+([^-][^/]+)',  # 01-01 blah
-        r'\s*(\d{1,4})\s+([^/]+)',     # 01 blah
-        r'\s*(\d{1,3})\.\s+([^/]+)',   # 01. blah
-        r'\s*(\d{1,3})\.([^/]+)',      # 01.blah
-        r'\s*(\d{1,3})--([^/]+)',      # 01--blah
-        r'\s*(\d{1,3})-\s*(\D[^/]+)',  # 01-blah or 01- blah
-        r'\s*-(\d{1,3})-([^/]+)',      # -01-blah
+        r'\s*(\d\d-\d\d)\s+([^-][^/]+)',   # 01-01 blah
+        r'\s*(\d{1,4})\s+([^/]+)',       # 01 blah
+        r'\s*(\d{1,3})\.\s+([^/]+)',     # 01. blah
+        r'\s*(\d{1,3})\.([^/]+)',        # 01.blah
+        r'\s*(\d{1,3})--([^/]+)',        # 01--blah
+        r'\s*(\d{1,3})-\s*(\D[^/]+)',    # 01-blah or 01- blah
+        r'\s*-(\d{1,3})-([^/]+)',        # -01-blah
         r'\s*-\s*(\d{1,3})\.\s*([^/]+)',  # - 01. blah
-        r'\s*(\d{1,3})_([^/]+)',       # 01_blah
-        r'\s*\[(\d{1,3})\]([^/]+)',    # [01]blah
-        r'\s*(\d{1,3})\]([^/]+)',      # 01]blah
-        r'\s*\((\d{1,3})\)\s*([^/]+)',  # (01)blah
-        r'\s*(\d{1,4})(\D[^/]*)',      # 01blah
+        r'\s*(\d{1,3})_([^/]+)',         # 01_blah
+        r'\s*\[(\d{1,3})\]([^/]+)',      # [01]blah
+        r'\s*(\d{1,3})\]([^/]+)',        # 01]blah
+        r'\s*\((\d{1,3})\)\s*([^/]+)',   # (01)blah
+        r'\s*(\d{1,4})(\D[^/]*)',        # 01blah
         r'\s*([a-z]\d{1,2})\s+([^/]+)',  # a1 blah
-        r'\s*([a-z]\d)-([^/]+)',       # a1-blah
-        r'\s*([a-z]\d)\.([^/]+)',      # a1.blah
-        r'\s*\[([a-z]\d)\]([^/]+)',    # [a1]blah
-        r'\s*([a-z]\d)\]([^/]+)',      # a1]blah
-        r'\s*\(([a-z]\d)\)([^/]+)',    # (a1)blah
-        r'\s*([a-z]\d{1,2})(\D[^/]+)',  # a1blah
+        r'\s*([a-z]\d)-([^/]+)',         # a1-blah
+        r'\s*([a-z]\d)\.([^/]+)',        # a1.blah
+        r'\s*\[([a-z]\d)\]([^/]+)',      # [a1]blah
+        r'\s*([a-z]\d)\]([^/]+)',        # a1]blah
+        r'\s*\(([a-z]\d)\)([^/]+)',      # (a1)blah
+        r'\s*([a-z]\d{1,2})(\D[^/]+)',   # a1blah
     ]
     JUNK_TO_REMOVE = {
         ' $': '',     # space(s) at beginning and before ".mp3"
@@ -57,14 +57,8 @@ class FilenameCleaner:
         '  ': ' ',    # double spaces
         ' ,': ',',    # space before comma
         r'\[\]': '',
+        r'\(\)': '',
     }
-
-    def _load_undo_info(self) -> Dict[str, str]:
-        try:
-            with open(self._undo_db, 'rb') as db_file:
-                return pickle.load(db_file)
-        except FileNotFoundError:
-            return {}
 
     def __init__(self, basedir: str, undo_db: str=UNDO_DATABASE_FILE) -> None:
         self._base_directory = basedir
@@ -72,7 +66,6 @@ class FilenameCleaner:
         self._undo_info = self._load_undo_info()
 
     def __del__(self):
-        # print(self._base_directory, self._undo_info)
         with open(self._undo_db, 'wb') as db_file:
             return pickle.dump(self._undo_info, db_file)
 
@@ -80,17 +73,17 @@ class FilenameCleaner:
             self, min_length: int=0, verbose: bool=False, recurse: bool=False, force: bool=False
     ) -> None:
         fix_commands = self._fix_commands_for_filenames(min_length, verbose, recurse, force, [])
-        self.execute_fix_commands(fix_commands, force, verbose)
+        self._execute_fix_commands(fix_commands, force, verbose)
         # print(f"{len(fix_commands)} fixed")
 
     def clean_numbering(self, verbose: bool=False, force: bool=False):
         fix_commands = self._fix_commands_for_numbering()
-        self.execute_fix_commands(fix_commands, force, verbose)
+        self._execute_fix_commands(fix_commands, force, verbose)
         print(f"{len(fix_commands)} fixed")
 
     def clean_junk(self, verbose: bool=False, force: bool=False):
         fix_commands = self._fix_commands_for_junk()
-        self.execute_fix_commands(fix_commands, force, verbose)
+        self._execute_fix_commands(fix_commands, force, verbose)
         print(f"{len(fix_commands)} fixed")
 
     def undo(self, verbose: bool=False, force: bool=False):
@@ -105,6 +98,13 @@ class FilenameCleaner:
             else:
                 if verbose:
                     print('FAIL', source)
+
+    def _load_undo_info(self) -> Dict[str, str]:
+        try:
+            with open(self._undo_db, 'rb') as db_file:
+                return pickle.load(db_file)
+        except FileNotFoundError:
+            return {}
 
     def _fix_commands_for_filenames(
             self,  min_length: int, verbose: bool, recurse: bool, force: bool,
@@ -136,7 +136,7 @@ class FilenameCleaner:
 
     def _fix_commands_for_numbering(self):
         def has_screwy_numbering(filename: str) -> bool:
-            base = self.filename_base(filename)
+            base = self._filename_base(filename)
             return self.is_music_file(filename) and bool(
                 re.search(r'\d+', base) and
                 not re.search(r'^\d{1,4} - [^/]+', base, flags=re.IGNORECASE) and
@@ -153,7 +153,7 @@ class FilenameCleaner:
             self.check_file_for_renumbering(file, fix_commands)
         return fix_commands
 
-    def execute_fix_commands(self, fix_commands, force, verbose):
+    def _execute_fix_commands(self, fix_commands, force, verbose):
         for source, destination, pattern_matches in fix_commands:
             self._undo_info[os.path.realpath(source)] = os.path.realpath(destination)
             if verbose and source is not None and destination is not None:
@@ -169,7 +169,7 @@ class FilenameCleaner:
         def has_junk(filename: str) -> bool:
             return FilenameCleaner.is_music_file(filename) and \
                    any([
-                       re.search(s, FilenameCleaner.filename_base(filename))
+                       re.search(s, FilenameCleaner._filename_base(filename))
                        for s in FilenameCleaner.JUNK_TO_REMOVE
                    ])
 
@@ -177,7 +177,7 @@ class FilenameCleaner:
         fix_commands: List[Tuple[str, str, List[str]]] = []
         for mismatch in mismatches:
             root = os.path.dirname(mismatch)
-            fixed = FilenameCleaner.filename_base(mismatch)
+            fixed = FilenameCleaner._filename_base(mismatch)
             extension = mismatch.split('.')[-1]
             matches = []
             changed = True
@@ -193,7 +193,7 @@ class FilenameCleaner:
         return fix_commands
 
     @staticmethod
-    def filename_base(filename):
+    def _filename_base(filename):
         return '.'.join(filename.split('/')[-1].split('.')[:-1])
 
     @staticmethod
