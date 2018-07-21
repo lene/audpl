@@ -11,13 +11,16 @@ from typing import List, Tuple, Dict
 
 from util import find_files
 
-UNDO_DATABASE_FILE = 'undo.pickle'
+UNDO_DATABASE_FILE = '~/.music-rename-undo.pickle'
 
 
 class FilenameCleaner:
 
     MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
     PATTERNS_TO_FIX = [
+        r'(\d\d)\2\s+-\s+([^/]+)',     # 0101 - blah
+        r'\s*(\d{1,3}-\d)\s+([^-][^/]+)',  # 01-1 blah
+        r'\s*(\d-\d{1,2})\s+([^-][^/]+)',  # 1-01 blah
         r'\s*(\d{1,4})\s+([^/]+)',     # 01 blah
         r'\s*(\d{1,3})\.\s+([^/]+)',   # 01. blah
         r'\s*(\d{1,3})\.([^/]+)',      # 01.blah
@@ -29,9 +32,7 @@ class FilenameCleaner:
         r'\s*\[(\d{1,3})\]([^/]+)',    # [01]blah
         r'\s*(\d{1,3})\]([^/]+)',      # 01]blah
         r'\s*\((\d{1,3})\)\s*([^/]+)',  # (01)blah
-        r'\s*(\d{1,3}-\d)\s+([^/]+)',  # 01-1 blah
         r'\s*(\d{1,4})(\D[^/]*)',      # 01blah
-        r'(\d\d)\1 - (\D[^/]*)',       # 0101 - blah
         r'\s*([a-z]\d{1,2})\s+([^/]+)',  # a1 blah
         r'\s*([a-z]\d)-([^/]+)',       # a1-blah
         r'\s*([a-z]\d)\.([^/]+)',      # a1.blah
@@ -66,7 +67,7 @@ class FilenameCleaner:
 
     def __init__(self, basedir: str, undo_db: str=UNDO_DATABASE_FILE) -> None:
         self._base_directory = basedir
-        self._undo_db = undo_db
+        self._undo_db = undo_db.replace('~', os.getenv('HOME'))
         self._undo_info = self._load_undo_info()
 
     def __del__(self):
@@ -117,14 +118,18 @@ class FilenameCleaner:
     def _fix_commands_for_numbering(self):
         def has_screwy_numbering(filename: str) -> bool:
             base = self.filename_base(filename)
-            return self.is_music_file(filename) and \
-                bool(re.search(r'\d+', base)) and \
-                not re.search(r'^\d{1,4} - [^/]+', base, flags=re.I) and \
-                not re.search(r'^[a-z]\d{1,2} - [^/]+', base, flags=re.I) or \
-                re.search(r'^(\d\d)\1 - [^/]+', base, flags=re.I)
+            return self.is_music_file(filename) and bool(
+                re.search(r'\d+', base) and
+                not re.search(r'^\d{1,4} - [^/]+', base, flags=re.IGNORECASE) and
+                not re.search(r'^\d{1,4}$', base, flags=re.IGNORECASE) and
+                not re.search(r'^\d{1,2}-\d{1,2}$', base, flags=re.IGNORECASE) and
+                not re.search(r'^\d{2}-\d - [^/]+', base, flags=re.IGNORECASE) and
+                not re.search(r'^\d-\d{1,2} - [^/]+', base, flags=re.IGNORECASE) and
+                not re.search(r'^[a-z]\d{1,2} - [^/]+', base, flags=re.IGNORECASE) or
+                re.search(r'^(\d\d)\1 - [^/]+', base, flags=re.IGNORECASE)
+            )
 
         mismatches = sorted(find_files(self._base_directory, has_screwy_numbering))
-        print(mismatches)
         fix_commands: List[Tuple[str, str]] = []
         for file in mismatches:
             self.check_file_for_renumbering(file, fix_commands)
@@ -193,7 +198,6 @@ class FilenameCleaner:
             for pattern in self.PATTERNS_TO_FIX:
                 match = re.search('(.*)/' + pattern + r'\.' + extension, file, flags=re.IGNORECASE)
                 if match:
-                    print(file, pattern, match)
                     fix_commands.append(
                         (
                             file,

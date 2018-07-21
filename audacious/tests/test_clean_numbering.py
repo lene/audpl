@@ -6,7 +6,7 @@ from .test_junk_filenames import TestJunkFilenames
 
 from clean_filenames import FilenameCleaner
 
-NUM_TESTS = 2
+NUM_TESTS = 3
 
 
 class TestCleanNumbering(TestJunkFilenames):
