@@ -71,9 +71,17 @@ class TestCleanJunk(TestJunkFilenames):
         self.create_files(' {:02d} - blah blub.mp3', 3)
         self._perform_and_check_cleaning()
 
+    def test_leading_dot(self):
+        self.create_files('.{:02d} - blah blub.mp3', 3)
+        self._perform_and_check_cleaning()
+
     def test_free_comma(self):
         self.create_files('{:02d} - blah , blub.mp3', 3)
         self._perform_and_check_cleaning('\d\d - blah, blub.mp3')
+
+    def test_empty_brackets(self):
+        self.create_files('{:02d} - blah [] blub.mp3', 3)
+        self._perform_and_check_cleaning()
 
     def test_dash_comma_does_not_loop_infinitely_and_gives_sensible_result(self):
         self.create_files('{:02d} -, blah blub.mp3', 3)

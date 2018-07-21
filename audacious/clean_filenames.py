@@ -15,32 +15,33 @@ class FilenameCleaner:
 
     MUSIC_EXTENSIONS = ('mp3', 'flac', 'ogg', 'm4a')
     PATTERNS_TO_FIX = [
-        r'\s*(\d{1,4})\s+([^/]+)',    # 01 blah
-        r'\s*(\d{1,3})\.\s+([^/]+)',  # 01. blah
-        r'\s*(\d{1,3})\.([^/]+)',     # 01.blah
-        r'\s*(\d{1,3})--([^/]+)',     # 01--blah
-        r'\s*(\d{1,3})-\s*(\D[^/]+)',   # 01-blah or 01- blah
-        r'\s*-(\d{1,3})-([^/]+)',     # -01-blah
+        r'\s*(\d{1,4})\s+([^/]+)',     # 01 blah
+        r'\s*(\d{1,3})\.\s+([^/]+)',   # 01. blah
+        r'\s*(\d{1,3})\.([^/]+)',      # 01.blah
+        r'\s*(\d{1,3})--([^/]+)',      # 01--blah
+        r'\s*(\d{1,3})-\s*(\D[^/]+)',  # 01-blah or 01- blah
+        r'\s*-(\d{1,3})-([^/]+)',      # -01-blah
         r'\s*-\s*(\d{1,3})\.\s*([^/]+)',  # - 01. blah
-        r'\s*(\d{1,3})_([^/]+)',      # 01_blah
-        r'\s*\[(\d{1,3})\]([^/]+)',   # [01]blah
-        r'\s*(\d{1,3})\]([^/]+)',   # 01]blah
+        r'\s*(\d{1,3})_([^/]+)',       # 01_blah
+        r'\s*\[(\d{1,3})\]([^/]+)',    # [01]blah
+        r'\s*(\d{1,3})\]([^/]+)',      # 01]blah
         r'\s*\((\d{1,3})\)\s*([^/]+)',  # (01)blah
         r'\s*(\d{1,3}-\d)\s+([^/]+)',  # 01-1 blah
         r'\s*(\d{1,4})(\D[^/]*)',      # 01blah
         r'\s*([a-z]\d{1,2})\s+([^/]+)',  # a1 blah
-        r'\s*([a-z]\d)-([^/]+)',      # a1-blah
-        r'\s*([a-z]\d)\.([^/]+)',     # a1.blah
-        r'\s*\[([a-z]\d)\]([^/]+)',   # [a1]blah
-        r'\s*([a-z]\d)\]([^/]+)',     # a1]blah
-        r'\s*\(([a-z]\d)\)([^/]+)',   # (a1)blah
-        r'\s*([a-z]\d{1,2})(\w[^/]+)',  # a1blah
+        r'\s*([a-z]\d)-([^/]+)',       # a1-blah
+        r'\s*([a-z]\d)\.([^/]+)',      # a1.blah
+        r'\s*\[([a-z]\d)\]([^/]+)',    # [a1]blah
+        r'\s*([a-z]\d)\]([^/]+)',      # a1]blah
+        r'\s*\(([a-z]\d)\)([^/]+)',    # (a1)blah
+        r'\s*([a-z]\d{1,2})(\D[^/]+)',  # a1blah
     ]
     JUNK_TO_REMOVE = {
         ' $': '',     # space(s) at beginning and before ".mp3"
         '-$': '',     # "-.mp3", " - .mp3"
-        '^-': '',     # dash at beginning, with or without spaces
-        '^ ': '',     # space at beginning, with or without spaces
+        '^-': '',     # dash at beginning
+        '^ ': '',     # space at beginning
+        '^\.': '',    # dot at beginning
         '--': '-',    # --
         '- -': '-',   # stray double dashes
         '_': ' ',     # underscores
@@ -49,6 +50,7 @@ class FilenameCleaner:
         '(\S)- ': r'\1 - ',  # immediately trailing dash with space after
         '  ': ' ',    # double spaces
         ' ,': ',',    # space before comma
+        r'\[\]': '',
     }
 
     def __init__(self, basedir):
@@ -90,7 +92,10 @@ class FilenameCleaner:
         def has_screwy_numbering(filename: str) -> bool:
             return self.is_music_file(filename) and \
                    bool(re.search(r'\d+', self.filename_base(filename))) and \
-                   not any([re.search(r'\d+ - [^/]+\.' + e, filename, flags=re.IGNORECASE) for e in self.MUSIC_EXTENSIONS])
+                   not any([
+                       re.search(r'\d+ - [^/]+\.' + e, filename, flags=re.IGNORECASE)
+                       for e in self.MUSIC_EXTENSIONS
+                   ])
 
         mismatches = sorted(find_files(self._base_directory, has_screwy_numbering))
         fix_commands: List[Tuple[str, str]] = []
