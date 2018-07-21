@@ -53,40 +53,41 @@ class FilenameCleaner:
         r'\[\]': '',
     }
 
-    def __init__(self, basedir):
-        self._base_directory = basedir
+    def __init__(self, basedirs: List[str]) -> None:
+        self._base_directories = basedirs
 
     def clean_filenames(
             self, min_length: int=0, verbose: bool=False, recurse: bool=False, force: bool=False
     ) -> None:
-        if recurse:
-            subdirs = sorted(
-                [name for name in os.listdir(self._base_directory)
-                 if os.path.isdir(os.path.join(self._base_directory, name))]
-            )
-            for subdir in subdirs:
-                cleaner = FilenameCleaner(os.path.join(self._base_directory, subdir))
+        for basedir in self._base_directories:
+            if recurse:
+                subdirs = sorted(
+                    [name for name in os.listdir(basedir)
+                     if os.path.isdir(os.path.join(basedir, name))]
+                )
+
+                cleaner = FilenameCleaner([os.path.join(basedir, subdir) for subdir in subdirs])
                 cleaner.clean_filenames(min_length, verbose, recurse, force)
 
-        files = self.get_music_files()
-        to_remove = self.longest_common_substring(files)
-        to_remove = self.exclude_common_use_cases(to_remove)
-        if min_length and len(to_remove) < min_length:
-            return
-        if verbose:
-            print(f'----    DIR: {self._base_directory}    ----    REMOVE: "{to_remove}"')
-        for file in files:
+            files = self.get_music_files(basedir)
+            to_remove = self.longest_common_substring(files)
+            to_remove = self.exclude_common_use_cases(to_remove)
+            if min_length and len(to_remove) < min_length:
+                return
             if verbose:
-                self.print_utf8_error(
-                    'MOVE ', os.path.join(self._base_directory, file),
-                    os.path.join(self._base_directory, file.replace(to_remove, ''))
-                )
-                pass
-            if force:
-                os.rename(
-                    os.path.join(self._base_directory, file),
-                    os.path.join(self._base_directory, file.replace(to_remove, ''))
-                )
+                print(f'----    DIR: {basedir}    ----    REMOVE: "{to_remove}"')
+            for file in files:
+                if verbose:
+                    self.print_utf8_error(
+                        'MOVE ', os.path.join(basedir, file),
+                        os.path.join(basedir, file.replace(to_remove, ''))
+                    )
+                    pass
+                if force:
+                    os.rename(
+                        os.path.join(basedir, file),
+                        os.path.join(basedir, file.replace(to_remove, ''))
+                    )
 
     def clean_numbering(self, verbose: bool=False, force: bool=False):
         def has_screwy_numbering(filename: str) -> bool:
@@ -97,20 +98,22 @@ class FilenameCleaner:
                        for e in self.MUSIC_EXTENSIONS
                    ])
 
-        mismatches = sorted(find_files(self._base_directory, has_screwy_numbering))
-        fix_commands: List[Tuple[str, str]] = []
-        for file in mismatches:
-            self.check_file_for_renumbering(file, fix_commands)
+        for basedir in self._base_directories:
+            mismatches = sorted(find_files(basedir, has_screwy_numbering))
+            fix_commands: List[Tuple[str, str]] = []
+            for file in mismatches:
+                self.check_file_for_renumbering(file, fix_commands)
 
-        self.execute_fix_commands(fix_commands, force, verbose)
-        print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
+            self.execute_fix_commands(fix_commands, force, verbose)
+            print(f"{len(fix_commands)} fixed out of {len(mismatches)}")
 
     def clean_junk(self, verbose: bool=False, force: bool=False):
+        for basedir in self._base_directories:
 
-        fix_commands = self.fix_commands_for_junk()
+            fix_commands = self.fix_commands_for_junk(basedir)
 
-        self.execute_fix_commands(fix_commands, force, verbose)
-        print(f"{len(fix_commands)} fixed")
+            self.execute_fix_commands(fix_commands, force, verbose)
+            print(f"{len(fix_commands)} fixed")
 
     def execute_fix_commands(self, fix_commands, force, verbose):
         for source, destination, pattern_matches in fix_commands:
@@ -123,12 +126,12 @@ class FilenameCleaner:
                     if verbose:
                         self.print_utf8_error('FAIL:', source, '->', destination)
 
-    def fix_commands_for_junk(self):
+    def fix_commands_for_junk(self, basedir: str):
         def has_junk(filename: str) -> bool:
             return self.is_music_file(filename) and \
                    any([re.search(s, self.filename_base(filename)) for s in self.JUNK_TO_REMOVE])
 
-        mismatches = sorted(find_files(self._base_directory, has_junk))
+        mismatches = sorted(find_files(basedir, has_junk))
         fix_commands: List[Tuple[str, str, List[str]]] = []
         for mismatch in mismatches:
             root = os.path.dirname(mismatch)
@@ -188,11 +191,11 @@ class FilenameCleaner:
             to_remove = to_remove[1:]
         return to_remove
 
-    def get_music_files(self):
+    def get_music_files(self, basedir: str):
         return sorted(
             [
-                f for f in os.listdir(self._base_directory)
-                if os.path.isfile(os.path.join(self._base_directory, f)) and self.is_music_file(f)
+                f for f in os.listdir(basedir)
+                if os.path.isfile(os.path.join(basedir, f)) and self.is_music_file(f)
             ]
         )
 
@@ -219,16 +222,18 @@ def parse_commandline(args: List[str]) -> Namespace:
         '-v', '--verbose', action='store_true'
     )
     parser.add_argument(
-        '--clean-filenames', type=str,
+        '--clean-filenames', action='store_true',
         help='Remove longest common substring from music files in this dir'
     )
     parser.add_argument('--recurse', action='store_true', help='Scan subdirectories recursively')
     parser.add_argument('-f', '--force', action='store_true', help='Force rename files')
     parser.add_argument(
-        '--clean-numbering', type=str,
+        '--clean-numbering', action='store_true',
         help='Number music files in this dir to let them start with "%d - "'
     )
-    parser.add_argument('--clean-junk', type=str, help='Remove junk from filenames')
+    parser.add_argument('--clean-junk', action='store_true', help='Remove junk from filenames')
+    parser.add_argument('-u', '--undo', action='store_true')
+    parser.add_argument('target', nargs='+')
     return parser.parse_args(args)
 
 
@@ -243,7 +248,7 @@ def main(args):
         cleaner = FilenameCleaner(opts.clean_numbering)
         cleaner.clean_numbering(verbose=opts.verbose, force=opts.force)
     elif opts.clean_junk:
-        cleaner = FilenameCleaner(opts.clean_junk)
+        cleaner = FilenameCleaner(opts.target)
         cleaner.clean_junk(verbose=opts.verbose, force=opts.force)
 
 
