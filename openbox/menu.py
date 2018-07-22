@@ -48,6 +48,7 @@ programs = OrderedDict({
         "Scrivener": "scrivener",
         "K3B": "k3b",
         "Gaia Sky": "gaiasky",
+        "KODI": "kodi",	
     },
     "Other": {
         "LibreOffice": "soffice"
