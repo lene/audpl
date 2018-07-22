@@ -13,3 +13,4 @@ setlayout
 */.idea/*
 tmp
 __pycache__
+.*.swp
