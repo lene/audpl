@@ -1,0 +1,9 @@
+gtk-font-name = "Sans 20"
+style "rox" = "default"
+{
+  bg[NORMAL] = "#ffffff"
+  bg[ACTIVE] = "#ffffff"
+}
+widget_class "*Collection*" style "rox"
+
+
