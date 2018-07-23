@@ -17,8 +17,8 @@ gtk-xft-rgba="none"
 gtk-font-name = "Sans 18"
 style "rox" = "default"
 {
-  bg[NORMAL] = "#ffffff"
-  bg[ACTIVE] = "#ffffff"
+  bg[NORMAL] = "#c0c0c0"
+  bg[ACTIVE] = "#a0a0a0"
 }
 widget_class "*Collection*" style "rox"
 
