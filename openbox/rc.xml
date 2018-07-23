@@ -1103,5 +1103,12 @@
       <skip_pager>no</skip_pager>
       <skip_taskbar>no</skip_taskbar>
     </application>
+    <application name="Suspending soon(ish)" class="Suspending soon(ish)">
+      <decor>yes</decor>
+      <iconic>no</iconic>
+      <skip_pager>no</skip_pager>
+      <skip_taskbar>no</skip_taskbar>
+      <desktop>all</desktop>
+    </application>
   </applications>
 </openbox_config>
